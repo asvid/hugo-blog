@@ -1,23 +1,23 @@
 ---
 categories:
-- rss
+  - rss
 comments: true
 date: "2023-06-16T00:00:00Z"
-description: ' Embrace the power of Continuous Integration and Deployment (CI/CD)
+summary: " Embrace the power of Continuous Integration and Deployment (CI/CD)
   in software development. Automate tests, streamline workflows, and boost collaboration
   with user-friendly services like CircleCI, Bitrise, GitLab, and GitHub Actions.
-  Level up your development process today! '
+  Level up your development process today! "
 image: /assets/posts/friendly_ci.jpg
 tags:
-- CI/CD
-- Continuous Integration
-- Continuous Deployment
-- Software Development
-- Automation
-- DevOps
-- Software Delivery
-- Testing
-title: 'Continuous Integration and Deployment: A Developer''s Best Friends'
+  - CI/CD
+  - Continuous Integration
+  - Continuous Deployment
+  - Software Development
+  - Automation
+  - DevOps
+  - Software Delivery
+  - Testing
+title: "Continuous Integration and Deployment: A Developer's Best Friends"
 toc: true
 url: 2023-06-16-ci-is-your-friend
 ---
@@ -96,7 +96,7 @@ Trust me, nothing says "I'm a professional" more to a client than being able to 
 
 ## Getting Started with GitHub Actions
 
-To kickstart your CI/CD journey, I recommend starting with GitHub Actions. Begin with simple tasks, such as running tests after every push to the `develop` branch in your pet project (you do have one, don't you?). Nice starting point is here: [about-continuous-integration](https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration) 
+To kickstart your CI/CD journey, I recommend starting with GitHub Actions. Begin with simple tasks, such as running tests after every push to the `develop` branch in your pet project (you do have one, don't you?). Nice starting point is here: [about-continuous-integration](https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration)
 
 This initial setup will familiarize you with CI/CD concepts. GitHub Actions provides a wide range of ready-to-use actions created by other developers, which can be found in the [GitHub Marketplace](https://github.com/marketplace?type=actions).
 

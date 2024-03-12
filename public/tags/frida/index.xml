@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Frida on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/frida/</link>
-    <description>Recent content in Frida on My New Hugo Site</description>
+    <title>Frida on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/frida/</link>
+    <description>Recent content in Frida on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 31 Mar 2018 17:43:37 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/frida/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/frida/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hacking Android app with Frida</title>
-      <link>http://localhost:1313/android-frida-hacking/</link>
+      <link>//localhost:1313/android-frida-hacking/</link>
       <pubDate>Sat, 31 Mar 2018 17:43:37 +0000</pubDate>
-      <guid>http://localhost:1313/android-frida-hacking/</guid>
+      <guid>//localhost:1313/android-frida-hacking/</guid>
       <description>Side image is of course Frida Kahlo auto portrait, besides her name she has no connection with topic&#xA;Motivation Lately I attended to Sekurak hacking party - it&amp;rsquo;s event organized by Sekurak where they show how easy is to hack stuff like IP cameras, routers, phones. I guess Sekurak is known mainly in Poland, but they are real professionals in area of security. During this event Michał Bentkowski was showing how easy it is to spy on Android app communication and also change app behavior using tool named Frida.</description>
     </item>
   </channel>

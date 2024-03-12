@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Static Factory Methods on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/static-factory-methods/</link>
-    <description>Recent content in Static Factory Methods on My New Hugo Site</description>
+    <title>Static Factory Methods on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/static-factory-methods/</link>
+    <description>Recent content in Static Factory Methods on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Feb 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/static-factory-methods/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/static-factory-methods/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kotlin Static Factory Methods</title>
-      <link>http://localhost:1313/kotlin-static-factory-methods/</link>
+      <link>//localhost:1313/kotlin-static-factory-methods/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-static-factory-methods/</guid>
-      <description>Purpose There is a concise error in the title, there are no static methods in Kotlin. But there are ways to achieve similar behavior to proposed by Joshua Bloch in Effective Java book - using static factory methods instead of constructors. This is also completely different from the Factory Method design pattern, don&amp;rsquo;t confuse those.&#xA;Long story short, these are methods that create object instances based on supplied arguments (or even without them) and that you can call from anywhere without the need of having an instance of a class that contains them.</description>
+      <guid>//localhost:1313/kotlin-static-factory-methods/</guid>
+      <description>&lt;code&gt;Static Factory Methods&lt;/code&gt; known from Java have their place also in Kotlin, although they look and behave a bit different because there is no &lt;code&gt;static&lt;/code&gt; word in Kotlin. Here I&amp;rsquo;ll try to show how to use &lt;code&gt;companion object&lt;/code&gt; for &lt;code&gt;Static Factory Methods&lt;/code&gt; and more. PS: This whole post was supposed to be about &lt;code&gt;Factory Method&lt;/code&gt; with just a short mention about static factory methods, but the topic becomes more interesting than I thought :)</description>
     </item>
   </channel>
 </rss>

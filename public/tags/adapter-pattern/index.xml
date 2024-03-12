@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Adapter Pattern on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/adapter-pattern/</link>
-    <description>Recent content in Adapter Pattern on My New Hugo Site</description>
+    <title>Adapter Pattern on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/adapter-pattern/</link>
+    <description>Recent content in Adapter Pattern on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Jun 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/adapter-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/adapter-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adapter Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-adapter-pattern/</link>
+      <link>//localhost:1313/kotlin-adapter-pattern/</link>
       <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-adapter-pattern/</guid>
-      <description>Purpose As the name suggests, the Adapter pattern transforms the class interface to another one requested by the client. Using the Adapter allows incompatible classes to interact with each other. Another term for this pattern is Wrapper.&#xA;The adapter allows you to &amp;ldquo;map&amp;rdquo; an adapted interface (Adaptee) to the expected interface (Target) by the client class without adding another level of inheritance. Such inheritance would not always be possible if Target was a class rather than an interface.</description>
+      <guid>//localhost:1313/kotlin-adapter-pattern/</guid>
+      <description>The Adapter or Wrapper Pattern allows you to &lt;code&gt;translate&lt;/code&gt; one interface into another, expected by the client class. It is especially useful when the adapted object comes from 3rd party library, and you do not want to make your system depending on that interface, creating the so-called &lt;code&gt;anticorruption layer&lt;/code&gt;. Adaptee interface changes will only affect the &lt;code&gt;Adapter&lt;/code&gt; and not the rest of the code.</description>
     </item>
   </channel>
 </rss>

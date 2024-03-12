@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scripts on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/scripts/</link>
-    <description>Recent content in Scripts on My New Hugo Site</description>
+    <title>Scripts on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/scripts/</link>
+    <description>Recent content in Scripts on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shell script basics</title>
-      <link>http://localhost:1313/shellscriptbasics/</link>
+      <link>//localhost:1313/shellscriptbasics/</link>
       <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/shellscriptbasics/</guid>
+      <guid>//localhost:1313/shellscriptbasics/</guid>
       <description>Why Recently I had to do some tasks that required me to fallowing a strict checklist. It wasn&amp;rsquo;t anything complex, no creativity required - just do as list tells you to do. I was also one of the creators of the checklist.&#xA;I had to do it a few times, almost regularly, sometimes in short notice but nothing extreme.&#xA;So obviously I made errors because I knew the checklist so well I wasn&amp;rsquo;t paying attention.</description>
     </item>
   </channel>

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>IntelliJ on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/intellij/</link>
-    <description>Recent content in IntelliJ on My New Hugo Site</description>
+    <title>IntelliJ on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/intellij/</link>
+    <description>Recent content in IntelliJ on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>IntelliJ IDEA as a LaTeX editor</title>
-      <link>http://localhost:1313/intellij-latex-editor/</link>
+      <link>//localhost:1313/intellij-latex-editor/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/intellij-latex-editor/</guid>
-      <description>TL;DR: IntelliJ Idea is great for working with LaTeX. The basic functionality is provided by plugins, and a lot of additional automation can be set using File Watchers. I only miss displaying chapters and sections like in TexStudio.&#xA;LaTeX in IntelliJ IDEA I don&amp;rsquo;t work with LaTeX very often, but this format has many advantages, especially when working on longer written forms, containing a lot of graphics, diagrams, mathematical formulas, etc.</description>
+      <guid>//localhost:1313/intellij-latex-editor/</guid>
+      <description>IntelliJ IDEA is pretty good at handling LaTeX. I dare say that it is an even better experience than TexStudio or Texmaker, which are dedicated to this type of project. However, the strength of IntelliJ is not in its out-of-the-box capabilities, but plugins and manual configuration of the build process.</description>
     </item>
     <item>
       <title>IntelliJ settings repo</title>
-      <link>http://localhost:1313/intellij-settings-repo/</link>
+      <link>//localhost:1313/intellij-settings-repo/</link>
       <pubDate>Sun, 19 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/intellij-settings-repo/</guid>
+      <guid>//localhost:1313/intellij-settings-repo/</guid>
       <description>My setup looks like this: I have Windows PC with Linux installed on a separate drive, also I have 2 MacBooks for work, and rarely used Linux ThinkPad. Keeping my IntelliJ settings in sync at all of those machines wasn&amp;rsquo;t really possible. If I find some setting that improves my workflow at my office machine, and after some time I want to work on a pet project on my own PC - I get this itch of not having this setting I had on MacBook&amp;hellip; so I can export my settings and then import it.</description>
     </item>
   </channel>

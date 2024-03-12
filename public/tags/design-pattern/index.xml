@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Design Pattern on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/design-pattern/</link>
-    <description>Recent content in Design Pattern on My New Hugo Site</description>
+    <title>Design Pattern on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/design-pattern/</link>
+    <description>Recent content in Design Pattern on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 27 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Presentation Patterns: MVC</title>
-      <link>http://localhost:1313/2024-01-27-MVC/</link>
+      <link>//localhost:1313/2024-01-27-MVC/</link>
       <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024-01-27-MVC/</guid>
-      <description>Disclaimer: You probably shouldn&amp;rsquo;t use MVC in your Android app, there are much better solutions nowadays, that I mention later in this post.&#xA;Hello old friend Model-View-Controller is old indeed, for IT standards at least. Its origins are dating back to the development of Smalltalk-80 in the 1970s. You remember book &amp;ldquo;Design Patterns&amp;rdquo; by the Gang of 4? Yup, its mentioned there (and the book has examples in Smalltalk). It was introduced to address the challenges of creating graphical user interfaces.</description>
+      <guid>//localhost:1313/2024-01-27-MVC/</guid>
+      <description>Explore the early days of Android with the Model-View-Controller (MVC) pattern. Discover its challenges, like tight connections and testing troubles, through a simple example. While acknowledging its history, the article introduces modern alternatives like Model-View-Presenter (MVP), Model-View-ViewModel (MVVM), and Redux, explaining why they&amp;rsquo;re better choices for today&amp;rsquo;s Android app setup.</description>
     </item>
   </channel>
 </rss>

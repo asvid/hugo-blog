@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Decorator Pattern on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/decorator-pattern/</link>
-    <description>Recent content in Decorator Pattern on My New Hugo Site</description>
+    <title>Decorator Pattern on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/decorator-pattern/</link>
+    <description>Recent content in Decorator Pattern on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 03 Jul 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/decorator-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/decorator-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Decorator Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-decorator-pattern/</link>
+      <link>//localhost:1313/kotlin-decorator-pattern/</link>
       <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-decorator-pattern/</guid>
-      <description>Purpose The Decorator allows you to dynamically add or change the behavior of a specific object of a given class, without affecting other objects of the same class. In some cases, this allows you to significantly reduce the number of classes by moving the shared behavior to the Decorator, rather than extending the inheritance structure.&#xA;The decorator&amp;rsquo;s job is to &amp;ldquo;wrap&amp;rdquo; (hence another name: &amp;ldquo;Wrapper&amp;rdquo;) the original object and modify or overwrite its behavior.</description>
+      <guid>//localhost:1313/kotlin-decorator-pattern/</guid>
+      <description>The &lt;code&gt;Decorator&lt;/code&gt; pattern is used where creating separate classes which are a combination of all possibilities would result in their explosion. This pattern focuses on creating object layers to transparently and dynamically complement objects with new tasks. The decorator provides an object with the same interface as the decorated object.</description>
     </item>
   </channel>
 </rss>

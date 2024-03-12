@@ -1,110 +1,110 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Android on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/android/</link>
-    <description>Recent content in Android on My New Hugo Site</description>
+    <title>Android on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/android/</link>
+    <description>Recent content in Android on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Presentation Patterns: MVI</title>
-      <link>http://localhost:1313/2024-02-24-MVI/</link>
+      <link>//localhost:1313/2024-02-24-MVI/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024-02-24-MVI/</guid>
+      <guid>//localhost:1313/2024-02-24-MVI/</guid>
       <description>MVI isn&amp;rsquo;t a single ready-to-implement pattern; it&amp;rsquo;s more of a spectrum. This post delves into its diverse range, from basic MVVM patterns to intricate Redux-like state management, emphasizing the importance of grasping its principles for effective implementation tailored to specific project needs.</description>
     </item>
     <item>
       <title>Android Presentation Patterns: MVVM</title>
-      <link>http://localhost:1313/2024-02-09-MVVM/</link>
+      <link>//localhost:1313/2024-02-09-MVVM/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024-02-09-MVVM/</guid>
-      <description>Evolution There is a clear trajectory in presentation pattern evolution - decreased coupling. In MVC, components were closely situated, with numerous direct interactions. MVP addressed this by introducing a standard interface structure. It&amp;rsquo;s now possible to test some interactions without relying on UI (although it may sound somewhat peculiar when discussing presentation patterns, I admit). Nevertheless, there are still some challenges, such as maintaining view state or artificial awareness of view lifecycle in MVP.</description>
+      <guid>//localhost:1313/2024-02-09-MVVM/</guid>
+      <description>MVVM architecture promotes a clean separation of concerns, making it easier to develop and maintain complex Android applications. By adhering to the key principles and components of MVVM, developers can create scalable, testable, and maintainable apps that provide a seamless user experience.</description>
     </item>
     <item>
       <title>Android Presentation Patterns: MVP</title>
-      <link>http://localhost:1313/2024-01-29-MVP/</link>
+      <link>//localhost:1313/2024-01-29-MVP/</link>
       <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024-01-29-MVP/</guid>
-      <description>But MVC does the job! When examining the MVC pattern as described here, it&amp;rsquo;s evident that the direct relationship between the View and Controller is problematic. Tight coupling results in challenging testing, where changes in one class necessitate updates in another, and it doesn&amp;rsquo;t scale well. In complex views, there can be multiple conditions for setting values in UI elements, depending on the current state of the UI and responses from the Model.</description>
+      <guid>//localhost:1313/2024-01-29-MVP/</guid>
+      <description>Uncover the journey of evolution from MVC to MVP, tackling challenges through the integration of a Presenter and well-defined contracts. Despite the advantages MVP offers, it necessitates addressing common concerns such as boilerplate code and potential intricacies for more straightforward UIs.</description>
     </item>
     <item>
       <title>Android Presentation Patterns: MVC</title>
-      <link>http://localhost:1313/2024-01-27-MVC/</link>
+      <link>//localhost:1313/2024-01-27-MVC/</link>
       <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024-01-27-MVC/</guid>
-      <description>Disclaimer: You probably shouldn&amp;rsquo;t use MVC in your Android app, there are much better solutions nowadays, that I mention later in this post.&#xA;Hello old friend Model-View-Controller is old indeed, for IT standards at least. Its origins are dating back to the development of Smalltalk-80 in the 1970s. You remember book &amp;ldquo;Design Patterns&amp;rdquo; by the Gang of 4? Yup, its mentioned there (and the book has examples in Smalltalk). It was introduced to address the challenges of creating graphical user interfaces.</description>
+      <guid>//localhost:1313/2024-01-27-MVC/</guid>
+      <description>Explore the early days of Android with the Model-View-Controller (MVC) pattern. Discover its challenges, like tight connections and testing troubles, through a simple example. While acknowledging its history, the article introduces modern alternatives like Model-View-Presenter (MVP), Model-View-ViewModel (MVVM), and Redux, explaining why they&amp;rsquo;re better choices for today&amp;rsquo;s Android app setup.</description>
     </item>
     <item>
       <title>Would you go for mobile development again, after 10 years of doing it?</title>
-      <link>http://localhost:1313/would-i-do-mobile-again/</link>
+      <link>//localhost:1313/would-i-do-mobile-again/</link>
       <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/would-i-do-mobile-again/</guid>
-      <description>Would I? I went to a meetup in my city last week and a guy I just met there popped a question after a while of conversation: with my experience, would I go for mobile software development again or pick a different area?&#xA;And it got me thinking Yes, I would do this again, I&amp;rsquo;m even more motivated now.&#xA;I remember how excited I was about the idea that you can write software for a tiny computer that lives in your pocket.</description>
+      <guid>//localhost:1313/would-i-do-mobile-again/</guid>
+      <description>I went to a meetup in my city last week and a guy I just met there popped a question after a while of conversation: with my experience, would I go for mobile software development again or pick a different area?</description>
     </item>
     <item>
       <title>Android service binding fix for API 30</title>
-      <link>http://localhost:1313/2021-09-03-android-service-binding-on-api30/</link>
+      <link>//localhost:1313/2021-09-03-android-service-binding-on-api30/</link>
       <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2021-09-03-android-service-binding-on-api30/</guid>
-      <description>TL;DR If you want to use bindService() with external application services built with API 30 and above, add the attribute with the service package name to the client app manifest. More info in the documentation. Without it, bindService() will return False and the logs will tell you that an Intent-compatible service has not been found.&#xA;My repo with a working example&#xA;Problem I am recently working on communication between applications in Android.</description>
+      <guid>//localhost:1313/2021-09-03-android-service-binding-on-api30/</guid>
+      <description>Android 11 (API 30) changes the way of using external app services. Using &lt;code&gt;compileSdk 30&lt;/code&gt; and above, without additional Manifest entry the &lt;code&gt;bindService()&lt;/code&gt; method will always return &lt;code&gt;False&lt;/code&gt;, even if with &lt;code&gt;compileSdk 29&lt;/code&gt; the app will work perfectly. I want to share solution of this problem after WAY TOO LONG time I spent on searching it&amp;hellip;</description>
     </item>
     <item>
       <title>Remote Logger</title>
-      <link>http://localhost:1313/remote-logger/</link>
+      <link>//localhost:1313/remote-logger/</link>
       <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/remote-logger/</guid>
-      <description>Respect the Logcat The primary Android developer tool - Logcat. It is so widely used, always at hand, that it is difficult to imagine a situation where you have to work without it. However, I&amp;rsquo;ve found myself in such a situation. And I decided to write and share a tool that helped me survive this drama.&#xA;The challenge I was given a task to test a certain library, and since I work in #fintech, there often are some additional security checks.</description>
+      <guid>//localhost:1313/remote-logger/</guid>
+      <description>While working on a project, I couldn&amp;rsquo;t use Android&amp;rsquo;s &amp;lsquo;Development Options&amp;rsquo; - I couldn&amp;rsquo;t access the logs. If only you could send Logcat logs, e.g. via WebSocket, and then catch them on your computer&amp;hellip; I did not find such a tool, so I wrote one and described the process in this post.</description>
     </item>
     <item>
       <title>Overlibrarization</title>
-      <link>http://localhost:1313/overlibrarization/</link>
+      <link>//localhost:1313/overlibrarization/</link>
       <pubDate>Sun, 20 Jan 2019 18:57:02 +0000</pubDate>
-      <guid>http://localhost:1313/overlibrarization/</guid>
+      <guid>//localhost:1313/overlibrarization/</guid>
       <description>It seems great Write code once use it many times. Creating smaller pieces of code forces developers to write encapsulated software that follows single responsibility principle and is easy to test. Such code piece (AKA module) can be then published as a versioned artifact - a private library, that can be reused in more than one project. We are getting quality and reusability, how cool is that! Well that&amp;rsquo;s the theory.</description>
     </item>
     <item>
       <title>Android build hacks #3 - documentation with Dokka</title>
-      <link>http://localhost:1313/android-build-hacks-3-documentation/</link>
+      <link>//localhost:1313/android-build-hacks-3-documentation/</link>
       <pubDate>Mon, 05 Nov 2018 20:05:58 +0000</pubDate>
-      <guid>http://localhost:1313/android-build-hacks-3-documentation/</guid>
+      <guid>//localhost:1313/android-build-hacks-3-documentation/</guid>
       <description>This is third part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;[#3 Documentation with Dokka]({% post_url 2018-11-05-android-build-hacks-3 %})&#xA;Homework Wait what? You&amp;rsquo;ve wrote beautiful self-documenting code and someone tells you to create DOCUMENTATION for it? It&amp;rsquo;s already there! Well named methods and variables, design patterns used. If anyone wants to know how it works, he just needs to read through it - well named method by well named method&amp;hellip;</description>
     </item>
     <item>
       <title>Android Build Hacks #2 - build time optimization</title>
-      <link>http://localhost:1313/android-build-hacks-2/</link>
+      <link>//localhost:1313/android-build-hacks-2/</link>
       <pubDate>Sun, 16 Sep 2018 10:36:34 +0000</pubDate>
-      <guid>http://localhost:1313/android-build-hacks-2/</guid>
+      <guid>//localhost:1313/android-build-hacks-2/</guid>
       <description>This is second part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;Motivation Main reason I&amp;rsquo;ve been interested in build config tricks was to speed up development builds. As developer I&amp;rsquo;m building apps many times each day, often just to change one small thing and check if it works. Each second took of build time means a lot if you build often.</description>
     </item>
     <item>
       <title>Android Build Hacks #1 - build basics</title>
-      <link>http://localhost:1313/android-build-hacks-1/</link>
+      <link>//localhost:1313/android-build-hacks-1/</link>
       <pubDate>Mon, 23 Jul 2018 22:24:27 +0000</pubDate>
-      <guid>http://localhost:1313/android-build-hacks-1/</guid>
+      <guid>//localhost:1313/android-build-hacks-1/</guid>
       <description>This is first part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;Build configuration! This is not the most exciting part of software engineering. Each technology, language, framework has it&amp;rsquo;s own rules so there are no universal patterns, Uncle Bob will not help us here. But just like this worker on left, tightening the screw of Empire State Building skeleton, developers should polish their builds - build config itself is not the application (like skeleton is not the building), but application is useless if you cannot build release version.</description>
     </item>
     <item>
       <title>Hacking Android app with Frida</title>
-      <link>http://localhost:1313/android-frida-hacking/</link>
+      <link>//localhost:1313/android-frida-hacking/</link>
       <pubDate>Sat, 31 Mar 2018 17:43:37 +0000</pubDate>
-      <guid>http://localhost:1313/android-frida-hacking/</guid>
+      <guid>//localhost:1313/android-frida-hacking/</guid>
       <description>Side image is of course Frida Kahlo auto portrait, besides her name she has no connection with topic&#xA;Motivation Lately I attended to Sekurak hacking party - it&amp;rsquo;s event organized by Sekurak where they show how easy is to hack stuff like IP cameras, routers, phones. I guess Sekurak is known mainly in Poland, but they are real professionals in area of security. During this event Michał Bentkowski was showing how easy it is to spy on Android app communication and also change app behavior using tool named Frida.</description>
     </item>
     <item>
       <title>Android local libraries with Maven</title>
-      <link>http://localhost:1313/android-local-maven/</link>
+      <link>//localhost:1313/android-local-maven/</link>
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/android-local-maven/</guid>
-      <description>Intro Have you ever created Android library? You know, when you are working on specific functionality in some project and get enlightenment &amp;ldquo;hey, I could use this in some other project!&amp;rdquo;. No? Well&amp;hellip; you should - at least sometimes :) I don&amp;rsquo;t mean creating new ultimate architecture framework every week (we are not JavaScript developers after all), but writing simple tools that you know how to use and that will make your work easer on future projects.</description>
+      <guid>//localhost:1313/android-local-maven/</guid>
+      <description>Local Maven repository guide for working on private libraries along with projects that use them</description>
     </item>
     <item>
       <title>Color changing progress bar</title>
-      <link>http://localhost:1313/color-changing-progress-bar/</link>
+      <link>//localhost:1313/color-changing-progress-bar/</link>
       <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/color-changing-progress-bar/</guid>
-      <description>In my project I wanted to have progress bar that shows how much time you have until your food is not good to eat any longer. I&amp;rsquo;m not UX specialist, but I know that usually when you see green color you think it&amp;rsquo;s all ok and red is some danger. So I decided to have small progress bar in each product list item showing time till it should land in trashcan.</description>
+      <guid>//localhost:1313/color-changing-progress-bar/</guid>
+      <description>Simple guide to color changing progress bar</description>
     </item>
   </channel>
 </rss>

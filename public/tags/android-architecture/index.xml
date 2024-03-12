@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Android Architecture on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/android-architecture/</link>
-    <description>Recent content in Android Architecture on My New Hugo Site</description>
+    <title>Android Architecture on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/android-architecture/</link>
+    <description>Recent content in Android Architecture on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/android-architecture/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/android-architecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Presentation Patterns: MVVM</title>
-      <link>http://localhost:1313/2024-02-09-MVVM/</link>
+      <link>//localhost:1313/2024-02-09-MVVM/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024-02-09-MVVM/</guid>
-      <description>Evolution There is a clear trajectory in presentation pattern evolution - decreased coupling. In MVC, components were closely situated, with numerous direct interactions. MVP addressed this by introducing a standard interface structure. It&amp;rsquo;s now possible to test some interactions without relying on UI (although it may sound somewhat peculiar when discussing presentation patterns, I admit). Nevertheless, there are still some challenges, such as maintaining view state or artificial awareness of view lifecycle in MVP.</description>
+      <guid>//localhost:1313/2024-02-09-MVVM/</guid>
+      <description>MVVM architecture promotes a clean separation of concerns, making it easier to develop and maintain complex Android applications. By adhering to the key principles and components of MVVM, developers can create scalable, testable, and maintainable apps that provide a seamless user experience.</description>
     </item>
     <item>
       <title>Android Presentation Patterns: MVP</title>
-      <link>http://localhost:1313/2024-01-29-MVP/</link>
+      <link>//localhost:1313/2024-01-29-MVP/</link>
       <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024-01-29-MVP/</guid>
-      <description>But MVC does the job! When examining the MVC pattern as described here, it&amp;rsquo;s evident that the direct relationship between the View and Controller is problematic. Tight coupling results in challenging testing, where changes in one class necessitate updates in another, and it doesn&amp;rsquo;t scale well. In complex views, there can be multiple conditions for setting values in UI elements, depending on the current state of the UI and responses from the Model.</description>
+      <guid>//localhost:1313/2024-01-29-MVP/</guid>
+      <description>Uncover the journey of evolution from MVC to MVP, tackling challenges through the integration of a Presenter and well-defined contracts. Despite the advantages MVP offers, it necessitates addressing common concerns such as boilerplate code and potential intricacies for more straightforward UIs.</description>
     </item>
   </channel>
 </rss>

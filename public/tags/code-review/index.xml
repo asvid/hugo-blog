@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Code Review on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/code-review/</link>
-    <description>Recent content in Code Review on My New Hugo Site</description>
+    <title>Code Review on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/code-review/</link>
+    <description>Recent content in Code Review on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 06 Aug 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/code-review/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/code-review/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Code Review Retro</title>
-      <link>http://localhost:1313/code-review-retro/</link>
+      <link>//localhost:1313/code-review-retro/</link>
       <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/code-review-retro/</guid>
+      <guid>//localhost:1313/code-review-retro/</guid>
       <description>Importance of Code Review I sure do hope that I don&amp;rsquo;t need to convince anyone how important is the process of code review. If you need some guidelines on how to do it well I can recommend this Yelp blog post Here I&amp;rsquo;d just like to perform a retrospective of my own code review experiences.&#xA;A bit of history When I started my developer career in a rather small company - we were not doing code reviews.</description>
     </item>
   </channel>

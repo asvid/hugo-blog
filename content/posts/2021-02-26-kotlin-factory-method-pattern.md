@@ -4,8 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-02-26T00:00:00Z"
-description:
-  " After the `Static Factory Method` it's time for classic `Factory`.
+summary: " After the `Static Factory Method` it's time for classic `Factory`.
   Factory is very useful and often used construction design pattern. Kotlin has interesting
   advantage thanks to `sealed` and `internal` classes, that are missing in Java. "
 image: /assets/posts/plyta.jpg
@@ -17,6 +16,7 @@ tags:
 title: Kotlin Factory Method
 toc: true
 url: kotlin-factory-method
+series: "Kotlin Design Patterns"
 ---
 
 # Purpose

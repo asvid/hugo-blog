@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Logcat on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/logcat/</link>
-    <description>Recent content in Logcat on My New Hugo Site</description>
+    <title>Logcat on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/logcat/</link>
+    <description>Recent content in Logcat on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Aug 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/logcat/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/logcat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Remote Logger</title>
-      <link>http://localhost:1313/remote-logger/</link>
+      <link>//localhost:1313/remote-logger/</link>
       <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/remote-logger/</guid>
-      <description>Respect the Logcat The primary Android developer tool - Logcat. It is so widely used, always at hand, that it is difficult to imagine a situation where you have to work without it. However, I&amp;rsquo;ve found myself in such a situation. And I decided to write and share a tool that helped me survive this drama.&#xA;The challenge I was given a task to test a certain library, and since I work in #fintech, there often are some additional security checks.</description>
+      <guid>//localhost:1313/remote-logger/</guid>
+      <description>While working on a project, I couldn&amp;rsquo;t use Android&amp;rsquo;s &amp;lsquo;Development Options&amp;rsquo; - I couldn&amp;rsquo;t access the logs. If only you could send Logcat logs, e.g. via WebSocket, and then catch them on your computer&amp;hellip; I did not find such a tool, so I wrote one and described the process in this post.</description>
     </item>
   </channel>
 </rss>

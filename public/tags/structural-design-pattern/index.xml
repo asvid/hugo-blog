@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Structural Design Pattern on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/structural-design-pattern/</link>
-    <description>Recent content in Structural Design Pattern on My New Hugo Site</description>
+    <title>Structural Design Pattern on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/structural-design-pattern/</link>
+    <description>Recent content in Structural Design Pattern on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Jun 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/structural-design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/structural-design-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adapter Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-adapter-pattern/</link>
+      <link>//localhost:1313/kotlin-adapter-pattern/</link>
       <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-adapter-pattern/</guid>
-      <description>Purpose As the name suggests, the Adapter pattern transforms the class interface to another one requested by the client. Using the Adapter allows incompatible classes to interact with each other. Another term for this pattern is Wrapper.&#xA;The adapter allows you to &amp;ldquo;map&amp;rdquo; an adapted interface (Adaptee) to the expected interface (Target) by the client class without adding another level of inheritance. Such inheritance would not always be possible if Target was a class rather than an interface.</description>
+      <guid>//localhost:1313/kotlin-adapter-pattern/</guid>
+      <description>The Adapter or Wrapper Pattern allows you to &lt;code&gt;translate&lt;/code&gt; one interface into another, expected by the client class. It is especially useful when the adapted object comes from 3rd party library, and you do not want to make your system depending on that interface, creating the so-called &lt;code&gt;anticorruption layer&lt;/code&gt;. Adaptee interface changes will only affect the &lt;code&gt;Adapter&lt;/code&gt; and not the rest of the code.</description>
     </item>
     <item>
       <title>Facade Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-facade-pattern/</link>
+      <link>//localhost:1313/kotlin-facade-pattern/</link>
       <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-facade-pattern/</guid>
-      <description>Purpose The facade is a very basic pattern, whose task is to obscure the details of a group of classes - the module responsible for some functionality.&#xA;This can be compared to the facade of the building, which in itself has no function. The building consists of rooms, corridors, stairs, installations. It is the facade that indicates the entrance to the building, and the appearance may suggest its purpose.&#xA;The purpose of the pattern is to simplify customer access to the functionality of the obscured module.</description>
+      <guid>//localhost:1313/kotlin-facade-pattern/</guid>
+      <description>The facade allows you to hide the details of the module from clients. It ensures compliance with &lt;code&gt;Law Demeter&lt;/code&gt;. Using the generic interface and various implementations greatly simplifies testing. It blends well with other patterns like &lt;code&gt;Strategy&lt;/code&gt;,&lt;code&gt; Template Method&lt;/code&gt;, or construction patterns, allowing configuration of the object available for the clients. The facade is a good entry point for libraries, giving customers access to high-level functionality and hiding all internal logic and classes.</description>
     </item>
   </channel>
 </rss>

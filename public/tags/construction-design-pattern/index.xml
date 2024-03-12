@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Construction Design Pattern on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/construction-design-pattern/</link>
-    <description>Recent content in Construction Design Pattern on My New Hugo Site</description>
+    <title>Construction Design Pattern on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/construction-design-pattern/</link>
+    <description>Recent content in Construction Design Pattern on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 02 Mar 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/construction-design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/construction-design-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kotlin Abstract Factory</title>
-      <link>http://localhost:1313/kotlin-abstract-factory/</link>
+      <link>//localhost:1313/kotlin-abstract-factory/</link>
       <pubDate>Tue, 02 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-abstract-factory/</guid>
-      <description>Purpose The name of this pattern doesn&amp;rsquo;t suggest directly how it differs from other construction patterns, like Builder or Factory Method. In the Abstract Factory it&amp;rsquo;s not about creating a single object instance, but the whole family of connected objects. It still sounds like an ordinary Factory that can produce GUI controls for example. To have the Abstract Factory you should add another layer of abstraction and have a mechanism for creating GUI controls in few variants, like for Linux, Windows, or MacOS, but still have a generic API for the pattern client.</description>
+      <guid>//localhost:1313/kotlin-abstract-factory/</guid>
+      <description>The factory of factories, &amp;lsquo;Abstract Factory&amp;rsquo; makes creating objects that are part of some &amp;lsquo;family&amp;rsquo; easy. It is another layer over concrete factories delivering client the factory instance for creating objects of a certain variant.</description>
     </item>
     <item>
       <title>Kotlin Factory Method</title>
-      <link>http://localhost:1313/kotlin-factory-method/</link>
+      <link>//localhost:1313/kotlin-factory-method/</link>
       <pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-factory-method/</guid>
-      <description>Purpose Just like Builder, the Factory is a creational pattern. It describes an interface used to deliver instances. Instead of calling object constructor, we can call a method of the Factory which will generate interface implementation - the concrete object. What makes it different from Builder is that usually none or very few arguments need to be passed. It&amp;rsquo;s Factory&amp;rsquo;s job to fulfill all required by the object dependencies.&#xA;Factory can deliver objects of various types implementing the same interface just by the passed arguments.</description>
+      <guid>//localhost:1313/kotlin-factory-method/</guid>
+      <description>After the &lt;code&gt;Static Factory Method&lt;/code&gt; it&amp;rsquo;s time for classic &lt;code&gt;Factory&lt;/code&gt;. Factory is very useful and often used construction design pattern. Kotlin has interesting advantage thanks to &lt;code&gt;sealed&lt;/code&gt; and &lt;code&gt;internal&lt;/code&gt; classes, that are missing in Java.</description>
     </item>
     <item>
       <title>Kotlin Static Factory Methods</title>
-      <link>http://localhost:1313/kotlin-static-factory-methods/</link>
+      <link>//localhost:1313/kotlin-static-factory-methods/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-static-factory-methods/</guid>
-      <description>Purpose There is a concise error in the title, there are no static methods in Kotlin. But there are ways to achieve similar behavior to proposed by Joshua Bloch in Effective Java book - using static factory methods instead of constructors. This is also completely different from the Factory Method design pattern, don&amp;rsquo;t confuse those.&#xA;Long story short, these are methods that create object instances based on supplied arguments (or even without them) and that you can call from anywhere without the need of having an instance of a class that contains them.</description>
+      <guid>//localhost:1313/kotlin-static-factory-methods/</guid>
+      <description>&lt;code&gt;Static Factory Methods&lt;/code&gt; known from Java have their place also in Kotlin, although they look and behave a bit different because there is no &lt;code&gt;static&lt;/code&gt; word in Kotlin. Here I&amp;rsquo;ll try to show how to use &lt;code&gt;companion object&lt;/code&gt; for &lt;code&gt;Static Factory Methods&lt;/code&gt; and more. PS: This whole post was supposed to be about &lt;code&gt;Factory Method&lt;/code&gt; with just a short mention about static factory methods, but the topic becomes more interesting than I thought :)</description>
     </item>
     <item>
       <title>Kotlin Builder Pattern</title>
-      <link>http://localhost:1313/kotlin-builder-pattern/</link>
+      <link>//localhost:1313/kotlin-builder-pattern/</link>
       <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-builder-pattern/</guid>
-      <description>Purpose Builder pattern is used to simplify creating complex objects with non-trivial building logic, or with many constructor parameters. It allows making immutable objects because all properties can be set by the Builder with no need to use object setters.&#xA;Builder sort of removes from the user the need to understand the internal object create implementation and guarantees correct object setup or returning an error.&#xA;The advantage of using Builder over traditional constructor is being able to pass many vararg arguments, because every Builder method can take one, while the whole constructor can take only one.</description>
+      <guid>//localhost:1313/kotlin-builder-pattern/</guid>
+      <description>The Builder Design Pattern is one of most popular and useful construction patterns in software engineering. In this post I will try to explain it and show how you can use it with Kotlin. Sadly I often see implementations that are simple translation from Java rather that utilizing cool Kotlin syntactic sugar.</description>
     </item>
   </channel>
 </rss>

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tech Proposal on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/tech-proposal/</link>
-    <description>Recent content in Tech Proposal on My New Hugo Site</description>
+    <title>Tech Proposal on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/tech-proposal/</link>
+    <description>Recent content in Tech Proposal on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Apr 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/tech-proposal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/tech-proposal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why should you use Tech proposals</title>
-      <link>http://localhost:1313/tech_proposals/</link>
+      <link>//localhost:1313/tech_proposals/</link>
       <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tech_proposals/</guid>
-      <description>&amp;ldquo;Post-implementation documentation&amp;rdquo; As the lecturers maliciously called it when they checked university-grade projects, the idea of which was to plan a project, document it, and then implement it according to plan. In practice, I usually was implementing it first so it just worked, and then documented the result. And let anyone who hasn&amp;rsquo;t done that throw a stone first :)&#xA;Lecturers (in Polish universities) are often older people with no commercial experience, used to water-fall project planning.</description>
+      <guid>//localhost:1313/tech_proposals/</guid>
+      <description>Tech Proposal are a less formal way for internal documentation created before actual implementation. They also facilitate making technical decisions.</description>
     </item>
   </channel>
 </rss>

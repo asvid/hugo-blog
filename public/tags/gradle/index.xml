@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gradle on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/gradle/</link>
-    <description>Recent content in Gradle on My New Hugo Site</description>
+    <title>Gradle on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/gradle/</link>
+    <description>Recent content in Gradle on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 05 Nov 2018 20:05:58 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android build hacks #3 - documentation with Dokka</title>
-      <link>http://localhost:1313/android-build-hacks-3-documentation/</link>
+      <link>//localhost:1313/android-build-hacks-3-documentation/</link>
       <pubDate>Mon, 05 Nov 2018 20:05:58 +0000</pubDate>
-      <guid>http://localhost:1313/android-build-hacks-3-documentation/</guid>
+      <guid>//localhost:1313/android-build-hacks-3-documentation/</guid>
       <description>This is third part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;[#3 Documentation with Dokka]({% post_url 2018-11-05-android-build-hacks-3 %})&#xA;Homework Wait what? You&amp;rsquo;ve wrote beautiful self-documenting code and someone tells you to create DOCUMENTATION for it? It&amp;rsquo;s already there! Well named methods and variables, design patterns used. If anyone wants to know how it works, he just needs to read through it - well named method by well named method&amp;hellip;</description>
     </item>
     <item>
       <title>Android Build Hacks #2 - build time optimization</title>
-      <link>http://localhost:1313/android-build-hacks-2/</link>
+      <link>//localhost:1313/android-build-hacks-2/</link>
       <pubDate>Sun, 16 Sep 2018 10:36:34 +0000</pubDate>
-      <guid>http://localhost:1313/android-build-hacks-2/</guid>
+      <guid>//localhost:1313/android-build-hacks-2/</guid>
       <description>This is second part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;Motivation Main reason I&amp;rsquo;ve been interested in build config tricks was to speed up development builds. As developer I&amp;rsquo;m building apps many times each day, often just to change one small thing and check if it works. Each second took of build time means a lot if you build often.</description>
     </item>
     <item>
       <title>Android Build Hacks #1 - build basics</title>
-      <link>http://localhost:1313/android-build-hacks-1/</link>
+      <link>//localhost:1313/android-build-hacks-1/</link>
       <pubDate>Mon, 23 Jul 2018 22:24:27 +0000</pubDate>
-      <guid>http://localhost:1313/android-build-hacks-1/</guid>
+      <guid>//localhost:1313/android-build-hacks-1/</guid>
       <description>This is first part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;Build configuration! This is not the most exciting part of software engineering. Each technology, language, framework has it&amp;rsquo;s own rules so there are no universal patterns, Uncle Bob will not help us here. But just like this worker on left, tightening the screw of Empire State Building skeleton, developers should polish their builds - build config itself is not the application (like skeleton is not the building), but application is useless if you cannot build release version.</description>
     </item>
     <item>
       <title>Android local libraries with Maven</title>
-      <link>http://localhost:1313/android-local-maven/</link>
+      <link>//localhost:1313/android-local-maven/</link>
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/android-local-maven/</guid>
-      <description>Intro Have you ever created Android library? You know, when you are working on specific functionality in some project and get enlightenment &amp;ldquo;hey, I could use this in some other project!&amp;rdquo;. No? Well&amp;hellip; you should - at least sometimes :) I don&amp;rsquo;t mean creating new ultimate architecture framework every week (we are not JavaScript developers after all), but writing simple tools that you know how to use and that will make your work easer on future projects.</description>
+      <guid>//localhost:1313/android-local-maven/</guid>
+      <description>Local Maven repository guide for working on private libraries along with projects that use them</description>
     </item>
   </channel>
 </rss>

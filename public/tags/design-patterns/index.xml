@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Design Patterns on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/design-patterns/</link>
-    <description>Recent content in Design Patterns on My New Hugo Site</description>
+    <title>Design Patterns on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/design-patterns/</link>
+    <description>Recent content in Design Patterns on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/design-patterns/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/design-patterns/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Presentation Patterns: MVI</title>
-      <link>http://localhost:1313/2024-02-24-MVI/</link>
+      <link>//localhost:1313/2024-02-24-MVI/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024-02-24-MVI/</guid>
+      <guid>//localhost:1313/2024-02-24-MVI/</guid>
       <description>MVI isn&amp;rsquo;t a single ready-to-implement pattern; it&amp;rsquo;s more of a spectrum. This post delves into its diverse range, from basic MVVM patterns to intricate Redux-like state management, emphasizing the importance of grasping its principles for effective implementation tailored to specific project needs.</description>
     </item>
     <item>
       <title>Command Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-command-pattern/</link>
+      <link>//localhost:1313/kotlin-command-pattern/</link>
       <pubDate>Sun, 22 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-command-pattern/</guid>
-      <description>Purpose The Command pattern wraps the request into a specific object that has all the information necessary to perform its task. You can think of it as the next stage of refactoring, where at first we extract the code to a separate method, and then to a separate object, taking the arguments needed to execute the request in the constructor.&#xA;Since the request is an object, it can be sent to a separate object (CommandProcessor) for execution, which allows for their queuing and facilitates logging events.</description>
+      <guid>//localhost:1313/kotlin-command-pattern/</guid>
+      <description>The Command pattern wraps the request into a specific object that has all the information necessary to perform its task. You can think of it as the next stage of refactoring, where at first we extract the code to a separate method, and then to a separate object, taking the arguments needed to execute the request in the constructor.</description>
     </item>
     <item>
       <title>Mediator in Kotlin</title>
-      <link>http://localhost:1313/kotlin_mediator_pattern/</link>
+      <link>//localhost:1313/kotlin_mediator_pattern/</link>
       <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin_mediator_pattern/</guid>
-      <description>Purpose We define a Mediator as an object encapsulating interactions between other objects (components) from a given set. The pattern limits, or even cuts off completely, direct dependencies between classes. Components can only communicate with each other through the Mediator, which becomes the central hub for information and control. The Mediator controls the flow of information using its internal logic.&#xA;This can be compared to the air traffic control tower (ATC).</description>
+      <guid>//localhost:1313/kotlin_mediator_pattern/</guid>
+      <description>The Mediator&amp;rsquo;s job is to organize communication between close classes. The &lt;code&gt;Mediator&lt;/code&gt; pattern cuts out dependencies between components. It takes over the interaction between them, becoming the main communication hub for a group of classes. There is a reverse of the controls because components are now just telling &amp;lsquo;what happened&amp;rsquo; instead of telling others to &amp;lsquo;do something&amp;rsquo;. It can be found e.g. in the form of &lt;code&gt;ViewModel&lt;/code&gt; in Android, where it separates UI interactions from data model changes.</description>
     </item>
     <item>
       <title>Decorator Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-decorator-pattern/</link>
+      <link>//localhost:1313/kotlin-decorator-pattern/</link>
       <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-decorator-pattern/</guid>
-      <description>Purpose The Decorator allows you to dynamically add or change the behavior of a specific object of a given class, without affecting other objects of the same class. In some cases, this allows you to significantly reduce the number of classes by moving the shared behavior to the Decorator, rather than extending the inheritance structure.&#xA;The decorator&amp;rsquo;s job is to &amp;ldquo;wrap&amp;rdquo; (hence another name: &amp;ldquo;Wrapper&amp;rdquo;) the original object and modify or overwrite its behavior.</description>
+      <guid>//localhost:1313/kotlin-decorator-pattern/</guid>
+      <description>The &lt;code&gt;Decorator&lt;/code&gt; pattern is used where creating separate classes which are a combination of all possibilities would result in their explosion. This pattern focuses on creating object layers to transparently and dynamically complement objects with new tasks. The decorator provides an object with the same interface as the decorated object.</description>
     </item>
     <item>
       <title>Adapter Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-adapter-pattern/</link>
+      <link>//localhost:1313/kotlin-adapter-pattern/</link>
       <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-adapter-pattern/</guid>
-      <description>Purpose As the name suggests, the Adapter pattern transforms the class interface to another one requested by the client. Using the Adapter allows incompatible classes to interact with each other. Another term for this pattern is Wrapper.&#xA;The adapter allows you to &amp;ldquo;map&amp;rdquo; an adapted interface (Adaptee) to the expected interface (Target) by the client class without adding another level of inheritance. Such inheritance would not always be possible if Target was a class rather than an interface.</description>
+      <guid>//localhost:1313/kotlin-adapter-pattern/</guid>
+      <description>The Adapter or Wrapper Pattern allows you to &lt;code&gt;translate&lt;/code&gt; one interface into another, expected by the client class. It is especially useful when the adapted object comes from 3rd party library, and you do not want to make your system depending on that interface, creating the so-called &lt;code&gt;anticorruption layer&lt;/code&gt;. Adaptee interface changes will only affect the &lt;code&gt;Adapter&lt;/code&gt; and not the rest of the code.</description>
     </item>
     <item>
       <title>Facade Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-facade-pattern/</link>
+      <link>//localhost:1313/kotlin-facade-pattern/</link>
       <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-facade-pattern/</guid>
-      <description>Purpose The facade is a very basic pattern, whose task is to obscure the details of a group of classes - the module responsible for some functionality.&#xA;This can be compared to the facade of the building, which in itself has no function. The building consists of rooms, corridors, stairs, installations. It is the facade that indicates the entrance to the building, and the appearance may suggest its purpose.&#xA;The purpose of the pattern is to simplify customer access to the functionality of the obscured module.</description>
+      <guid>//localhost:1313/kotlin-facade-pattern/</guid>
+      <description>The facade allows you to hide the details of the module from clients. It ensures compliance with &lt;code&gt;Law Demeter&lt;/code&gt;. Using the generic interface and various implementations greatly simplifies testing. It blends well with other patterns like &lt;code&gt;Strategy&lt;/code&gt;,&lt;code&gt; Template Method&lt;/code&gt;, or construction patterns, allowing configuration of the object available for the clients. The facade is a good entry point for libraries, giving customers access to high-level functionality and hiding all internal logic and classes.</description>
     </item>
     <item>
       <title>Strategy Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-strategy-pattern/</link>
+      <link>//localhost:1313/kotlin-strategy-pattern/</link>
       <pubDate>Sun, 30 May 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-strategy-pattern/</guid>
-      <description>Purpose The Strategy design pattern defines a family of algorithms and allows them to be used interchangeably. By algorithm, here I mean any logic, be it sorting, searching, or computing some value from data. It does not matter. It is, in a sense, an extension of the Template Method pattern, but inversely to it, Strategy prefers composition over inheritance. Strategies do not inherit from any specific class but only implement a common interface.</description>
+      <guid>//localhost:1313/kotlin-strategy-pattern/</guid>
+      <description>The &lt;code&gt;Strategy&lt;/code&gt; pattern creates a family of algorithms, enclosing the differing logic in separate classes while hiding it from clients behind the interface. It enables the interchangeable use of implementations. The use of the strategy simplifies the customer code, avoids code duplication and conditional statements. Significantly simplifies testing - by separating client testing from strategy algorithms.</description>
     </item>
     <item>
       <title>Kotlin Template Method</title>
-      <link>http://localhost:1313/kotlin-template-method/</link>
+      <link>//localhost:1313/kotlin-template-method/</link>
       <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-template-method/</guid>
-      <description>Purpose The template method is a very simple design pattern, that separates the shared class parts from distinctive ones. The core idea is to have an abstract parent class containing the algorithm steps and allowing inheriting classes to overwrite individual steps, but not the algorithm that uses those steps itself.&#xA;Think about Pizza - steps to make it are more-less the same, despite the type of pizza. You need to make a dough, apply sauce and ingredients, and finally bake it.</description>
+      <guid>//localhost:1313/kotlin-template-method/</guid>
+      <description>The template method is a very simple design pattern, that separates shared class parts from changing ones. The core idea is to have an abstract parent class containing the algorithm steps and allowing inheriting classes to overwrite individual steps, but not the algorithm that uses those steps itself.</description>
     </item>
     <item>
       <title>Kotlin Abstract Factory</title>
-      <link>http://localhost:1313/kotlin-abstract-factory/</link>
+      <link>//localhost:1313/kotlin-abstract-factory/</link>
       <pubDate>Tue, 02 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-abstract-factory/</guid>
-      <description>Purpose The name of this pattern doesn&amp;rsquo;t suggest directly how it differs from other construction patterns, like Builder or Factory Method. In the Abstract Factory it&amp;rsquo;s not about creating a single object instance, but the whole family of connected objects. It still sounds like an ordinary Factory that can produce GUI controls for example. To have the Abstract Factory you should add another layer of abstraction and have a mechanism for creating GUI controls in few variants, like for Linux, Windows, or MacOS, but still have a generic API for the pattern client.</description>
+      <guid>//localhost:1313/kotlin-abstract-factory/</guid>
+      <description>The factory of factories, &amp;lsquo;Abstract Factory&amp;rsquo; makes creating objects that are part of some &amp;lsquo;family&amp;rsquo; easy. It is another layer over concrete factories delivering client the factory instance for creating objects of a certain variant.</description>
     </item>
     <item>
       <title>Kotlin Factory Method</title>
-      <link>http://localhost:1313/kotlin-factory-method/</link>
+      <link>//localhost:1313/kotlin-factory-method/</link>
       <pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-factory-method/</guid>
-      <description>Purpose Just like Builder, the Factory is a creational pattern. It describes an interface used to deliver instances. Instead of calling object constructor, we can call a method of the Factory which will generate interface implementation - the concrete object. What makes it different from Builder is that usually none or very few arguments need to be passed. It&amp;rsquo;s Factory&amp;rsquo;s job to fulfill all required by the object dependencies.&#xA;Factory can deliver objects of various types implementing the same interface just by the passed arguments.</description>
+      <guid>//localhost:1313/kotlin-factory-method/</guid>
+      <description>After the &lt;code&gt;Static Factory Method&lt;/code&gt; it&amp;rsquo;s time for classic &lt;code&gt;Factory&lt;/code&gt;. Factory is very useful and often used construction design pattern. Kotlin has interesting advantage thanks to &lt;code&gt;sealed&lt;/code&gt; and &lt;code&gt;internal&lt;/code&gt; classes, that are missing in Java.</description>
     </item>
     <item>
       <title>Kotlin Static Factory Methods</title>
-      <link>http://localhost:1313/kotlin-static-factory-methods/</link>
+      <link>//localhost:1313/kotlin-static-factory-methods/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-static-factory-methods/</guid>
-      <description>Purpose There is a concise error in the title, there are no static methods in Kotlin. But there are ways to achieve similar behavior to proposed by Joshua Bloch in Effective Java book - using static factory methods instead of constructors. This is also completely different from the Factory Method design pattern, don&amp;rsquo;t confuse those.&#xA;Long story short, these are methods that create object instances based on supplied arguments (or even without them) and that you can call from anywhere without the need of having an instance of a class that contains them.</description>
+      <guid>//localhost:1313/kotlin-static-factory-methods/</guid>
+      <description>&lt;code&gt;Static Factory Methods&lt;/code&gt; known from Java have their place also in Kotlin, although they look and behave a bit different because there is no &lt;code&gt;static&lt;/code&gt; word in Kotlin. Here I&amp;rsquo;ll try to show how to use &lt;code&gt;companion object&lt;/code&gt; for &lt;code&gt;Static Factory Methods&lt;/code&gt; and more. PS: This whole post was supposed to be about &lt;code&gt;Factory Method&lt;/code&gt; with just a short mention about static factory methods, but the topic becomes more interesting than I thought :)</description>
     </item>
     <item>
       <title>Kotlin Builder Pattern</title>
-      <link>http://localhost:1313/kotlin-builder-pattern/</link>
+      <link>//localhost:1313/kotlin-builder-pattern/</link>
       <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-builder-pattern/</guid>
-      <description>Purpose Builder pattern is used to simplify creating complex objects with non-trivial building logic, or with many constructor parameters. It allows making immutable objects because all properties can be set by the Builder with no need to use object setters.&#xA;Builder sort of removes from the user the need to understand the internal object create implementation and guarantees correct object setup or returning an error.&#xA;The advantage of using Builder over traditional constructor is being able to pass many vararg arguments, because every Builder method can take one, while the whole constructor can take only one.</description>
+      <guid>//localhost:1313/kotlin-builder-pattern/</guid>
+      <description>The Builder Design Pattern is one of most popular and useful construction patterns in software engineering. In this post I will try to explain it and show how you can use it with Kotlin. Sadly I often see implementations that are simple translation from Java rather that utilizing cool Kotlin syntactic sugar.</description>
     </item>
   </channel>
 </rss>

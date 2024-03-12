@@ -1,7 +1,7 @@
 ---
 comments: false
 date: "2016-04-16T00:00:00Z"
-description: This is first post, I'm just saying hello here :)
+summary: This is first post, I'm just saying hello here :)
 title: First post
 url: first-post
 ---
@@ -17,4 +17,3 @@ Project name is **Frigo** and logo looks like that:
 Hopefully it will help you manage your food better.
 
 [put]: http://www.put.poznan.pl/
-

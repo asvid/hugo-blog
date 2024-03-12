@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LaTeX on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/latex/</link>
-    <description>Recent content in LaTeX on My New Hugo Site</description>
+    <title>LaTeX on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/latex/</link>
+    <description>Recent content in LaTeX on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>IntelliJ IDEA as a LaTeX editor</title>
-      <link>http://localhost:1313/intellij-latex-editor/</link>
+      <link>//localhost:1313/intellij-latex-editor/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/intellij-latex-editor/</guid>
-      <description>TL;DR: IntelliJ Idea is great for working with LaTeX. The basic functionality is provided by plugins, and a lot of additional automation can be set using File Watchers. I only miss displaying chapters and sections like in TexStudio.&#xA;LaTeX in IntelliJ IDEA I don&amp;rsquo;t work with LaTeX very often, but this format has many advantages, especially when working on longer written forms, containing a lot of graphics, diagrams, mathematical formulas, etc.</description>
+      <guid>//localhost:1313/intellij-latex-editor/</guid>
+      <description>IntelliJ IDEA is pretty good at handling LaTeX. I dare say that it is an even better experience than TexStudio or Texmaker, which are dedicated to this type of project. However, the strength of IntelliJ is not in its out-of-the-box capabilities, but plugins and manual configuration of the build process.</description>
     </item>
   </channel>
 </rss>

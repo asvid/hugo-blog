@@ -2,384 +2,383 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/android/</loc>
+    <loc>//localhost:1313/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2024-02-24-MVI/</loc>
+    <loc>//localhost:1313/tags/android/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/architecture/</loc>
+    <loc>//localhost:1313/series/android-presenation-patterns/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>//localhost:1313/2024-02-24-MVI/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/design-patterns/</loc>
+    <loc>//localhost:1313/tags/architecture/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mobile-apps/</loc>
+    <loc>//localhost:1313/tags/design-patterns/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/model-view-intent/</loc>
+    <loc>//localhost:1313/tags/mobile-apps/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mvi/</loc>
+    <loc>//localhost:1313/tags/model-view-intent/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mvvm/</loc>
+    <loc>//localhost:1313/tags/mvi/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>//localhost:1313/tags/mvvm/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>//localhost:1313/posts/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/redux/</loc>
+    <loc>//localhost:1313/tags/redux/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/rss/</loc>
+    <loc>//localhost:1313/series/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/software-development/</loc>
+    <loc>//localhost:1313/tags/software-development/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/state-management/</loc>
+    <loc>//localhost:1313/tags/state-management/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>//localhost:1313/tags/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/user-interface/</loc>
+    <loc>//localhost:1313/tags/user-interface/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/android-architecture/</loc>
+    <loc>//localhost:1313/tags/android-architecture/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2024-02-09-MVVM/</loc>
+    <loc>//localhost:1313/2024-02-09-MVVM/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/model-view-viewmodel/</loc>
+    <loc>//localhost:1313/tags/model-view-viewmodel/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ui-design/</loc>
+    <loc>//localhost:1313/tags/ui-design/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2024-01-29-MVP/</loc>
+    <loc>//localhost:1313/2024-01-29-MVP/</loc>
     <lastmod>2024-02-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/model-view-presenter/</loc>
+    <loc>//localhost:1313/tags/model-view-presenter/</loc>
     <lastmod>2024-02-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mvp/</loc>
+    <loc>//localhost:1313/tags/mvp/</loc>
     <lastmod>2024-02-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2024-01-27-MVC/</loc>
+    <loc>//localhost:1313/2024-01-27-MVC/</loc>
     <lastmod>2024-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/design-pattern/</loc>
+    <loc>//localhost:1313/tags/design-pattern/</loc>
     <lastmod>2024-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mvc/</loc>
+    <loc>//localhost:1313/tags/mvc/</loc>
     <lastmod>2024-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/presentation/</loc>
+    <loc>//localhost:1313/tags/presentation/</loc>
     <lastmod>2024-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/automation/</loc>
+    <loc>//localhost:1313/about/</loc>
+    <lastmod>2023-10-27T05:24:41-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/about/about/</loc>
+    <lastmod>2023-10-27T05:24:41-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/automation/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ci/cd/</loc>
+    <loc>//localhost:1313/tags/ci/cd/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/continuous-deployment/</loc>
+    <loc>//localhost:1313/tags/continuous-deployment/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/continuous-integration/</loc>
+    <loc>//localhost:1313/tags/continuous-integration/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2023-06-16-ci-is-your-friend/</loc>
+    <loc>//localhost:1313/2023-06-16-ci-is-your-friend/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/devops/</loc>
+    <loc>//localhost:1313/tags/devops/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/software-delivery/</loc>
+    <loc>//localhost:1313/tags/software-delivery/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/testing/</loc>
+    <loc>//localhost:1313/tags/testing/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/career/</loc>
+    <loc>//localhost:1313/tags/career/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/flutter/</loc>
+    <loc>//localhost:1313/tags/flutter/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ios/</loc>
+    <loc>//localhost:1313/tags/ios/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mobile/</loc>
+    <loc>//localhost:1313/tags/mobile/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/would-i-do-mobile-again/</loc>
+    <loc>//localhost:1313/would-i-do-mobile-again/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/documentation/</loc>
+    <loc>//localhost:1313/tags/documentation/</loc>
     <lastmod>2022-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tech-proposal/</loc>
+    <loc>//localhost:1313/tags/tech-proposal/</loc>
     <lastmod>2022-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tech_proposals/</loc>
+    <loc>//localhost:1313/tech_proposals/</loc>
     <lastmod>2022-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/android/</loc>
+    <loc>//localhost:1313/2021-09-03-android-service-binding-on-api30/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2021-09-03-android-service-binding-on-api30/</loc>
+    <loc>//localhost:1313/tags/fix/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/fix/</loc>
+    <loc>//localhost:1313/tags/rant/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rant/</loc>
-    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/command-pattern/</loc>
+    <loc>//localhost:1313/tags/command-pattern/</loc>
     <lastmod>2021-08-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-command-pattern/</loc>
+    <loc>//localhost:1313/kotlin-command-pattern/</loc>
     <lastmod>2021-08-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/design-patterns/</loc>
+    <loc>//localhost:1313/tags/kotlin/</loc>
     <lastmod>2021-08-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/kotlin/</loc>
+    <loc>//localhost:1313/series/kotlin-design-patterns/</loc>
     <lastmod>2021-08-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/expressjs/</loc>
+    <loc>//localhost:1313/tags/expressjs/</loc>
     <lastmod>2021-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/logcat/</loc>
+    <loc>//localhost:1313/tags/logcat/</loc>
     <lastmod>2021-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/remote-logger/</loc>
+    <loc>//localhost:1313/remote-logger/</loc>
     <lastmod>2021-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tools/</loc>
+    <loc>//localhost:1313/tags/tools/</loc>
     <lastmod>2021-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/tools/</loc>
-    <lastmod>2021-08-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/kotlin_mediator_pattern/</loc>
+    <loc>//localhost:1313/kotlin_mediator_pattern/</loc>
     <lastmod>2021-07-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mediator-pattern/</loc>
+    <loc>//localhost:1313/tags/mediator-pattern/</loc>
     <lastmod>2021-07-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/decorator-pattern/</loc>
+    <loc>//localhost:1313/tags/decorator-pattern/</loc>
     <lastmod>2021-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-decorator-pattern/</loc>
+    <loc>//localhost:1313/kotlin-decorator-pattern/</loc>
     <lastmod>2021-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/extension-methods/</loc>
+    <loc>//localhost:1313/tags/extension-methods/</loc>
     <lastmod>2021-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/wrapper/</loc>
+    <loc>//localhost:1313/tags/wrapper/</loc>
     <lastmod>2021-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/adapter-pattern/</loc>
+    <loc>//localhost:1313/tags/adapter-pattern/</loc>
     <lastmod>2021-06-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-adapter-pattern/</loc>
+    <loc>//localhost:1313/kotlin-adapter-pattern/</loc>
     <lastmod>2021-06-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/structural-design-pattern/</loc>
+    <loc>//localhost:1313/tags/structural-design-pattern/</loc>
     <lastmod>2021-06-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ide/</loc>
+    <loc>//localhost:1313/tags/ide/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/intellij/</loc>
+    <loc>//localhost:1313/tags/intellij/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/intellij-latex-editor/</loc>
+    <loc>//localhost:1313/intellij-latex-editor/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/latex/</loc>
+    <loc>//localhost:1313/tags/latex/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/plugins/</loc>
+    <loc>//localhost:1313/tags/plugins/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/today-i-learned/</loc>
-    <lastmod>2021-06-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/facade-pattern/</loc>
+    <loc>//localhost:1313/tags/facade-pattern/</loc>
     <lastmod>2021-06-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-facade-pattern/</loc>
+    <loc>//localhost:1313/kotlin-facade-pattern/</loc>
     <lastmod>2021-06-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/behavioral-design-pattern/</loc>
+    <loc>//localhost:1313/tags/behavioral-design-pattern/</loc>
     <lastmod>2021-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/strategy-pattern/</loc>
+    <loc>//localhost:1313/tags/strategy-pattern/</loc>
     <lastmod>2021-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-strategy-pattern/</loc>
+    <loc>//localhost:1313/kotlin-strategy-pattern/</loc>
     <lastmod>2021-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-template-method/</loc>
+    <loc>//localhost:1313/kotlin-template-method/</loc>
     <lastmod>2021-05-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/template-method/</loc>
+    <loc>//localhost:1313/tags/template-method/</loc>
     <lastmod>2021-05-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/abstract-factory/</loc>
+    <loc>//localhost:1313/tags/abstract-factory/</loc>
     <lastmod>2021-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/construction-design-pattern/</loc>
+    <loc>//localhost:1313/tags/construction-design-pattern/</loc>
     <lastmod>2021-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-abstract-factory/</loc>
+    <loc>//localhost:1313/kotlin-abstract-factory/</loc>
     <lastmod>2021-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/factory-method/</loc>
+    <loc>//localhost:1313/tags/factory-method/</loc>
     <lastmod>2021-02-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-factory-method/</loc>
+    <loc>//localhost:1313/kotlin-factory-method/</loc>
     <lastmod>2021-02-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-static-factory-methods/</loc>
+    <loc>//localhost:1313/kotlin-static-factory-methods/</loc>
     <lastmod>2021-02-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/static-factory-methods/</loc>
+    <loc>//localhost:1313/tags/static-factory-methods/</loc>
     <lastmod>2021-02-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/builder-pattern/</loc>
+    <loc>//localhost:1313/tags/builder-pattern/</loc>
     <lastmod>2021-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/kotlin-builder-pattern/</loc>
+    <loc>//localhost:1313/kotlin-builder-pattern/</loc>
     <lastmod>2021-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/code-review/</loc>
+    <loc>//localhost:1313/tags/code-review/</loc>
     <lastmod>2020-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/code-review-retro/</loc>
+    <loc>//localhost:1313/code-review-retro/</loc>
     <lastmod>2020-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/pull-request/</loc>
+    <loc>//localhost:1313/tags/pull-request/</loc>
     <lastmod>2020-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/self-retro/</loc>
+    <loc>//localhost:1313/tags/self-retro/</loc>
     <lastmod>2020-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/team-work/</loc>
+    <loc>//localhost:1313/tags/team-work/</loc>
     <lastmod>2020-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/github-actions/</loc>
+    <loc>//localhost:1313/tags/github-actions/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/github-pages/</loc>
+    <loc>//localhost:1313/tags/github-pages/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/jekyll/</loc>
+    <loc>//localhost:1313/tags/jekyll/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/github-page-deployment/</loc>
+    <loc>//localhost:1313/github-page-deployment/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/intellij-settings-repo/</loc>
+    <loc>//localhost:1313/intellij-settings-repo/</loc>
     <lastmod>2020-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/settings/</loc>
+    <loc>//localhost:1313/tags/settings/</loc>
     <lastmod>2020-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/automatization/</loc>
+    <loc>//localhost:1313/tags/automatization/</loc>
     <lastmod>2020-05-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bash/</loc>
+    <loc>//localhost:1313/tags/bash/</loc>
     <lastmod>2020-05-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/scripts/</loc>
+    <loc>//localhost:1313/tags/scripts/</loc>
     <lastmod>2020-05-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/shell/</loc>
+    <loc>//localhost:1313/tags/shell/</loc>
     <lastmod>2020-05-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/shellscriptbasics/</loc>
+    <loc>//localhost:1313/shellscriptbasics/</loc>
     <lastmod>2020-05-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/library/</loc>
+    <loc>//localhost:1313/tags/library/</loc>
     <lastmod>2019-01-20T18:57:02+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/modularization/</loc>
+    <loc>//localhost:1313/tags/modularization/</loc>
     <lastmod>2019-01-20T18:57:02+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/overlibrarization/</loc>
+    <loc>//localhost:1313/overlibrarization/</loc>
     <lastmod>2019-01-20T18:57:02+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/android-build-hacks-3-documentation/</loc>
+    <loc>//localhost:1313/android-build-hacks-3-documentation/</loc>
     <lastmod>2018-11-05T20:05:58+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/build-config/</loc>
+    <loc>//localhost:1313/tags/build-config/</loc>
     <lastmod>2018-11-05T20:05:58+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dokka/</loc>
+    <loc>//localhost:1313/tags/dokka/</loc>
     <lastmod>2018-11-05T20:05:58+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gradle/</loc>
+    <loc>//localhost:1313/tags/gradle/</loc>
     <lastmod>2018-11-05T20:05:58+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/android-build-hacks-2/</loc>
+    <loc>//localhost:1313/android-build-hacks-2/</loc>
     <lastmod>2018-09-16T10:36:34+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/android-build-hacks-1/</loc>
+    <loc>//localhost:1313/android-build-hacks-1/</loc>
     <lastmod>2018-07-23T22:24:27+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/frida/</loc>
+    <loc>//localhost:1313/tags/frida/</loc>
     <lastmod>2018-03-31T17:43:37+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hacking/</loc>
+    <loc>//localhost:1313/tags/hacking/</loc>
     <lastmod>2018-03-31T17:43:37+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/android-frida-hacking/</loc>
+    <loc>//localhost:1313/android-frida-hacking/</loc>
     <lastmod>2018-03-31T17:43:37+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/linux/</loc>
+    <loc>//localhost:1313/tags/linux/</loc>
     <lastmod>2018-03-04T08:23:03+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/nyan-cat/</loc>
+    <loc>//localhost:1313/tags/nyan-cat/</loc>
     <lastmod>2018-03-04T08:23:03+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/nyan-your-terminal/</loc>
+    <loc>//localhost:1313/nyan-your-terminal/</loc>
     <lastmod>2018-03-04T08:23:03+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/terminal/</loc>
+    <loc>//localhost:1313/tags/terminal/</loc>
     <lastmod>2018-03-04T08:23:03+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/android-local-maven/</loc>
+    <loc>//localhost:1313/android-local-maven/</loc>
     <lastmod>2018-01-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/maven/</loc>
+    <loc>//localhost:1313/tags/maven/</loc>
     <lastmod>2018-01-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/color-changing-progress-bar/</loc>
+    <loc>//localhost:1313/color-changing-progress-bar/</loc>
     <lastmod>2016-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/custom-view/</loc>
+    <loc>//localhost:1313/tags/custom-view/</loc>
     <lastmod>2016-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ui/</loc>
+    <loc>//localhost:1313/tags/ui/</loc>
     <lastmod>2016-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/first-post/</loc>
+    <loc>//localhost:1313/first-post/</loc>
     <lastmod>2016-04-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>//localhost:1313/projects/</loc>
+  </url><url>
+    <loc>//localhost:1313/projects/zentimer/</loc>
   </url>
 </urlset>

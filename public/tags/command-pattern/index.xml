@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Command Pattern on My New Hugo Site</title>
-    <link>http://localhost:1313/tags/command-pattern/</link>
-    <description>Recent content in Command Pattern on My New Hugo Site</description>
+    <title>Command Pattern on Adam Coding Corner</title>
+    <link>//localhost:1313/tags/command-pattern/</link>
+    <description>Recent content in Command Pattern on Adam Coding Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Aug 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/command-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/command-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Command Pattern in Kotlin</title>
-      <link>http://localhost:1313/kotlin-command-pattern/</link>
+      <link>//localhost:1313/kotlin-command-pattern/</link>
       <pubDate>Sun, 22 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/kotlin-command-pattern/</guid>
-      <description>Purpose The Command pattern wraps the request into a specific object that has all the information necessary to perform its task. You can think of it as the next stage of refactoring, where at first we extract the code to a separate method, and then to a separate object, taking the arguments needed to execute the request in the constructor.&#xA;Since the request is an object, it can be sent to a separate object (CommandProcessor) for execution, which allows for their queuing and facilitates logging events.</description>
+      <guid>//localhost:1313/kotlin-command-pattern/</guid>
+      <description>The Command pattern wraps the request into a specific object that has all the information necessary to perform its task. You can think of it as the next stage of refactoring, where at first we extract the code to a separate method, and then to a separate object, taking the arguments needed to execute the request in the constructor.</description>
     </item>
   </channel>
 </rss>
