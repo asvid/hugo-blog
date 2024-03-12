@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Adam Coding Corner</title>
+    <link>//localhost:1313/series/</link>
+    <description>Recent content in Series on Adam Coding Corner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Presenation Patterns</title>
+      <link>//localhost:1313/series/android-presenation-patterns/</link>
+      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/series/android-presenation-patterns/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kotlin Design Patterns</title>
+      <link>//localhost:1313/series/kotlin-design-patterns/</link>
+      <pubDate>Sun, 22 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/series/kotlin-design-patterns/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
