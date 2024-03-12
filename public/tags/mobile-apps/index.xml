@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mobile Apps on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/mobile-apps/</link>
+    <description>Recent content in Mobile Apps on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mobile-apps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Presentation Patterns: MVI</title>
+      <link>http://localhost:1313/2024-02-24-MVI/</link>
+      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024-02-24-MVI/</guid>
+      <description>MVI isn&amp;rsquo;t a single ready-to-implement pattern; it&amp;rsquo;s more of a spectrum. This post delves into its diverse range, from basic MVVM patterns to intricate Redux-like state management, emphasizing the importance of grasping its principles for effective implementation tailored to specific project needs.</description>
+    </item>
+  </channel>
+</rss>

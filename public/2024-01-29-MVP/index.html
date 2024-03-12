@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Android Presentation Patterns: MVP</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Android&#32;Presentation&#32;Patterns:&#32;MVP />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Android&#32;Presentation&#32;Patterns:&#32;MVP />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Android&#32;Presentation&#32;Patterns:&#32;MVP />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Android&#32;Presentation&#32;Patterns:&#32;MVP />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content=" Uncover the journey of evolution from MVC to MVP, tackling challenges through the integration of a Presenter and well-defined contracts. Despite the advantages MVP offers, it necessitates addressing common concerns such as boilerplate code and potential intricacies for more straightforward UIs." />
+<meta itemprop="description" content=" Uncover the journey of evolution from MVC to MVP, tackling challenges through the integration of a Presenter and well-defined contracts. Despite the advantages MVP offers, it necessitates addressing common concerns such as boilerplate code and potential intricacies for more straightforward UIs." />
+<meta property="og:description" content=" Uncover the journey of evolution from MVC to MVP, tackling challenges through the integration of a Presenter and well-defined contracts. Despite the advantages MVP offers, it necessitates addressing common concerns such as boilerplate code and potential intricacies for more straightforward UIs." />
+<meta name="twitter:description" content=" Uncover the journey of evolution from MVC to MVP, tackling challenges through the integration of a Presenter and well-defined contracts. Despite the advantages MVP offers, it necessitates addressing common concerns such as boilerplate code and potential intricacies for more straightforward UIs." />
+
+
+<base href="http://localhost:1313/2024-01-29-MVP/" />
+<link rel="canonical" href="http://localhost:1313/2024-01-29-MVP/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/2024-01-29-MVP/" />
+<meta name="twitter:url" content="http://localhost:1313/2024-01-29-MVP/" />
+<meta property="og:url" content="http://localhost:1313/2024-01-29-MVP/" />
+
+
+<meta property="og:updated_time" content=4002-04-12T20:00:24Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=4002-04-12T20:00:24Z />
+<meta property="article:published_time" content=4002-04-12T20:00:24Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2024-02-04T00:00:00Z" class="post-date">
+        February 4, 2024
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>10 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-Android">
+        <a href="http://localhost:1313/tags/android">Android</a>
+      </li>
+      
+      <li class="tag-Model-View-Presenter">
+        <a href="http://localhost:1313/tags/model-view-presenter">Model-View-Presenter</a>
+      </li>
+      
+      <li class="tag-MVP">
+        <a href="http://localhost:1313/tags/mvp">MVP</a>
+      </li>
+      
+      <li class="tag-Android Architecture">
+        <a href="http://localhost:1313/tags/android-architecture">Android Architecture</a>
+      </li>
+      
+      <li class="tag-UI Design">
+        <a href="http://localhost:1313/tags/ui-design">UI Design</a>
+      </li>
+      
+      <li class="tag-Software Development">
+        <a href="http://localhost:1313/tags/software-development">Software Development</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="but-mvc-does-the-job">But MVC does the job!</h2>
+<p>When examining the <strong>MVC pattern</strong> <a href="https://asvid.github.io/2024-01-27-MVC" target="_blank">as described here</a>, it&rsquo;s evident that the
+direct relationship between the <code>View</code>
+and <code>Controller</code> is problematic. Tight coupling results in challenging testing, where changes in one class necessitate
+updates in another, and it doesn&rsquo;t scale well. In complex views, there can be multiple conditions for setting values in
+UI elements, depending on the current state of the UI and responses from the <code>Model</code>. Dealing with complex logic when
+testing becomes challenging&hellip; <strong>leads to anarchy</strong>.</p>
+<p>This issue was apparent to developers, prompting some to propose better ways to implement MVC, as
+discussed <a href="https://medium.com/upday-devs/android-architecture-patterns-part-1-model-view-controller-3baecef5f2b6" target="_blank">here</a>.
+In this approach, the <code>Controller</code> is a separate class from the <code>Fragment</code> or <code>Activity</code>. Since it&rsquo;s an independent
+object from Android Framework instances, interfaces can be employed to mock components and facilitate testing.</p>
+<h2 id="the-presenter-is-born">The Presenter is born</h2>
+<p>The evolution of <strong>MVP</strong>, as known in the context of Android development, can be traced back to Google&rsquo;s Web Toolkit (
+GWT). In the mid-2000s, GWT adopted MVP as a response to the challenges faced in building modular and testable web
+applications.</p>
+<p>Let&rsquo;s have an interface for the <code>View</code> and the new <code>Controller</code> type, but let&rsquo;s call it <code>Presenter</code> since it&rsquo;s
+responsible for presenting model data to the <code>View</code>. A simple diagram may look like this:</p>
+<p>{% plantuml %}
+@startuml</p>
+<p>class Model {
+}</p>
+<p>interface View {
+}</p>
+<p>interface Presenter {
+}</p>
+<p>Model &ndash; Presenter: notifies
+View &ndash; Presenter: interacts
+Presenter &ndash; Model: manipulates
+Presenter &ndash; View: updates</p>
+<p>@enduml
+{% endplantuml %}</p>
+<p>Please note that <code>View</code> and <code>Presenter</code> are interfaces, and while they still keep a reference to each other, it&rsquo;s only
+by the interface, not the concrete implementation. The interfaces are providing only methods relevant for particular UI
+interactions.</p>
+<h3 id="let-there-be-contract">Let there be Contract!</h3>
+<p>Okay, so now there is a set of interfaces, implemented by a concrete <code>View</code> and <code>Presenter</code>, to serve for a particular
+UI screen. It would be nice to keep them close, so it&rsquo;s clear which <code>View</code> talks to which <code>Presenter</code>, there is always a
+1-to-1 relation.</p>
+<p>{% plantuml %}
+@startuml</p>
+<p>interface ItemListContract {
+}</p>
+<p>interface Presenter {
++addItem(): void
++removeItem(): void
+}</p>
+<p>interface View {
++displayError(): void
++hideError(): void
++displayItems(): void
++showLoading(): void
++hideLoading(): void
+}</p>
+<p>View &ndash;* ItemListContract
+Presenter &ndash;* ItemListContract</p>
+<p>class ConcreteItemListFragment {
+}</p>
+<p>class ConcreteItemListPresenter {
+}</p>
+<p>ConcreteItemListFragment &ndash;|&gt; View
+ConcreteItemListPresenter &ndash;|&gt; Presenter</p>
+<p>@enduml
+{% endplantuml %}</p>
+<p>It looks nicer in Kotlin code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ItemListContract</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">View</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">displayError</span>(errorMessage: String)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">hideError</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">displayItems</span>(items: List&lt;Int&gt;)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">showLoading</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">hideLoading</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Presenter</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">addItem</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">removeItem</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The Activity being the <code>View</code> will look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainActivity</span> : AppCompatActivity(), <span style="color:#a6e22e">ItemListContract</span>.View {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// creating instance of the presenter, can be also injected by DI
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> presenter: <span style="color:#a6e22e">ItemListContract</span>.Presenter = MainViewPresenter()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onCreate</span>(savedInstanceState: Bundle?) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>.onCreate(savedInstanceState)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// giving Presenter instance of the View
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// this should happen when the View is actually ready to perform its tasks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// because Presenter may want to display something right after getting reference to the View
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        presenter.attachView(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
+</span></span></code></pre></div><p>The <code>Presenter</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainViewPresenter</span> : <span style="color:#a6e22e">ItemListContract</span>.Presenter {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> view: <span style="color:#a6e22e">ItemListContract</span>.View
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">attachView</span>(view: <span style="color:#a6e22e">ItemListContract</span>.View) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.view = view
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>No magic here, simple passing a reference to <code>this</code> from <code>View</code> to <code>Presenter</code>, and from now on, the <code>Presenter</code> should
+be safe to call <code>View</code> methods. This is why it should happen in the <code>Activity</code> or <code>Fragment</code> <code>onCreate</code> and not in
+the <code>Presenter</code> constructor. Otherwise, you would have to call some extra <code>onViewReady()</code> on the <code>Presenter</code> when you
+have your view prepared, with all elements assigned to fields with <code>findViewById()</code> etc.</p>
+<p>The <code>View</code> and the <code>Presenter</code> know only each other through the <code>Contract</code>, so it should be nice to write <code>Presenter</code>
+tests, with mocking of the <code>View</code> and verifying which methods were called and passed arguments.</p>
+<h2 id="the-boilerplate">The boilerplate</h2>
+<p>You probably already identified the ugly part now. Each presenter has a method <code>attachView</code> or similar, but it&rsquo;s not
+really part of any common interface for <code>Presenter</code>. It would be really great to have some sort of framework, taking
+care of all the boilerplate methods for <code>View</code> and <code>Presenter</code>, so <code>Contract</code> can focus only on relevant methods for
+a particular UI scenario.</p>
+<p>The <code>View</code> and <code>Presenter</code> couple should also be detached to avoid memory leaks when the view is destroyed.</p>
+<p>All <code>Presenter</code> work is done on the UI thread. It would be great to perform tasks on other threads, and cancel them when
+the View is destroyed since the result it&rsquo;s not relevant anymore.</p>
+<p>This can be achieved by introducing an abstract <code>BasePresenter</code>, which is also a <code>CoroutineScope</code>. The diagram starts
+to be really complex, for a simple presentation layer architecture:</p>
+<p>{% plantuml %}
+@startuml</p>
+<p>interface Presenter&lt;VIEW: View&gt; {
++attachView(view: VIEW): void
++detachView(): void
+}</p>
+<p>interface View {
+}</p>
+<p>abstract class BasePresenter&lt;VIEW: View&gt; {
+-view: VIEW
+-job: Job
++onViewAttached(): void
++onViewDetached(): void
+}
+interface CoroutineScope
+BasePresenter &lt;|&ndash; Presenter
+BasePresenter &lt;|&ndash; CoroutineScope</p>
+<p>interface ItemListContract {
+}</p>
+<p>interface ItemListView {
++displayError(): void
++hideError(): void
++showLoading(): void
++hideLoading(): void
+}</p>
+<p>interface ItemListPresenter {
++addItem(): void
++removeItem(): void
+}</p>
+<p>class ConcreteItemListFragment{
+}</p>
+<p>ItemListContract &ndash;|&gt; ItemListView
+ItemListContract &ndash;|&gt; ItemListPresenter
+ItemListPresenter &ndash;|&gt; Presenter
+ItemListView &ndash;|&gt; View
+ConcreteItemListPresenter &ndash;|&gt; ItemListPresenter
+ConcreteItemListPresenter &ndash;|&gt; BasePresenter
+ConcreteItemListFragment &ndash;|&gt; ItemListView</p>
+<p>@enduml
+{% endplantuml %}</p>
+<h3 id="basepresenter">BasePresenter</h3>
+<p>It looks more complex than it is. Each <code>ConcretePresenter</code> implements <code>Contract.Presenter</code> for its domain capabilities
+and
+<code>BasePresenter</code> for common methods like <code>attachView()</code> or <code>detachView()</code>.
+The <code>BasePresenter</code> provides <code>CoroutineContext</code>, so running methods on the Model won&rsquo;t happen on the UI thread, and jobs
+will be
+canceled when the view is detached.</p>
+<p>Kotlin implementation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BasePresenter</span>&lt;VIEW : View&gt; : Presenter&lt;VIEW&gt;, CoroutineScope {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> view: VIEW
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> job: Job = SupervisorJob()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">val</span> coroutineContext: CoroutineContext
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">get</span>() = <span style="color:#a6e22e">Dispatchers</span>.IO + job
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">attachView</span>(view: VIEW) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.view = view
+</span></span><span style="display:flex;"><span>        onViewAttached()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">detachView</span>() {
+</span></span><span style="display:flex;"><span>        job.cancel()
+</span></span><span style="display:flex;"><span>        onViewDetached()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onViewAttached</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onViewDetached</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Because the jobs are performed outside the UI thread, and only the UI thread can modify UI elements, the <code>View</code> methods
+implementation has to use something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">displayLoading</span>() {
+</span></span><span style="display:flex;"><span>    runOnUiThread {
+</span></span><span style="display:flex;"><span>        progressBar.visibility = <span style="color:#a6e22e">View</span>.VISIBLE
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="view-and-presenter-interfaces">View and Presenter interfaces</h3>
+<p>There are also new interfaces for generic <code>View</code> and <code>Presenter</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Presenter</span>&lt;VIEW : View&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">attachView</span>(view: VIEW)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">detachView</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">View</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Contract
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Contract</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ConcreteView</span> : View
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ConcretePresenter</span> : Presenter&lt;ConcreteView&gt;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Using generics guarantees everything is connected in the right way. The <code>MainViewPresenter</code> now has to inherit from both
+the contract presenter interface and the <code>BasePresenter</code>. It&rsquo;s not ideal but allows keeping behavior relevant to the
+contract in a separate place from behavior relevant to the presenter base functionality.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainViewPresenter</span> : <span style="color:#a6e22e">Contract</span>.ConcretePresenter, BasePresenter&lt;<span style="color:#a6e22e">Contract</span>.ConcreteView&gt;()
+</span></span></code></pre></div><p>The <code>ConcretePresenter</code> and <code>BasePresenter&lt;Contract.ConcreteView&gt;</code> have the same <code>ConcreteView</code> view, so it all
+works nicely. This way, the <code>View</code> doesn&rsquo;t have to know about the <code>BasePresenter</code> interface to use <code>attachView()</code>
+and <code>detachView()</code>. Those methods are part of the <code>Presenter</code> interface that <code>ConcretePresenter</code>
+inherits. <code>BasePresenter</code>
+also inherits this interface, and it provides the actual implementation for assigning the <code>View</code> reference and handling
+job
+cancellation. Still, it gives <code>ConcretePresenter</code> implementation a way to perform some actions when the view is attached
+with the</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onViewAttached</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onViewDetached</span>()
+</span></span></code></pre></div><p>So with a relatively small cost of remembering to always inherit from <code>BasePresenter</code>, we get nice separation of
+behaviors, and our <code>Contract</code> can focus on UI handling, rather than technical details of threading etc.</p>
+<p>There were no changes for the <code>View</code> implementation; the <code>ConcretePresenter</code> interface has all the relevant methods.</p>
+<h3 id="presenter-implementation">Presenter implementation</h3>
+<p>Let&rsquo;s look into <code>MainViewPresenter</code> code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">removeItem</span>(item: Int) {
+</span></span><span style="display:flex;"><span>    launch {
+</span></span><span style="display:flex;"><span>        view.displayLoading()
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Model</span>.removeItem(item)
+</span></span><span style="display:flex;"><span>            .onFailure { error <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>                view.hideLoading()
+</span></span><span style="display:flex;"><span>                displayErrorMessage(error)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            .onSuccess {
+</span></span><span style="display:flex;"><span>                view.hideLoading()
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Every method from <code>ConcretePresenter</code> looks similar. It&rsquo;s wrapped in a <code>launch</code> block because the <code>BasePresenter</code> is a
+<code>CoroutineScope</code>, and it sets the context in its implementation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> job: Job = SupervisorJob()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">val</span> coroutineContext: CoroutineContext
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">get</span>() = <span style="color:#a6e22e">Dispatchers</span>.IO + job
+</span></span></code></pre></div><p>The Job is canceled when the view is detached. In my implementation, the <code>Model</code> returns a Kotlin <code>Result</code>, so I
+can handle errors nicely with the <code>onFailure()</code> extension method.
+The <code>removeItem()</code> method tells the <code>View</code> to display some loading. Some, because it&rsquo;s up to the <code>View</code> implementation
+on
+how to do this. The <code>Presenter</code> has no idea if it&rsquo;s a <code>LinearProgressIndicator</code> or <code>CircularProgressIndicator</code>, or maybe
+a
+Dialog with text &ldquo;please wait&rdquo;. Thanks to this, the whole UI can even get redesigned with very little impact on
+the <code>Presenter</code>.
+The <code>Controller</code> typically had to know much more about <code>View</code> details.
+The same goes for <code>displayErrorMessage()</code>. We can define what data is passed to <code>View</code> in the <code>Contract</code>, and we don&rsquo;t
+have to rely on any Android Framework limitations here.</p>
+<p>After an item is successfully removed, the <code>Presenter</code> is just hiding the loading. What about refreshing data? Well, it
+happens
+automatically:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onViewAttached</span>() {
+</span></span><span style="display:flex;"><span>    launch {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Model</span>.itemsFlow.collect { items <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            view.displayItems(items)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>Presenter</code> is observing the items&rsquo; flow from the Model and updating the <code>View</code> with each new change. The
+old-fashioned way of achieving
+this would be to get new data from the Model after removing an item and passing it to the <code>View</code>.</p>
+<h2 id="common-problems-of-mvp">Common problems of MVP</h2>
+<p>While Model-View-Presenter (MVP) offers several advantages over MVC, it&rsquo;s important to be aware of some common issues
+associated with this architectural pattern.</p>
+<ol>
+<li><strong>Boilerplate Code:</strong>
+<ul>
+<li>Each component (Model, View, and Presenter) requires its own set of interfaces and implementations, leading to
+verbose code.</li>
+</ul>
+</li>
+<li><strong>Complexity for Simple UIs:</strong>
+<ul>
+<li>For simple user interfaces, the introduction of MVP may seem like an overhead. In cases where the UI logic is
+straightforward, the additional layers introduced by MVP might be considered unnecessary.</li>
+</ul>
+</li>
+<li><strong>Learning Curve:</strong>
+<ul>
+<li>Developers who are new to MVP may find it challenging to understand the separation of concerns and the proper
+communication flow between the components. This can result in a steeper learning curve compared to simpler
+patterns.</li>
+</ul>
+</li>
+<li><strong>Presenter Responsibilities:</strong>
+<ul>
+<li>Determining what should go into the Presenter and what should stay in the View or Model is not always
+straightforward. Deciding on the proper distribution of responsibilities can lead to ambiguity and inconsistencies
+across implementations.</li>
+</ul>
+</li>
+<li><strong>Tight Coupling:</strong>
+<ul>
+<li>While MVP aims to reduce coupling compared to MVC, there&rsquo;s still a potential for tight coupling between the View
+and Presenter, especially if not implemented carefully. This can make it harder to replace or modify one component
+without affecting the other.</li>
+</ul>
+</li>
+<li><strong>Difficulty in Lifecycle Management:</strong>
+<ul>
+<li>Managing the lifecycle of components in MVP, especially in Android where the activity and fragment lifecycles are
+critical, can be challenging. Improper management may result in memory leaks or unexpected behavior.</li>
+</ul>
+</li>
+<li><strong>No standardization:</strong>
+<ul>
+<li>Unlike some other patterns, there is no strict standardization for MVP, leading to variations in implementations.
+This lack of a standard can make it challenging for developers to move between projects seamlessly.</li>
+</ul>
+</li>
+</ol>
+<p>It&rsquo;s important to note that the issues mentioned above are not inherent flaws in MVP but rather considerations and
+trade-offs. The appropriateness of MVP depends on the specific needs of the project and the <strong>preferences and experience
+of the development team</strong>. Additionally, some of these issues can be mitigated with proper design practices and
+libraries that support MVP, such as dependency injection frameworks.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>MVP is a step in the right direction from MVC. It&rsquo;s also not that hard to actually refactor from MVC to MVP. Nowadays,
+we can <strong>benefit from using coroutines, flows, or <code>Result</code> class</strong> to avoid callback hell and easy threading. The
+pattern
+provides clear(er) separation of concerns. It&rsquo;s finally easy to test code between Model and the View.</p>
+<p>The MVP pattern version I showed in this post requires a bit of boilerplate, even for low complexity UI. But at the same
+time, a lot of technical issues are hidden, and developers may focus solely on the <code>Contract</code>.</p>
+<p>Even now when I look at the extended MVP diagram, it looks a bit scary. There are a lot of interfaces, and it may look
+like an overkill. If only there was a way to achieve similar separation of concerns, testability, and ease of use&hellip; oh
+wait, there is <strong>MVVM</strong> :)</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/2024-01-27-MVC/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Android Presentation Patterns: MVC</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/2024-02-09-MVVM/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Android Presentation Patterns: MVVM</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#but-mvc-does-the-job">But MVC does the job!</a></li>
+    <li><a href="#the-presenter-is-born">The Presenter is born</a>
+      <ul>
+        <li><a href="#let-there-be-contract">Let there be Contract!</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-boilerplate">The boilerplate</a>
+      <ul>
+        <li><a href="#basepresenter">BasePresenter</a></li>
+        <li><a href="#view-and-presenter-interfaces">View and Presenter interfaces</a></li>
+        <li><a href="#presenter-implementation">Presenter implementation</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-problems-of-mvp">Common problems of MVP</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

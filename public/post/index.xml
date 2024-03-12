@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>http://localhost:1313/post/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Presentation Patterns: MVI</title>
+      <link>http://localhost:1313/2024-02-24-MVI/</link>
+      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024-02-24-MVI/</guid>
+      <description>I have already covered MVC, MVP, and MVVM. But&amp;hellip;&#xA;There is another Just when you might think that MVVM is already sufficient, if not perfect, for the majority of cases, I introduce you to yet another MV-structured architecture. However, there&amp;rsquo;s a twist. This one, known as Model View Intent, is more fluid in nature compared to the previously mentioned patterns. In my opinion, it spans a spectrum starting from a basic MVVM with event/action communication flow and extending to Redux for global app state management, with the inclusion of feature or module-specific local state storage.</description>
+    </item>
+    <item>
+      <title>Android Presentation Patterns: MVVM</title>
+      <link>http://localhost:1313/2024-02-09-MVVM/</link>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024-02-09-MVVM/</guid>
+      <description>Evolution There is a clear trajectory in presentation pattern evolution - decreased coupling. In MVC, components were closely situated, with numerous direct interactions. MVP addressed this by introducing a standard interface structure. It&amp;rsquo;s now possible to test some interactions without relying on UI (although it may sound somewhat peculiar when discussing presentation patterns, I admit). Nevertheless, there are still some challenges, such as maintaining view state or artificial awareness of view lifecycle in MVP.</description>
+    </item>
+    <item>
+      <title>Android Presentation Patterns: MVP</title>
+      <link>http://localhost:1313/2024-01-29-MVP/</link>
+      <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024-01-29-MVP/</guid>
+      <description>But MVC does the job! When examining the MVC pattern as described here, it&amp;rsquo;s evident that the direct relationship between the View and Controller is problematic. Tight coupling results in challenging testing, where changes in one class necessitate updates in another, and it doesn&amp;rsquo;t scale well. In complex views, there can be multiple conditions for setting values in UI elements, depending on the current state of the UI and responses from the Model.</description>
+    </item>
+    <item>
+      <title>Android Presentation Patterns: MVC</title>
+      <link>http://localhost:1313/2024-01-27-MVC/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024-01-27-MVC/</guid>
+      <description>Disclaimer: You probably shouldn&amp;rsquo;t use MVC in your Android app, there are much better solutions nowadays, that I mention later in this post.&#xA;Hello old friend Model-View-Controller is old indeed, for IT standards at least. Its origins are dating back to the development of Smalltalk-80 in the 1970s. You remember book &amp;ldquo;Design Patterns&amp;rdquo; by the Gang of 4? Yup, its mentioned there (and the book has examples in Smalltalk). It was introduced to address the challenges of creating graphical user interfaces.</description>
+    </item>
+    <item>
+      <title>Continuous Integration and Deployment: A Developer&#39;s Best Friends</title>
+      <link>http://localhost:1313/2023-06-16-ci-is-your-friend/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2023-06-16-ci-is-your-friend/</guid>
+      <description>Intro In today&amp;rsquo;s fast-paced software development landscape, Continuous Integration and Continuous Deployment (CI/CD) have become indispensable tools for developers. If you are already familiar with this concept, this post may not be for you. However, if you&amp;rsquo;re new to CI/CD and want to learn what it is, how to set it up, and why it&amp;rsquo;s cool, you&amp;rsquo;re in the right place. CI/CD can eliminate some manual labor, streamline workflows, and make your development process more efficient and reliable.</description>
+    </item>
+    <item>
+      <title>Would you go for mobile development again, after 10 years of doing it?</title>
+      <link>http://localhost:1313/would-i-do-mobile-again/</link>
+      <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/would-i-do-mobile-again/</guid>
+      <description>Would I? I went to a meetup in my city last week and a guy I just met there popped a question after a while of conversation: with my experience, would I go for mobile software development again or pick a different area?&#xA;And it got me thinking Yes, I would do this again, I&amp;rsquo;m even more motivated now.&#xA;I remember how excited I was about the idea that you can write software for a tiny computer that lives in your pocket.</description>
+    </item>
+    <item>
+      <title>Dlaczego warto korzystać z Tech proposals</title>
+      <link>http://localhost:1313/tech_proposals/</link>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tech_proposals/</guid>
+      <description>&amp;ldquo;Dokumentacja po-projektowa&amp;rdquo; Jak to złośliwie nazywali wykładowcy, sprawdzając uniwersyteckie projekty na zaliczenie, których założeniem było zaplanować projekt i udokumentować plan, a następnie go zaimplementować. W praktyce pisało się, byleby działało, a następnie dokumentowało twór. I niech pierwszy rzuci kamieniem kto tak nie robił :)&#xA;Wykładowcy to często starsi ludzie bez doświadczenia komercyjnego, przyzwyczajeni do watter-fall&amp;rsquo;owego planowania projektów. Teraz mamy Agile, ciągłe dowożenie feature&amp;rsquo;ów, samodokumentujący się kod i inne pomoce.&#xA;Czy dzisiaj jest jeszcze potrzeba pisania planu przed faktyczną implementacją, czy jest to relikt przeszłości, sztuka dla sztuki i uniwersytecka fanaberia?</description>
+    </item>
+    <item>
+      <title>Why should you use Tech proposals</title>
+      <link>http://localhost:1313/tech_proposals/</link>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tech_proposals/</guid>
+      <description>&amp;ldquo;Post-implementation documentation&amp;rdquo; As the lecturers maliciously called it when they checked university-grade projects, the idea of which was to plan a project, document it, and then implement it according to plan. In practice, I usually was implementing it first so it just worked, and then documented the result. And let anyone who hasn&amp;rsquo;t done that throw a stone first :)&#xA;Lecturers (in Polish universities) are often older people with no commercial experience, used to water-fall project planning.</description>
+    </item>
+    <item>
+      <title>Android service binding fix for API 30</title>
+      <link>http://localhost:1313/2021-09-03-android-service-binding-on-api30/</link>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2021-09-03-android-service-binding-on-api30/</guid>
+      <description>TL;DR If you want to use bindService() with external application services built with API 30 and above, add the attribute with the service package name to the client app manifest. More info in the documentation. Without it, bindService() will return False and the logs will tell you that an Intent-compatible service has not been found.&#xA;My repo with a working example&#xA;Problem I am recently working on communication between applications in Android.</description>
+    </item>
+    <item>
+      <title>Android service binding fix for API 30</title>
+      <link>http://localhost:1313/2021-09-03-android-service-binding-on-api30/</link>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2021-09-03-android-service-binding-on-api30/</guid>
+      <description>TL;DR Jeśli chcesz korzystać z bindService() zewnętrznych aplikacji budowanych pod API 30 i wyżej, dodaj w manifeście klienta serwisu atrybut z nazwą pakietu serwisu. Więcej info w dokumentacji. Bez tego bindService() zwróci False a w logach będzie informacja o nieznalezieniu serwisu zgodnego z Intentem.&#xA;Moje repo z działającym przykładem&#xA;Problem Pracuję ostatnio nad komunikacją między aplikacjami w Androidzie. Ogólnie istnieją 3 sposoby na osiągnięcie tego: Broadcasty, AIDL i Messenger. Nie wchodząc w szczegóły, Messenger wydaje mi się najbardziej odpowiedni do mojego zastosowania.</description>
+    </item>
+    <item>
+      <title>Command Pattern in Kotlin</title>
+      <link>http://localhost:1313/kotlin-command-pattern/</link>
+      <pubDate>Sun, 22 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-command-pattern/</guid>
+      <description>Purpose The Command pattern wraps the request into a specific object that has all the information necessary to perform its task. You can think of it as the next stage of refactoring, where at first we extract the code to a separate method, and then to a separate object, taking the arguments needed to execute the request in the constructor.&#xA;Since the request is an object, it can be sent to a separate object (CommandProcessor) for execution, which allows for their queuing and facilitates logging events.</description>
+    </item>
+    <item>
+      <title>Wzorzec Command (Polecenie) w Kotlinie</title>
+      <link>http://localhost:1313/kotlin-command-pattern/</link>
+      <pubDate>Sun, 22 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-command-pattern/</guid>
+      <description>Przeznaczenie Wzorzec Command polega na opakowaniu żądania w konkretny obiekt, posiadający wszystkie informacje niezbędne do wykonania swojego zadania. Można o tym pomyśleć jak o kolejnym etapie refaktoryzacji, gdzie najpierw wydzielamy kod do osobnej metody, a następnie do osobnego obiektu, przyjmującego w konstruktorze argumenty potrzebne do wykonania żądania.&#xA;Dzięki temu, że żądanie jest obiektem, może zostać przekazane do wykonania do osobnego obiektu (CommandProcessor), co pozwala na ich kolejkowanie i ułatwia logowanie zdarzeń.</description>
+    </item>
+    <item>
+      <title>Remote Logger</title>
+      <link>http://localhost:1313/remote-logger/</link>
+      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/remote-logger/</guid>
+      <description>Respect the Logcat The primary Android developer tool - Logcat. It is so widely used, always at hand, that it is difficult to imagine a situation where you have to work without it. However, I&amp;rsquo;ve found myself in such a situation. And I decided to write and share a tool that helped me survive this drama.&#xA;The challenge I was given a task to test a certain library, and since I work in #fintech, there often are some additional security checks.</description>
+    </item>
+    <item>
+      <title>Remote Logger</title>
+      <link>http://localhost:1313/remote-logger/</link>
+      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/remote-logger/</guid>
+      <description>Szanuj Logcata Podstawowe narzędzie programisty Android — Logcat. Jest tak powszechnie używane, zawsze pod ręką, że trudno sobie wyobrazić sytuację, gdy trzeba pracować bez niego. Mnie jednak udało się w takiej sytuacji znaleźć. I postanowiłem napisać i udostępnić narzędzie, które pomogło mi ten dramat przetrwać.&#xA;Wyzwanie Dostałem zadanie przetestowania pewnej biblioteki w ramach naszego SDK. Z racji, że pracuję w #fintech to często dochodzi dodatkowy rygor bezpieczeństwa. Owa biblioteka nie pozwalała się zainicjalizować, jeśli:</description>
+    </item>
+    <item>
+      <title>Mediator in Kotlin</title>
+      <link>http://localhost:1313/kotlin_mediator_pattern/</link>
+      <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin_mediator_pattern/</guid>
+      <description>Purpose We define a Mediator as an object encapsulating interactions between other objects (components) from a given set. The pattern limits, or even cuts off completely, direct dependencies between classes. Components can only communicate with each other through the Mediator, which becomes the central hub for information and control. The Mediator controls the flow of information using its internal logic.&#xA;This can be compared to the air traffic control tower (ATC).</description>
+    </item>
+    <item>
+      <title>Mediator w Kotlinie</title>
+      <link>http://localhost:1313/kotlin_mediator_pattern/</link>
+      <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin_mediator_pattern/</guid>
+      <description>Przeznaczenie Mediatorem określamy obiekt, kapsułkujący interakcje pomiędzy obiektami (komponentami) z danego zbioru. Wzorzec ogranicza lub nawet ucina zupełnie, bezpośrednie zależności między obiektami. Komponenty mogą porozumiewać się ze sobą wyłącznie za pośrednictwem Mediatora, który staje się centralnym hubem przekazywania informacji oraz sterowania. Mediator steruje przepływem informacji, korzystając ze swojej wewnętrznej logiki.&#xA;Można to porównać do wieży kontroli lotów (ATC). Komunikują się z nią piloci wszystkich samolotów z okolicy i to wieża decyduje o kolejności startów i lądowań.</description>
+    </item>
+    <item>
+      <title>Decorator Pattern in Kotlin</title>
+      <link>http://localhost:1313/kotlin-decorator-pattern/</link>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-decorator-pattern/</guid>
+      <description>Purpose The Decorator allows you to dynamically add or change the behavior of a specific object of a given class, without affecting other objects of the same class. In some cases, this allows you to significantly reduce the number of classes by moving the shared behavior to the Decorator, rather than extending the inheritance structure.&#xA;The decorator&amp;rsquo;s job is to &amp;ldquo;wrap&amp;rdquo; (hence another name: &amp;ldquo;Wrapper&amp;rdquo;) the original object and modify or overwrite its behavior.</description>
+    </item>
+    <item>
+      <title>Dekorator w Kotlinie</title>
+      <link>http://localhost:1313/kotlin-decorator-pattern/</link>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-decorator-pattern/</guid>
+      <description>Przeznaczenie Dekorator pozwala na dynamiczne dodanie lub zmianę zachowania konkretnego obiektu danej klasy, bez wpływu na inne obiekty tej samej klasy. W pewnych przypadkach pozwala to znacząco ograniczyć liczbę klas, przez wyciągnięcie współdzielonego zachowania do klasy dekorującej, zamiast rozbudowy struktury dziedziczenia.&#xA;Zadaniem dekoratora jest &amp;ldquo;owinąć&amp;rdquo; (stąd inna nazwa: Wrapper) oryginalny obiekt i zmodyfikować lub nadpisać jego zachowanie. Klasa dekoratora ma ten sam interfejs co obiekt dekorowany, dlatego dla klienta nie ma znaczenia czy obiekt został udekorowany, czy nie.</description>
+    </item>
+    <item>
+      <title>Adapter Pattern in Kotlin</title>
+      <link>http://localhost:1313/kotlin-adapter-pattern/</link>
+      <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-adapter-pattern/</guid>
+      <description>Purpose As the name suggests, the Adapter pattern transforms the class interface to another one requested by the client. Using the Adapter allows incompatible classes to interact with each other. Another term for this pattern is Wrapper.&#xA;The adapter allows you to &amp;ldquo;map&amp;rdquo; an adapted interface (Adaptee) to the expected interface (Target) by the client class without adding another level of inheritance. Such inheritance would not always be possible if Target was a class rather than an interface.</description>
+    </item>
+    <item>
+      <title>Adapter w Kotlinie</title>
+      <link>http://localhost:1313/kotlin-adapter-pattern/</link>
+      <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-adapter-pattern/</guid>
+      <description>Przeznaczenie Jak sama nazwa sugeruje, wzorzec Adapter przekształca interfejs klasy na inny, wymagany przez klienta. Zastosowanie Adaptera pozwala na współdziałanie klas, które przez niezgodne interfejsy nie mogłyby tego robić. Innym określeniem na ten wzorzec jest Wrapper.&#xA;Adapter umożliwia &amp;ldquo;zmapowanie&amp;rdquo; adaptowanego interfejsu (Adaptee) na oczekiwany (Target) przez klasę kliencką bez dokładania kolejnego poziomu dziedziczenia. Takie dziedziczenie nawet nie zawsze byłoby możliwe, jeśli Target byłby klasą, a nie interfejsem. Nowa klasa musiałaby być jednocześnie i Target, i Adaptee.</description>
+    </item>
+    <item>
+      <title>IntelliJ IDEA as a LaTeX editor</title>
+      <link>http://localhost:1313/intellij-latex-editor/</link>
+      <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/intellij-latex-editor/</guid>
+      <description>TL;DR: IntelliJ Idea is great for working with LaTeX. The basic functionality is provided by plugins, and a lot of additional automation can be set using File Watchers. I only miss displaying chapters and sections like in TexStudio.&#xA;LaTeX in IntelliJ IDEA I don&amp;rsquo;t work with LaTeX very often, but this format has many advantages, especially when working on longer written forms, containing a lot of graphics, diagrams, mathematical formulas, etc.</description>
+    </item>
+    <item>
+      <title>IntelliJ IDEA jako edytor LaTeX</title>
+      <link>http://localhost:1313/intellij-latex-editor/</link>
+      <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/intellij-latex-editor/</guid>
+      <description>TL;DR: IntelliJ Idea świetnie nadaje się do pracy z LaTeX. Podstawową funkcjonalność zapewniają plugin-y, a sporo dodatkowych automatyzacji można sobie ustawić za pomocą File Watcher-ów. Brakuje mi tylko wyświetlania rozdziałów i sekcji jak np. w TexStudio.&#xA;LaTeX w IntelliJ IDEA Nie pracuję z LaTeX-em zbyt często, ale ten format ma sporo zalet, zwłaszcza przy pracy nad dłuższymi formami pisanymi, zawierającymi sporo grafik, diagramów, formuł matematycznych itp. Zwykle korzystałem z TexStudio, ale postanowiłem sprawdzić, czy i jak poradzi sobie IntelliJ IDEA, którego używam na co dzień.</description>
+    </item>
+    <item>
+      <title>Facade Pattern in Kotlin</title>
+      <link>http://localhost:1313/kotlin-facade-pattern/</link>
+      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-facade-pattern/</guid>
+      <description>Purpose The facade is a very basic pattern, whose task is to obscure the details of a group of classes - the module responsible for some functionality.&#xA;This can be compared to the facade of the building, which in itself has no function. The building consists of rooms, corridors, stairs, installations. It is the facade that indicates the entrance to the building, and the appearance may suggest its purpose.&#xA;The purpose of the pattern is to simplify customer access to the functionality of the obscured module.</description>
+    </item>
+    <item>
+      <title>Fasada w Kotlinie</title>
+      <link>http://localhost:1313/kotlin-facade-pattern/</link>
+      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-facade-pattern/</guid>
+      <description>Przeznaczenie Fasada jest bardzo prostym wzorcem, którego zadaniem jest przesłonić szczegóły jakiejś grupy klas — modułu odpowiedzialnego za jakąś funkcjonalność.&#xA;Można to porównać do fasady budynku, która sama w sobie nie pełni żadnej funkcji. Budynek to pokoje, korytarze, schody, instalacje. To fasada wskazuje wejście do budynku, a wyglądem może sugerować jego przeznaczenie.&#xA;Zadaniem wzorca jest upraszczanie klientom dostępu do funkcjonalności przesłanianego modułu. Tak, żeby nie musieli znać szczegółów implementacyjnych, zależności między klasami, wiedzieć którą wersję obiektu wstrzykiwać itd.</description>
+    </item>
+    <item>
+      <title>Strategy Pattern in Kotlin</title>
+      <link>http://localhost:1313/kotlin-strategy-pattern/</link>
+      <pubDate>Sun, 30 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-strategy-pattern/</guid>
+      <description>Purpose The Strategy design pattern defines a family of algorithms and allows them to be used interchangeably. By algorithm, here I mean any logic, be it sorting, searching, or computing some value from data. It does not matter. It is, in a sense, an extension of the Template Method pattern, but inversely to it, Strategy prefers composition over inheritance. Strategies do not inherit from any specific class but only implement a common interface.</description>
+    </item>
+    <item>
+      <title>Wzorzec Strategia w Kotlinie</title>
+      <link>http://localhost:1313/kotlin-strategy-pattern/</link>
+      <pubDate>Sun, 30 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-strategy-pattern/</guid>
+      <description>Przeznaczenie Wzorzec projektowy Strategia określa rodzinę algorytmów i umożliwia zamienne ich stosowanie. Przez algorytm będę tutaj rozumiał jakąkolwiek logikę, czy to sortowanie, czy wyszukiwanie, czy obliczanie jakiejś wartości na podstawie danych. Nie ma to znaczenia. Jest to w pewnym sensie rozwinięcie wzorca Metoda Szablonowa, ale odwrotnie do niego Strategia przedkłada kompozycję nad dziedziczenie. Strategie nie dziedziczą po żadnej konkretnej klasie, a jedynie implementują wspólny interfejs. Pozwala to na łatwe kapsułkowanie kodu i wymienianie algorytmów bez narzutu dziedziczenia.</description>
+    </item>
+    <item>
+      <title>Kotlin Template Method</title>
+      <link>http://localhost:1313/kotlin-template-method/</link>
+      <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-template-method/</guid>
+      <description>Purpose The template method is a very simple design pattern, that separates the shared class parts from distinctive ones. The core idea is to have an abstract parent class containing the algorithm steps and allowing inheriting classes to overwrite individual steps, but not the algorithm that uses those steps itself.&#xA;Think about Pizza - steps to make it are more-less the same, despite the type of pizza. You need to make a dough, apply sauce and ingredients, and finally bake it.</description>
+    </item>
+    <item>
+      <title>Metoda szablonowa w Kotlinie</title>
+      <link>http://localhost:1313/kotlin-template-method/</link>
+      <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-template-method/</guid>
+      <description>Przeznaczenie Metoda szablonowa to bardzo prosty wzorzec, pozwalający oddzielić to, co stałe od tego, co zmienne w rodzinie klas. Polega na utworzeniu abstrakcyjnej klasy nadrzędnej, zawierającej kolejne kroki jakiegoś algorytmu i pozwoleniu klasom dziedziczącym z niej nadpisywać poszczególne kroki, ale nie sam algorytm, który je wykorzystuje.&#xA;Pomyśl o tym, jak o pizzy — kroki do jej wykonania są z grubsza takie same, niezależnie od rodzaju. Najpierw ciasto, potem sos, dodatki i do pieca.</description>
+    </item>
+    <item>
+      <title>Kotlin Abstract Factory</title>
+      <link>http://localhost:1313/kotlin-abstract-factory/</link>
+      <pubDate>Tue, 02 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-abstract-factory/</guid>
+      <description>Purpose The name of this pattern doesn&amp;rsquo;t suggest directly how it differs from other construction patterns, like Builder or Factory Method. In the Abstract Factory it&amp;rsquo;s not about creating a single object instance, but the whole family of connected objects. It still sounds like an ordinary Factory that can produce GUI controls for example. To have the Abstract Factory you should add another layer of abstraction and have a mechanism for creating GUI controls in few variants, like for Linux, Windows, or MacOS, but still have a generic API for the pattern client.</description>
+    </item>
+    <item>
+      <title>Kotlin Abstract Factory</title>
+      <link>http://localhost:1313/kotlin-abstract-factory/</link>
+      <pubDate>Tue, 02 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-abstract-factory/</guid>
+      <description>Przeznaczenie Nazwa tego wzorca nie do końca sugeruje, czym się wyróżnia od innych wzorców konstrukcyjnych, takich jak Builder czy Factory. W Abstract Factory nie chodzi o dostarczenie pojedynczej instancji — a całej rodziny powiązanych obiektów. Nadal brzmi to podobnie jak zwykłe Factory, które może produkować np. obiekty kontrolek GUI. Żeby otrzymać Abstract Factory musimy właśnie dodać kolejną warstwę abstrakcji, i stworzyć mechanizm produkujący obiekty kontrolek GUI, ale w wariantach dla np.</description>
+    </item>
+    <item>
+      <title>Kotlin Factory Method</title>
+      <link>http://localhost:1313/kotlin-factory-method/</link>
+      <pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-factory-method/</guid>
+      <description>Purpose Just like Builder, the Factory is a creational pattern. It describes an interface used to deliver instances. Instead of calling object constructor, we can call a method of the Factory which will generate interface implementation - the concrete object. What makes it different from Builder is that usually none or very few arguments need to be passed. It&amp;rsquo;s Factory&amp;rsquo;s job to fulfill all required by the object dependencies.&#xA;Factory can deliver objects of various types implementing the same interface just by the passed arguments.</description>
+    </item>
+    <item>
+      <title>Kotlin Factory Method</title>
+      <link>http://localhost:1313/kotlin-factory-method/</link>
+      <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-factory-method/</guid>
+      <description>Przeznaczenie Podobnie jak Builder, Factory Method jest wzorcem konstrukcyjnym. Określa interfejs do tworzenia obiektów. Zamiast wprost wywoływać konstruktor, możemy wywołać metodę obiektu-wytwórni, która generuje implementację interfejsu. W odróżnieniu od Buildera, zazwyczaj nie będzie nas interesowało podanie wszystkich wymaganych przez obiekt argumentów i zależności — to będzie należeć do zadań Factory.&#xA;Fabryka może dostarczać obiekty różnych typów implementujących ten sam interfejs, wyłącznie na podstawie dostarczonych argumentów. Całkowitemu odizolowanie implementacji od interfejsu pozwala na podmianę implementację w runtime, a nie tylko w czasie kompilacji.</description>
+    </item>
+    <item>
+      <title>Kotlin Static Factory Methods</title>
+      <link>http://localhost:1313/kotlin-static-factory-methods/</link>
+      <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-static-factory-methods/</guid>
+      <description>Purpose There is a concise error in the title, there are no static methods in Kotlin. But there are ways to achieve similar behavior to proposed by Joshua Bloch in Effective Java book - using static factory methods instead of constructors. This is also completely different from the Factory Method design pattern, don&amp;rsquo;t confuse those.&#xA;Long story short, these are methods that create object instances based on supplied arguments (or even without them) and that you can call from anywhere without the need of having an instance of a class that contains them.</description>
+    </item>
+    <item>
+      <title>Kotlin Static Factory Methods</title>
+      <link>http://localhost:1313/kotlin-static-factory-methods/</link>
+      <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-static-factory-methods/</guid>
+      <description>Przeznaczenie W tytule jest świadomy błąd, w Kotlinie nie ma czegoś takiego jak statyczne metody. Są podobne mechanizmy pozwalające na tworzenie instancji zgodnie z propozycją Joshua Blocha z książki Effective Java — używaj statycznych metod fabrycznych zamiast konstruktora. Jest to zupełne co innego niż wzorzec Factory Method.&#xA;W skrócie są to metody, które tworzą żądane obiekty na podstawie podanych argumentów (lub nawet bez nich) i które można wywołać w dowolnym miejscu bez konieczności tworzenia instancji klasy, w której się znajdują.</description>
+    </item>
+    <item>
+      <title>Kotlin Builder Pattern</title>
+      <link>http://localhost:1313/kotlin-builder-pattern/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-builder-pattern/</guid>
+      <description>Purpose Builder pattern is used to simplify creating complex objects with non-trivial building logic, or with many constructor parameters. It allows making immutable objects because all properties can be set by the Builder with no need to use object setters.&#xA;Builder sort of removes from the user the need to understand the internal object create implementation and guarantees correct object setup or returning an error.&#xA;The advantage of using Builder over traditional constructor is being able to pass many vararg arguments, because every Builder method can take one, while the whole constructor can take only one.</description>
+    </item>
+    <item>
+      <title>Kotlin Builder Pattern</title>
+      <link>http://localhost:1313/kotlin-builder-pattern/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-builder-pattern/</guid>
+      <description>Przeznaczenie Wzorzec Builder służy do uproszczenia tworzenia złożonych obiektów ze skomplikowaną logiką budowania lub z wieloma argumentami w konstruktorze. Dzięki zastosowaniu tego wzorca obiekt łatwo może być niemutowalny, bo dostajemy taki obiekt, jaki ustawiliśmy przez Buildera, więc nie ma potrzeby na nim już wołać żadnych setterów :)&#xA;Builder niejako zdejmuje z użytkownika konieczność zrozumienia wewnętrznej implementacji sposobu tworzenia obiektu i gwarantuje jego poprawne utworzenie lub zwrócenie błędu.&#xA;Zaletą korzystania z Buildera jest możliwość użycia zmiennej liczby argumentów (vararg) w wielu miejscach, bo każda metoda Buildera może przyjmować taki argument, a w konstruktorze klasy może być tylko 1 argument tego typu.</description>
+    </item>
+    <item>
+      <title>Code Review Retro</title>
+      <link>http://localhost:1313/code-review-retro/</link>
+      <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/code-review-retro/</guid>
+      <description>Importance of Code Review I sure do hope that I don&amp;rsquo;t need to convince anyone how important is the process of code review. If you need some guidelines on how to do it well I can recommend this Yelp blog post Here I&amp;rsquo;d just like to perform a retrospective of my own code review experiences.&#xA;A bit of history When I started my developer career in a rather small company - we were not doing code reviews.</description>
+    </item>
+    <item>
+      <title>Code Review Retro</title>
+      <link>http://localhost:1313/code-review-retro/</link>
+      <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/code-review-retro/</guid>
+      <description>Waga code review Mam szczerą nadzieję, że nie muszę nikogo o tym przekonywać, jak ważne jest robienie codereview. Jeśli potrzebujesz porad jak robić to sensownie polecam wpis na blogu Yelpa W tym wpisie chciałbym zrobić retro ze swoich doświadczeń z codereview.&#xA;Kiedy zaczynałem pracę jako programista w dość małej firmie — nie robiliśmy review. Jednym z powodów był fakt, że nie miał kto komu sprawdzać kodu, bo było po 1 programiście na technologię (backend, frontend, mobile).</description>
+    </item>
+    <item>
+      <title>Ultimate Github Page Deployment</title>
+      <link>http://localhost:1313/github-page-deployment/</link>
+      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/github-page-deployment/</guid>
+      <description>Mr Hyde Text you are reading is available on Jekyll blog hosted on GitHub, with the use of free Github Pages. Long story short: Jekyll is a template engine changing markdown documents on static HTML webpages, that you can then host anywyere, because you don&amp;rsquo;t need databases or server that has PHP or Python.&#xA;Usual process Normally process of adding new post looks like this:&#xA;I write markdown document with setting parameters like title, date and tags when I&amp;rsquo;m happy with what I wrote (never), I commit changes and push it to repository on GitHub.</description>
+    </item>
+    <item>
+      <title>Ultimate Github Page Deployment</title>
+      <link>http://localhost:1313/github-page-deployment/</link>
+      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/github-page-deployment/</guid>
+      <description>Pan Hyde Tekst który czytasz, znajduje się na stronie postawionej na Jekyll&amp;rsquo;u i hostowanej na GitHubie, za pomocą darmowych Github Pages. Tak w skrócie: Jekyll to silnik szablonów, zamieniający markdown na statyczne strony HTML, które potem można sobie hostować gdziekolwiek, bo nie ma potrzeby podpinania bazy danych, czy obsługi PHP czy innego Pythona po stronie serwera.&#xA;Standardowy proces Standardowy proces wrzucenia nowego posta wygląda następująco:&#xA;piszę post w markdown ustawiając parametry takie jak tytuł, data czy tagi.</description>
+    </item>
+    <item>
+      <title>IntelliJ settings repo</title>
+      <link>http://localhost:1313/intellij-settings-repo/</link>
+      <pubDate>Sun, 19 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/intellij-settings-repo/</guid>
+      <description>My setup looks like this: I have Windows PC with Linux installed on a separate drive, also I have 2 MacBooks for work, and rarely used Linux ThinkPad. Keeping my IntelliJ settings in sync at all of those machines wasn&amp;rsquo;t really possible. If I find some setting that improves my workflow at my office machine, and after some time I want to work on a pet project on my own PC - I get this itch of not having this setting I had on MacBook&amp;hellip; so I can export my settings and then import it.</description>
+    </item>
+    <item>
+      <title>IntelliJ settings repo</title>
+      <link>http://localhost:1313/intellij-settings-repo/</link>
+      <pubDate>Sun, 19 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/intellij-settings-repo/</guid>
+      <description>Mój setup wygląda tak: mam PC-ta z Windowsem i Lunuxem, oraz 2 MacBooki do pracy (bogactwo wiem) i rzadko używanego laptopa z linuxem. Utrzymanie ustawień IDE w takiej samej formie na wszystkich maszynach nie było wykonalne ręcznie. Często korzystając z jednego sprzętu, znajdowałem jakieś ustawienie lub plugin, który usprawniał pracę, a po przesiadce na inny sprzęt czegoś mi brakowało — ale nie zawsze pamiętałem czego. Można eksportować i importować ustawienia na innych maszynach, ale to jest dobre przy pierwszym ustawianiu nowego kompa, a nie przy codziennej pracy.</description>
+    </item>
+    <item>
+      <title>Shell script basics</title>
+      <link>http://localhost:1313/shellscriptbasics/</link>
+      <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/shellscriptbasics/</guid>
+      <description>Why Recently I had to do some tasks that required me to fallowing a strict checklist. It wasn&amp;rsquo;t anything complex, no creativity required - just do as list tells you to do. I was also one of the creators of the checklist.&#xA;I had to do it a few times, almost regularly, sometimes in short notice but nothing extreme.&#xA;So obviously I made errors because I knew the checklist so well I wasn&amp;rsquo;t paying attention.</description>
+    </item>
+    <item>
+      <title>Overlibrarization</title>
+      <link>http://localhost:1313/overlibrarization/</link>
+      <pubDate>Sun, 20 Jan 2019 18:57:02 +0000</pubDate>
+      <guid>http://localhost:1313/overlibrarization/</guid>
+      <description>It seems great Write code once use it many times. Creating smaller pieces of code forces developers to write encapsulated software that follows single responsibility principle and is easy to test. Such code piece (AKA module) can be then published as a versioned artifact - a private library, that can be reused in more than one project. We are getting quality and reusability, how cool is that! Well that&amp;rsquo;s the theory.</description>
+    </item>
+    <item>
+      <title>Android build hacks #3 - documentation with Dokka</title>
+      <link>http://localhost:1313/android-build-hacks-3-documentation/</link>
+      <pubDate>Mon, 05 Nov 2018 20:05:58 +0000</pubDate>
+      <guid>http://localhost:1313/android-build-hacks-3-documentation/</guid>
+      <description>This is third part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;[#3 Documentation with Dokka]({% post_url 2018-11-05-android-build-hacks-3 %})&#xA;Homework Wait what? You&amp;rsquo;ve wrote beautiful self-documenting code and someone tells you to create DOCUMENTATION for it? It&amp;rsquo;s already there! Well named methods and variables, design patterns used. If anyone wants to know how it works, he just needs to read through it - well named method by well named method&amp;hellip;</description>
+    </item>
+    <item>
+      <title>Android Build Hacks #2 - build time optimization</title>
+      <link>http://localhost:1313/android-build-hacks-2/</link>
+      <pubDate>Sun, 16 Sep 2018 10:36:34 +0000</pubDate>
+      <guid>http://localhost:1313/android-build-hacks-2/</guid>
+      <description>This is second part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;Motivation Main reason I&amp;rsquo;ve been interested in build config tricks was to speed up development builds. As developer I&amp;rsquo;m building apps many times each day, often just to change one small thing and check if it works. Each second took of build time means a lot if you build often.</description>
+    </item>
+    <item>
+      <title>Android Build Hacks #1 - build basics</title>
+      <link>http://localhost:1313/android-build-hacks-1/</link>
+      <pubDate>Mon, 23 Jul 2018 22:24:27 +0000</pubDate>
+      <guid>http://localhost:1313/android-build-hacks-1/</guid>
+      <description>This is first part in series of articles about Android build configuration, all parts will be linked right below.&#xA;[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})&#xA;[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})&#xA;Build configuration! This is not the most exciting part of software engineering. Each technology, language, framework has it&amp;rsquo;s own rules so there are no universal patterns, Uncle Bob will not help us here. But just like this worker on left, tightening the screw of Empire State Building skeleton, developers should polish their builds - build config itself is not the application (like skeleton is not the building), but application is useless if you cannot build release version.</description>
+    </item>
+    <item>
+      <title>Hacking Android app with Frida</title>
+      <link>http://localhost:1313/android-frida-hacking/</link>
+      <pubDate>Sat, 31 Mar 2018 17:43:37 +0000</pubDate>
+      <guid>http://localhost:1313/android-frida-hacking/</guid>
+      <description>Side image is of course Frida Kahlo auto portrait, besides her name she has no connection with topic&#xA;Motivation Lately I attended to Sekurak hacking party - it&amp;rsquo;s event organized by Sekurak where they show how easy is to hack stuff like IP cameras, routers, phones. I guess Sekurak is known mainly in Poland, but they are real professionals in area of security. During this event Michał Bentkowski was showing how easy it is to spy on Android app communication and also change app behavior using tool named Frida.</description>
+    </item>
+    <item>
+      <title>Nyan your terminal</title>
+      <link>http://localhost:1313/nyan-your-terminal/</link>
+      <pubDate>Sun, 04 Mar 2018 08:23:03 +0000</pubDate>
+      <guid>http://localhost:1313/nyan-your-terminal/</guid>
+      <description>Disclaimer #1: I&amp;rsquo;m an Android developer, not sysadmin. I use terminal to help me with my workflow, not as my main tool, so please keep this in mind :)&#xA;Disclaimer #2: This is based on Linux (Ubuntu), but most stuff should work on OSX also.&#xA;Terminal? If you are a developer (and not a Windows peasant), you might had to use terminal for day to day stuff like installing node.js or python packages, or running scripts.</description>
+    </item>
+    <item>
+      <title>Android local libraries with Maven</title>
+      <link>http://localhost:1313/android-local-maven/</link>
+      <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/android-local-maven/</guid>
+      <description>Intro Have you ever created Android library? You know, when you are working on specific functionality in some project and get enlightenment &amp;ldquo;hey, I could use this in some other project!&amp;rdquo;. No? Well&amp;hellip; you should - at least sometimes :) I don&amp;rsquo;t mean creating new ultimate architecture framework every week (we are not JavaScript developers after all), but writing simple tools that you know how to use and that will make your work easer on future projects.</description>
+    </item>
+    <item>
+      <title>Color changing progress bar</title>
+      <link>http://localhost:1313/color-changing-progress-bar/</link>
+      <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/color-changing-progress-bar/</guid>
+      <description>In my project I wanted to have progress bar that shows how much time you have until your food is not good to eat any longer. I&amp;rsquo;m not UX specialist, but I know that usually when you see green color you think it&amp;rsquo;s all ok and red is some danger. So I decided to have small progress bar in each product list item showing time till it should land in trashcan.</description>
+    </item>
+    <item>
+      <title>First post</title>
+      <link>http://localhost:1313/first-post/</link>
+      <pubDate>Sat, 16 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/first-post/</guid>
+      <description>This is first post, so I just want to say HI!&#xA;Currently I&amp;rsquo;m working on my graduation project at Poznań University of Technology, that contains Android app written in Kotlin, and sever app in Python with Django. So if you are interested in how I will make this work, stay tuned :)&#xA;Project name is Frigo and logo looks like that:&#xA;Hopefully it will help you manage your food better.</description>
+    </item>
+    <item>
+      <title>First post</title>
+      <link>http://localhost:1313/first-post/</link>
+      <pubDate>Sat, 16 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/first-post/</guid>
+      <description>Siema!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/2016/04/03/%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2016/04/03/%E9%94%99%E8%AF%AF.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/2016/04/03/%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2016/04/03/%E9%94%99%E8%AF%AF.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/2016/04/03/%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2016/04/03/%E9%94%99%E8%AF%AF.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/2016/04/02/%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Sat, 02 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2016/04/02/%E9%94%99%E8%AF%AF.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/2016/04/02/%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Sat, 02 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2016/04/02/%E9%94%99%E8%AF%AF.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/2016/04/02/%E9%94%99%E8%AF%AF.html</link>
+      <pubDate>Sat, 02 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2016/04/02/%E9%94%99%E8%AF%AF.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2016-04-01-%E9%94%99%E8%AF%AF/</link>
+      <pubDate>Fri, 01 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2016-04-01-%E9%94%99%E8%AF%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2016-04-01-%E9%94%99%E8%AF%AF/</link>
+      <pubDate>Fri, 01 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2016-04-01-%E9%94%99%E8%AF%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2016-04-01-%E9%94%99%E8%AF%AF/</link>
+      <pubDate>Fri, 01 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2016-04-01-%E9%94%99%E8%AF%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2015-01-18-jekyll-last-modified-at/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2015-01-18-jekyll-last-modified-at/</guid>
+      <description>Please don&amp;rsquo;t modify this file. It&amp;rsquo;s modified time is important.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2015-01-18-jekyll-last-modified-at/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2015-01-18-jekyll-last-modified-at/</guid>
+      <description>Please don&amp;rsquo;t modify this file. It&amp;rsquo;s modified time is important.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2015-01-18-jekyll-last-modified-at/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2015-01-18-jekyll-last-modified-at/</guid>
+      <description>Please don&amp;rsquo;t modify this file. It&amp;rsquo;s modified time is important.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-25-oh-yes/</link>
+      <pubDate>Sun, 25 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-25-oh-yes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-25-oh-yes/</link>
+      <pubDate>Sun, 25 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-25-oh-yes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-25-oh-yes/</link>
+      <pubDate>Sun, 25 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-25-oh-yes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-24-whateva/</link>
+      <pubDate>Sat, 24 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-24-whateva/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-24-whateva/</link>
+      <pubDate>Sat, 24 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-24-whateva/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-24-whateva/</link>
+      <pubDate>Sat, 24 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-24-whateva/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-23-hey-there/</link>
+      <pubDate>Fri, 23 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-23-hey-there/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-23-hey-there/</link>
+      <pubDate>Fri, 23 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-23-hey-there/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-23-hey-there/</link>
+      <pubDate>Fri, 23 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-23-hey-there/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-22-humor/</link>
+      <pubDate>Thu, 22 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-22-humor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-22-humor/</link>
+      <pubDate>Thu, 22 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-22-humor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-22-humor/</link>
+      <pubDate>Thu, 22 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-22-humor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-21-bleh/</link>
+      <pubDate>Wed, 21 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-21-bleh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-21-bleh/</link>
+      <pubDate>Wed, 21 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-21-bleh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-21-bleh/</link>
+      <pubDate>Wed, 21 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-21-bleh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-20-blah/</link>
+      <pubDate>Tue, 20 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-20-blah/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-20-blah/</link>
+      <pubDate>Tue, 20 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-20-blah/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-20-blah/</link>
+      <pubDate>Tue, 20 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-paginate-1.1.0/spec/source/2014-05-20-blah/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-05-11-exclude-this-post/</link>
+      <pubDate>Sun, 11 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-05-11-exclude-this-post/</guid>
+      <description>This post should not appear in the sitemap.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-05-11-exclude-this-post/</link>
+      <pubDate>Sun, 11 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-05-11-exclude-this-post/</guid>
+      <description>This post should not appear in the sitemap.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-05-11-exclude-this-post/</link>
+      <pubDate>Sun, 11 May 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-05-11-exclude-this-post/</guid>
+      <description>This post should not appear in the sitemap.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-04-march-the-fourth/</link>
+      <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-04-march-the-fourth/</guid>
+      <description>March the fourth!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-04-march-the-fourth/</link>
+      <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-04-march-the-fourth/</guid>
+      <description>March the fourth!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-04-march-the-fourth/</link>
+      <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-04-march-the-fourth/</guid>
+      <description>March the fourth!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-02-march-the-second/</link>
+      <pubDate>Sun, 02 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-02-march-the-second/</guid>
+      <description>March the second!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-02-march-the-second/</link>
+      <pubDate>Sun, 02 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-02-march-the-second/</guid>
+      <description>March the second!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-02-march-the-second/</link>
+      <pubDate>Sun, 02 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2014-03-02-march-the-second/</guid>
+      <description>March the second!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2013-12-12-dec-the-second/</link>
+      <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.6.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2013-12-12-dec-the-second/</guid>
+      <description>December the twelfth, actually.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2013-12-12-dec-the-second/</link>
+      <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/2.7.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2013-12-12-dec-the-second/</guid>
+      <description>December the twelfth, actually.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2013-12-12-dec-the-second/</link>
+      <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/vendor/bundle/ruby/3.0.0/gems/jekyll-sitemap-1.4.0/spec/fixtures/2013-12-12-dec-the-second/</guid>
+      <description>December the twelfth, actually.</description>
+    </item>
+  </channel>
+</rss>

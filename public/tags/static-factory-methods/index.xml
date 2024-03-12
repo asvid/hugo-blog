@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Static Factory Methods on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/static-factory-methods/</link>
+    <description>Recent content in Static Factory Methods on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/static-factory-methods/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin Static Factory Methods</title>
+      <link>http://localhost:1313/kotlin-static-factory-methods/</link>
+      <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-static-factory-methods/</guid>
+      <description>Purpose There is a concise error in the title, there are no static methods in Kotlin. But there are ways to achieve similar behavior to proposed by Joshua Bloch in Effective Java book - using static factory methods instead of constructors. This is also completely different from the Factory Method design pattern, don&amp;rsquo;t confuse those.&#xA;Long story short, these are methods that create object instances based on supplied arguments (or even without them) and that you can call from anywhere without the need of having an instance of a class that contains them.</description>
+    </item>
+  </channel>
+</rss>

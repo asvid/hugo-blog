@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Model-View-ViewModel on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/model-view-viewmodel/</link>
+    <description>Recent content in Model-View-ViewModel on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/model-view-viewmodel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Presentation Patterns: MVVM</title>
+      <link>http://localhost:1313/2024-02-09-MVVM/</link>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024-02-09-MVVM/</guid>
+      <description>Evolution There is a clear trajectory in presentation pattern evolution - decreased coupling. In MVC, components were closely situated, with numerous direct interactions. MVP addressed this by introducing a standard interface structure. It&amp;rsquo;s now possible to test some interactions without relying on UI (although it may sound somewhat peculiar when discussing presentation patterns, I admit). Nevertheless, there are still some challenges, such as maintaining view state or artificial awareness of view lifecycle in MVP.</description>
+    </item>
+  </channel>
+</rss>

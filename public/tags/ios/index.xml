@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ios on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/ios/</link>
+    <description>Recent content in Ios on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Would you go for mobile development again, after 10 years of doing it?</title>
+      <link>http://localhost:1313/would-i-do-mobile-again/</link>
+      <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/would-i-do-mobile-again/</guid>
+      <description>Would I? I went to a meetup in my city last week and a guy I just met there popped a question after a while of conversation: with my experience, would I go for mobile software development again or pick a different area?&#xA;And it got me thinking Yes, I would do this again, I&amp;rsquo;m even more motivated now.&#xA;I remember how excited I was about the idea that you can write software for a tiny computer that lives in your pocket.</description>
+    </item>
+  </channel>
+</rss>

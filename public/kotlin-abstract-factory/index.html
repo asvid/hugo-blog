@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Kotlin Abstract Factory</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Kotlin&#32;Abstract&#32;Factory />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Kotlin&#32;Abstract&#32;Factory />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Kotlin&#32;Abstract&#32;Factory />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Kotlin&#32;Abstract&#32;Factory />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content=" The factory of factories, &#39;Abstract Factory&#39; makes creating objects that are part of some &#39;family&#39; easy. It is another layer over concrete factories delivering client the factory instance for creating objects of a certain variant. " />
+<meta itemprop="description" content=" The factory of factories, &#39;Abstract Factory&#39; makes creating objects that are part of some &#39;family&#39; easy. It is another layer over concrete factories delivering client the factory instance for creating objects of a certain variant. " />
+<meta property="og:description" content=" The factory of factories, &#39;Abstract Factory&#39; makes creating objects that are part of some &#39;family&#39; easy. It is another layer over concrete factories delivering client the factory instance for creating objects of a certain variant. " />
+<meta name="twitter:description" content=" The factory of factories, &#39;Abstract Factory&#39; makes creating objects that are part of some &#39;family&#39; easy. It is another layer over concrete factories delivering client the factory instance for creating objects of a certain variant. " />
+
+
+<base href="http://localhost:1313/kotlin-abstract-factory/" />
+<link rel="canonical" href="http://localhost:1313/kotlin-abstract-factory/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/kotlin-abstract-factory/" />
+<meta name="twitter:url" content="http://localhost:1313/kotlin-abstract-factory/" />
+<meta property="og:url" content="http://localhost:1313/kotlin-abstract-factory/" />
+
+
+<meta property="og:updated_time" content=2003-02-12T30:00:21Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=2003-02-12T30:00:21Z />
+<meta property="article:published_time" content=2003-02-12T30:00:21Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/kotlin-abstract-factory/">Kotlin Abstract Factory</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2021-03-02T00:00:00Z" class="post-date">
+        March 2, 2021
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>15 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-design patterns">
+        <a href="http://localhost:1313/tags/design-patterns">design patterns</a>
+      </li>
+      
+      <li class="tag-Kotlin">
+        <a href="http://localhost:1313/tags/kotlin">Kotlin</a>
+      </li>
+      
+      <li class="tag-Abstract Factory">
+        <a href="http://localhost:1313/tags/abstract-factory">Abstract Factory</a>
+      </li>
+      
+      <li class="tag-construction design pattern">
+        <a href="http://localhost:1313/tags/construction-design-pattern">construction design pattern</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="purpose">Purpose</h1>
+<p>The name of this pattern doesn&rsquo;t suggest directly how it differs from other construction patterns, like <code>Builder</code> or <code>Factory Method</code>. In the <code>Abstract Factory</code> it&rsquo;s not about creating a single object instance, but the whole family of connected objects. It still sounds like an ordinary <code>Factory</code> that can produce GUI controls for example. To have the <code>Abstract Factory</code> you should add another layer of abstraction and have a mechanism for creating GUI controls in few variants, like for Linux, Windows, or MacOS, but still have a generic API for the pattern client.</p>
+<p><code>Abstract Factory</code> is the <strong>factory of factories</strong>, it creates a version of the factory building objects with a common interface. Object families are bound with the factory that builds them. Still being in the GUI area: you can have control families for Windows, Linux, and MacOS - this will prevent situations like using MacOS button next to Windows text field. Factory client is not concerned about which family factory is being used, because the API of delivered objects is the same. And this is the <code>Abstract</code> of this Factory - <strong>sharing the object family factory interface</strong>.</p>
+<p>Some useful posts before further reading :</p>
+<ul>
+<li><a href="https://asvid.github.io/kotlin-static-factory-methods" target="_blank">Static Factory Method</a></li>
+<li><a href="https://asvid.github.io/kotlin-factory-method" target="_blank">&ldquo;Ordinary&rdquo; Factory Method</a></li>
+</ul>
+<h1 id="implementation-examples">Implementation examples</h1>
+<p>I had some trouble myself understanding this pattern before I saw some code examples and diagrams, so let&rsquo;s jump into it now.</p>
+<h2 id="basic">Basic</h2>
+<p>The book example from &ldquo;Design Patterns&rdquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> from &ldquo;the gang of four&rdquo;. It is very <code>abstract</code> but it shows nicely the idea behind this pattern.</p>
+<p>The interface of the factory producing family of objects. Family consists two products: <code>ProductA</code> and <code>ProductB</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Factory</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createProductA</span>(): ProductA
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createProductB</span>(): ProductB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">companion</span> <span style="color:#66d9ef">object</span> <span style="color:#75715e">// won&#39;t hurt and can be useful
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Each of the products has two variants: <code>1</code> i <code>2</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// products
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ProductA</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ProductB</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// variant 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product1A</span> : ProductA
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product1B</span> : ProductB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// variant 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product2A</span> : ProductA
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product2B</span> : ProductB
+</span></span></code></pre></div><p>Each variant has a separate specific factory, supplying both products in a suitable variant. The <code>internal</code> ensures that the class does not leak outside the module. Concrete factories are a good candidate for using Singleton, hence the <code>object</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// variant 1 factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">ConcreteFactory1</span> : Factory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createProductA</span>() = Product1A()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createProductB</span>() = Product1B()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// variant 2 factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">ConcreteFactory2</span> : Factory { <span style="color:#75715e">// 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createProductA</span>() = Product2A()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createProductB</span>() = Product2B()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>Abstract Factory</code>, returning the appropriate concrete factory (for the appropriate variant) but being hidden behind
+generic <code>Factory</code> interface. This way, customers don&rsquo;t even need to know about the specific factory existence. The client
+just needs to know that they will get a <code>Factory</code> and that it will be able to build<code> ProductA</code> and <code>ProductB</code>. The <code>getFactory ()</code> methods
+here is the so-called <code>top-level function</code> because it is outside any class, but can be part of e.g.<code> companion object</code>
+Factory interface.</p>
+<p>However, the Factory interface itself should not necessarily be aware of its implementations, fortunately it can
+an empty <code>companion object</code>, which will be given in the appropriate place with the<code> extension function</code>.
+I wrote more about it <a href="https://asvid.github.io/pl/kotlin-builder-pattern" target="_blank">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// naive but working implementation with ordinary Int
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getFactory</span>(whichOne: Int): Factory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (whichOne) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">1</span> <span style="color:#f92672">-&gt;</span> ConcreteFactory1
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">2</span> <span style="color:#f92672">-&gt;</span> ConcreteFactory2
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">throw</span> IllegalArgumentException(<span style="color:#e6db74">&#34;value: </span><span style="color:#e6db74">$whichOne</span><span style="color:#e6db74"> is not available&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// variants as enum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FactoryVariant</span> {
+</span></span><span style="display:flex;"><span>    Variant1,
+</span></span><span style="display:flex;"><span>    Variant2
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// less naive but similar implementation with enums
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getFactory</span>(whichOne: FactoryVariant): Factory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (whichOne) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">FactoryVariant</span>.Variant1 <span style="color:#f92672">-&gt;</span> ConcreteFactory1
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">FactoryVariant</span>.Variant2 <span style="color:#f92672">-&gt;</span> ConcreteFactory2
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">throw</span> IllegalArgumentException(<span style="color:#e6db74">&#34;value: </span><span style="color:#e6db74">$whichOne</span><span style="color:#e6db74"> is not available&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// extension function for the Factory companion object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Factory</span>.<span style="color:#a6e22e">Companion</span>.getFactory(whichOne: Int): Factory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (whichOne) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">1</span> <span style="color:#f92672">-&gt;</span> ConcreteFactory1
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">2</span> <span style="color:#f92672">-&gt;</span> ConcreteFactory2
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">throw</span> IllegalArgumentException(<span style="color:#e6db74">&#34;value: </span><span style="color:#e6db74">$whichOne</span><span style="color:#e6db74"> is not available&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> factory: Factory = getFactory(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>factory.createProductA() <span style="color:#75715e">//  Product2A
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>factory.createProductB() <span style="color:#75715e">//  Product2B
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> factory2: Factory = getFactory(<span style="color:#a6e22e">FactoryVariant</span>.Variant1)
+</span></span><span style="display:flex;"><span>factory2.createProductA() <span style="color:#75715e">// Product1A
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>factory2.createProductB() <span style="color:#75715e">//Product1B
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// or as Factory interface companion object method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Factory</span>.getFactory(<span style="color:#ae81ff">1</span>).createProductA()
+</span></span></code></pre></div><p>On diagram it looks like this:</p>
+<p>{% plantuml %}
+@startuml</p>
+<p>interface Factory{</p>
+<ul>
+<li>createProductA() : ProductA</li>
+<li>createProductB() : ProductB
+}</li>
+</ul>
+<p>interface ProductA
+interface ProductB</p>
+<p>class Product1A&laquo; (C,#FF7700) Variant1 &raquo; implements ProductA
+class Product1B&laquo; (C,#FF7700) Variant1 &raquo; implements ProductB</p>
+<p>class Product2A&laquo; (C,#FF0077) Variant2 &raquo; implements ProductA
+class Product2B&laquo; (C,#FF0077) Variant2 &raquo; implements ProductB</p>
+<p>class ConcreteFactory1&laquo; (O,#FF0077) Variant1 &raquo; implements Factory
+class ConcreteFactory2&laquo; (O,#FF7700) Variant2 &raquo; implements Factory</p>
+<p>Factory::createProductA-right[bold]-|&gt;ProductA
+Factory::createProductB-right[bold]-|&gt;ProductB</p>
+<p>class AbstractFactory{
++getFactory(variant) : Factory
+}</p>
+<p>AbstractFactory::getFactory&ndash;&gt;Factory</p>
+<p>@enduml
+{% endplantuml %}</p>
+<h2 id="gui-elements-family">GUI elements family</h2>
+<p>A concrete example using the already mentioned GUI controls families. It still seems to me not quite &ldquo;real&rdquo; but
+personally, it helped me the most to understand what the <code>Abstract Factory</code> can actually be used for.</p>
+<p>So we have few GUI controls, like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">View</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Button</span> : View
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Image</span> : View
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GridView</span> : View
+</span></span></code></pre></div><p>And interface of the factory that supplies them.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ViewFactory</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// variants known to the Factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OS</span> {
+</span></span><span style="display:flex;"><span>        Linux, Windows
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// methods creating generic controls, independent from the OS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">companion</span> <span style="color:#66d9ef">object</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// &#34;static&#34; method that supplies concrete factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createFactory</span>(os: OS): ViewFactory {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (os) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">OS</span>.Linux <span style="color:#f92672">-&gt;</span> LinuxViewViewFactory
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">OS</span>.Windows <span style="color:#f92672">-&gt;</span> WindowsViewViewFactory
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>ViewFactory</code> interface is implemented by concrete factories for Windows and Linux</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">LinuxViewViewFactory</span> : ViewFactory {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// concrete types that are created for specific OS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// internal ensures they wont leak outside module
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinuxButton</span> : Button()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinuxImage</span> : Image()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// the clients will see only generic control interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button = LinuxButton()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image = LinuxImage()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">WindowsViewViewFactory</span> : ViewFactory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WindowsButton</span> : Button()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WindowsImage</span> : Image()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button = WindowsButton()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image = WindowsImage()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It can be used like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> winViewFactory = <span style="color:#a6e22e">ViewFactory</span>.createFactory(<span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Windows)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> button = winViewFactory.createButton()
+</span></span></code></pre></div><p>But this way, the abstract factory interface needs to know its implementations - that is, the specific control factories. You can approach it differently and not create a <code>companion object</code> in<code> ViewFactory</code> that returns factories, but create a new class that will take care of delivering specific controls using each available control factory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// class hiding concrete factories, but implementing the same interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewCreator</span>(os: <span style="color:#a6e22e">ViewFactory</span>.OS) : ViewFactory {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// instance of `ViewCreator` can provide controls only for provided in the constructor OS 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> factory = <span style="color:#66d9ef">when</span> (os) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Linux <span style="color:#f92672">-&gt;</span> LinuxViewViewFactory
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Windows <span style="color:#f92672">-&gt;</span> WindowsViewViewFactory
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// methods returning generic controls from the factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// created on the constructor argument base
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button = factory.createButton()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image = factory.createImage()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// usage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> linuxButton = ViewCreator(<span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Linux).createButton()
+</span></span></code></pre></div><p>Clients still don&rsquo;t know the specific control factory, but now the <code>ViewFactory</code> interface does not need to know them either. No need for extending <code>companion object</code> also. We just create an instance of the factory for the specific OS that is underneath is using specific factories compatible with the provided OS type.</p>
+<p>It&rsquo;s easy to see that as the number of controls increases, a lot of code will look almost identical, essentially just proxy method calls to specific factories. An interesting and unorthodox idea is to use one <code>make &lt;Type&gt; ()</code> method instead of separate methods for each type of control. Then the <code>ViewCreator</code> would look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// not implementing the `ViewFactory` interface anymore
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewCreator</span>(os: <span style="color:#a6e22e">ViewFactory</span>.OS) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// this field must be public because it&#39;s used in the `inline` method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> factory = <span style="color:#66d9ef">when</span> (os) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Linux <span style="color:#f92672">-&gt;</span> LinuxViewViewFactory
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Windows <span style="color:#f92672">-&gt;</span> WindowsViewViewFactory
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// `inline` and `reified` allow using unknown generic types before compilation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">fun</span> &lt;<span style="color:#66d9ef">reified</span> <span style="color:#a6e22e">T</span> : <span style="color:#a6e22e">View</span>&gt; <span style="color:#a6e22e">make</span>(): T = <span style="color:#66d9ef">when</span> (T<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>) {
+</span></span><span style="display:flex;"><span>        Button<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">-&gt; </span><span style="color:#a6e22e">factory</span>.createButton() <span style="color:#66d9ef">as</span> T
+</span></span><span style="display:flex;"><span>        Image<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">-&gt; </span><span style="color:#a6e22e">factory</span>.createImage() <span style="color:#66d9ef">as</span> T
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">throw</span> IllegalArgumentException()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// usage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> windowsButton = ViewCreator(<span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Windows).make&lt;GridView&gt;()
+</span></span></code></pre></div><p>The keywords <code>inline</code> and<code> reified</code> are easily a topic for a separate post. Using them here allows the passing of a type extending <code>View</code>, and causes the <code>make()</code> method to return just such a type. This saves you from having to add a new <code>createButton()</code> method for each new control. It is enough for the new control to extend the <code>View</code> and handling the new case in the <code>when</code>.</p>
+<p>What exactly does the <code>inline</code> do? It copies the code to the place where it is called, <strong>literally</strong> :) and that is why all fields used by the <code>inline</code> methods must be publicly available. With this implementation of the <code>make()</code> method, we need to use <code>reified</code> to be able to use the <strong>class of the passed type <!-- raw HTML omitted --></strong> to find the correct method in the specific <code>ViewFactory</code>.
+The <code>reified</code> can only be used in<code> inline</code> methods, because &ldquo;pasting&rdquo; the method code where it is called allows you to know the exact type during the compilation. After calling the appropriate method, e.g. <code>createButton()</code>, the result should be cast to <code>T</code>, because <code>T</code> is the expected type of the returned object - not <code>Button</code>, even if <code>T :: class == Button: : class</code>.</p>
+<p>Copying code causes compiled files to explode in size, e.g. calling <code>make()</code> twice:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> windowsButton = ViewCreator(<span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Windows).make&lt;Button&gt;()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// sadly you can also pass the `internal` types within the same module
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// so the returned type wont be generic `Button` but concrete `WindowsButton`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> windowsButton2 = ViewCreator(<span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Windows).make&lt;<span style="color:#a6e22e">WindowsViewViewFactory</span>.WindowsButton&gt;()
+</span></span></code></pre></div><p>This will generate <code>bytecode</code> that will be equivalent of Java:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// the beginning of the first Button</span>
+</span></span><span style="display:flex;"><span>ViewCreator this_$iv<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> ViewCreator(OS.<span style="color:#a6e22e">Windows</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> $i$f$make<span style="color:#f92672">=</span><span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>KClass var4<span style="color:#f92672">=</span>Reflection.<span style="color:#a6e22e">getOrCreateKotlinClass</span>(Button.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>Button var10000;
+</span></span><span style="display:flex;"><span>View var9;
+</span></span><span style="display:flex;"><span>Image var10;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(Intrinsics.<span style="color:#a6e22e">areEqual</span>(var4,Reflection.<span style="color:#a6e22e">getOrCreateKotlinClass</span>(Button.<span style="color:#a6e22e">class</span>))){
+</span></span><span style="display:flex;"><span>var10000<span style="color:#f92672">=</span>this_$iv.<span style="color:#a6e22e">getFactory</span>().<span style="color:#a6e22e">createButton</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(var10000<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NullPointerException(<span style="color:#e6db74">&#34;null cannot be cast to non-null type abstract_factory.family.Button&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>var9<span style="color:#f92672">=</span>(View)var10000;
+</span></span><span style="display:flex;"><span>}<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>Intrinsics.<span style="color:#a6e22e">areEqual</span>(var4,Reflection.<span style="color:#a6e22e">getOrCreateKotlinClass</span>(Image.<span style="color:#a6e22e">class</span>))){
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span>(Throwable)(<span style="color:#66d9ef">new</span> IllegalArgumentException());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>var10<span style="color:#f92672">=</span>this_$iv.<span style="color:#a6e22e">getFactory</span>().<span style="color:#a6e22e">createImage</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(var10<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NullPointerException(<span style="color:#e6db74">&#34;null cannot be cast to non-null type abstract_factory.family.Button&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>var9<span style="color:#f92672">=</span>(View)((Button)var10);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the end of the first Button</span>
+</span></span><span style="display:flex;"><span>Button windowsButton<span style="color:#f92672">=</span>(Button)var9;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ------------------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the beginning of the second Button</span>
+</span></span><span style="display:flex;"><span>ViewCreator this_$iv<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> ViewCreator(OS.<span style="color:#a6e22e">Windows</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> $i$f$make<span style="color:#f92672">=</span><span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>KClass var5<span style="color:#f92672">=</span>Reflection.<span style="color:#a6e22e">getOrCreateKotlinClass</span>(WindowsButton.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(Intrinsics.<span style="color:#a6e22e">areEqual</span>(var5,Reflection.<span style="color:#a6e22e">getOrCreateKotlinClass</span>(Button.<span style="color:#a6e22e">class</span>))){
+</span></span><span style="display:flex;"><span>var10000<span style="color:#f92672">=</span>this_$iv.<span style="color:#a6e22e">getFactory</span>().<span style="color:#a6e22e">createButton</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(var10000<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NullPointerException(<span style="color:#e6db74">&#34;null cannot be cast to non-null type abstract_factory.family.WindowsViewViewFactory.WindowsButton&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>var9<span style="color:#f92672">=</span>(View)((WindowsButton)var10000);
+</span></span><span style="display:flex;"><span>}<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>Intrinsics.<span style="color:#a6e22e">areEqual</span>(var5,Reflection.<span style="color:#a6e22e">getOrCreateKotlinClass</span>(Image.<span style="color:#a6e22e">class</span>))){
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span>(Throwable)(<span style="color:#66d9ef">new</span> IllegalArgumentException());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>var10<span style="color:#f92672">=</span>this_$iv.<span style="color:#a6e22e">getFactory</span>().<span style="color:#a6e22e">createImage</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(var10<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NullPointerException(<span style="color:#e6db74">&#34;null cannot be cast to non-null type abstract_factory.family.WindowsViewViewFactory.WindowsButton&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>var9<span style="color:#f92672">=</span>(View)((WindowsButton)var10);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the end of the second Button</span>
+</span></span><span style="display:flex;"><span>WindowsButton windowsButton2<span style="color:#f92672">=</span>(WindowsButton)var9;
+</span></span></code></pre></div><p>And so, anywhere where the <code>inline</code> method is used. So maybe this is not the best solution for frequently used methods, and creating GUI controls in an app that need as much as <code>Abstract Factory</code> for it, sounds like one of those cases.</p>
+<p>This approach is also from the book &ldquo;Design Patterns&rdquo; [^ design_patterns] and was rather intended for Objective C or Smalltalk languages, but I&rsquo;ll come back to it later.</p>
+<h2 id="factory-with-registry">Factory with registry</h2>
+<p>In the previous post about <a href="https://asvid.github.io/en/kotlin-factory-method#factories-with-registry" target="_blank">Factory Method</a> I mentioned a factory with a registry that allows you to flexibly add new factories. A similar thing can be done with the <code>Abstract Factory</code>. I will use the same example as before, i.e. factory building GUI controls for a specific operating system.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// interface of the Factory that will be registered
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ViewFactory</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// types supplied by the Factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">View</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Button</span> : View
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Image</span> : View
+</span></span></code></pre></div><p>Concrete Factories are the same as before.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">LinuxViewViewFactory</span> : ViewFactory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinuxButton</span> : Button()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinuxImage</span> : Image()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button = LinuxButton()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image = LinuxImage()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">WindowsViewViewFactory</span> : ViewFactory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WindowsButton</span> : Button()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WindowsImage</span> : Image()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button = WindowsButton()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image = WindowsImage()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The Factory with a registry itself:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">ViewFactoryMaker</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// registry for concrete Factories, key is just a String
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> registry = mutableMapOf&lt;String, ViewFactory&gt;()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">register</span>(name: String, factory: ViewFactory) {
+</span></span><span style="display:flex;"><span>        registry[name] = factory
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returning concrete Factory under provided key
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// if key is missing it will return `null`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getFactory</span>(name: String): ViewFactory? {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> registry[name]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The usage is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// in this case `xpButton1` will be `null` - there is no Factory under &#34;XP&#34; key
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> xpButton1 = <span style="color:#a6e22e">ViewFactoryMaker</span>.getFactory(<span style="color:#e6db74">&#34;XP&#34;</span>)<span style="color:#f92672">?.</span>createButton()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// but it can be created as anonymous object and registered
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">ViewFactoryMaker</span>.register(<span style="color:#e6db74">&#34;XP&#34;</span>, <span style="color:#66d9ef">object</span>: ViewFactory {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// anonymous object extending Button class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">object</span>: Button() {}
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">object</span>: Image() {}
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// `xpButton2` will not be `null` this time
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> xpButton2 = <span style="color:#a6e22e">ViewFactoryMaker</span>.getFactory(<span style="color:#e6db74">&#34;XP&#34;</span>)<span style="color:#f92672">?.</span>createButton()
+</span></span></code></pre></div><p>The registry allows you to easily add new factories if the need arises. The Abstract Factory basically provides just the interface for the specific factories and objects types created by them.</p>
+<h2 id="the-make-method-once-again">The <code>make</code> method once again</h2>
+<p>By using the <code>make()</code> approach and the factory registry, you can achieve an interesting effect.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> linuxButton = <span style="color:#a6e22e">ViewFactory</span>.getFactory(<span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Linux).make&lt;Button&gt;()
+</span></span></code></pre></div><p>Pozwala to na łatwe rozszerzanie możliwości fabryk, bez konieczności pisania proxy-metod. Aby to osiągnąć, należy rozbudować <code>ViewFactory</code> o companion object i metodę <code>inline</code>. Każda konkretna fabryka będzie rozszerzać abstrakcyjne <code>ViewFactory</code> i nadpisywać metody tworzące kontrolki GUI.</p>
+<p>This allows you to easily expand the capabilities of factories, without having to write proxy-methods. To achieve this, add a companion object and an <code>inline</code> method to the <code>ViewFactory</code>. Any concrete factory will extend the abstract <code>ViewFactory</code> and override the methods creating the GUI controls.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViewFactory</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// variants known to the Factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OS</span> {
+</span></span><span style="display:flex;"><span>        Linux, Windows
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// methods to override by concrete factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// registry now keeps method references, and not concrete factories
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// the registry key is generic type returned by the method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">val</span> registry = mutableMapOf&lt;KClass&lt;<span style="color:#66d9ef">out</span> View&gt;, () <span style="color:#f92672">-&gt;</span> View&gt;(
+</span></span><span style="display:flex;"><span>        Button<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">to</span> <span style="color:#f92672">::</span>createButton,
+</span></span><span style="display:flex;"><span>        Image<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">to</span> <span style="color:#f92672">::</span>createImage
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// this method cannot be overriden
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">fun</span> &lt;<span style="color:#66d9ef">reified</span> <span style="color:#a6e22e">T</span> : <span style="color:#a6e22e">View</span>&gt; <span style="color:#a6e22e">make</span>(): T? {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// the `registry` field is protected, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// so `inline` method can&#39;t access it directly
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#960050;background-color:#1e0010">`</span>access<span style="color:#960050;background-color:#1e0010">$</span>registry<span style="color:#960050;background-color:#1e0010">`</span>[T<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>]<span style="color:#f92672">?.</span>invoke() <span style="color:#66d9ef">as</span> T?
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">companion</span> <span style="color:#66d9ef">object</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getFactory</span>(os: OS): ViewFactory {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (os) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">OS</span>.Linux <span style="color:#f92672">-&gt;</span> LinuxViewFactory <span style="color:#75715e">// Singleton
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#a6e22e">OS</span>.Windows <span style="color:#f92672">-&gt;</span> WindowsViewFactory() <span style="color:#75715e">// standard obiekt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// a bit nasty way to share registry with `make()` method - suggested by IDE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// it&#39;s internal so after compilation it won&#39;t be available outside its module
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// the weird name is supposed to scare out the clients I guess
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@PublishedApi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">val</span> `access$registry`: MutableMap&lt;KClass&lt;<span style="color:#66d9ef">out</span> View&gt;, () <span style="color:#f92672">-&gt;</span> View&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">get</span>() = registry
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>So now, having a specific factory, provided by the method <code>getFactory()</code> from companion object, instead of calling a specific method on it, e.g. <code>createButton()</code> we use <code>make&lt;Button&gt;()</code> and the registry will find the appropriate method looking on the return type and invoke it by using <code>invoke()</code>.</p>
+<p>Concrete Factory may look like that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// standard class instead of Singleton allows `internal` classes klasa
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WindowsViewViewFactory</span> : ViewFactory() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// private inner ensures the type is not visible outside
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WindowsButton</span> : Button()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WindowsImage</span> : Image()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// overriding methods creating GUI controls
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// their references will be added to the factory registry
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button = WindowsButton()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image = WindowsImage()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Or like so, with a new <code>GridView</code> control added that only<code> LinuxViewFactory</code> can create</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">LinuxViewViewFactory</span> : ViewFactory() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinuxButton</span> : Button()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinuxImage</span> : Image()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//  GridView implementation exists only for Linux
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinuxGridView</span> : GridView()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// and the Factory has only those methods in the interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createButton</span>(): Button = LinuxButton()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createImage</span>(): Image = LinuxImage()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// adding a new control just for this one Factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">init</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// using `LinuxGridView` as argument will return `null`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        registry[GridView<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>] = {
+</span></span><span style="display:flex;"><span>            LinuxGridView()
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Some usage showcases:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> linuxFactory = <span style="color:#a6e22e">ViewFactory</span>.getFactory(<span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Linux)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> windowsFactory = <span style="color:#a6e22e">ViewFactory</span>.getFactory(<span style="color:#a6e22e">ViewFactory</span>.<span style="color:#a6e22e">OS</span>.Windows)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> linuxButton = linuxFactory.make&lt;Button&gt;()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> winButton = windowsFactory.make&lt;Button&gt;()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> gridView = linuxFactory.make&lt;GridView&gt;() <span style="color:#75715e">// OK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> winGridView = windowsFactory.make&lt;GridView&gt;() <span style="color:#75715e">// null
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// sadly `access$registry` is public in the same module scope
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> registry = linuxFactory.<span style="color:#960050;background-color:#1e0010">`</span>access<span style="color:#960050;background-color:#1e0010">$</span>registry<span style="color:#960050;background-color:#1e0010">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// and nothing will stop us from registering new control
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// as long as it&#39;s implementing `View` from Abstract Factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewView</span>: View
+</span></span><span style="display:flex;"><span>registry[NewView<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>] = { NewView() }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// legal use of the `make()` method, but will return `null`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// `View` is not present in the registry
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> view = linuxFactory.make&lt;View&gt;()
+</span></span></code></pre></div><p>Adding a new control for all specific factories only means adding an abstract method to <code>ViewFactory</code> and registering it. All derived classes will have to implement it. Adding a control only for a specific factory is also relatively simple, and the implementation is limited to the code of a specific factory. In this case, the <code>inline</code> method will not generate a huge amount of code wherever it&rsquo;s used, because all it does is calling the method from the registry.</p>
+<p>Generated code for the <code>make&lt;Button&gt;()</code> method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// `var10000` is a reference for the method returning `Button`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Function0 var10000 = (Function0)linuxFactory.getAccess<span style="color:#960050;background-color:#1e0010">$</span>registry().<span style="color:#66d9ef">get</span>(<span style="color:#a6e22e">Reflection</span>.getOrCreateKotlinClass(<span style="color:#a6e22e">Button</span>.<span style="color:#66d9ef">class</span>));
+</span></span><span style="display:flex;"><span>Button linuxButton = (Button)((View)((Button)(var10000 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> ? (View)var10000.invoke() : <span style="color:#66d9ef">null</span>)));
+</span></span></code></pre></div><p>So it&rsquo;s an interesting and quite useful hybrid of a factory with a registry and the single method for creating objects. An unquestionable advantage is the flexibility of this implementation, but public access to the method registry, and the lack of certainty whether the selected factory can create the desired type may raise doubts.</p>
+<h1 id="summary">Summary</h1>
+<p>The <code>Abstract Factory</code> pattern is useful for creating objects that can be combined into meaningful families. It constitutes a layer above the standard <code>Factory Method</code>, serving specific factories depending on the client needs. It can come in several variants, e.g. with the single <code>make()</code> method  or with a registry of specific factories, but in each case it defines the interface implemented by the supplied concrete factories. It makes no difference to the client which specific implementation it gets. The pros and cons are very close to those of the Factory Method</p>
+<h2 id="pros">Pros</h2>
+<ul>
+<li><strong>easy &ldquo;families&rdquo; of objects management</strong> - relying solely on the factory interface, the customer can be sure that the delivered objects come from the same &ldquo;family&rdquo; and will work properly with each other</li>
+<li><strong>complete separation of the implementation from the interface</strong> - from the client of the factory level, you are only interested in the object interface, allowing you to easily add new implementations without changing the client.</li>
+</ul>
+<h2 id="cons">Cons</h2>
+<ul>
+<li><strong>additional classes creation</strong> - interfaces, factories, enums, etc. This is not necessarily a disadvantage, especially when it comes to the interfaces, because it significantly helps to test the code later. You have to be wise here, and if you are providing single class instances and there is no prospect of increasing the number of types, then maybe you don&rsquo;t need all this boilerplate.</li>
+<li><strong><code>inline</code> methods</strong> - be careful with them, because they can generate a lot of code that is copied multiple times in the project</li>
+<li><strong>extra work when adding a new type</strong> - adding a new type that is created by factories requires implementation in each specific factory. Adding a new specific factory also requires all methods to be created or overwritten. This is not necessarily a disadvantage, because the design pattern requires a fully operational factory to be delivered to the client, but it is additional work beyond adding only the classes of objects from the new family.</li>
+</ul>
+<hr>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://books.google.pl/books?id=Mkn6uAEACAAJ&amp;dq=isbn:0201633612&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwiQgZnevojvAhXeAxAIHerSDCsQ6AEwAHoECAAQAg" target="_blank">Design Patterns: Elements of Reusable Object-Oriented Software</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/kotlin-factory-method/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Kotlin Factory Method</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/kotlin-template-method/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Kotlin Template Method</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic">Basic</a></li>
+    <li><a href="#gui-elements-family">GUI elements family</a></li>
+    <li><a href="#factory-with-registry">Factory with registry</a></li>
+    <li><a href="#the-make-method-once-again">The <code>make</code> method once again</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#pros">Pros</a></li>
+    <li><a href="#cons">Cons</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

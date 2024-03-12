@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Kotlin Factory Method</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Kotlin&#32;Factory&#32;Method />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Kotlin&#32;Factory&#32;Method />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Kotlin&#32;Factory&#32;Method />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Kotlin&#32;Factory&#32;Method />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content=" After the `Static Factory Method` it&#39;s time for classic `Factory`. Factory is very useful and often used construction design pattern. Kotlin has interesting advantage thanks to `sealed` and `internal` classes, that are missing in Java. " />
+<meta itemprop="description" content=" After the `Static Factory Method` it&#39;s time for classic `Factory`. Factory is very useful and often used construction design pattern. Kotlin has interesting advantage thanks to `sealed` and `internal` classes, that are missing in Java. " />
+<meta property="og:description" content=" After the `Static Factory Method` it&#39;s time for classic `Factory`. Factory is very useful and often used construction design pattern. Kotlin has interesting advantage thanks to `sealed` and `internal` classes, that are missing in Java. " />
+<meta name="twitter:description" content=" After the `Static Factory Method` it&#39;s time for classic `Factory`. Factory is very useful and often used construction design pattern. Kotlin has interesting advantage thanks to `sealed` and `internal` classes, that are missing in Java. " />
+
+
+<base href="http://localhost:1313/kotlin-factory-method/" />
+<link rel="canonical" href="http://localhost:1313/kotlin-factory-method/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/kotlin-factory-method/" />
+<meta name="twitter:url" content="http://localhost:1313/kotlin-factory-method/" />
+<meta property="og:url" content="http://localhost:1313/kotlin-factory-method/" />
+
+
+<meta property="og:updated_time" content=26002-26-12T20:00:21Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=26002-26-12T20:00:21Z />
+<meta property="article:published_time" content=26002-26-12T20:00:21Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/kotlin-factory-method/">Kotlin Factory Method</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2021-02-26T00:00:00Z" class="post-date">
+        February 26, 2021
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>15 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-design patterns">
+        <a href="http://localhost:1313/tags/design-patterns">design patterns</a>
+      </li>
+      
+      <li class="tag-Kotlin">
+        <a href="http://localhost:1313/tags/kotlin">Kotlin</a>
+      </li>
+      
+      <li class="tag-Factory Method">
+        <a href="http://localhost:1313/tags/factory-method">Factory Method</a>
+      </li>
+      
+      <li class="tag-construction design pattern">
+        <a href="http://localhost:1313/tags/construction-design-pattern">construction design pattern</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="purpose">Purpose</h1>
+<p>Just like Builder, the Factory is a creational pattern. It describes an interface used to deliver instances. Instead of calling object constructor, we can call a method of the Factory which will generate interface implementation - the concrete object. What makes it different from Builder is that usually none or very few arguments need to be passed. It&rsquo;s Factory&rsquo;s job to fulfill all required by the object dependencies.</p>
+<p>Factory can deliver objects of various types implementing the same interface just by the passed arguments. The complete interface from implementation isolation allows effortless replacing implementation in runtime.</p>
+<p>When using Factory you rather tell it: &ldquo;I know just <code>this</code> and <code>that</code> give me instance implementing the expected interface&rdquo;. Example: <code>Locale.forLanguageTag(&quot;pl-PL&quot;)</code> will give us <code>Locale</code> instance with full country or language name even if they were not provided. In the case of Builder, it would rather be telling: &ldquo;give me instance with <code>this</code> and <code>that</code> set and leave everything else default&rdquo;. Factories often have injected dependencies that allow them to create complex objects with just minimum input data from the client.</p>
+<p>There are few variants of this pattern:</p>
+<ul>
+<li>Static Factory Method (already described <a href="https://asvid.github.io/kotlin-static-factory-methods" target="_blank">here</a>)</li>
+<li>&ldquo;typical&rdquo; Factory Method</li>
+<li>Abstract Factory</li>
+</ul>
+<p>Here, I&rsquo;d like to focus on Factory Method and leave Abstract Factory for the future one.</p>
+<h1 id="implementation-examples">Implementation examples</h1>
+<p>Factory Method pattern itself can take multiple forms. The most important common feature is relying only on the delivered object interface instead of concrete implementation.</p>
+<h2 id="example-from-the-gang-of-four-simple">Example from &ldquo;the gang of four&rdquo; (simple)</h2>
+<p>Fairly basic example, coming from the book &ldquo;Design Patterns: Elements of Reusable Object-Oriented Software&rdquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> by so called &lsquo;gang of four&rsquo; (Gamma, Helm, Johnson, Vlissides).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// basic example of Factory Method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> creator: Creator = ConcreteCreator()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> concreteProduct: Product = creator.factoryMethod()
+</span></span><span style="display:flex;"><span>concreteProduct.doStuff()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// instance can be still created with a constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> concreteProduct2 = ConcreteProduct()
+</span></span></code></pre></div><p>{% plantuml %}
+@startuml
+interface Product
+interface Creator{
++factoryMethod():Product
+}</p>
+<p>class ConcreteCreator extends Creator{
++factoryMethod():Product
+}</p>
+<p>class ConcreteProduct extends Product</p>
+<p>note right of ConcreteCreator::factoryMethod
+return ConcreteProduct()
+end note</p>
+<p>ConcreteCreator .left. ConcreteProduct : &gt; creates
+@enduml
+{% endplantuml %}</p>
+<h3 id="elements">Elements</h3>
+<ul>
+<li><strong>Product</strong> - interface of the object created by the factory</li>
+<li><strong>ConcreteProduct</strong> - implementation of <code>Product</code> interface, a concrete object that will be created by Factory</li>
+<li><strong>Creator</strong> - Factory interface, it has declaration of the factory method returning <code>Product</code></li>
+<li><strong>ConcreteCreator</strong> - Factory implementation, building <code>Product</code> instance, in this case it&rsquo;s <code>ConcreteProduct</code></li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// generic product interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Product</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">doStuff</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;concrete&#34; product implementing interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteProduct</span> : Product {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">doStuff</span>() {
+</span></span><span style="display:flex;"><span>        println(<span style="color:#e6db74">&#34;ConcreteProduct is doing stuff&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Creator</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// factory method that returns `Product` implementation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">factoryMethod</span>() : Product
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;concrete&#34; factory implementation, building `ConcreteProduct`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteCreator</span>: Creator {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returned type has to be generic interface, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// returning internal `ConcreteProduct` will cause compile time error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">factoryMethod</span>() : Product {
+</span></span><span style="display:flex;"><span>        println(<span style="color:#e6db74">&#34;ConcreteCreator is using factory method&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ConcreteProduct()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>There is nothing similar to <code>internal class</code> in Java, but it fits nicely into the above use. Using <code>internal</code> prevents leaking internal types. This is especially useful when building a library or SDK and you don&rsquo;t want to reveal implementation.</p>
+<h2 id="more-interesting-example-from-the-gang-of-four">More interesting example from the gang of four</h2>
+<p>The same book contains a more exciting example. Let&rsquo;s assume that we have an application, where you can create and then modify geometric figures. Each figure will contain information about its points coordinates and method to calculate area. It&rsquo;s easy to imagine that every figure will be scaled or moved differently. Instead of creating methods for that inside figure class, we can have another object the <code>Manipulator</code>, that will handle those operations for the given figure. But we don&rsquo;t want our client to know and understand implementation details for <code>Figure</code> or <code>Manipulator</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// creating an instance with the constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> square = Square()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// using square manipulator but through a generic interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>square.createManipulator().drag()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> figureFactory: FigureFactory = ByTypeFactory()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// creating a circle with a factory method that takes `enum` describing expected figure type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> circle: Figure = figureFactory.createFigure(<span style="color:#a6e22e">FigureFactory</span>.<span style="color:#a6e22e">Type</span>.Circle)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// similar figure manipulation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>circle.createManipulator().drag()
+</span></span></code></pre></div><p>{% plantuml %}
+@startuml
+interface Figure{
++createManipulator(): FigureManipulator
+}
+interface FigureManipulator {
++drag()
++resize(scale: Float)
+}</p>
+<p>class Client</p>
+<p>Client -left-&gt; Figure
+Client -right-&gt; FigureManipulator</p>
+<p>class Circle extends Figure {
++createManipulator(): FigureManipulator
+}
+class Square extends Figure {
++createManipulator(): FigureManipulator
+}</p>
+<p>class CircleManipulator extends FigureManipulator {
+-figure:Circle
++drag()
++resize(scale: Float)
+}</p>
+<p>class SquareManipulator extends FigureManipulator {
+-figure:Square
++drag()
++resize(scale: Float)
+}</p>
+<p>Circle::createManipulator .right.&gt; CircleManipulator
+Square::createManipulator .right.&gt; SquareManipulator
+@enduml
+{% endplantuml %}</p>
+<h3 id="elements-1">Elements</h3>
+<ul>
+<li><strong>Figure</strong> - figure itnerface implemented by classes <code>Circle</code>, <code>Square</code> and <code>Line</code></li>
+<li><strong>FigureManipulator</strong> - interface of figure manipulator</li>
+<li><strong>CircleManipulator</strong> - implementation of <code>FigureManipulator</code> for concrete figure, like <code>Circle</code> in this case</li>
+</ul>
+<h3 id="implementation-1">Implementation</h3>
+<h4 id="figure">Figure</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Figure</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Figure can create FigureManipulator for itself, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// but for client it will always be generic and not concrete
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createManipulator</span>(): FigureManipulator&lt;<span style="color:#66d9ef">out</span> Figure&gt; <span style="color:#75715e">// metoda wytwórcza
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// `internal` class means that its not available outside its module,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// but visible only for classes that its being compiled with.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// This is useful when building a library, when you don&#39;t want to leak internal types.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Circle</span>: Figure {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Manipulator can be replaced with new one without the need of updating clients
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createManipulator</span>() = CircleManipulator(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Square</span> : Figure {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createManipulator</span>() = SquareManipulator(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Line</span> : Figure {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createManipulator</span>() = LineManipulator(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="manipulator">Manipulator</h4>
+<p><code>Manipulator</code> interface allows for Figure dragging and resizing. The concrete implementation is tightly connected with the type of Figure it will manipulate.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// generic here ensures that a concrete `FigureManipulator` 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// will handle just the concrete type of Figure, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ex. `CircleManipulator` can&#39;t handle `Square`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FigureManipulator</span>&lt;T : Figure&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">drag</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">resize</span>(scale: Float)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// constructor parameter type must be the one declared in FigureManipulator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CircleManipulator</span>&lt;T&gt;(<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> figure: T) : FigureManipulator&lt;Circle&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">drag</span>() = println(<span style="color:#e6db74">&#34;CircleManipulator is manipulating circle </span><span style="color:#e6db74">$figure</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">resize</span>(scale: Float) = println(<span style="color:#e6db74">&#34;CircleManipulator is resizing circle </span><span style="color:#e6db74">$figure</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SquareManipulator</span>&lt;T&gt;(<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> figure: T) : FigureManipulator&lt;Square&gt; {<span style="color:#f92672">..</span>.}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LineManipulator</span>&lt;T&gt;(<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> figure: T) : FigureManipulator&lt;Line&gt; {<span style="color:#f92672">..</span>.}
+</span></span></code></pre></div><h4 id="factory">Factory</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FigureFactory</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// enum types for provided by the factory Figures
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Type</span> { Circle, Square, Line, Undefined }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createFigure</span>(type: Type): Figure
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Common Factory implementation where it creates instances for provided enum type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ByTypeFactory</span> : FigureFactory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createFigure</span>(type: <span style="color:#a6e22e">FigureFactory</span>.Type): Figure =
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> (type) { <span style="color:#75715e">// compilation error will happen if not all enum types are handled
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">FigureFactory</span>.<span style="color:#a6e22e">Type</span>.Circle <span style="color:#f92672">-&gt;</span> Circle()
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">FigureFactory</span>.<span style="color:#a6e22e">Type</span>.Square <span style="color:#f92672">-&gt;</span> Square()
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">FigureFactory</span>.<span style="color:#a6e22e">Type</span>.Line <span style="color:#f92672">-&gt;</span> Line()
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// `Undefined` is not handled explicitly but it will fall in the `else`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">throw</span> Exception(<span style="color:#e6db74">&#34;unknown figure, don&#39;t know how to create it&#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>FigureFactory</code> contains an enum reflecting <code>Figure</code> types created by it. Not using directly types of delivered instances have a few benefits:</p>
+<ul>
+<li>It doesn&rsquo;t leak internal types of concrete implementations. Factory shares just the <code>enum</code> and clients see only the generic interface, not concrete types.</li>
+<li>To use enum type, you need to call it by factory interface like <code>FigureFactory.Type.Circle</code>. It minimizes the risk of using the wrong <code>Type</code> enum from some other factory or another place. Of course, IDE will highlight this error, but it can be just avoided. Using a less generic name like <code>FigureType</code> for enum can also help.</li>
+<li><code>Figure</code> has no idea in what forms it can be created, but Factory knows what instances it can deliver. This is why figure type enum belongs to <code>FigureFactory</code> rather than <code>Figure</code>.</li>
+<li>The enum <code>FigureFactory.Type</code> makes sense only used with the factory. Putting it outside this interface may suggest that it&rsquo;s worth using it in a completely different context&hellip; which may then cause issues with maintaining the code in the future.</li>
+</ul>
+<h4 id="other-factory-implementations">Other Factory implementations</h4>
+<p>Anonymous objects (no concrete class but implementing an interface) can also be delivered by the Factory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// factory can create anonymous objects, for client it doesn&#39;t matter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UndefinedFigureFactory</span> : FigureFactory {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// whatever the `type` parameter is, the same object will be returned
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createFigure</span>(type: <span style="color:#a6e22e">FigureFactory</span>.Type) = <span style="color:#66d9ef">object</span>: Figure {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// with the same manipulator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createManipulator</span>() = <span style="color:#66d9ef">object</span>: FigureManipulator&lt;Figure&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">drag</span>() = println(<span style="color:#e6db74">&#34;UndefinedFigure dragging&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">resize</span>(scale: Float) = println(<span style="color:#e6db74">&#34;UndefinedFigure resizing&#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// usage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>UndefinedFigureFactory()
+</span></span><span style="display:flex;"><span>        .createFigure(<span style="color:#a6e22e">FigureFactory</span>.<span style="color:#a6e22e">Type</span>.Circle) <span style="color:#75715e">// type doesn&#39;t really matter in this Factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .createManipulator() <span style="color:#75715e">// but instance API is the same
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .drag()
+</span></span></code></pre></div><p>Frequently when writing tests you don&rsquo;t need a concrete object but just a stub or a mock, that will allow you to verify code correctness. This is easily achievable with the Factory interface and implementing its variant for tests, which is then injected wherever it&rsquo;s needed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// for testing it&#39;s sometimes useful to replace real factory with some kind of stub
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FakeFactory</span> : FigureFactory {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createFigure</span>(type: <span style="color:#a6e22e">FigureFactory</span>.Type): Figure {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> FakeFigure()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// for client it doesn&#39;t matter as long as it gets instance implementing `Figure` interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FakeFigure</span> : Figure {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createManipulator</span>(): FigureManipulator&lt;<span style="color:#66d9ef">out</span> Figure&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> FakeFigureManipulator()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FakeFigureManipulator</span> : FigureManipulator&lt;FakeFigure&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">drag</span>() = println(<span style="color:#e6db74">&#34;FakeFigure dragging&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">resize</span>(scale: Float) = println(<span style="color:#e6db74">&#34;FakeFigure resizing&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// usage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> figure = FakeFactory()
+</span></span><span style="display:flex;"><span>                .createFigure(<span style="color:#a6e22e">FigureFactory</span>.<span style="color:#a6e22e">Type</span>.Circle) <span style="color:#75715e">// this wont be Circle for sure...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>figure.createManipulator().drag() <span style="color:#75715e">// but it will behave like one :)
+</span></span></span></code></pre></div><p>You may even be tempted to randomly select the factory implementation. It doesn&rsquo;t make much sense in the case of geometric figures, but the procedural generated map elements or enemies in the game seem to be a pretty neat example.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// randomly picks `ByTypeFactory` or `FakeFactory`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// client won&#39;t notice any difference, because it knows only the `FigureFactory` interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">RandomFigureFactory</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getFigureFactory</span>(): FigureFactory = <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">Random</span>.nextBoolean()) ByTypeFactory() <span style="color:#66d9ef">else</span> FakeFactory()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// uusage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">RandomFigureFactory</span>.getFigureFactory() <span style="color:#75715e">// randomly picked `FigureFactory`, `Fake` or `ByType`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .createFigure(<span style="color:#a6e22e">FigureFactory</span>.<span style="color:#a6e22e">Type</span>.Circle)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// you can&#39;t be sure which object you get, but it always be `Figure`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .createManipulator().drag() <span style="color:#75715e">// so you can manipulate it like always
+</span></span></span></code></pre></div><h2 id="sealed-class">Sealed class</h2>
+<p>Suppose we have 3 databases in the app: <code>MySQL</code>, <code>Realm</code> and <code>MongoDB</code>. Although they are completely different (SQL, object-oriented, No-SQL), we make them available for clients hidden behind a common interface <code>Database</code>. To facilitate the use of a specific database, we will use a factory that will provide us with an instance of the database only based on the configuration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// various database configurations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> mySqlConfig = MySqlConfig(<span style="color:#e6db74">&#34;dbAddress&#34;</span>, <span style="color:#e6db74">&#34;port&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> realmConfig = RealmConfig <span style="color:#75715e">// object so a Kotlin Singleton without a constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> mongoDbConfig = MongoDbConfig(<span style="color:#e6db74">&#34;fileUri&#34;</span>, <span style="color:#e6db74">&#34;table&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// you can&#39;t be sure which instance you will get from the factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> db: Database = <span style="color:#a6e22e">DatabaseFactory</span>.getDatabaseForConfig(mySqlConfig)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// just the interface is known
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>db.save(<span style="color:#e6db74">&#34;Save me!&#34;</span>)
+</span></span></code></pre></div><p>{% plantuml %}
+@startuml
+scale 900 width</p>
+<p>interface Database {
++save(item: Any)
++getItem(id: Int)
+}</p>
+<p>class DatabaseConfig &laquo; (S,orchid) Sealed Class &raquo;{</p>
+<p>}</p>
+<p>class MySqlConfig extends DatabaseConfig{
+-address
+-port
+}
+class RealmConfig extends DatabaseConfig{
+-dbName
+}
+class MongoDBConfig extends DatabaseConfig{
+-fileUri
+-tableName
+}</p>
+<p>class MySql implements Database{
+-config:MySqlConfig
++save(item: Any)
++getItem(id: Int)
+}
+class Realm implements Database{
+-config:RealmConfig
++save(item: Any)
++getItem(id: Int)
+}
+class MongoDB implements Database{
+-config:MongoDBConfig
++save(item: Any)
++getItem(id: Int)
+}</p>
+<p>class Factory{
++getDatabaseForConfig(config: DatabaseConfig): Database
+}</p>
+<p>class BadConfig extends MongoDBConfig</p>
+<p>Factory::getDatabaseForConfig-[bold]-&gt;Database
+Factory::getDatabaseForConfig&lt;-[bold]-DatabaseConfig
+DatabaseConfig-[hidden]-&gt;Database</p>
+<p>@enduml
+{% endplantuml %}</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// common interface available for clients
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Database</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">save</span>(item: Any)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getItem</span>(id: Int)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// concrete implementation of `Database`, taking configuration as constructor parameter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MySql</span>(<span style="color:#66d9ef">val</span> config: MySqlConfig) : Database {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">save</span>(item: Any) = println(<span style="color:#e6db74">&#34;saving </span><span style="color:#e6db74">$item</span><span style="color:#e6db74"> in MySQL&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getItem</span>(id: Int) = println(<span style="color:#e6db74">&#34;getting item at </span><span style="color:#e6db74">$id</span><span style="color:#e6db74"> from MySQL&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Realm</span>(<span style="color:#66d9ef">val</span> config: RealmConfig) : Database {<span style="color:#f92672">..</span>.}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MongoDB</span>(<span style="color:#66d9ef">val</span> config: MongoDbConfig) : Database {<span style="color:#f92672">..</span>.}
+</span></span></code></pre></div><p>There is no <code>enum</code> type to return database instance like previously, but a configuration object.</p>
+<p>It was possible with Kotlin <code>sealed</code> class. It can be extended only with classes declared in the same file, so it gives strict control over subtypes. Some people even call it an &ldquo;enum on steroids&rdquo;, even though <code>enum</code> itself is a fully functional object and also can have methods and fields, not only name.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DatabaseConfig</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// since Kotlin 1.1 also `data class` can be used
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// and subclasses can be created outside `sealed` class but still in the same file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MySqlConfig</span>(<span style="color:#66d9ef">val</span> address: String, <span style="color:#66d9ef">val</span> port: String) : DatabaseConfig()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">RealmConfig</span> : DatabaseConfig() <span style="color:#75715e">// Singletons are often used with `sealed` classes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// other classes can extend an `open` class also outside this file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">open</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MongoDbConfig</span>(<span style="color:#66d9ef">val</span> fileUri: String, <span style="color:#66d9ef">val</span> tableName: String) : DatabaseConfig()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Factory creating Database instance according to provided configuration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">DatabaseFactory</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// method is taking generic `DatabaseConfig` interface and returns generic `Database` instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getDatabaseForConfig</span>(config: DatabaseConfig): Database {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// `when` connected with `sealed class` guarantees handling every case
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// or compile time error - just like enum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (config) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">is</span> MongoDbConfig <span style="color:#f92672">-&gt;</span> MongoDB(config)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">is</span> MySqlConfig <span style="color:#f92672">-&gt;</span> MySql(config)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">is</span> RealmConfig <span style="color:#f92672">-&gt;</span> Realm(config)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// `BadConfig` extends `MongoDbConfig` but if this case is missing it won&#39;t cause an error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// because `BadConfig` is `MongoDbConfig` this case will be handled in first line
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">is</span> BadConfig <span style="color:#f92672">-&gt;</span> MongoDB(config) 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Meanwhile in another file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// error, you cant extend sealed class outside its file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BadConfig</span>(<span style="color:#66d9ef">val</span> badData: String): DatabaseConfig()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// open class MongoDbConfig allows extending
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BadConfig</span>(<span style="color:#66d9ef">val</span> badData: String): MongoDbConfig(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span></code></pre></div><p>Using <code>open</code> classes should be well thought through, and in case of classes already extending <code>sealed</code> class, it looks like an antipattern, questioning the point of having <code>sealed</code> class in the first place.</p>
+<h2 id="factories-with-registry">Factories with registry</h2>
+<p>Inside the book &ldquo;Thinking in Java&rdquo;<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Bruce Eckel described an interesting example of using <code>Static Factory Method</code> (already covered <a href="https://asvid.github.io/kotlin-static-factory-methods" target="_blank">here</a>) connected with a Factory with the registry. The main point is to allow adding objects with their own factories, implementing a common interface, to the registry of top-level Factory creating their instances - without even knowing concrete types of the objects. In the previous examples, Factory interface defined types like <code>Square, Circle, Line</code> or we had a limited number of classes extending <code>sealed</code> one. In this case, the Top-level Factory role is limited to run <code>Static Factory Method</code> of registered type. Created object and its internal factory can come from the external module and be unknown to the Top-level Factory when it&rsquo;s being compiled - as long as it will implement correct interfaces.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// AirFilter has a companion object with method `create()` so a Static Factory Method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> airFilter: Part = <span style="color:#a6e22e">AirFilter</span>.create()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> fuelFilter: Part = <span style="color:#a6e22e">FuelFilter</span>.create()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> fuelFilter: Part = FuelFilter() <span style="color:#75715e">// error, private constructor doesn&#39;t allow it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// registering the factory, class name points to companion object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">RandomPartCreator</span>.registerFactory(AirFilter)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">RandomPartCreator</span>.registerFactory(FuelFilter)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">RandomPartCreator</span>.registerFactory(OilFilter)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// factory not being a companion object can also be registered
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">RandomPartCreator</span>.registerFactory(EngineFactory())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// let&#39;s have 10 instances
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>repeat(<span style="color:#ae81ff">10</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// random instance creating, we don&#39;t know the concrete type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> randomPart = <span style="color:#a6e22e">RandomPartCreator</span>.createRandomPart()
+</span></span><span style="display:flex;"><span>    println(randomPart.description())
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// unless we explicitly check
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    println(<span style="color:#e6db74">&#34;is it an AirFilter? </span><span style="color:#e6db74">${randomPart is AirFilter}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>On diagram it will look like that:</p>
+<p>{% plantuml %}
+@startuml
+scale 900 width</p>
+<p>interface Part</p>
+<p>interface PartFactory&lt;T: Part&gt;{
++create():T
+}</p>
+<p>class AirFilter implements Part{
+-constructor()
++companion object
+}</p>
+<p>class AirFilterFactory<!-- raw HTML omitted -->&laquo; (O,#FF7700) CompanionObject &raquo; implements PartFactory{
++create():AirFilter
+}</p>
+<p>class FuelFilter implements Part{
++companion object
+}
+class FuelFilterFactory<!-- raw HTML omitted -->&laquo; (O,#FF7700) CompanionObject &raquo; implements PartFactory{
++create():FuelFilter
+}</p>
+<p>class Engine implements Part</p>
+<p>class EngineFactory<!-- raw HTML omitted --> implements PartFactory</p>
+<p>class RandomPartCreator{
+-partFactories: Set<!-- raw HTML omitted -->
++registerFactory(factory: PartFactory)
++createRandomPart(): Part
+}</p>
+<p>RandomPartCreator::createRandomPart-[bold]-&gt;Part
+RandomPartCreator::registerFactory&lt;-[bold]-PartFactory
+Part-[hidden]-&gt;PartFactory</p>
+<p>@enduml
+{% endplantuml %}</p>
+<p>And can be implemented like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// interface implemented by every Part constructed by the Factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Part</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">description</span>(): String
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// interface used by companion objects, building concrete `Part` type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">PartFactory</span>&lt;T : Part&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">create</span>(): T
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// concrete Part implementation with private construcotr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FuelFilter</span> <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">constructor</span>() : Part {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// companion object implementing Factory interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">companion</span> <span style="color:#66d9ef">object</span> Factory : PartFactory&lt;FuelFilter&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Static Factory Method creating an instance of the declared type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">create</span>(): FuelFilter = FuelFilter()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">description</span>() = <span style="color:#e6db74">&#34;I&#39;m a Fuel Filter&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AirFilter</span> <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">constructor</span>() : Part {<span style="color:#f92672">..</span>.}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OilFilter</span> <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">constructor</span>() : Part {<span style="color:#f92672">..</span>.}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// class without companion object also can be used
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Engine</span>: Part {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">description</span>() = <span style="color:#e6db74">&#34;I&#39;m an Engine!&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// with an external factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EngineFactory</span> : PartFactory&lt;Engine&gt;{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">create</span>(): Engine {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Engine class can&#39;t have private constructor though
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> Engine()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">RandomPartCreator</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// registry of internal factories, so Static Factory Methods
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Set for no duplicates
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// object created by Static Factory Method has to extend `Part`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> partFactories = mutableSetOf&lt;PartFactory&lt;<span style="color:#66d9ef">out</span> Part&gt;&gt;()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// adding new internal factory to the registry
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">registerFactory</span>(factory: PartFactory&lt;<span style="color:#66d9ef">out</span> Part&gt;) {
+</span></span><span style="display:flex;"><span>        partFactories.add(factory)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// so called generator - creates instance without any parameters passed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createRandomPart</span>(): Part {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// random number from the registry size range
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">val</span> randomFactory = <span style="color:#a6e22e">Random</span>.nextInt(partFactories.size)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// calling `create()` on picked factory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// unfortunately you can&#39;t take n-th element from Set without making it a list
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> partFactories.toList()[randomFactory].create()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Nothing forbids using a more extensive registry, like a map with <code>enum</code> as key and Static Factory Method as value.</p>
+<h1 id="summary">Summary</h1>
+<p>Factory Method is a commonly used design pattern, especially in the variant with <code>enum</code> types. Although it can take multiple forms main rule is the same: isolating object creation from its implementation hidden behind the interface. When having a whole family of objects it makes the program much more elastic, allowing effortless switching objects and easy mocking in tests.</p>
+<p>Kotlin helps a lot with hiding implementation with <code>internal</code> classes, and with handling all the subclass cases thanks to the <code>sealed</code> class.</p>
+<h2 id="pros">Pros</h2>
+<ul>
+<li><strong>isolating implementation from the interface</strong> - the factory client is aware only about the interface, which allows adding new implementations without updating client.</li>
+<li><strong>limiting types visibility</strong> - it&rsquo;s useful when you are developing a library and want to hide the internal implementation from the users.</li>
+<li><strong>ease of testing</strong> - just the fact of using interfaces rather than concrete types makes creating a mock or stub easy. Connect this with injecting a whole configured for testing factory, and you can focus on what you actually want to test rather than building pieces around it.</li>
+<li><strong>reusing objects</strong> - similar to Builder, returned object doesn&rsquo;t necessarily have to be a new instance. The constructor always returns a new instance, but Factory can have some sort of internal cache and if it makes sense return previously created instance. However, this may conflict with the intuitive understanding of what a &ldquo;factory&rdquo; does - building new products like a car factory will assemble new cars rather than renting them from a parking lot.</li>
+</ul>
+<h2 id="cons">Cons</h2>
+<ul>
+<li><strong>additional boilerplate</strong> - the need for interfaces, factories, enum types etc. This is not necessarily a problem, especially when thinking about interfaces and testing the code later. But you have to be prudent here, when you want to build single class instance without clear perspective of having more classes in the family - maybe you don&rsquo;t need a whole factory.</li>
+</ul>
+<hr>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://books.google.pl/books?id=Mkn6uAEACAAJ&amp;dq=isbn:0201633612&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwiQgZnevojvAhXeAxAIHerSDCsQ6AEwAHoECAAQAg" target="_blank">Design Patterns: Elements of Reusable Object-Oriented Software</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://books.google.pl/books?id=bQVvAQAAQBAJ&amp;dq=isbn:9780131872486&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwjO6uawvojvAhVRtIsKHchPBwUQ6AEwAHoECAAQAg" target="_blank">Thinking in Java</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/kotlin-static-factory-methods/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Kotlin Static Factory Methods</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/kotlin-abstract-factory/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Kotlin Abstract Factory</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#example-from-the-gang-of-four-simple">Example from &ldquo;the gang of four&rdquo; (simple)</a>
+      <ul>
+        <li><a href="#elements">Elements</a></li>
+        <li><a href="#implementation">Implementation</a></li>
+      </ul>
+    </li>
+    <li><a href="#more-interesting-example-from-the-gang-of-four">More interesting example from the gang of four</a>
+      <ul>
+        <li><a href="#elements-1">Elements</a></li>
+        <li><a href="#implementation-1">Implementation</a></li>
+      </ul>
+    </li>
+    <li><a href="#sealed-class">Sealed class</a></li>
+    <li><a href="#factories-with-registry">Factories with registry</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#pros">Pros</a></li>
+    <li><a href="#cons">Cons</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

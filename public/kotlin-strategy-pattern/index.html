@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Strategy Pattern in Kotlin</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Strategy&#32;Pattern&#32;in&#32;Kotlin />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Strategy&#32;Pattern&#32;in&#32;Kotlin />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Strategy&#32;Pattern&#32;in&#32;Kotlin />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Strategy&#32;Pattern&#32;in&#32;Kotlin />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content=" The `Strategy` pattern creates a family of algorithms, enclosing the differing logic in separate classes while hiding it from clients behind the interface. It enables the interchangeable use of implementations. The use of the strategy simplifies the customer code, avoids code duplication and conditional statements. Significantly simplifies testing - by separating client testing from strategy algorithms. " />
+<meta itemprop="description" content=" The `Strategy` pattern creates a family of algorithms, enclosing the differing logic in separate classes while hiding it from clients behind the interface. It enables the interchangeable use of implementations. The use of the strategy simplifies the customer code, avoids code duplication and conditional statements. Significantly simplifies testing - by separating client testing from strategy algorithms. " />
+<meta property="og:description" content=" The `Strategy` pattern creates a family of algorithms, enclosing the differing logic in separate classes while hiding it from clients behind the interface. It enables the interchangeable use of implementations. The use of the strategy simplifies the customer code, avoids code duplication and conditional statements. Significantly simplifies testing - by separating client testing from strategy algorithms. " />
+<meta name="twitter:description" content=" The `Strategy` pattern creates a family of algorithms, enclosing the differing logic in separate classes while hiding it from clients behind the interface. It enables the interchangeable use of implementations. The use of the strategy simplifies the customer code, avoids code duplication and conditional statements. Significantly simplifies testing - by separating client testing from strategy algorithms. " />
+
+
+<base href="http://localhost:1313/kotlin-strategy-pattern/" />
+<link rel="canonical" href="http://localhost:1313/kotlin-strategy-pattern/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/kotlin-strategy-pattern/" />
+<meta name="twitter:url" content="http://localhost:1313/kotlin-strategy-pattern/" />
+<meta property="og:url" content="http://localhost:1313/kotlin-strategy-pattern/" />
+
+
+<meta property="og:updated_time" content=30005-30-12T50:00:21Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=30005-30-12T50:00:21Z />
+<meta property="article:published_time" content=30005-30-12T50:00:21Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/kotlin-strategy-pattern/">Strategy Pattern in Kotlin</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2021-05-30T00:00:00Z" class="post-date">
+        May 30, 2021
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>11 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-design patterns">
+        <a href="http://localhost:1313/tags/design-patterns">design patterns</a>
+      </li>
+      
+      <li class="tag-Kotlin">
+        <a href="http://localhost:1313/tags/kotlin">Kotlin</a>
+      </li>
+      
+      <li class="tag-Strategy Pattern">
+        <a href="http://localhost:1313/tags/strategy-pattern">Strategy Pattern</a>
+      </li>
+      
+      <li class="tag-behavioral design pattern">
+        <a href="http://localhost:1313/tags/behavioral-design-pattern">behavioral design pattern</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="purpose">Purpose</h1>
+<p>The <code>Strategy</code> design pattern defines a family of algorithms and allows them to be used interchangeably. By <code>algorithm</code>, here I mean any logic, be it sorting, searching, or computing some value from data. It does not matter. It is, in a sense, an extension of the <a href="https://asvid.github.io/kotlin-template-method" target="_blank">Template Method</a> pattern, but inversely to it, <code>Strategy</code> prefers composition over inheritance. Strategies do not inherit from any specific class but only implement a common interface. This allows for easy code encapsulation and algorithm replacement without the inheritance overhead.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>An example of a problem that can be solved by the <code>Strategy</code> may be the way of calculating the price taking into account the promotion kind:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Item</span>(<span style="color:#66d9ef">val</span> name: String, <span style="color:#66d9ef">val</span> price: Double) <span style="color:#75715e">// product on the bill
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Promotion</span> { <span style="color:#75715e">// enum with promotion kinds
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    NoPromotion, SpecialPromotion, ChristmasPromotion
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bill</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> items = mutableListOf&lt;Item&gt;() <span style="color:#75715e">// list of producsts on the bill
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">addItem</span>(item: Item): Bill {
+</span></span><span style="display:flex;"><span>        items.add(item)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// method calculating final price from list of items and selected promotion
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculateFinalPrice</span>(promotion: Promotion): Double {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> initialSum = items.sumOf { <span style="color:#66d9ef">it</span>.price }
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// checking promotion and using right algorythm to calculate price
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (promotion) { 
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Promotion</span>.NoPromotion <span style="color:#f92672">-&gt;</span> initialSum
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Promotion</span>.SpecialPromotion <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">when</span> {
+</span></span><span style="display:flex;"><span>                initialSum &gt; <span style="color:#ae81ff">20</span> <span style="color:#f92672">-&gt;</span> initialSum * <span style="color:#ae81ff">0.95</span>
+</span></span><span style="display:flex;"><span>                initialSum &gt; <span style="color:#ae81ff">30</span> <span style="color:#f92672">-&gt;</span> initialSum * <span style="color:#ae81ff">0.85</span>
+</span></span><span style="display:flex;"><span>                initialSum &gt; <span style="color:#ae81ff">40</span> <span style="color:#f92672">-&gt;</span> initialSum * <span style="color:#ae81ff">0.75</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> initialSum
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Promotion</span>.ChristmasPromotion <span style="color:#f92672">-&gt;</span> initialSum * <span style="color:#ae81ff">0.80</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>I&rsquo;m aware that <code>Double</code> is not the best type to use for money operations, but for the ease of use in this post examples I decided to use it.</p>
+</blockquote>
+<p>We have 3 promotions here, one of which <code>NoPromotion</code> does not change anything. The implementation of the method calculating the promotion is in the <code>Bill</code> class - so in addition to collecting products, the class also calculates the final price, we do not have the <code>Single Responsibility Principle</code> preserved here.</p>
+<p>If there happens to be a new promotion request, just add an <code>enum</code> and its implementation inside <code>Bill</code> class. The IDE will report that the new case is not handled if you forget. It doesn&rsquo;t look extremely bad, other than the lack of SRP.</p>
+<p>Now let&rsquo;s assume that in addition to the standard receipt, you want to be able to issue an invoice that takes into account the same promotions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Invoice</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You could copy the code that calculates the promotion, or you could artificially extract some abstract receipt class with promotion implementation from which <code>Invoice</code> and <code>Bill</code> would inherit. Unless, of course, they are not already inheriting from another class.</p>
+<p>And then there will be some class that does not fit into this hierarchy, which will also require the implementation of promotions&hellip;</p>
+<h1 id="implementation">Implementation</h1>
+<p>And then the &lsquo;Strategy&rsquo; comes in, all in white <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. It allows you to easily transfer the method of calculating individual promotions to separate classes with a common interface. In such a way that customers do not even need to know what specific promotion are they using.</p>
+<h2 id="abstract">Abstract</h2>
+<p>Let&rsquo;s start from abstract implementation to understand all pieces of this pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// the client class, strategy is provided in the constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Context</span>(<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> strategy: Strategy) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// using generic strategy interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">useStrategy</span>() = strategy.use() 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Strategy</span> { <span style="color:#75715e">// using interface instead of class is very important
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// abstract or concrete class would limit using the strategy only to its hierarchy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">use</span>() <span style="color:#75715e">// strategies usually have single public method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StrategyA</span> : Strategy { <span style="color:#75715e">// first strategy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">use</span>() { <span style="color:#75715e">// concrete algorithm implementation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        println(<span style="color:#e6db74">&#34;using strategy A&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StrategyB</span> : Strategy { <span style="color:#75715e">// second strategy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">use</span>() {
+</span></span><span style="display:flex;"><span>        println(<span style="color:#e6db74">&#34;using strategy B&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// using either strategy is identical
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// strategies are transparent for the client
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> contextA = Context(StrategyA())
+</span></span><span style="display:flex;"><span>    contextA.useStrategy()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> contextB = Context(StrategyB())
+</span></span><span style="display:flex;"><span>    contextB.useStrategy()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We have here the <code>Context</code> class, so the client using the Strategy. It only knows the strategy interface, not the concrete classes. This allows you to easily expand the family of strategies with a new one, without updating the customers. Due to the use of the interface, and not the <code>Strategy</code> class, specific Strategies are loosely related to each other, while guaranteeing clients a common API.</p>
+<p>It can be represented symbolically like this:</p>
+<p>{% plantuml %}
+@startuml</p>
+<p>interface Strategy{</p>
+<ul>
+<li>use()
+}</li>
+</ul>
+<p>class StrategyA implements Strategy{</p>
+<ul>
+<li>use()
+}
+class StrategyB implements Strategy{</li>
+<li>use()
+}</li>
+</ul>
+<p>class Context{
+- strategy: Strategy
++ useStrategy()
+}</p>
+<p>Context::strategy -&gt; Strategy</p>
+<p>@enduml
+{% endplantuml %}</p>
+<h2 id="the-solution">The solution</h2>
+<p>Promotions can be encapsulated in specific classes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Promotion</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculate</span>(sum: Double): Double
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> name: String
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// singleton, because this strategy doesn&#39;t need to keep its state - but it could
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">ChristmasPromotion</span> : Promotion {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">val</span> name = <span style="color:#e6db74">&#34;Christmas Promotion&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculate</span>(sum: Double): Double {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sum * <span style="color:#ae81ff">0.8</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// this is a NullObject, a special case of Strategy not performing any actions
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">NoPromotion</span> : Promotion { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">val</span> name = <span style="color:#e6db74">&#34;No Promotion&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculate</span>(sum: Double): Double {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sum
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">SpecialPromotion</span> : Promotion {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">val</span> name = <span style="color:#e6db74">&#34;Special Promotion&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculate</span>(sum: Double): Double {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> {
+</span></span><span style="display:flex;"><span>            sum &gt; <span style="color:#ae81ff">20</span> <span style="color:#f92672">-&gt;</span> sum * <span style="color:#ae81ff">0.95</span>
+</span></span><span style="display:flex;"><span>            sum &gt; <span style="color:#ae81ff">30</span> <span style="color:#f92672">-&gt;</span> sum * <span style="color:#ae81ff">0.85</span>
+</span></span><span style="display:flex;"><span>            sum &gt; <span style="color:#ae81ff">40</span> <span style="color:#f92672">-&gt;</span> sum * <span style="color:#ae81ff">0.75</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> sum
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Having such implementation of promotions, the <code>Bill</code> class gets simplified to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bill</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// strategies can be passed in the constructor, or in the method that uses them
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculateFinalPrice</span>(promotion: Promotion): Double {
+</span></span><span style="display:flex;"><span>        println(<span style="color:#e6db74">&#34;applying </span><span style="color:#e6db74">${promotion.name}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> initialSum = items.sumOf { <span style="color:#66d9ef">it</span>.price }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> promotion.calculate(initialSum) <span style="color:#75715e">// the promotion object calculates the price
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Maybe this is not the best example, because we still don&rsquo;t have SRP - the <code>Bill</code> still calculates the final amount, but now at least delegates it to the<code> Promotion</code> object.
+Adding a new type of promotion doesn&rsquo;t cause any update in the <code>Bill</code> class. The same promotion classes can be used in the <code>Invoice</code> class or any other class that needs to include them.</p>
+<p>It is much easier to test the logic in separate classes than in the initial example with the <code>when</code> condition. Adding another promotion will not cause the need to fix the existing tests, but only add new ones for the new class.
+In order not to spoil this testing awesomeness, make sure that <code>Strategy</code> gets all the values it needs in the public method or the constructor, rather than magically extracting them from some configuration.
+Often the &lsquo;strategy&rsquo; does not need to store its state, but only performs some actions on provided data. This is one of the few cases where the use of <code>Singleton</code> makes sense.</p>
+<h2 id="multiple-strategies">Multiple strategies</h2>
+<p>OK, with single strategy it&rsquo;s cool, but nothing stops us from making <code>Bill</code> have many kinds of strategies. Final price may vary depending on taxes or loyalty program.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Tax</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">applyTaxes</span>(sum: Double): Double
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Promotion</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">applyPromotion</span>(sum: Double): Double
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">LoyaltyProgram</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">applyPolicy</span>(sum: Double): Double
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Strategies can be passed as a parameter in the method where they are to be used, but they can also be passed in the constructor of a client object. Below is an example with default values (probably the simplest kind of <a href="https://asvid.github.io/kotlin-builder-pattern" target="_blank">Builder</a> in Kotlin), which allows you to overwrite only those strategies that are actually to be different than the default ones.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bill</span>( 
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// all strategies here are `object`s, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// their implementation is an irrelevant detail
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> tax: Tax = DefaultTax,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> promotion: Promotion = NoPromotion,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> clientPolicy: LoyaltyProgram = NewClient
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> newClientAnarchist = Bill(
+</span></span><span style="display:flex;"><span>        tax = NoTax, <span style="color:#75715e">// well it&#39;s not how it works in real life...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        clientPolicy = NewClient
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> returningClientWithSpecialPromotionBill = Bill(
+</span></span><span style="display:flex;"><span>        clientPolicy = ReturningClient,
+</span></span><span style="display:flex;"><span>        promotion = SpecialPromotion
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>A <a href="https://asvid.github.io/kotlin-static-factory-methods" target="_blank">Static Factory</a> can also become handy</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bill</span> <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">constructor</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> tax: Tax,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> promotion: Promotion,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> clientPolicy: ReturningClientPolicy
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">companion</span> <span style="color:#66d9ef">object</span> Factory{
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> defaultTax = DefaultTax
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> defaultPromotion = NoPromotion
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> defaultClientPolicy = NewClient
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">returningClient</span>(): Bill = Bill(
+</span></span><span style="display:flex;"><span>                defaultTax, defaultPromotion, ReturningClient
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">returningClientWithSpecialPromotion</span>() = Bill(
+</span></span><span style="display:flex;"><span>                defaultTax, SpecialPromotion, ReturningClient
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">newClientAnarchist</span>() = Bill(
+</span></span><span style="display:flex;"><span>                NoTax, defaultPromotion, NewClient
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>But now class <code>Bill</code> becomes aware of at least some concrete implementations of <code>Strategy</code></strong></p>
+<p>The calculation of the individual components of the final amount must be performed in a fixed order, you cannot charge tax from promotion, etc. Similar to the <a href="https://asvid.github.io/kotlin-template-method" target="_blank">Template Method</a> approach, the <code>Bill</code> class is responsible for the correct sequence of steps, but the Strategy pattern allows the implementation of these steps to be replaced.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculateFinalPrice</span>(): Double {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">val</span> initialSum = items.sumOf { <span style="color:#66d9ef">it</span>.price }
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> initialSum.run { 
+</span></span><span style="display:flex;"><span>		promotion.applyPromotion(<span style="color:#66d9ef">this</span>) <span style="color:#75715e">// `this` is the initial sum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}.run {
+</span></span><span style="display:flex;"><span>		clientPolicy.applyPolicy(<span style="color:#66d9ef">this</span>) <span style="color:#75715e">// now it&#39;s the amount after applying the promotion
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}.run {
+</span></span><span style="display:flex;"><span>		tax.applyTaxes(<span style="color:#66d9ef">this</span>) <span style="color:#75715e">// and after loyalty policy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	} <span style="color:#75715e">// returning final amount after all the modifiers
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Different taxes would apply to specific types of products rather than the entire bill. However, assuming that tax law is constantly changing, the use of the <code>Tax</code> strategy allows for quick response to new regulations without the need to update strategy clients.</p>
+<p>I admit that I&rsquo;m not a fan of such operations queuing with the <code>run ()</code> methods. Fortunately, this can be improved by using the extension functions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Double</span>.applyPromotion(promotion: Promotion): Double {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> promotion.applyPromotion(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Double</span>.applyPolicy(policy: LoyaltyProgram): Double {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> policy.applyPolicy(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Double</span>.applyTaxes(tax: Tax): Double {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> tax.applyTaxes(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And then we have:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculateFinalPrice</span>(): Double {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> initialSum = items.sumOf { <span style="color:#66d9ef">it</span>.price }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> initialSum
+</span></span><span style="display:flex;"><span>            .applyPromotion(promotion)
+</span></span><span style="display:flex;"><span>            .applyPolicy(clientPolicy)
+</span></span><span style="display:flex;"><span>            .applyTaxes(tax)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// nice :)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id="invoke">Invoke</h3>
+<p>Because the <code>Strategy</code> tends to have a single public method, you can consider using the <code>invoke()</code> operator. Additionally, the <code>annonmous class</code> instead of a default implementation of the strategy, to not multiply the <code>NullObjects</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Tax</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// having this allows to use object as a method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">operator</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">invoke</span>(sum: Double): Double
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bill</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> tax: Tax = <span style="color:#66d9ef">object</span> <span style="color:#960050;background-color:#1e0010">: </span><span style="color:#a6e22e">Tax</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">invoke</span>(sum: Double): Double {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> sum
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculateFinalPrice</span>(): Double {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> initialSum = items.sumOf { <span style="color:#66d9ef">it</span>.price }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> initialSum.run{
+</span></span><span style="display:flex;"><span>            promotion(<span style="color:#66d9ef">this</span>) <span style="color:#75715e">// calling the `invoke()`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }.run {
+</span></span><span style="display:flex;"><span>            clientPolicy(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>        }.run {
+</span></span><span style="display:flex;"><span>            tax(<span style="color:#66d9ef">this</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// using annonmous classes allows you to create new strategies on the fly
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// but not having them as a concrete class kills a lot of benefits of the pattern
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> customBill = Bill(promotion = <span style="color:#66d9ef">object</span> <span style="color:#960050;background-color:#1e0010">: </span><span style="color:#a6e22e">Promotion</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">applyPromotion</span>(sum: Double): Double {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sum * <span style="color:#ae81ff">0.123512</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h1 id="naming">Naming</h1>
+<p>Naming conventions may vary from team to team or project to project. I personally prefer the meaningful domain name rather than using pattern-function-part modifiers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// I like this more
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpecialPromotion</span>: Promotion{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculate</span>(initialPrice: Double): Double{
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// than this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpecialPromotionStrategy</span>: PromotionStrategy{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">use</span>(initialPrice: Double): Double{
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Using the first style, I don&rsquo;t even have to think if I&rsquo;m using the <code>Strategy Pattern</code>. I&rsquo;m using the domain <code>Promotion</code> class that knows how to calculate the final price with its internal rules. What information does it really give me to have the <code>Strategy</code> in the name? Should we also add <code>Singleton</code> to every Kotlin <code>object</code> name?</p>
+<p>This preference stands for all design patterns. Sadly common practise (especially in older projects) is to strictly stick to often unwritten rules. So you can immediately know that the class is part of particular pattern. Because someone (like a junior-dev with 20 years of experience) has memorized a book with patterns and is able to implement it only fallowing the template strictly.</p>
+<p>If you are interested in this topic, I can recommend a great talk by <a href="https://youtu.be/ZsHMHukIlJY?t=1517" target="_blank">Kevlin Henney - Seven Ineffective Codding Habbits of Many Programmers</a>, where amongst others, he talks about naming.</p>
+<h1 id="summary">Summary</h1>
+<p>The <code>Strategy</code> pattern creates a family of algorithms, enclosing the differing logic in separate classes while hiding it from clients behind the interface. It enables the interchangeable use of implementations. The use of the strategy simplifies the customer code, avoids code duplication and conditional statements. Significantly simplifies testing - by separating client testing from strategy algorithms.</p>
+<p>This pattern should be used quite often, even if initially the whole &ldquo;family&rdquo; of strategies will consist of 1 class. The advantages of encapsulating code outweigh the disadvantages of adding an interface and a new class. Often, sooner than later, it turns out that a given algorithm needs to be used somewhere else, or there is a need to add another one.
+However, don&rsquo;t overdo it. There will be places where creating the Strategy is pointless, when an algorithm is 1 line of code used in 1 place with no prospect of spreading.</p>
+<p><code>Kotlin</code> offers interesting possibilities for using the Strategy, thanks to named arguments, using the<code>invoke ()</code>operator and the<code> extension functions</code>. However, you should pay attention to whether the syntactic sugar makes it difficult to test or to use the code elsewhere.</p>
+<h2 id="pros">Pros</h2>
+<ul>
+<li><strong>algorithm encapsulation</strong> - the entire algorithm is inside a separate class, ready to be used in any place of the system.</li>
+<li><strong>composition over inheritance</strong> — no close connection between algorithm and the client.</li>
+<li><strong>anty-IF policy</strong> - only strategy knows how to process data, client is using the generic interface, so conditional expressions are gone.</li>
+<li><strong>implementation interchangeability</strong> - different implementations, e.g. sorting, may work better in certain cases. The strategy allows you to quickly provide an &ldquo;acceptable&rdquo; algorithm and then correct it without changing the client.</li>
+<li><strong>ease of testing</strong> - independent client and strategy testing. Changes to the strategy do not force the client tests to be fixed.</li>
+</ul>
+<h2 id="cons">Cons</h2>
+<ul>
+<li><strong>having more object instances</strong> - using <code>object</code> so Singletons helps with this issue.</li>
+<li><strong>can be overused</strong> - if there is <strong>absolutely</strong> no chance that the algorithm will be used anywhere else, or there is a need for an alternate version, then adding a strategy may be unnecessary&hellip;, but it will make testing easier anyway.</li>
+</ul>
+<hr>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I&rsquo;m sorry for this very Polish inside joke, but it just fits too good :) origin: <a href="https://www.youtube.com/watch?v=FeZYsTVrpMY" target="_blank">https://www.youtube.com/watch?v=FeZYsTVrpMY</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/kotlin-template-method/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Kotlin Template Method</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/kotlin-facade-pattern/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Facade Pattern in Kotlin</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem">The Problem</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#the-solution">The solution</a></li>
+    <li><a href="#multiple-strategies">Multiple strategies</a>
+      <ul>
+        <li><a href="#invoke">Invoke</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#pros">Pros</a></li>
+    <li><a href="#cons">Cons</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

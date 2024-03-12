@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Hacking Android app with Frida</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Hacking&#32;Android&#32;app&#32;with&#32;Frida />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Hacking&#32;Android&#32;app&#32;with&#32;Frida />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Hacking&#32;Android&#32;app&#32;with&#32;Frida />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Hacking&#32;Android&#32;app&#32;with&#32;Frida />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content="Quick walkthrough of using Frida to hack Android app behaviour" />
+<meta itemprop="description" content="Quick walkthrough of using Frida to hack Android app behaviour" />
+<meta property="og:description" content="Quick walkthrough of using Frida to hack Android app behaviour" />
+<meta name="twitter:description" content="Quick walkthrough of using Frida to hack Android app behaviour" />
+
+
+<base href="http://localhost:1313/android-frida-hacking/" />
+<link rel="canonical" href="http://localhost:1313/android-frida-hacking/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/android-frida-hacking/" />
+<meta name="twitter:url" content="http://localhost:1313/android-frida-hacking/" />
+<meta property="og:url" content="http://localhost:1313/android-frida-hacking/" />
+
+
+<meta property="og:updated_time" content=31003-31-05T343:37:18Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=31003-31-05T343:37:18Z />
+<meta property="article:published_time" content=31003-31-05T343:37:18Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.bf4d3110fcd0b7ca2963d5dd630cbb2027b3ec79bd2a1a7a02f8244546d16737.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/android-frida-hacking/">Hacking Android app with Frida</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2018-03-31T17:43:37Z" class="post-date">
+        March 31, 2018
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>11 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-Android">
+        <a href="http://localhost:1313/tags/android">Android</a>
+      </li>
+      
+      <li class="tag-Kotlin">
+        <a href="http://localhost:1313/tags/kotlin">Kotlin</a>
+      </li>
+      
+      <li class="tag-Frida">
+        <a href="http://localhost:1313/tags/frida">Frida</a>
+      </li>
+      
+      <li class="tag-hacking">
+        <a href="http://localhost:1313/tags/hacking">hacking</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <p><em>Side image is of course <a href="https://en.wikipedia.org/wiki/Frida_Kahlo" target="_blank">Frida Kahlo</a> auto portrait, besides her name she has no connection with topic</em></p>
+<h2 id="motivation">Motivation</h2>
+<p>Lately I attended to <code>Sekurak hacking party</code> - it&rsquo;s event organized by <a href="https://sekurak.pl/" target="_blank">Sekurak</a> where they show how easy is to hack stuff like IP cameras, routers, phones. I guess Sekurak is known mainly in Poland, but they are real professionals in area of security. During this event Michał Bentkowski was showing how easy it is to spy on Android app communication and also change app behavior using tool named Frida. It was cool but scary at the same time from developers perspective.
+Gladly in company I work for, we have <code>Community of Practise</code> so with my colleague we&rsquo;ve decided to make similar show about hacking Android apps for others during next CoP meeting. I&rsquo;ve extended a bit things that Michał showed at Sekurak meeting and it took me some time to find them on various blog posts or Youtube videos, so I&rsquo;d like to share.</p>
+<h2 id="preparation">Preparation</h2>
+<p>Even if Frida is pretty easy to use, there are some steps you will need to take to make it work.</p>
+<h3 id="getting-ready">Getting ready</h3>
+<h4 id="pc">PC</h4>
+<ul>
+<li>python installed - I&rsquo;ve got 2.7 and it works just fine, not sure if there are any issues with Python 3.x</li>
+<li>pip installed (its now bundled with Python distributions)</li>
+<li>reasonable console - if you are on Linux or Mac you already have one, for Windows&hellip;I use ConEmu with git bash commands installed</li>
+<li>ADB working from console - you already have ADB installed with Android Studio (well Android SDK to be accurate), but if you haven&rsquo;t been using separate console app it&rsquo;s possible that it&rsquo;s not added to PATH</li>
+</ul>
+<h4 id="phone">phone</h4>
+<ul>
+<li>Frida works on Android OS between 4.2 and 6</li>
+<li>it needs to use Dalvik, not ART</li>
+<li>it should be rooted - well&hellip; there is a way to avoid this but I did not check it.</li>
+</ul>
+<p>To achieve it all pretty easly and cheap, I just used emulator :) with following details:</p>
+<pre tabindex="0"><code>Name: Pixel_2_API_22
+CPU/ABI: Google APIs Intel Atom (x86)
+Target: google_apis [Google APIs] (API level 22)
+</code></pre><h4 id="you">you</h4>
+<ul>
+<li>you need to know what architecture your Android device, for my emulator it&rsquo;s x86</li>
+<li>if you already have neat console app, it would be super cool to know how to use it</li>
+<li>also basics of Python and JavaScript will help - if you know ANY other language it will be just enough, we wont be making enterprise scale banking app, just simple hacking scripts</li>
+</ul>
+<h3 id="installing-stuff">Installing stuff</h3>
+<p>To install Frida on your PC just go to console and type
+<code>pip install frida</code></p>
+<p>Now we&rsquo;d like to send <code>frida-server</code> to our device and run it, so Frida on our PC can communicate with it. On <a href="https://github.com/frida/frida/releases" target="_blank">GitHub release page</a> are versions for all possible uses (also Windows or OSX), but we are hacking Android so we need to find <code>frida-server-10.7.7-android-x86.xz</code> or newer, but always exactly for our device architecture.
+Now unpack the archive and send <code>frida-server</code> file to your device using:
+<code>adb push {frida-server-file-name} /data/local/tmp</code>
+So Frida is on device, but not running. Yet. We have to go to device shell, change file permissions, and run it like any other executable type on linux machine.</p>
+<ul>
+<li><code>adb shell</code> will get us to device shell</li>
+<li><code>cd /data/local/tmp</code> will take us to where we&rsquo;ve send frida-server</li>
+<li>(optional) <code>mv {frida-server-file-name} frida-server</code> to change file name for easer to use, without version and architecture name</li>
+<li><code>chmod 755 frida-server</code> to change permissions</li>
+<li><code>./frida-server</code> to finally run it</li>
+</ul>
+<p>Notice that you wont get any info in console, it will just start running. Every other command should be run from separate terminal. It&rsquo;s also a good idea to open logcat in separate terminal <code>adb logcat</code>.</p>
+<h3 id="hello-frida">Hello Frida</h3>
+<p>We are all good to go :) Let&rsquo;s check if Frida on PC is getting along with Frida-server on device:
+<code>frida -U asvid.github.io.fridaapp</code> - It&rsquo;s necessary to know full app package name, and to have app running on device. Flag <code>-U</code> tells Frida to check the USB connected device, or in my case, Android emulator.</p>
+<p>Console should now look like that:</p>
+<pre tabindex="0"><code>frida -U asvid.github.io.fridaapp
+     ____
+    / _  |   Frida 10.7.7 - A world-class dynamic instrumentation toolkit
+   | (_| |
+    &gt; _  |   Commands:
+   /_/ |_|       help      -&gt; Displays the help system
+   . . . .       object?   -&gt; Display information about &#39;object&#39;
+   . . . .       exit/quit -&gt; Exit
+   . . . .
+   . . . .   More info at http://www.frida.re/docs/home/
+
+[Android Emulator 5554::asvid.github.io.fridaapp]-&gt;
+</code></pre><p>We are officially in. Now we can type commands here and our app should obey. Lets just do something simple:
+<code>Java.androidVersion</code> will just return in console which Android is our device running. Pretty&hellip;lame. Lets run something better:
+<code>Java.perform(function(){Java.enumerateLoadedClasses({&quot;onMatch&quot;:function(className){ console.log(className) },&quot;onComplete&quot;:function(){}})})</code> - now we are printing name of every object that Dalivik has created. And if we have object instance, maybe we can run its methods? We&rsquo;ll get to that shortly.</p>
+<h2 id="action">Action</h2>
+<p>Running frida commands in console is a bit annoying, it&rsquo;s extremely easy to mistype or forget to close some braces.
+Other way is to write script to file and run it by Frida.
+<code>frida -U -l script.js asvid.github.io.fridaapp</code>
+It can be even better with Python script that will run JavaScript script.
+Why we need Python and JavaScript if we want to hack app written in Java or Kotlin compiled to bytecode and that runs on Dalvik Virtual Machine? Well Python is just to make it easer to run JavaScript files, that will fool Dalvik to run them instead of app instructions.</p>
+<h3 id="repo">Repo</h3>
+<p>I&rsquo;ve made very simple app for hacking with Frida demonstration that is available <a href="https://github.com/asvid/FridaApp" target="_blank">here</a>. There is signing key provided so you can build yourself a signed release APK, but since it&rsquo;s not obfuscaded in anyway by ProGuard hacking scripts will work the same as on debug version.
+In <code>tools</code> directory we have <code>dex2jar</code> and <code>jd-gui</code> that we wont be using this time, but they are worth checking if you like to hack APK without having it&rsquo;s code. For now all we are interested about is in <code>frida-server</code> directory.</p>
+<p>If we look into <code>script.py</code> we can see that it does similar thing as we did in console, it looks for <code>pid</code> for our app package and attatches JavaScript file to run with it. It also have all JavaScript files already listed, we will go through all of them. To run this script just type <code>python script.py</code>.</p>
+<h3 id="change-method-implementation">Change method implementation</h3>
+<p>First script shows how we can change method implementation. Sample app is running method <code>sum()</code> every second and loggs output. We can change it&rsquo;s implementation without app even noticing it :) In <code>change_method.js</code> file in <code>Java.perform()</code> block we first find class that contains <code>sum()</code> method - we have whole app project so it&rsquo;s not hard to find methods and classes, but if we want to hack someone&rsquo;s APK, even after obfuscating with Proguard it works the same way. APK can be extracted with <code>dex2jar</code> tool.
+<code>Java.use()</code> returns us class object with access to it&rsquo;s variables and methods (note that it is NOT an instance of this class). To change method implementation we just need to overwrite it with new method.</p>
+<pre tabindex="0"><code>activity.sum.implementation = function (x, y) {
+        //print the original arguments
+        console.log(&#34;original call: sum(&#34; + x + &#34;, &#34; + y + &#34;)&#34;);
+        //call the original implementation of `fun` with args (2,5)
+        var ret_value = this.sum(2, 5);
+        return ret_value;
+    }
+</code></pre><p>Interesting thing is that we can still use <code>this.sum()</code> - it&rsquo;s because we haven&rsquo;t change original method or class, we just told Dalvik to run our JavaScript instead. In this case we are printing in console original method parameters and then run it with completely others, and return value.
+At this point I felt absolute power!</p>
+<h3 id="run-method">Run method</h3>
+<p>We&rsquo;ve changed method implementation, but we still needed app to run method, it&rsquo;s because we didn&rsquo;t have access to actual object. But we can have it, why not, we are world class hackers at this point. In file <code>instance.js</code> we use a bit different method <code>Java.choose()</code> that looks for loaded objects and select one with fitting name.</p>
+<pre tabindex="0"><code>Java.choose(&#34;asvid.github.io.fridaapp.MainActivity&#34; , {
+      onMatch : function(instance){ //This function will be called for every instance found by frida
+        console.log(&#34;Found instance: &#34;+instance);
+        instance.showToast();
+      },
+      onComplete:function(){}
+    });
+</code></pre><p>Method takes two callbacks: called when instance is found and other called when method is completed. In first callback we get access to instance of class we were looking for, and we can call it&rsquo;s methods. Remember that it means method will be called when instance is found, not at start of your app, because looking for instances takes a while.
+So YAY! we&rsquo;ve showed a toast.</p>
+<h3 id="bruteforce-pin-breaking">Bruteforce PIN breaking</h3>
+<p>In some apps like <code>Evernote</code> you can set internal PIN to protect your data from unwanted access. It means PIN has to be stored locally on your device, encrypted of course and hashed. When user provides PIN you just compare hashes, so no plain text PIN is available at any point.
+In FridaApp I&rsquo;ve provided just simple method that checks if PIN is &ldquo;1234&rdquo;, but image that its reading hash from SharedPreferences and compares it with hashed user input. No matter what security precautions you take, at the end of a day you want method that takes a <code>String</code> and returns a <code>Boolean</code>. Lets hack it!
+In <code>brutal.js</code> we have our PIN destroyer. At first we need instance of class that contains PIN checking method. Than we can run this method for diferent PIN numbers and check which one returns <code>true</code>. I&rsquo;ve done it in a loop that iterates from 0 to 100000, so it covers all 5 digit PIN numbers. Loop stopes when method returns <code>true</code> and prints number in console along with time it took.</p>
+<h3 id="listing-loaded-objects">Listing loaded objects</h3>
+<p>We&rsquo;ve already done this in console, but there we&rsquo;ve go ALL of objects, it was impossible to find what we can hack. Gladly I&rsquo;ve wrote <code>class_list.js</code> script that can list only ones in my app.</p>
+<pre tabindex="0"><code>Java.enumerateLoadedClasses(
+      {
+      &#34;onMatch&#34;: function(className){
+            if(className.includes(&#34;asvid&#34;)){
+                console.log(className);
+            }            
+        },
+      &#34;onComplete&#34;:function(){}
+      }
+    );
+</code></pre><p>Yes in console you can use <code>| grep asvid</code> but its usefull to do it inside script in case you would need to use it further.</p>
+<h3 id="imaginary-security">Imaginary Security</h3>
+<p>All previous scripts were working arount <code>MainActivity</code> class or instance, it&rsquo;s safe to assume 99% of apps has such class. But now since we&rsquo;ve listed loaded objects we can see there is mysterious <code>Security</code> object loaded. If we check app code, we can see its a field in <code>MainActivity</code> and its used to encode text from input and stores it in <code>SharedPreferences</code>. It&rsquo;s also used to read and decode this text that is next printed below input. If you check <code>SharedPreferences</code> of sample app it might contain something like that:</p>
+<pre tabindex="0"><code>&lt;string name=&#34;password&#34;&gt;cNeUD7lWCcd01X4aQfSsgi+YvbP2m9/I5f1zeLmDNmIzPV9A4oUYf68HsCa8r/st7zi8qZnpZLf8
++dPwTWuNZZSsKnFRHlDK7G8f23kq5vf6luIzrjob4ZzzVs/wi2iAEyDD482uQBxTxq9UlE0C2+Wb
+Nw3tza5OTFIDoqf9HFBLJmqhKPXE7vmGp7XXJTdcHQhPfNeg/g0LzUXOXhFROUOOc8kzekwaBgmZ
+aWf5g0prOONetqr7xRdR4VprNlBhZA0DmhbCXP4vLEj8FWadvkwvtfL7uLQviW0iUVAuGXBfLdCG
+Qb7jUeX/jbWxSRLnyXZaUkG0VhuRQt7jXT2H7A==
+    &lt;/string&gt;
+</code></pre><p>Looks serious, but why even bother cracking it when we can read it like it wasn&rsquo;t even encoded? In script <code>security.js</code> I&rsquo;m using some old tricks: <code>Java.choose()</code> to find instance of <code>Security</code> class, and running method <code>getPassword()</code> on found instance.</p>
+<h3 id="let-there-be-instance">Let there be instance</h3>
+<p>In sample app there is one class left - <code>SomeClass</code>. But it wasn&rsquo;t listed on loaded classes, in Android Studio its name is gray so it&rsquo;s not being used anywhere. Is there a way to use it somehow? Yeap, we just need to create instance of it. There is a log of code in <code>some_class.js</code> script but most important is this:</p>
+<pre tabindex="0"><code>var someClass = Java.use(&#34;asvid.github.io.fridaapp.SomeClass&#34;);
+var someClassInstance = someClass.$new()
+</code></pre><p>So here I&rsquo;m getting a class that I want to create instance of, and just&hellip; create an instance. And now I can do whatever I want with this instance.
+At first script is just printing in console output from methods with same name but different signatures - easy. Then it&rsquo;s changing both implementations with help of <code>overload()</code> method, because we need to specify which ones implementation we are changing.
+Finally, script is printing values in public and private field of our <code>SomeClass</code> instance. <code>Private</code> doesn&rsquo;t really mean anything for us now, script will change its value (which was also <code>final</code>) to anything we order it.</p>
+<h3 id="debug-release">Debug release</h3>
+<p>Last script is inspired by silly idea, that developers can hide things from users simply checking if build is <code>debug</code> or <code>release</code>. Like additional buttons used for testing, app logic changes or logging. Remember that in <code>MainActivity</code> there is a method that runs every second and prints in console result of adding 30 and 50, we were changing this method implementation before. This method uses two types of logging, standard <code>Log.d()</code> and <code>Logger.log()</code>. This second method is checking build type, and prints only for <code>debug</code>. So if you build release app you will see only first log.
+Script <code>debug.js</code> is at first looking for <code>Logger</code> instance in memory, and then changes its <code>showLogs</code> flag to <code>true</code>, from its original value of kinda <code>isDebug()</code>. And now we get both logs in logcat.</p>
+<h2 id="summarization">Summarization</h2>
+<p>I&rsquo;ve tried to show some basic functions of <code>Frida</code> with easy to use scripts. Hope you had fun and will experiment on your own apps, I surely will. Real world app would have obfuscated code, so it will be much harder to know which class and method you need to use to achieve what you want, but it will still work the same way. I&rsquo;m just an Android developer - not really a hacker, or security guru, but learning about <code>Frida</code> pushed me to think way more about my apps security. It&rsquo;s always better to break (and fix) your own app before someone else does it.</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/nyan-your-terminal/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Nyan your terminal</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/android-build-hacks-1/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Android Build Hacks #1 - build basics</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#preparation">Preparation</a>
+      <ul>
+        <li><a href="#getting-ready">Getting ready</a></li>
+        <li><a href="#installing-stuff">Installing stuff</a></li>
+        <li><a href="#hello-frida">Hello Frida</a></li>
+      </ul>
+    </li>
+    <li><a href="#action">Action</a>
+      <ul>
+        <li><a href="#repo">Repo</a></li>
+        <li><a href="#change-method-implementation">Change method implementation</a></li>
+        <li><a href="#run-method">Run method</a></li>
+        <li><a href="#bruteforce-pin-breaking">Bruteforce PIN breaking</a></li>
+        <li><a href="#listing-loaded-objects">Listing loaded objects</a></li>
+        <li><a href="#imaginary-security">Imaginary Security</a></li>
+        <li><a href="#let-there-be-instance">Let there be instance</a></li>
+        <li><a href="#debug-release">Debug release</a></li>
+      </ul>
+    </li>
+    <li><a href="#summarization">Summarization</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

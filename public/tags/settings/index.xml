@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Settings on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/settings/</link>
+    <description>Recent content in Settings on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/settings/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IntelliJ settings repo</title>
+      <link>http://localhost:1313/intellij-settings-repo/</link>
+      <pubDate>Sun, 19 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/intellij-settings-repo/</guid>
+      <description>My setup looks like this: I have Windows PC with Linux installed on a separate drive, also I have 2 MacBooks for work, and rarely used Linux ThinkPad. Keeping my IntelliJ settings in sync at all of those machines wasn&amp;rsquo;t really possible. If I find some setting that improves my workflow at my office machine, and after some time I want to work on a pet project on my own PC - I get this itch of not having this setting I had on MacBook&amp;hellip; so I can export my settings and then import it.</description>
+    </item>
+  </channel>
+</rss>

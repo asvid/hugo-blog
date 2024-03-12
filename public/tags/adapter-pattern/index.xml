@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adapter Pattern on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/adapter-pattern/</link>
+    <description>Recent content in Adapter Pattern on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/adapter-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adapter Pattern in Kotlin</title>
+      <link>http://localhost:1313/kotlin-adapter-pattern/</link>
+      <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-adapter-pattern/</guid>
+      <description>Purpose As the name suggests, the Adapter pattern transforms the class interface to another one requested by the client. Using the Adapter allows incompatible classes to interact with each other. Another term for this pattern is Wrapper.&#xA;The adapter allows you to &amp;ldquo;map&amp;rdquo; an adapted interface (Adaptee) to the expected interface (Target) by the client class without adding another level of inheritance. Such inheritance would not always be possible if Target was a class rather than an interface.</description>
+    </item>
+  </channel>
+</rss>

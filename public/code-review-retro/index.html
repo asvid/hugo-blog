@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Code Review Retro</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Code&#32;Review&#32;Retro />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Code&#32;Review&#32;Retro />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Code&#32;Review&#32;Retro />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Code&#32;Review&#32;Retro />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content="This is not a list of &#39;golden rules&#39; of code review, there are many blogposts about it. Here I just try to perform retrospective my own experiences." />
+<meta itemprop="description" content="This is not a list of &#39;golden rules&#39; of code review, there are many blogposts about it. Here I just try to perform retrospective my own experiences." />
+<meta property="og:description" content="This is not a list of &#39;golden rules&#39; of code review, there are many blogposts about it. Here I just try to perform retrospective my own experiences." />
+<meta name="twitter:description" content="This is not a list of &#39;golden rules&#39; of code review, there are many blogposts about it. Here I just try to perform retrospective my own experiences." />
+
+
+<base href="http://localhost:1313/code-review-retro/" />
+<link rel="canonical" href="http://localhost:1313/code-review-retro/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/code-review-retro/" />
+<meta name="twitter:url" content="http://localhost:1313/code-review-retro/" />
+<meta property="og:url" content="http://localhost:1313/code-review-retro/" />
+
+
+<meta property="og:updated_time" content=6008-06-12T80:00:20Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=6008-06-12T80:00:20Z />
+<meta property="article:published_time" content=6008-06-12T80:00:20Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/code-review-retro/">Code Review Retro</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2020-08-06T00:00:00Z" class="post-date">
+        August 6, 2020
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>12 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-code review">
+        <a href="http://localhost:1313/tags/code-review">code review</a>
+      </li>
+      
+      <li class="tag-self-retro">
+        <a href="http://localhost:1313/tags/self-retro">self-retro</a>
+      </li>
+      
+      <li class="tag-pull request">
+        <a href="http://localhost:1313/tags/pull-request">pull request</a>
+      </li>
+      
+      <li class="tag-team work">
+        <a href="http://localhost:1313/tags/team-work">team work</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="importance-of-code-review">Importance of Code Review</h1>
+<p>I sure do hope that I don&rsquo;t need to convince anyone how important is the process of code review.
+If you need some guidelines on how to do it well I can recommend <a href="https://engineeringblog.yelp.com/2017/11/code-review-guidelines.html" target="_blank">this Yelp blog post</a>
+Here I&rsquo;d just like to perform a retrospective of my own <code>code review</code> experiences.</p>
+<h3 id="a-bit-of-history">A bit of history</h3>
+<p>When I started my developer career in a rather small company - we were not doing code reviews. One reason was
+that we had one developer per technology, so it was hard to find reviewers. But the main reason was that it was the first job for most of us, and nobody had experience with it.
+There was nobody to say: <strong>&ldquo;we should be reviewing pull requests, despite we are not experts in a certain technology because good code always fulfills the same criteria&rdquo;</strong>.</p>
+<p>Luckily, later on, I worked in place, where code reviewing was a standard, and I learned a lot thanks to it.</p>
+<h1 id="let-the-hunger-games-begin">Let the hunger games begin</h1>
+<p>Pull request is always a bit of a fight - <a href="https://youtu.be/DUWiy7fvVzk?t=81" target="_blank">Yegor Bugayenko</a> explains it well.
+As a code author, you want your changes to be merged, but as a reviewer, you protect the project from attaching any mess to it.</p>
+<blockquote>
+<p>The most important thing is to remember that both parties have the same goal here - keep the highest code quality in the project without pushing a particular solution by any means necessary</p>
+</blockquote>
+<p>Pull request&rsquo;s purpose is to verify that new code is written according to conventions agreed in the organization (code style, tests),
+doesn&rsquo;t include any dangerous changes or silly mistakes or trash left after development.</p>
+<p>So much for the theory, now practice&hellip;</p>
+<h2 id="reviewers-hat">Reviewers hat</h2>
+<p>First some observations about reviewing code</p>
+<h3 id="lol">Lol</h3>
+<p>I got a comment like this once during code review :roll_eyes: <code>lol</code>. Ok, cool. But what does it mean? I did something funny? Something silly?
+Now I have to answer this comment and ask, hoping that its author will reply (in a different way) and then eventually, if I get lucky, I will know what he meant.</p>
+<p>Let&rsquo;s respect each other and our time that our employer pays for, and try to write <strong>as clear as possible</strong> what is going on from the very beginning.
+Code review is a great place to discuss the very matter of our profession - the code - but it&rsquo;s hard to discuss with <code>lol</code>.</p>
+<h3 id="memes">Memes</h3>
+<p>I add them myself in comments, but there are some rules:</p>
+<ul>
+<li>reviewer and PR author should know each other well, to be sure that meme will be understandable</li>
+<li><code>enough is enough</code> well-placed meme from time to time can be great, but if you put it in every comment it looks unprofessional and will obfuscate useful information</li>
+<li>there are more and more topics that are better off left for after work, and PRs can often be publicly visible for the whole organization. Not everyone is a fan of non-PC humor</li>
+</ul>
+<h3 id="personal-preferences">Personal preferences</h3>
+<p>&ldquo;And here you can do it <code>like this</code>&rdquo; - where <code>like this</code> often gives the same result, just in reviewer&rsquo;s preferred way.
+In extreme cases, it may require refactoring half of the project and changing its principles because reviewer just came back from random conference and is spoiled with hype-driven development :smile:.</p>
+<p>The reviewer&rsquo;s solution was likely taken into account during development, but eventually, it didn&rsquo;t make it to the final solution.
+PR&rsquo;s author may know something the reviewer is not aware of.</p>
+<p>Such comment can be useful and start a fruitful conversation for both sides, <strong>as long as the reviewer is not blocking PR</strong> by all means necessary.</p>
+<h3 id="imperative">Imperative</h3>
+<p>&ldquo;Change <code>X</code> to <code>Y</code>&rdquo; - no explanation or reasoning given. Because. The reviewer knows best.</p>
+<p>IMO this way of commenting is unacceptable, even when there are huge experience and knowledge gaps between author and reviewer.
+When a junior developer is not getting any explanation why <code>X</code> is worse than <code>Y</code> they will <strong>never learn or will use <code>Y</code> blindly</strong> &ldquo;because senior said so&rdquo;</p>
+<p>Usually, 1-2 sentences of clarification will do the work, StackOverflow, or some blogpost link may also help.</p>
+<h3 id="esseys">Esseys</h3>
+<p>But don&rsquo;t get too verbose, <code>Ockham's razor</code> is your friend.
+It&rsquo;s an extremely important and useful skill to be able to pack maximum content in a minimum amount of well-picked words.
+There are times when I have to crawl through epic in the comment, just to get information that I could use another name for a variable.</p>
+<p>What I would expect is to point what variable name may be better, why current is bad and 1..n suggestions of better names.</p>
+<ul>
+<li>I don&rsquo;t need an introduction like &ldquo;Don&rsquo;t you think that this name is too much/not enough something?&rdquo; - No, I don&rsquo;t and this is why I picked it.</li>
+<li>Then I don&rsquo;t need to get 10 links to StackOverflow and suggesting 3 books about clean code and software engineering - I won&rsquo;t be able to read all this in any reasonable time.</li>
+<li>In the end, I don&rsquo;t need to read that &ldquo;this is just a suggestion, and I will do as I want if I think that current name is better, but {here more useless words}&rdquo; -
+yes I know, every comment in PR is just a suggestion.</li>
+<li>Every reviewer&rsquo;s comment is kind of <code>call to action</code> and author reaction is expected, no need to add &ldquo;what do you think about it?&rdquo; every single time.</li>
+</ul>
+<p>I understand that this kind of verbose language makes comments sound nicer than just dry information, but it&rsquo;s exhausting for long the term.
+If we agree that we are all professionals and are respectful towards each other, then I think we don&rsquo;t need such verbose language in comments.</p>
+<p>This is also shadowing the main reason for the comment itself.</p>
+<p>So please be specific :smile:</p>
+<h3 id="author-is-doing-the-same-mistakes-all-the-time">Author is doing the same mistakes all the time</h3>
+<p>People keen to learn from mistakes and are adjusting to organization standards.
+If somehow PR author is doing the same mistakes each time or is not following code style - you should act on another level than just comments.
+Often by saying &ldquo;this guy doesn&rsquo;t get it&rdquo; you mean &ldquo;I just can&rsquo;t explain it well&rdquo;.</p>
+<p>It is worthwhile to first talk with them about whether it is because of absent-mindedness or deliberate breaking of conventions, because,
+for example, he may think that his are better.
+In the case of absent-mindedness, you can try to automate rules and standards - there are tools like code formatter, SonarLint, or rules in IDE that will highlight broken rules in real-time, long before PR.
+When the author is fighting with organization standards&hellip; well not everyone is good to work with :roll_eyes:</p>
+<p>I believe that imperfect rules are better than their absence, and it&rsquo;s worthwhile to work on them rather than fighting against them.
+Deliberate breaking organization standards instead of at least trying to fix them is causing chaos and unnecessary tension.</p>
+<h3 id="appreciate">Appreciate</h3>
+<p>When you see a cool change in the code - <strong>appreciate this in the comment</strong>, :+1: it&rsquo;s enough.
+PR approve means just &ldquo;good enough&rdquo;, but if the author did something interesting and went the extra mile it&rsquo;s really good to appreciate this.</p>
+<p>It creates a nice culture among developers and means that the reviewer actually read the code and not just scroll through it and approved.</p>
+<p>However, it is important to not overdo this, or it will lose impact.</p>
+<h3 id="wider-context">Wider context</h3>
+<p>The easiest part of reviewing code is catching typos, naming issues, or little implementation improvements.
+It&rsquo;s because <strong>these problems are isolated - they are present in a single place in code</strong>.</p>
+<p>Much harder but also much more important is to understand the wider context of changes in PR.
+It requires a deep understanding of project code, business domain, and task that is being resolved by reviewed changes.
+This comes over time depending on the size of the project and the complexity of the domain.
+You also need a good team working together to achieve sprint goals and that is actively involved in all tasks.</p>
+<p>Group of alienated contractors probably won&rsquo;t be able to review code looking in a wider context and will focus on basic issues mentioned at the beginning of this chapter.</p>
+<h3 id="always-leave-a-comment">Always leave a comment</h3>
+<p>I don&rsquo;t like <code>silent approvals</code>, even though I sometimes do them :smirk:
+When changes in PR are clear, and you don&rsquo;t find any issues it&rsquo;s good to say this in the comment to the whole PR.
+Simple &ldquo;looks good&rdquo; is enough.
+Additionally, it means that, as a reviewer, you spent some time to understand changes, and you don&rsquo;t just want to <code>approve</code> quickly because the author is bugging you to finally look at his PR.</p>
+<p>When you see a trivial issue in the code - also leave a comment and don&rsquo;t pass over it, but with information that it&rsquo;s a trivial issue.
+It&rsquo;s not about being picky, but let know that something can be done better.</p>
+<hr>
+<h2 id="authors-hat">Authors hat</h2>
+<p>Pull request author has a lot of ways to make code review a good or bad experience.</p>
+<h3 id="description">Description</h3>
+<p>I&rsquo;ve noticed that I like when PR has a description informing about the intention of changes and is linking to the most important changes in code.</p>
+<p>Usually, in the PR description or title, you should find a link to Jira ticket (or any other ticket system), but we all know how tickets can look like.
+Then you have undocumented discoveries during implementation and encountered problems with solutions.</p>
+<p>So to help reviewers to understand the wider context (check the previous chapter) <strong>its good to write in human-understandable language what is going on in pull request</strong>.
+Of course, that code should talk for itself&hellip; but code diff may not do this well enough.
+Also jumping between code in IDE and pull request is not pleasant.
+This makes the review process longer and is causing aversion to reviewing pull requests.</p>
+<p>It&rsquo;s worthwhile to link to the most important changes in code, to distinguish them from minor gardening or fixes.
+In the description, you can add screens (check below) or diagrams that will help to better understand complex changes, that may be hidden when looking only on diff.</p>
+<h3 id="screens">Screens</h3>
+<p>When your changes are impacting UI consider adding screens with the effect to pull request description.
+Even if there was a designer involved in the whole process.</p>
+<p>It&rsquo;s fairly easy to miss something and adding screens will allow reviewers to find errors without running the app.
+From an Android developer perspective - sometimes the design is not working well on all devices and if this is discovered during code review, changing it will be faster and cheaper than doing this after users start complaining.</p>
+<h3 id="self-review">Self-review</h3>
+<p><strong>Before you add reviewers to pull requests - do yourself a review</strong>. You might want to check:</p>
+<ul>
+<li>did you leave any development garbage in the code (logs, comments)</li>
+<li>can you figure out what is going on just looking on diff</li>
+<li>do names for class/variable/method picked up during development still fit</li>
+<li>are tests reasonable</li>
+<li>are organization conventions and standards kept</li>
+</ul>
+<p>During development, it&rsquo;s easy to miss or forget one of the above-mentioned things. Before adding reviewers to pull request you have last chance to fix it before anyone can see it :smile:.</p>
+<p>Some organizations or developers themselves are using pre-pull request checklists that are saving reviewers time by finding silly errors before they start checking the code.
+Surprisingly this is also making development faster because you don&rsquo;t have to wait for feedback from others to fix issues you will have to fix anyway.</p>
+<h3 id="feedback-is-a-gift">Feedback is a gift</h3>
+<p>By writing the code, you expose yourself to criticism and have no influence (or just indirectly) on the form in which you receive it. You control only how you react to it.
+Even though you disagree with the reviewer&rsquo;s point of view, appreciate fact that they spent time writing a comment with (hopefully) reasoning of their point, preceded by deeply reading your changes.
+Unless they wrote just <code>lol</code> then just move on or escalate it :no_mouth:.</p>
+<p>It&rsquo;s good to respond or react on each comment in some way (&ldquo;like&rdquo; comment on BitBucket, or reactions on GitHub).
+Leaving hanging comments creates the impression that reviewer work is irrelevant.</p>
+<h3 id="lower-the-noise">Lower the noise</h3>
+<p>Nobody likes to review pull requests containing changes in 100 files, resolving many issues at once and touching unrelated places in code.
+If you feel that in your organization there is a problem to motivate other developers to review your PR, maybe you can start creating them in a way that would allow fairly easy readthrough and understanding intention of changes.
+Tasks can often be split on smaller independent fragments and then you can create few PRs with changes focused on part of the issue.</p>
+<p>Unfortunately, it won&rsquo;t be always an option.
+Then you can try to <strong>stop fixing the world by the way</strong>, especially when you notice that you are changing places unrelated to your task.
+PR can easily explode to enormous size, where hundreds of files are changes in a dozen places.
+This phenomenon is making the intent of changes blurry, and it&rsquo;s hiding the most important changes from reviewers. Not to mention that it allows bugs to slip in easily.</p>
+<p>It&rsquo;s better to create yourself a ticket for later and try to do it ASAP, or just do a separate PR within the original ticket but just with refactoring you found to be useful.</p>
+<p>If for some reason you end up with a huge pull request, please add a good description with links to most important changes in code - this is where you want reviewers to focus.</p>
+<h3 id="pull-request-doesnt-exist-in-a-vacuum">Pull Request doesn&rsquo;t exist in a vacuum</h3>
+<p>Good PR is not alive for a long time. When you have weeks or months passing since it was created, the chance of resolving conflicts grows exponentially.
+And this is tiring and frustrating&hellip;</p>
+<p>This is why <strong>small pull requests are awesome</strong>, because reviewers will check them sooner, the number of potential issues and fixes is lower, and they are merged quicker.</p>
+<p>It&rsquo;s becoming even more important the more developers work at the same project in independent teams.</p>
+<h1 id="summary">Summary</h1>
+<p>We all deeply care about being productive at work, despite on which side (author or reviewer) are we.
+Commonly each developer works in each role, so it should be easy to understand how important <strong>empathy and communication</strong> are.</p>
+<p>Let&rsquo;s write in such a way that others can easily understand what you want to convey, regardless of whether it is a code or a comment.
+A well-prepared pull request will be verified faster and more thoroughly.
+Respectfully written comments will work better for project code quality than those mocking the author.</p>
+<p>When working with people it&rsquo;s important to remember that it should be pleasant for everyone :smile:</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/github-page-deployment/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Ultimate Github Page Deployment</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/kotlin-builder-pattern/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Kotlin Builder Pattern</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#a-bit-of-history">A bit of history</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#reviewers-hat">Reviewers hat</a>
+      <ul>
+        <li><a href="#lol">Lol</a></li>
+        <li><a href="#memes">Memes</a></li>
+        <li><a href="#personal-preferences">Personal preferences</a></li>
+        <li><a href="#imperative">Imperative</a></li>
+        <li><a href="#esseys">Esseys</a></li>
+        <li><a href="#author-is-doing-the-same-mistakes-all-the-time">Author is doing the same mistakes all the time</a></li>
+        <li><a href="#appreciate">Appreciate</a></li>
+        <li><a href="#wider-context">Wider context</a></li>
+        <li><a href="#always-leave-a-comment">Always leave a comment</a></li>
+      </ul>
+    </li>
+    <li><a href="#authors-hat">Authors hat</a>
+      <ul>
+        <li><a href="#description">Description</a></li>
+        <li><a href="#screens">Screens</a></li>
+        <li><a href="#self-review">Self-review</a></li>
+        <li><a href="#feedback-is-a-gift">Feedback is a gift</a></li>
+        <li><a href="#lower-the-noise">Lower the noise</a></li>
+        <li><a href="#pull-request-doesnt-exist-in-a-vacuum">Pull Request doesn&rsquo;t exist in a vacuum</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

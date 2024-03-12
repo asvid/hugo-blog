@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Decorator Pattern in Kotlin</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Decorator&#32;Pattern&#32;in&#32;Kotlin />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Decorator&#32;Pattern&#32;in&#32;Kotlin />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Decorator&#32;Pattern&#32;in&#32;Kotlin />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Decorator&#32;Pattern&#32;in&#32;Kotlin />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content=" The `Decorator` pattern is used where creating separate classes which are a combination of all possibilities would result in their explosion. This pattern focuses on creating object layers to transparently and dynamically complement objects with new tasks. The decorator provides an object with the same interface as the decorated object. " />
+<meta itemprop="description" content=" The `Decorator` pattern is used where creating separate classes which are a combination of all possibilities would result in their explosion. This pattern focuses on creating object layers to transparently and dynamically complement objects with new tasks. The decorator provides an object with the same interface as the decorated object. " />
+<meta property="og:description" content=" The `Decorator` pattern is used where creating separate classes which are a combination of all possibilities would result in their explosion. This pattern focuses on creating object layers to transparently and dynamically complement objects with new tasks. The decorator provides an object with the same interface as the decorated object. " />
+<meta name="twitter:description" content=" The `Decorator` pattern is used where creating separate classes which are a combination of all possibilities would result in their explosion. This pattern focuses on creating object layers to transparently and dynamically complement objects with new tasks. The decorator provides an object with the same interface as the decorated object. " />
+
+
+<base href="http://localhost:1313/kotlin-decorator-pattern/" />
+<link rel="canonical" href="http://localhost:1313/kotlin-decorator-pattern/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/kotlin-decorator-pattern/" />
+<meta name="twitter:url" content="http://localhost:1313/kotlin-decorator-pattern/" />
+<meta property="og:url" content="http://localhost:1313/kotlin-decorator-pattern/" />
+
+
+<meta property="og:updated_time" content=3007-03-12T70:00:21Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=3007-03-12T70:00:21Z />
+<meta property="article:published_time" content=3007-03-12T70:00:21Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/kotlin-decorator-pattern/">Decorator Pattern in Kotlin</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2021-07-03T00:00:00Z" class="post-date">
+        July 3, 2021
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>13 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-kotlin">
+        <a href="http://localhost:1313/tags/kotlin">kotlin</a>
+      </li>
+      
+      <li class="tag-Decorator Pattern">
+        <a href="http://localhost:1313/tags/decorator-pattern">Decorator Pattern</a>
+      </li>
+      
+      <li class="tag-design patterns">
+        <a href="http://localhost:1313/tags/design-patterns">design patterns</a>
+      </li>
+      
+      <li class="tag-extension methods">
+        <a href="http://localhost:1313/tags/extension-methods">extension methods</a>
+      </li>
+      
+      <li class="tag-Wrapper">
+        <a href="http://localhost:1313/tags/wrapper">Wrapper</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="purpose">Purpose</h1>
+<p>The <code>Decorator</code> allows you to dynamically add or change the behavior of a specific object of a given class, without affecting other objects of the same class. In some cases, this allows you to significantly reduce the number of classes by moving the shared behavior to the <code>Decorator</code>, rather than extending the inheritance structure.</p>
+<p>The decorator&rsquo;s job is to &ldquo;wrap&rdquo; (hence another name: &ldquo;Wrapper&rdquo;) the original object and modify or overwrite its behavior. The decorator class has the same interface as the decorated object, so it doesn&rsquo;t matter to the client whether the object has been decorated or not. As a rule, <code>Decorator</code> is unlikely to add new public methods, as the client using the original object&rsquo;s interface would not have access to them anyway. Having the same interface as the original object allows decorators to nest and wrap each other freely.</p>
+<p>Decorating is done dynamically while the program is running, not at the compile time. The decorated object is usually passed in the Decorator constructor because the &lsquo;Decorator&rsquo; instance makes no sense by itself, without the object it wraps around.</p>
+<h1 id="implementation">Implementation</h1>
+<p>There are few key pieces in the <code>Decorator</code> pattern:</p>
+<p>{% plantuml %}
+@startuml
+skinparam linetype ortho
+hide members
+show Decorator members</p>
+<p>class Client
+interface Component
+class ConcreteComponent implements Component
+abstract class Decorator implements Component{</p>
+<h1 id="component-component">component: Component</h1>
+<p>}
+class ConcreteDecorator extends Decorator</p>
+<p>Client -right- Component : using</p>
+<p>Decorator o&ndash; Component</p>
+<p>@enduml
+{% endplantuml %}</p>
+<p>Elements:</p>
+<ul>
+<li><strong>Client</strong> - a class that uses the <code>Component</code> object, knows only generic interface, not concrete classes, so it does not need to know about the existence of a decorator</li>
+<li><strong>Component</strong> - interface of the object that <code>Decorator</code> decorates</li>
+<li><strong>ConcreteComponent</strong> - a specific implementation of the <code>Component</code>, which then is passed in the decorator&rsquo;s constructor</li>
+<li><strong>Decorator</strong> - an abstract class that implements the <code>Component</code> interface and takes a <code>Component</code> object in the constructor. Using an abstract class, rather than an interface allows forcing the constructor on inheriting classes without the possibility of creating an instance. If <code>Decorator</code> accepts objects with a generic<code> Component</code> interface rather than a concrete class, it can decorate entire families of objects.</li>
+<li><strong>ConcreteDecorator</strong> - a specific decorator implementation</li>
+</ul>
+<h2 id="abstract">Abstract</h2>
+<p>The above diagram can look like this in code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Component</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// example methods of decorated interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">methodA</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">methodB</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// a single concrete implementation but there can be many
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteComponent</span> : Component {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">methodA</span>() {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">methodB</span>() {}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Decorator `is-a` Component and `has-a` Component
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// field `component` is `protected` which makes it available to inheriting classes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Decorator</span>(<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">val</span> component: Component) : Component
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// concrete `Decorator` implementation with forced constructor requiring the `Component` instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteDecorator1</span>(component: Component) : Decorator(component) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// methods has to be overridden
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// in this case, `Decorator` is calling wrapped instance methods without any changes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// so it&#39;s basically a Proxy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">methodA</span>() = component.methodA()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">methodB</span>() = component.methodB()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// another implementation of `Decorator`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteDecorator2</span>(component: Component) : Decorator(component) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">methodA</span>(){
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// in this implementation you can&#39;t use methodA()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// it may be related to checking `Component` parameters for example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">throw</span> Exception(<span style="color:#e6db74">&#34;you can&#39;t do this&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">methodB</span>(){
+</span></span><span style="display:flex;"><span>        println(<span style="color:#e6db74">&#34;running methodB&#34;</span>)
+</span></span><span style="display:flex;"><span>        component.methodB()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// &#34;naked&#34; `Component``
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> component: Component = ConcreteComponent()
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// first Decorator wrapping a component
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> dec1: Component = ConcreteDecorator1(component)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// second Decorator, wrapping already wrapped component
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> dec2: Component = ConcreteDecorator2(dec1)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You can see here how easy it is to nest Decorators. In this implementation, <code>ConcreteDecorator1</code> is basically<code> Proxy</code> because it simply calls the methods from the passed <code>Component</code> object. Note that the <code>ConcreteDecorator2.methodA()</code> throws an exception. The decorator can also return a constant and not use the passed <code>Component</code> object at all. The &lsquo;decorator&rsquo; decides for himself how to behave. Based on the properties of the wrapped object, it may decide to raise an exception instead of returning some value.</p>
+<p>{% plantuml %}
+@startuml
+title Nested Decorators
+node Decorator1{
+node Decorator2{
+node Component{</p>
+<pre><code>	}
+}
+</code></pre>
+<p>}
+@enduml
+{% endplantuml %}</p>
+<h2 id="delegates">Delegates</h2>
+<p>Kotlin has built-in support for <a href="https://kotlinlang.org/docs/delegation.html" target="_blank">the delegation pattern</a>, another pattern that sets composition above inheritance. The general idea is to <strong>delegate</strong> the task resulting from the class interface to some component object, passed in the constructor, or injected by DI. This way class can be composed of reusable delegates instead of duplicating the implementation or creating strange inheritance structures. A bit like the template method, only that for the class - a class template :)</p>
+<p>Delegates can be used to implement the <code>Decorator</code> pattern. In Kotlin, delegates are created using the &lsquo;by&rsquo; keyword:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// basic interface to be decorated
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Component</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sayHello</span>(): String
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteComponent1</span> : Component {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sayHello</span>() = <span style="color:#e6db74">&#34;hello from </span><span style="color:#e6db74">${javaClass.simpleName}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// delegating the `Component` interface behavior to the `component` instance passed in constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Decorator</span>(<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">val</span> component: Component): Component <span style="color:#66d9ef">by</span> component
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Decorator1</span>(component: Component) : Decorator(component) {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// component method overridden by decorator, extending the message
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sayHello</span>() = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${component.sayHello()}</span><span style="color:#e6db74"> and from </span><span style="color:#e6db74">${javaClass.simpleName}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// no need to override `sayHello()` every time
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// it was &#34;delegated&#34; to the `component` instance from constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Decorator2</span>(component: Component) : Decorator(component)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> first: Component = ConcreteComponent1()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> decOne: Component = Decorator1(first)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> decTwo: Component = Decorator2(decOne)
+</span></span><span style="display:flex;"><span>    println(first.sayHello())  <span style="color:#75715e">// hello from ConcreteComponent1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    println(decOne.sayHello()) <span style="color:#75715e">// hello from ConcreteComponent1 and from Decorator1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    println(decTwo.sayHello()) <span style="color:#75715e">// hello from ConcreteComponent1 and from Decorator1 and from Decorator2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Alternatively, <code>component</code> may not even be a protected field in the abstract <code>Decorator</code>. Then the inheriting specific decorators can use <code>super</code>, which will delegate the method call to the <code>comm</code> object from the constructor.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AltDecorator</span>(component: Component): Component <span style="color:#66d9ef">by</span> component
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Decorator1</span>(component: Component) : Decorator(component) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sayHello</span>() = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${super.sayHello()}</span><span style="color:#e6db74"> and from </span><span style="color:#e6db74">${javaClass.simpleName}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You can delegate as many interfaces as you want, but <strong>only interfaces</strong> not classes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Component</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sayHello</span>(): String
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Component2</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sayBye</span>(): String
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Decorator</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">val</span> component: Component,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">val</span> component2: Component2
+</span></span><span style="display:flex;"><span>) :
+</span></span><span style="display:flex;"><span>        Component <span style="color:#66d9ef">by</span> component,
+</span></span><span style="display:flex;"><span>        Component2 <span style="color:#66d9ef">by</span> component2
+</span></span></code></pre></div><p>By using delegates, a particular <code>Decorator</code> can only contain methods that it actually wants to change. The abstract base class <code>Decorator</code> could also contain proxy calls to all methods of the decorated object, in which case concrete decorators would overwrite only the methods they require. But if you can do the same thing with a single word, why overpay? :)</p>
+<h2 id="communication-interfaces">Communication Interfaces</h2>
+<p>Let&rsquo;s take a system that sends text messages. Messages can be sent via Bluetooth or TCP. We want to be able to send pure text, JSON and JSON with the Base64 encoded message. Any type of message should be transferable by any means. And from the client level, it shouldn&rsquo;t matter what type of message and medium has been selected.</p>
+<p>Ok lets start from communication means:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// generic communication interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Comm</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sendMessage</span>(text: String): Result
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// class handling Bluetooth communication with the use of passed BtModule
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BtComm</span>(<span style="color:#66d9ef">val</span> bt: BtModule) : Comm {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sendMessage</span>(text: String): Result {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> bt.send(text)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// class handling TCP communication with the use of passed TcpModule
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TcpComm</span>(<span style="color:#66d9ef">val</span> tcpModule: TcpModule) : Comm {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sendMessage</span>(text: String): Result {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> tcpModule.send(text)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TcpModule</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">send</span>(text: String): Result {
+</span></span><span style="display:flex;"><span>        println(<span style="color:#e6db74">&#34;sending message via TCP: </span><span style="color:#e6db74">$text</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Result</span>.Success() <span style="color:#75715e">// sealed class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BtModule</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">send</span>(text: String): Result {
+</span></span><span style="display:flex;"><span>        println(<span style="color:#e6db74">&#34;sending message via BT: </span><span style="color:#e6db74">$text</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Result</span>.Success()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Clients will only know the general <code>Comm</code> interface, without knowing exactly how the message is processed. Separate modules will handle the details of sending via Bluetooth and TCP. From the point of the communication interface, its a facade for potentially complicated messaging, framing, device pairing, address finding, etc.</p>
+<p><code>BtComm</code> and<code> TcpComm</code> are specific classes that implement the interface to be decorated, not decorators.</p>
+<p>Using it with Bluetooth may look like that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> btModule = BtModule()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> message = <span style="color:#e6db74">&#34;hello&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> btComm: Comm = BtComm(btModule)
+</span></span><span style="display:flex;"><span>btComm.sendMessage(message) <span style="color:#75715e">// sending message via BT: hello
+</span></span></span></code></pre></div><p>Which causes sending simple text message via Bluetooth. Same story with TCP.</p>
+<h3 id="jsondecorator">JsonDecorator</h3>
+<p>We&rsquo;d like to send JSON formatted messages with BT and TCP. A decorator like this can be used:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// `comm` passed in constructor is not a class field, so inheriting classes can&#39;t access it`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CommDecorator</span>(comm: Comm) : Comm <span style="color:#66d9ef">by</span> comm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JsonDecorator</span>(comm: Comm) : CommDecorator(comm) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sendMessage</span>(text: String): Result {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// with `super` method from abstract `CommDecorator` is called, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// that then delegates the call to the `comm` instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">super</span>.sendMessage(<span style="color:#e6db74">&#34;{</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">message</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">:</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$text</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">}&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And usage:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> tcpModule = TcpModule()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> btModule = BtModule()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> message = <span style="color:#e6db74">&#34;hello&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// wrapping TCP communication in JSON decorator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> tcpJsonComm: Comm = JsonDecorator(TcpComm(tcpModule))
+</span></span><span style="display:flex;"><span>tcpJsonComm.sendMessage(message) <span style="color:#75715e">// sending message via TCP: {&#34;message&#34;:&#34;hello&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// for BT:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> btJsonComm: Comm = JsonDecorator(BtComm(btModule))
+</span></span><span style="display:flex;"><span>btJsonComm.sendMessage(message) <span style="color:#75715e">// sending message via BT: {&#34;message&#34;:&#34;hello&#34;}
+</span></span></span></code></pre></div><p>If there was another way of communication now (Websockets, Firebase, carrier pigeon) and the messages should have the same format, no problem. You just decorate the new <code>Comm</code> implementation with an already made decorator. Likewise, if a new message format is created, familiar transfer methods can be used with the decorator.</p>
+<h3 id="base64decorator">Base64Decorator</h3>
+<p>Last decorator will help creating Base64 encoded message:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base46Decorator</span>(comm: Comm) : CommDecorator(comm) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sendMessage</span>(text: String): Result {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">super</span>.sendMessage(prepareMessage(text))
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">prepareMessage</span>(text: String): String {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Base64.getEncoder().encodeToString(text.toByteArray())
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It has a new private method to prepare messages. It does not extend the original interface, so it makes no difference whether the client knows about <code>Comm</code> or <code>Base46Decorator</code> - it has access to the same methods, so will rather choose to use <code>Comm</code> due to the easily interchangeable implementation. Such a subliminal encouragement of good behavior.</p>
+<h3 id="decorating-order">Decorating order</h3>
+<p>All together is used like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> tcpBase64JsonComm: Comm = JsonDecorator( <span style="color:#75715e">// put message in JSON structure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Base46Decorator( <span style="color:#75715e">// encode everything in Base64
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                TcpComm( <span style="color:#75715e">// send using TCP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        tcpModule
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>tcpBase64JsonComm.sendMessage(message) <span style="color:#75715e">// sending message via TCP: eyJtZXNzYWdlIjoiaGVsbG8ifQ==
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// different decorating order
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> tcpJsonBase64Comm: Comm = Base46Decorator( <span style="color:#75715e">// encode just the message with Base64
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        JsonDecorator( <span style="color:#75715e">// put it in JSON structure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                TcpComm( <span style="color:#75715e">// send using TCP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        tcpModule
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>tcpJsonBase64Comm.sendMessage(message) <span style="color:#75715e">// sending message via TCP: {&#34;message&#34;:&#34;aGVsbG8=&#34;}
+</span></span></span></code></pre></div><p>As you can see, the order of the decorators is of colossal importance. What exactly happened?</p>
+<ul>
+<li><strong>tcpBase64JsonComm</strong>
+<ol>
+<li>wrap the message in a JSON structure</li>
+<li>encode everything with Base64</li>
+<li>Send via TCP</li>
+</ol>
+</li>
+<li><strong>tcpJsonBase64Comm</strong>
+<ol>
+<li>encode just the message with Base64</li>
+<li>wrap everything in JSON structure</li>
+<li>Send via TCP
+The deeper the decorator is, the later it will be called with the result of processing data from earlier decorators.</li>
+</ol>
+</li>
+</ul>
+<p>{% plantuml %}
+@startuml</p>
+<p>Client -&gt; JsonDecorator : sendMessage(&ldquo;hello&rdquo;)
+JsonDecorator -&gt; Base46Decorator : sendMessage({&ldquo;message&rdquo;: &ldquo;hello&rdquo;})
+Base46Decorator -&gt; TcpComm : sendMessage(&ldquo;eyJtZXNzYWdlIjoiaGVsbG8ifQ==&rdquo;)
+TcpComm -&gt; TcpModule : send(body: &ldquo;eyJtZXNzYW&hellip;)
+TcpModule -&gt; TcpComm : Success/Fail
+TcpComm -&gt; Base46Decorator : Success/Fail
+Base46Decorator -&gt; JsonDecorator : Success/Fail
+JsonDecorator -&gt; Client : Success/Fail</p>
+<p>@enduml
+{% endplantuml %}</p>
+<p>As I wrote earlier, one of the decorators could also throw an exception or not use the method from the decorated object at all and return a constant. This can be helpful, for example, when we want to obscure some data depending on where we send it. For example, application logs using the class</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LogEntry</span> (<span style="color:#66d9ef">val</span> timestamp: Timestamp, <span style="color:#66d9ef">val</span> tag: String, <span style="color:#66d9ef">val</span> message: String)
+</span></span></code></pre></div><ul>
+<li>if they are stored locally, they should contain all the information</li>
+<li>if they are sent to our website via HTTPS, only sensitive data should be obfuscated</li>
+<li>if for some external monitoring, we send a minimum of the information, maybe even just the TAG and timestamp.</li>
+</ul>
+<p>There is no point in extending the implementation of logging or sending data with these functionalities. Decorators on <code>LogEntry</code> can be created which, using internal logic, would clean up the message before its sent. Changing the logging policy or adding new aggregators will not cause the necessity to change the interfaces of the classes responsible for collecting or sending logs, but only the replacement of decorators.</p>
+<h3 id="extension-methods">Extension Methods</h3>
+<p>It seems that instead of adding more classes and playing with delegates, you can add few <code>extension methods</code> to the interface and thus prepare the message to be sent as JSON and/or Base64.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">String</span>.toJsonMessage(): String = <span style="color:#e6db74">&#34;{</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">message</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">:</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$this</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">String</span>.toBase64(): String = Base64.getEncoder().encodeToString(<span style="color:#66d9ef">this</span>.toByteArray())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>btComm.sendMessage(message.toBase64().toJsonMessage()) <span style="color:#75715e">// sending message via BT: {&#34;message&#34;:&#34;aGVsbG8=&#34;}
+</span></span></span></code></pre></div><p>But now it is the clients who need to know what form of a message to use, rather than using a decorated object with a generic interface that can be injected into them. Additionally, the <code>extension method</code> can be implicitly overridden elsewhere in the project, so you can never be sure that calling <code>toJsonMessage()</code> will produce the same result. I have already written about this in the context of the <a href="https://asvid.github.io/kotlin-adapter-pattern#duck-typing" target="_blank">Adapter Pattern</a>. In this case, I&rsquo;m using the <code>String</code> class, but if <code>toJsonMessage()</code> would return some JSON object, the <code>toBase64()</code> method would have to take this into account - when using decorators, the interface is always the same and the decorators don&rsquo;t need to know about each other.</p>
+<p>Code using <code>extension methods</code> is much simpler than using a series of decorators. However, if extension methods become used in multiple places and with multiple interfaces, maintaining them can be cumbersome, as well as testing. And if they will not be used anywhere else, then maybe the usual methods in the class will suffice instead of <code>extension methods</code>. Although I will admit that I sometimes prefer the <code>instance.extMethod()</code> syntax over <code>extMethod(instance)</code>.</p>
+<h1 id="naming">Naming</h1>
+<p>I usually don&rsquo;t like suffixes derived from design patterns in class names, but in the case of <code>Decorator</code> it is good to have clear information about the purpose of the class. Although the class interface is the same as the object being decorated, an instance of &lsquo;Decorator&rsquo; itself does not make sense, unlike the decorated object.</p>
+<h1 id="summary">Summary</h1>
+<p>The <code>Decorator</code> pattern is used where creating separate classes which are a combination of all possibilities would result in their explosion. This pattern focuses on creating object layers to transparently and dynamically complement objects with new tasks. The decorator provides an object with the same interface as the decorated object.</p>
+<p>While it is possible to add new public methods in the decorator, it may encourage clients to cast up or use the interface of a concrete decorator instead of a general component. The main advantage of the Decorator is its transparency to the customer, which is achieved by using the generic interface of the wrapped component.</p>
+<p>In the example with communication interfaces, if not for the decorator, you would probably need to extend clients with new functionalities or introduce all variations of message processing and the way of sending it in separate classes.</p>
+<p>Kotlin allows you to elegantly create decorators with delegates. Extension methods also kind of decorate the original class with new features, but are not a replacement or alternative to this pattern. Instead, they are an alternative to using the simple Java <code>Wrappers</code>, which add new public methods to objects that we don&rsquo;t want or can&rsquo;t extend.</p>
+<h1 id="consequences">Consequences</h1>
+<ul>
+<li><strong>changing object behavior without inheritance</strong> - inheritance is appropriate only in cases where the derived class is a subtype of the base class (relation on the principle of generalization-&gt; specialization) - <a href="https://books.google.pl/books/about/Effective_Java.html?id=ka2VUBqHiWkC&amp;redir_esc=y" target="_blank">&ldquo;Effective Java&rdquo;</a>. You could probably find such a connection between the <code>String</code> and the <code>TCP</code> packet, but it would be a bit of a stretch and inflexible. Especially adding JSON formatting and Base64 encoding along the way. It would also be difficult to re-use the code for a message over Bluetooth. By arranging layers, the decorator allows you to flexibly change the behavior of an object, without changing what the object is.</li>
+<li><strong>dynamic changes in the behavior of the object</strong> - the object can be decorated while the program is running because the new behaviors do not change the interface, but only fit into it. The same object can be decorated with one class in one place and with another in different one.</li>
+<li><strong>SRP</strong> - a large monolithic class with multiple responsibilities, can be transformed into a set of decorators used only where they are needed. Unfortunately, this can also lead to upcasting to the decorator interface or calling an internal decorated object from the client (Demeter law violation).</li>
+<li><strong>the order in which the decorators are applied is important</strong> - example with sending a message. The order is important, and at the same time the decorators themselves don&rsquo;t know anything about other decorators. The responsibility for creating the correct set of decorators should rest with some, for example, <code>Factory</code> or <code>Builder</code> - as long as there is an extensive hierarchy.</li>
+</ul>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/kotlin-adapter-pattern/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Adapter Pattern in Kotlin</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/kotlin_mediator_pattern/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Mediator in Kotlin</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#delegates">Delegates</a></li>
+    <li><a href="#communication-interfaces">Communication Interfaces</a>
+      <ul>
+        <li><a href="#jsondecorator">JsonDecorator</a></li>
+        <li><a href="#base64decorator">Base64Decorator</a></li>
+        <li><a href="#decorating-order">Decorating order</a></li>
+        <li><a href="#extension-methods">Extension Methods</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Android Build Hacks #2 - build time optimization</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Android&#32;Build&#32;Hacks&#32;#2&#32;-&#32;build&#32;time&#32;optimization />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Android&#32;Build&#32;Hacks&#32;#2&#32;-&#32;build&#32;time&#32;optimization />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Android&#32;Build&#32;Hacks&#32;#2&#32;-&#32;build&#32;time&#32;optimization />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Android&#32;Build&#32;Hacks&#32;#2&#32;-&#32;build&#32;time&#32;optimization />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content="Android tricks to speed up builds, fix Gradle tasks, use Gradle profiling tools etc.." />
+<meta itemprop="description" content="Android tricks to speed up builds, fix Gradle tasks, use Gradle profiling tools etc.." />
+<meta property="og:description" content="Android tricks to speed up builds, fix Gradle tasks, use Gradle profiling tools etc.." />
+<meta name="twitter:description" content="Android tricks to speed up builds, fix Gradle tasks, use Gradle profiling tools etc.." />
+
+
+<base href="http://localhost:1313/android-build-hacks-2/" />
+<link rel="canonical" href="http://localhost:1313/android-build-hacks-2/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/android-build-hacks-2/" />
+<meta name="twitter:url" content="http://localhost:1313/android-build-hacks-2/" />
+<meta property="og:url" content="http://localhost:1313/android-build-hacks-2/" />
+
+
+<meta property="og:updated_time" content=16009-16-10T936:34:18Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=16009-16-10T936:34:18Z />
+<meta property="article:published_time" content=16009-16-10T936:34:18Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.bf4d3110fcd0b7ca2963d5dd630cbb2027b3ec79bd2a1a7a02f8244546d16737.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/android-build-hacks-2/">Android Build Hacks #2 - build time optimization</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2018-09-16T10:36:34Z" class="post-date">
+        September 16, 2018
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>8 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-Android">
+        <a href="http://localhost:1313/tags/android">Android</a>
+      </li>
+      
+      <li class="tag-Gradle">
+        <a href="http://localhost:1313/tags/gradle">Gradle</a>
+      </li>
+      
+      <li class="tag-build config">
+        <a href="http://localhost:1313/tags/build-config">build config</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <p>This is second part in series of articles about Android build configuration, all parts will be linked right below.</p>
+<blockquote>
+<p><strong>[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})</strong><br>
+<strong>[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})</strong></p>
+</blockquote>
+<h2 id="motivation">Motivation</h2>
+<p>Main reason I&rsquo;ve been interested in build config tricks was to speed up development builds. As developer I&rsquo;m building apps many times each day, often just to change one small thing and check if it works. Each second took of build time means a lot if you build often. And if you work at large project with lots of images and libraries you may die of old age before build is finished.</p>
+<p>But there are ways to avoid sad death in front of computer displaying:
+<img src="assets/posts/android-build-hacks-2/gradle-build-running.png" alt="Gradle build running"></p>
+<h2 id="optimization">Optimization</h2>
+<p>A lot of things I will mention comes from this <a href="https://www.youtube.com/watch?v=7ll-rkLCtyk" target="_blank">Google I/O &lsquo;17 talk</a>, you might want to watch it.</p>
+<h3 id="limiting-your-build">Limiting your build</h3>
+<p>Your app may be available in 100 languages and have images in all possible densities - and it&rsquo;s cool, users like that, but you don&rsquo;t really need <strong>ALL</strong> of it when you are developing new features or fixing bugs. You can live with 1 language and 1 density. I&rsquo;ve mentioned previously about this feature, but it&rsquo;s worth repeating - limiting image density makes build faster.</p>
+<p>{% gist b31450b7c104197f98e9d446999f0b20 %}</p>
+<p><code>resConfig()</code> is available only for <code>productFlavors</code>, so using info from previous post you can add something like <code>dev</code> and <code>prod</code> flavors and filter only reasonable use cases.<br>
+I remember having build crashes when using density <code>split</code> and <code>resConfig</code> with density, but I cannot reproduce it on current version of Gradle Plugin <em>(3.3.0-alpha10)</em> so just keep in mind that it might cause some issues.</p>
+<p>At Google I/O talk they mention also usage of <code>minSdkVersion 21</code> in your development flavor config - it overrides default app <code>minSdkVersion</code> to allow usage of current <code>multidex</code> version that is much faster than legacy one. But this is now <del>depricated</del> - Gradle Plugin checks target device API for debug builds and sets <code>minSdkVersion</code> for it.</p>
+<h3 id="compiler-options">Compiler options</h3>
+<p>Builds can also be faster after some changes in Android Studio compiler settings.
+<img src="assets/posts/android-build-hacks-2/compiler-options.png" alt="Android Studio compiler options"></p>
+<p>First checkbox on top allows you to compile app modules in the same time - as long as they don&rsquo;t depend on each other. Yes it is an <em>&ldquo;incubating&rdquo;</em> feature but it works most of the time, and yes if your app is in single module it won&rsquo;t make anything faster. I strongly encourage using multiple modules anytime it makes sense - it makes app architecture clean and organized, and speeds up build process.</p>
+<p>The most interesting setting here is <code>Command-line Options</code> where we can add arguments to build executed when you press green play button - so I guess each time you want to run app on device during development. I&rsquo;ve put there <code>-PdevBuild</code> which means my build will have a property <code>devBuild</code>. This can be validated in <code>build.gradle</code> and some build changes may be included just for debug builds from Android Studio. Of course you can build exactly the same version of app from command line on CI server, but it&rsquo;s mostly useful for development builds.</p>
+<p>So how to use it in builds?</p>
+<p>{% gist 2897c9a0a04f4e5c27984f26e9bb8ef7 %}</p>
+<p>If we are building from Android Studio, splits can be disabled since we are running code only on our device and size of APK doesn&rsquo;t matter too much. Disabling splits makes builds faster - no need to divide resources into separate APK files. Also disabling crunching images makes build faster - again for development APK size doesn&rsquo;t matter so saving few KB on images won&rsquo;t compensate loosing few seconds of build if you are building app every few minutes.</p>
+<h3 id="use-instant-run">Use instant run</h3>
+<p>I remember how excited I was when <code>Instant Run</code> was announced, and how I was then not using it because it wasn&rsquo;t working well, at least for projects I was working on. But now it&rsquo;s different (for most cases) and this is what we should be using during development. How it&rsquo;s working? <strong>TL;DR:</strong> <code>Instant Run</code> doesn&rsquo;t always compile whole app and send it to the device - it compiles changes and swaps only them on device so app can run <em>instantly</em>. There are few types of swaps, depending on what was changed from last build:</p>
+<ul>
+<li><em><strong>hot swap</strong></em> - <strong>fastest</strong> - implementation change of already existing method, by default it restarts Activity, but it can be turned off</li>
+<li><em><strong>warm swap</strong></em> - <strong>fast</strong> - change or removal of existing resource file, mandatory Activity restart</li>
+<li><em><strong>cold swap</strong></em> - <strong>not-so-fast</strong> - mandatory App restart, it&rsquo;s done for:
+<ul>
+<li>adding, changing, or removing annotation, class field, static field, static method or method signature</li>
+<li>inheritance changes</li>
+<li>change of implemented interfaces</li>
+<li>element order in layouts that use dynamic ID</li>
+</ul>
+</li>
+<li><em><strong>no swap</strong></em> - <strong>sloooooooow</strong> - it compiles whole new APK and runs it on device when:
+<ul>
+<li>changes are made in app manifest</li>
+<li>there are changes in resources linked in app manifest</li>
+<li>system UI elements are changed, like widgets or notifications</li>
+</ul>
+</li>
+</ul>
+<p>If your app <code>versionCode</code> is generated dynamically, for example from date, <code>Instant Run</code> will not speed up your build, because you are changing app manifest each time. But it can be easily fixed with our friend <code>devBuild</code> parameter:</p>
+<p>{% gist 34d4eb0a15266b75aaf550153e74b18a %}</p>
+<p>For development builds we are using the same <code>versionCode</code> - <strong>100</strong>, but for every other build <code>versionCode</code> is generated from date.</p>
+<h3 id="other-build-boosters">Other build boosters</h3>
+<ul>
+<li>use <code>jcenter</code> - it&rsquo;s faster, safer and bigger than <code>mavenCentral</code></li>
+<li><code>preDexLibraries</code> - it makes clean build a bit longer but every incremental build faster</li>
+</ul>
+<p>{% gist 7704af7e1a131520091d6d2b45973104 %}</p>
+<ul>
+<li>update your Java - Android Studio uses it&rsquo;s own JDK by default, but if you are building also on CI server it&rsquo;s good to keep Java updated</li>
+</ul>
+<h4 id="disable-unneeded-tools">Disable unneeded tools</h4>
+<p><code>Proguard</code> is a great tool - it removes unused classes and methods during build process and obfuscates code so it&rsquo;s harder (but not impossible) to decompile apps. But during development we don&rsquo;t really need that, turn it off.</p>
+<p>Another great tool for your app is Fabric Crashlytics - it gathers all app crashes and it&rsquo;s very useful for finding and fixing bugs. But during development you&rsquo;ll rather use <code>Logcat</code>, no need for external tool. Also Crashlytics is generating build ID number for each build, it also slows build down because it&rsquo;s kept in string resource file, so <code>Instant Run</code> wont be able to run <em><strong>hot swap</strong></em>.</p>
+<p>{% gist e8f8365d069ce3b4f9a7bb758c1d3e69 %}</p>
+<p>After disabling crashlytics in <code>build.gradle</code> it is necessary to disable it in runtime:</p>
+<p>{% gist 1a15fa17526f0380b543eb60dc1cdca3 %}</p>
+<h4 id="dont-use-dynamic-dependency-versions">Don&rsquo;t use dynamic dependency versions</h4>
+<p>Have you ever seen something like this in code:
+<code>implementation 'com.android.support:appcompat-v7:+'</code>
+It&rsquo;s cool right? you always will have newest version of library in your project! No need to update it manually each time. Unless you actually want to know what version are you using and not waste time looking for bug that wasn&rsquo;t there just yesterday and you haven&rsquo;t change anything in your code yet. <strong>Using dynamic dependency version is reckless</strong>. It also slows builds down, because Gradle needs to check if new version of dependency is available, it does it once every 24h.</p>
+<p>Also forget about using <code>compile</code> for dependencies. Using <code>implementation</code> will make your builds faster and here is talk that explains why <a href="https://youtu.be/7ll-rkLCtyk?t=22m19s" target="_blank">Jerome Dochez at Google I/O &lsquo;17</a>.</p>
+<h4 id="gradle-properties">Gradle properties</h4>
+<p>Following settings can seriously boost your builds:</p>
+<p>{% gist 1771826d173c54ecba9497ba59c27374 %}</p>
+<ul>
+<li><code>org.gradle.jvmargs</code> value is something you should experiment with, general rule is that more is better but after certain value it doesn&rsquo;t make a change so save some memory for watching cat videos on Youtube until build process is done. <a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:configuring_jvm_memory" target="_blank">Documentation</a></li>
+<li><code>org.gradle.parallel</code> allows Gradle to run the same tasks in different projects in parallel, so it&rsquo;s kinda the same feature that <code>Compile Settings</code> gave us, just for Gradle tasks and not compilation itself <a href="https://guides.gradle.org/performance/#parallel_execution" target="_blank">Documentation</a></li>
+<li><code>org.gradle.caching</code> now that&rsquo;s a big one - a lot of tasks that Gradle runs during build will return the same output if input has not changed, so instead of running them Gradle can just read output from it&rsquo;s cache. <a href="https://docs.gradle.org/current/userguide/build_cache.html" target="_blank">Documentation</a></li>
+<li><code>org.gradle.configureondemand</code> will allow Gradle to configure only projects (modules in app) that need that, not every module each time, build configuration can also take some time. <a href="https://docs.gradle.org/current/userguide/multi_project_builds.html#sec:configuration_on_demand" target="_blank">Documentation</a></li>
+</ul>
+<h4 id="profile-your-build">Profile your build</h4>
+<p>Gradle offers a tool that provides info about exact time needed to finish each build step. It&rsquo;s called <code>profiler</code> and generates HTML summary after build is finished.
+Typing in console: <code>gradle app:assembleDebug --profile</code> will generate similar report to this:
+<img src="assets/posts/android-build-hacks-2/profiler.png" alt="Gradle Profiler output">
+Other tools to profile your build are:</p>
+<ul>
+<li>&ndash;dry-run - tells you how much time your project need for configuration, should be few seconds max</li>
+<li>&ndash;info - will print in console why certain tasks are executed
+<img src="assets/posts/android-build-hacks-2/gradle-info.png" alt="Gradle &ndash;info output">{: .center-image }</li>
+<li>&ndash;scan - will send build result to <a href="https://scans.gradle.com" target="_blank">Gradle Scans website</a> where you may find some additional info about your build process</li>
+</ul>
+<h3 id="gradle-scripts">Gradle scripts</h3>
+<p>Writing your own Gradle tasks is awesome, especially when you want to automate things with CI. But custom tasks can slow your build even when you think they are not executed. When you have simple task like:</p>
+<p>{% gist a736c21b97c8df9edb24256167ed5e6e %}</p>
+<p>The output will be always printed (because task gets executed) when you run <strong>ANY</strong> other task in project. This one was simple printing, but can you image generating some config files, HTTP requests, calculating <code>versionCode</code> etc? And all tasks needs to finish before your build is done.</p>
+<p>Solution is dead simple:</p>
+<p>{% gist 333e15745d74b47685ba80eba18d8cda %}</p>
+<p>Just move actual task work into <code>doLast</code> and leave configuration stuff like <code>group</code> outside.</p>
+<h2 id="outro">Outro</h2>
+<p>Knowing above things made my builds more efficient. You may not feel it right now, but projects tend to grow over time, and keeping build times at low value makes world a happier place. Be so kind and share this post with every Android developer you know - you might save them few seconds every day :)</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/android-build-hacks-1/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Android Build Hacks #1 - build basics</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/android-build-hacks-3-documentation/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Android build hacks #3 - documentation with Dokka</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#optimization">Optimization</a>
+      <ul>
+        <li><a href="#limiting-your-build">Limiting your build</a></li>
+        <li><a href="#compiler-options">Compiler options</a></li>
+        <li><a href="#use-instant-run">Use instant run</a></li>
+        <li><a href="#other-build-boosters">Other build boosters</a></li>
+        <li><a href="#gradle-scripts">Gradle scripts</a></li>
+      </ul>
+    </li>
+    <li><a href="#outro">Outro</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.91ae35f985ba4ae6473b8defee39551f3ce6ed2769fdfa9b3df93f2eac0da4bc.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/assets/favicon.ico>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Adam Świderski - Facade Pattern in Kotlin</title>
+<meta property="og:title" content=Adam&#32;Świderski&#32;-&#32;Facade&#32;Pattern&#32;in&#32;Kotlin />
+<meta name="twitter:title" content=Adam&#32;Świderski&#32;-&#32;Facade&#32;Pattern&#32;in&#32;Kotlin />
+<meta itemprop="name" content=Adam&#32;Świderski&#32;-&#32;Facade&#32;Pattern&#32;in&#32;Kotlin />
+<meta name="application-name" content=Adam&#32;Świderski&#32;-&#32;Facade&#32;Pattern&#32;in&#32;Kotlin />
+<meta property="og:site_name" content="My New Hugo Site" />
+
+
+<meta name="description" content=" The facade allows you to hide the details of the module from clients. It ensures compliance with `Law Demeter`. Using the generic interface and various implementations greatly simplifies testing. It blends well with other patterns like `Strategy`,` Template Method`, or construction patterns, allowing configuration of the object available for the clients. The facade is a good entry point for libraries, giving customers access to high-level functionality and hiding all internal logic and classes. " />
+<meta itemprop="description" content=" The facade allows you to hide the details of the module from clients. It ensures compliance with `Law Demeter`. Using the generic interface and various implementations greatly simplifies testing. It blends well with other patterns like `Strategy`,` Template Method`, or construction patterns, allowing configuration of the object available for the clients. The facade is a good entry point for libraries, giving customers access to high-level functionality and hiding all internal logic and classes. " />
+<meta property="og:description" content=" The facade allows you to hide the details of the module from clients. It ensures compliance with `Law Demeter`. Using the generic interface and various implementations greatly simplifies testing. It blends well with other patterns like `Strategy`,` Template Method`, or construction patterns, allowing configuration of the object available for the clients. The facade is a good entry point for libraries, giving customers access to high-level functionality and hiding all internal logic and classes. " />
+<meta name="twitter:description" content=" The facade allows you to hide the details of the module from clients. It ensures compliance with `Law Demeter`. Using the generic interface and various implementations greatly simplifies testing. It blends well with other patterns like `Strategy`,` Template Method`, or construction patterns, allowing configuration of the object available for the clients. The facade is a good entry point for libraries, giving customers access to high-level functionality and hiding all internal logic and classes. " />
+
+
+<base href="http://localhost:1313/kotlin-facade-pattern/" />
+<link rel="canonical" href="http://localhost:1313/kotlin-facade-pattern/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/kotlin-facade-pattern/" />
+<meta name="twitter:url" content="http://localhost:1313/kotlin-facade-pattern/" />
+<meta property="og:url" content="http://localhost:1313/kotlin-facade-pattern/" />
+
+
+<meta property="og:updated_time" content=7006-07-12T60:00:21Z />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="My New Hugo Site" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=7006-07-12T60:00:21Z />
+<meta property="article:published_time" content=7006-07-12T60:00:21Z />
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.7">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #bebebe;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/assets/profile_picture.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Adam Świderski</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    software engineer
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-24-MVI/">Android Presentation Patterns: MVI</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-02-09-MVVM/">Android Presentation Patterns: MVVM</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-29-MVP/">Android Presentation Patterns: MVP</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2024-01-27-MVC/">Android Presentation Patterns: MVC</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/2023-06-16-ci-is-your-friend/">Continuous Integration and Deployment: A Developer&#39;s Best Friends</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://user@domain">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 My New Hugo Site. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/kotlin-facade-pattern/">Facade Pattern in Kotlin</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2021-06-07T00:00:00Z" class="post-date">
+        June 7, 2021
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>9 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-design patterns">
+        <a href="http://localhost:1313/tags/design-patterns">design patterns</a>
+      </li>
+      
+      <li class="tag-Kotlin">
+        <a href="http://localhost:1313/tags/kotlin">Kotlin</a>
+      </li>
+      
+      <li class="tag-Facade Pattern">
+        <a href="http://localhost:1313/tags/facade-pattern">Facade Pattern</a>
+      </li>
+      
+      <li class="tag-structural design pattern">
+        <a href="http://localhost:1313/tags/structural-design-pattern">structural design pattern</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="purpose">Purpose</h1>
+<p>The facade is a very basic pattern, whose task is to obscure the details of a group of classes - the module responsible for some functionality.</p>
+<p>This can be compared to the facade of the building, which in itself has no function. The building consists of rooms, corridors, stairs, installations. It is the facade that indicates the entrance to the building, and the appearance may suggest its purpose.</p>
+<p>The purpose of the pattern is to simplify customer access to the functionality of the obscured module. So that they don&rsquo;t have to know implementation details, class dependencies, which version of the object to inject, etc.</p>
+<p>By <code>module</code> I will understand here some consistent and relatively independent parts of the system. Not necessarily a separate module in the project or a library - it can be, for example, a separate package.</p>
+<h1 id="implementation">Implementation</h1>
+<p>The facade is basically single class. In the diagram it looks like this:</p>
+<p>{% plantuml %}
+@startuml
+skinparam groupComposition 1
+hide members
+show Facade methods
+class ClientA
+class ClientB</p>
+<p>ClientA-down-Facade
+ClientB-down-Facade</p>
+<p>package module &laquo;Node&raquo; {</p>
+<p>class Facade{
++ operation()
+}</p>
+<p>class A
+class B
+class C
+class D
+class E
+class F</p>
+<p>A-down-*B
+B-*C
+D-*A
+A-*F
+D-*B
+}</p>
+<p>F-up-&gt;Facade
+E-up-&gt;Facade
+C-up-&gt;Facade</p>
+<p>@enduml
+{% endplantuml %}</p>
+<p>The classes <code>A, B, C, D, E, F</code> together form a module and provide some functionality. The facade is the access point to this functionality. As a result, no customer need not know the details of the module, to know how to create class instances and how to use them. Customers only need to know the facade, which can build a tree of dependencies for all classes, hide their implementations and provide a simple API for customers.</p>
+<p>I was wondering if the <code>Facade</code> class shouldn&rsquo;t be inside a module. Such use of the facades is often found in libraries - they have a lot of internal logic, but provide only a simple API inside a single class and, if necessary, several configuration objects. However, Facade can be used to cover code that we have no control over, creating a so-called <code>Anticorruption Layer</code>. Then the code that changes behind it does not spoil the clients.</p>
+<h2 id="abstract">Abstract</h2>
+<p>Let&rsquo;s assume the following situation: a client class needs the result of a method from one class, but this method requires the result of another class, which has several dependencies.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> result = E().finishTheWork( <span style="color:#75715e">// I want this result
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        D().doAnotherPart( <span style="color:#75715e">// but first I need to feed it with this one
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            A( <span style="color:#75715e">// that requires A
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            	B( <span style="color:#75715e">// that requires B
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                	C() <span style="color:#75715e">// that uses C
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                )
+</span></span><span style="display:flex;"><span>			).doPartOfWork() <span style="color:#75715e">// to yield the mid-result
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        )
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// module classes look like that:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>(<span style="color:#66d9ef">val</span> b: B) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">doPartOfWork</span>() = <span style="color:#e6db74">&#34;result&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span>(<span style="color:#66d9ef">val</span> c: C)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">C</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">D</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">doAnotherPart</span>(input: Any) {}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">E</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// to simplify this example I used `Any` and I return `String`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// but this can be any domain object etc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">finishTheWork</span>(input: Any) = <span style="color:#e6db74">&#34;finish&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The result of the method from class <code>E</code> is available only after building the entire dependency tree of class <code>A</code>, calling the appropriate method, the result of which is passed to <code>D.doAnotherPart()</code>, the result of which is needed in the method <code>E.finishTheWork()</code>. To use this code, you need to know quite a bit of module detail, which probably necessitates the creation and maintenance (!!!) of documentation.</p>
+<p>So how can Facade help here?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// calling the same logic from Facade
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> result2 = Facade().complexWork() <span style="color:#75715e">// lovely isn&#39;t it?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Facade</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// create dependencies internally
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// can be delegated to DI framework
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// but shouldn&#39;t be expected from module client to use the same framework, or be aware of it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> c = C()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> b = B(c)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> a: A = A(b)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> d = D()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> e = E()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">complexWork</span>(): Any { 
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// reminds a bit of Template Method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// or a Strategy, if instances would be injected
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// nothing is stopping Facade to use other patterns internally
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// for the client it won&#39;t matter after all
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">val</span> firstResult = a.doPartOfWork()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> secondResult = d.doAnotherPart(firstResult)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> e.finishTheWork(secondResult)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="law-of-demeter">Law of Demeter</h3>
+<p>In other words, &ldquo;the principle of minimum knowledge&rdquo; or the &ldquo;rule of limiting interactions&rdquo;. <strong>The idea is for classes to use only their methods or fields, and objects created by themselves or passed directly in method parameters</strong>. The facade perfectly helps to keep this good practice.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> a = A(B(C(D())))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// if you need to use method from class D
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// you should have direct access to the instance of D
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// not chained object field calls like that
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// also private fields wouldn&#39;t allow this, but public getters would
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> result = a.b.c.d.theMethod()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// creating &#39;theMethod&#39; call in each class and passing it to class A is also bad
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// it means probably A is doing too much, and all those classes are coupled
+</span></span></span></code></pre></div><p>Looking at the previous example, without Facade, the client had to &ldquo;know&rdquo; a lot about the dependencies that had to be met to get the expected result. All these details were then hidden behind the Facade. In a way, the client may now say &ldquo;I need the result, I don&rsquo;t care how you get it.&rdquo;</p>
+<p>The downside of strictly applying this rule can be creating multiple methods that only delegate method calls to other internal objects. But if a class does have many delegating methods, maybe it does too much and should be broken down into smaller, more detailed classes?</p>
+<h2 id="repository">Repository</h2>
+<p>A special case of Facade is the Repository. It allows access to domain objects, hiding the details of their storage. The <code>Repository</code> can hide the database, cache, or even communicate with a remote server. Or all of these things at once as in the example below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// clients care only about those 2 things:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(<span style="color:#66d9ef">val</span> id: UUID, <span style="color:#66d9ef">val</span> name: String)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UserRepository</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getUser</span>(id: UUID): User
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// `Fake` because DB is in memory, and API returns hardcoded results
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// repository variant to use in unit tests for example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FakeUserRepo</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> userDb: UserDb = InMemoryUserDb(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> userApi: UserApi = FakeUserApi(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> userCache: UserCache = SimpleCache()
+</span></span><span style="display:flex;"><span>) : UserRepository {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getUser</span>(id: UUID): User {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// check if the object is in the cache
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">val</span> cashedUser = userCache.<span style="color:#66d9ef">get</span>(id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (cashedUser <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// if not, check database
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">val</span> dbUser = userDb.<span style="color:#66d9ef">get</span>(id)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (dbUser <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// if not, check on remote server
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">val</span> userDto = userApi.<span style="color:#66d9ef">get</span>(id)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> userDto.toUser().also {
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// after getting the object, put it in DB and cache
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    userDb.add(<span style="color:#66d9ef">it</span>.toEntity())
+</span></span><span style="display:flex;"><span>                    userCache.add(<span style="color:#66d9ef">it</span>)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// if object is in DB, return it and put it in cache
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">return</span> dbUser.toUser().also {
+</span></span><span style="display:flex;"><span>                    userCache.add(<span style="color:#66d9ef">it</span>)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> cashedUser
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// useful extension functions, mapping entity and DTO to domain class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">UserDto</span>.toUser(): User {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> User(<span style="color:#66d9ef">this</span>.id, <span style="color:#66d9ef">this</span>.name)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">UserEntity</span>.toUser(): User {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> User(<span style="color:#66d9ef">this</span>.id, <span style="color:#66d9ef">this</span>.name)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">User</span>.toEntity(): UserEntity {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> UserEntity(<span style="color:#66d9ef">this</span>.id, <span style="color:#66d9ef">this</span>.name)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Pay attention to the object interfaces. Both <code>UserRepository</code> and<code> UserDb</code>, <code>UserApi</code> and<code> UserCache</code> may have different implementations, but it doesn&rsquo;t matter for the client.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// UserRepository instance could be injected instead of created here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// then for testing you could use instance without real DB and access to HTTP client
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> userRepo: UserRepository = FakeUserRepo()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Repository is a Facade for overall data access
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// client doesn&#39;t have to bother with cache, API call, DB etc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> user = userRepo.getUser(<span style="color:#a6e22e">UUID</span>.randomUUID())
+</span></span></code></pre></div><p>The repository takes care of storing objects in the cache or filling in the gaps in the local database with information from a remote server. The customer gets only the data in the fastest way possible. This approach makes testing incredibly easy, especially when you use interfaces and dependency injection. It also allows for the parallelization of the work of several people, where one deals with, for example, the UI layer displaying data, and the other creates its storage and access via HTTP or cache policy. It is especially interesting in interdisciplinary teams, where a mobile programmer can deal with the UI, and the backend one can deal with the data access layer in the application, without any knowledge of e.g. Android.</p>
+<h1 id="naming">Naming</h1>
+<p>As in <a href="https://asvid.github.io/kotlin-strategy-pattern#naming" target="_blank">the previous post</a>, I rather favor not adding &ldquo;Facade&rdquo; to the class name, which is a facade. This is seen in the example of the &lsquo;Repository&rsquo;, there is no need to inform customers that they are only dealing with the facade. Clients want it to perform an action, provided by the class, they do not need to know whether it is a facade. This is different for example for the <a href="https://asvid.github.io/kotlin-builder-pattern" target="_blank">Builder Pattern</a>, which by definition should have the <code>build()</code> method. The facade does not have API enforced by the pattern itself.</p>
+<h1 id="summary">Summary</h1>
+<p>The facade allows you to hide the details of the module from clients. It ensures compliance with <code>Law Demeter</code>. Using the generic interface and various implementations greatly simplifies testing. It blends well with other patterns like <code>Strategy</code>,<code> Template Method</code>, or construction patterns, allowing configuration of the object available for the clients. The facade is a good entry point for libraries, giving customers access to high-level functionality and hiding all internal logic and classes.</p>
+<h2 id="pros">Pros</h2>
+<ul>
+<li><strong>simple interface for clients</strong> - Facade provides minimal module interface, instead of expecting implementation details knowledge from clients, that should be documented and maintained</li>
+<li><strong>Law of Demeter compliant</strong> - the clients &ldquo;talk&rdquo; only with a Facade, not with internal module classes. Clients don&rsquo;t have to even know them or their details.</li>
+<li><strong>testing</strong> - switching the Facade instance from production to test variant can simulate the whole module, so clients can be tested in isolated way.</li>
+<li><strong>refactoring</strong> - clients are loosely couppled with the module, they only now the Facade so all refactoring changes won&rsquo;t affect them. Think about it as of interior design change but leaving the outside structure of the building untouched.</li>
+<li><strong>control over what client knows</strong> - useful in case of libraries, where you may not want to expose all internal classes to the clients, but only a consciously selected part.</li>
+</ul>
+<h2 id="cons">Cons</h2>
+<ul>
+<li><strong>limiting clients options</strong> - if the client needs access objects from inside the module, Facade may not allow it. Changes in customer requirements can lead to the addition of new methods in the Facade until it is no longer just a &ldquo;simple interface&rdquo;. This may not be a big problem if you have control over the facade, and the module it obscures. If Facade is part of an external library, the constraint may take away the sense of using the library or force a hacky extraction of objects from inside the module.</li>
+</ul>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="http://localhost:1313/kotlin-strategy-pattern/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Strategy Pattern in Kotlin</a>
+        
+	    
+            <div class="next-post">
+                <a href="http://localhost:1313/intellij-latex-editor/?ref=footer"><span style="font-weight:bold;">Next »</span><br>IntelliJ IDEA as a LaTeX editor</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#abstract">Abstract</a>
+      <ul>
+        <li><a href="#law-of-demeter">Law of Demeter</a></li>
+      </ul>
+    </li>
+    <li><a href="#repository">Repository</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#pros">Pros</a></li>
+    <li><a href="#cons">Cons</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

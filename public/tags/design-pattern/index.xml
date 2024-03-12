@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design Pattern on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/design-pattern/</link>
+    <description>Recent content in Design Pattern on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Presentation Patterns: MVC</title>
+      <link>http://localhost:1313/2024-01-27-MVC/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024-01-27-MVC/</guid>
+      <description>Disclaimer: You probably shouldn&amp;rsquo;t use MVC in your Android app, there are much better solutions nowadays, that I mention later in this post.&#xA;Hello old friend Model-View-Controller is old indeed, for IT standards at least. Its origins are dating back to the development of Smalltalk-80 in the 1970s. You remember book &amp;ldquo;Design Patterns&amp;rdquo; by the Gang of 4? Yup, its mentioned there (and the book has examples in Smalltalk). It was introduced to address the challenges of creating graphical user interfaces.</description>
+    </item>
+  </channel>
+</rss>

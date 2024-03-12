@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Builder Pattern on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/builder-pattern/</link>
+    <description>Recent content in Builder Pattern on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/builder-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin Builder Pattern</title>
+      <link>http://localhost:1313/kotlin-builder-pattern/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/kotlin-builder-pattern/</guid>
+      <description>Purpose Builder pattern is used to simplify creating complex objects with non-trivial building logic, or with many constructor parameters. It allows making immutable objects because all properties can be set by the Builder with no need to use object setters.&#xA;Builder sort of removes from the user the need to understand the internal object create implementation and guarantees correct object setup or returning an error.&#xA;The advantage of using Builder over traditional constructor is being able to pass many vararg arguments, because every Builder method can take one, while the whole constructor can take only one.</description>
+    </item>
+  </channel>
+</rss>
