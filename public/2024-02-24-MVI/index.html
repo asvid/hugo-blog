@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.bf4d3110fcd0b7ca2963d5dd630cbb2027b3ec79bd2a1a7a02f8244546d16737.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -768,31 +768,13 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <p>Just when you might think that <code>MVVM</code> is already sufficient, if not perfect, for the majority of cases, I introduce you to yet another MV-structured architecture. However, there&rsquo;s a twist. This one, known as <code>Model View Intent</code>, is more fluid in nature compared to the previously mentioned patterns. In my opinion, it spans a spectrum starting from a basic <code>MVVM</code> with event/action communication flow and extending to <code>Redux</code> for global app state management, with the inclusion of feature or module-specific local state storage. The boundaries are flexible within this spectrum.</p>
 <p>But what exactly is the <code>Intent</code> here? Forget about the Android <code>Intent</code> class; it is unrelated. In this pattern, &ldquo;Intent&rdquo; serves as an abstraction over an event or action. For example, when a user clicks a button, they likely have a certain intention such as &ldquo;log me in&rdquo; or &ldquo;delete my account&rdquo;. Likewise, if your phone discovers a new Bluetooth device, it triggers an event that may lead to an <code>pair new device</code> intent.</p>
 <p>In essence, the intent typically originates in the <code>View</code> (though it can originate elsewhere, such as a background event or push notification), then it is relayed to the <code>Model</code> for processing. Subsequently, the state is updated, and the <code>View</code> receives the refreshed data for display.</p>
-
-
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-
-    const lsTheme = localStorage.getItem("theme")
-    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
-    const currTheme = lsTheme ? lsTheme : hugoTheme;
-    const mermaidTheme = currTheme == "light" ? "default" : "dark"
-
-    mermaid.initialize({theme: mermaidTheme});
-</script>
-
-
-
-<div class="mermaid">
-flowchart TD
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">flowchart TD
 V[View] -->|UI event| VM(ViewModel)
 VM -->|do something| M(Model)
 M -->|performing operations| M
 M -->|result| VM
 VM -->|new state| V
-
-</div>
-
+</pre>
 <p>But how is that different from MVVM?</p>
 <h2 id="mvvmi">MV(VM)I</h2>
 <p>In many <code>MVVM</code> implementations, the <code>View</code> often calls methods directly on the <code>ViewModel</code>, as explained in my <a href="https://asvid.github.io/2024-02-09-MVVM#ui-events" target="_blank">previous post</a>. However, the <code>View</code> can also emit events defined by the <code>ViewModel</code> through a single contact method, as also detailed in that post. This approach represents a basic introduction to MVI, where <code>MVVM</code> uses events for communication from the View to the ViewModel.</p>
@@ -920,10 +902,7 @@ VM -->|new state| V
 <li><strong>Components</strong>: User interface elements that interact with the Redux store by dispatching actions and reading state. Components can subscribe to the Redux store to receive updates when the state changes.</li>
 </ol>
 <p>The sequence of actions will look like that:</p>
-
-
-<div class="mermaid">
-sequenceDiagram
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">sequenceDiagram
 participant Component as UI Component
 participant Store as Redux Store
 participant Reducer as Reducer
@@ -934,9 +913,7 @@ Store ->> Middleware: Apply Middleware
 Middleware ->> Reducer: Process Action
 Reducer ->> Store: Return New State
 Store ->> Component: Update
-
-</div>
-
+</pre>
 <p>This approach can be immensely helpful when handling events that do not originate from the UI; for example, scenarios where multiple visible components on the UI need to be updated based on data obtained from a web socket. In this setup, small components observe only the data that is relevant to them and are alerted when changes occur. State modifications occur in a single location, making all reducers that change the state easily accessible. No logic is hidden in just another <code>helper/handler/manager/service</code>. All events are consolidated in one place, facilitating the creation of an app-wide state diagram outlining the actions to be taken, the processes involved in each event, and the resulting new state. The <code>Store</code> serves as an excellent logging point for the entire flow of actions, providing insights into each step. Additionally, reducers have a clear and singular purpose, promoting best practices and the creation of concise methods and classes.</p>
 <p>The concepts of Events, Store, and Reducers are platform-agnostic terms, applicable across various languages and technologies. Implanting this architecture enables the creation of consistent behaviors across native Android, iOS, and Desktop applications that respond similarly to the same interactions. Centralizing interactions and features makes it effortless to track them, contributing to a more organized and maintainable codebase.</p>
 <h3 id="the-catch">The Catch</h3>
@@ -1036,3 +1013,20 @@ Store ->> Component: Update
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

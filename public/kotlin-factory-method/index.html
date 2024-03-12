@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -755,22 +755,22 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// instance can be still created with a constructor
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> concreteProduct2 = ConcreteProduct()
-</span></span></code></pre></div><p>{% plantuml %}
-@startuml
-interface Product
-interface Creator{
-+factoryMethod():Product
-}</p>
-<p>class ConcreteCreator extends Creator{
-+factoryMethod():Product
-}</p>
-<p>class ConcreteProduct extends Product</p>
-<p>note right of ConcreteCreator::factoryMethod
-return ConcreteProduct()
-end note</p>
-<p>ConcreteCreator .left. ConcreteProduct : &gt; creates
-@enduml
-{% endplantuml %}</p>
+</span></span></code></pre></div><pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Product
+    << interface >> Product
+    class Creator
+    << interface >> Creator
+    Creator :factoryMethod() Product
+
+    class ConcreteCreator
+    ConcreteCreator:factoryMethod() Product
+
+    class ConcreteProduct
+
+    ConcreteCreator --|> Creator
+    ConcreteCreator ..> ConcreteProduct : creates
+    ConcreteProduct --|> Product
+</pre>
 <h3 id="elements">Elements</h3>
 <ul>
 <li><strong>Product</strong> - interface of the object created by the factory</li>
@@ -797,7 +797,7 @@ end note</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;concrete&#34; factory implementation, building `ConcreteProduct`
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteCreator</span>: Creator {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returned type has to be generic interface, 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returned type has to be generic interface,
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// returning internal `ConcreteProduct` will cause compile time error
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">factoryMethod</span>() : Product {
 </span></span><span style="display:flex;"><span>        println(<span style="color:#e6db74">&#34;ConcreteCreator is using factory method&#34;</span>)
@@ -817,38 +817,45 @@ end note</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> circle: Figure = figureFactory.createFigure(<span style="color:#a6e22e">FigureFactory</span>.<span style="color:#a6e22e">Type</span>.Circle)
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// similar figure manipulation
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>circle.createManipulator().drag()
-</span></span></code></pre></div><p>{% plantuml %}
-@startuml
-interface Figure{
-+createManipulator(): FigureManipulator
-}
-interface FigureManipulator {
-+drag()
-+resize(scale: Float)
-}</p>
-<p>class Client</p>
-<p>Client -left-&gt; Figure
-Client -right-&gt; FigureManipulator</p>
-<p>class Circle extends Figure {
-+createManipulator(): FigureManipulator
-}
-class Square extends Figure {
-+createManipulator(): FigureManipulator
-}</p>
-<p>class CircleManipulator extends FigureManipulator {
--figure:Circle
-+drag()
-+resize(scale: Float)
-}</p>
-<p>class SquareManipulator extends FigureManipulator {
--figure:Square
-+drag()
-+resize(scale: Float)
-}</p>
-<p>Circle::createManipulator .right.&gt; CircleManipulator
-Square::createManipulator .right.&gt; SquareManipulator
-@enduml
-{% endplantuml %}</p>
+</span></span></code></pre></div><pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Client
+
+    class Figure {
+        << interface >>
+        +FigureManipulator createManipulator()
+    }
+    class FigureManipulator {
+        << interface >>
+        +drag()
+        +resize(Float scale)
+    }
+
+    class Circle {
+        +FigureManipulator createManipulator()
+    }
+    class Square {
+        +FigureManipulator createManipulator()
+    }
+
+    class CircleManipulator {
+        -Circle figure
+        +drag()
+        +resize(Float scale)
+    }
+    class SquareManipulator {
+        -Square figure
+        +drag()
+        +resize(Float scale)
+    }
+    Circle --|> Figure
+    Square --|> Figure
+    Client .. Figure
+    Client .. FigureManipulator
+    CircleManipulator --|> FigureManipulator
+    SquareManipulator --|> FigureManipulator
+    Circle ..> CircleManipulator
+    Square ..> SquareManipulator
+</pre>
 <h3 id="elements-1">Elements</h3>
 <ul>
 <li><strong>Figure</strong> - figure itnerface implemented by classes <code>Circle</code>, <code>Square</code> and <code>Line</code></li>
@@ -858,7 +865,7 @@ Square::createManipulator .right.&gt; SquareManipulator
 <h3 id="implementation-1">Implementation</h3>
 <h4 id="figure">Figure</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Figure</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Figure can create FigureManipulator for itself, 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Figure can create FigureManipulator for itself,
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// but for client it will always be generic and not concrete
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createManipulator</span>(): FigureManipulator&lt;<span style="color:#66d9ef">out</span> Figure&gt; <span style="color:#75715e">// metoda wytwórcza
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
@@ -880,8 +887,8 @@ Square::createManipulator .right.&gt; SquareManipulator
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="manipulator">Manipulator</h4>
 <p><code>Manipulator</code> interface allows for Figure dragging and resizing. The concrete implementation is tightly connected with the type of Figure it will manipulate.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// generic here ensures that a concrete `FigureManipulator` 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// will handle just the concrete type of Figure, 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// generic here ensures that a concrete `FigureManipulator`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// will handle just the concrete type of Figure,
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ex. `CircleManipulator` can&#39;t handle `Square`
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FigureManipulator</span>&lt;T : Figure&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">drag</span>()
@@ -986,50 +993,63 @@ Square::createManipulator .right.&gt; SquareManipulator
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> db: Database = <span style="color:#a6e22e">DatabaseFactory</span>.getDatabaseForConfig(mySqlConfig)
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// just the interface is known
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>db.save(<span style="color:#e6db74">&#34;Save me!&#34;</span>)
-</span></span></code></pre></div><p>{% plantuml %}
-@startuml
-scale 900 width</p>
-<p>interface Database {
-+save(item: Any)
-+getItem(id: Int)
-}</p>
-<p>class DatabaseConfig &laquo; (S,orchid) Sealed Class &raquo;{</p>
-<p>}</p>
-<p>class MySqlConfig extends DatabaseConfig{
--address
--port
-}
-class RealmConfig extends DatabaseConfig{
--dbName
-}
-class MongoDBConfig extends DatabaseConfig{
--fileUri
--tableName
-}</p>
-<p>class MySql implements Database{
--config:MySqlConfig
-+save(item: Any)
-+getItem(id: Int)
-}
-class Realm implements Database{
--config:RealmConfig
-+save(item: Any)
-+getItem(id: Int)
-}
-class MongoDB implements Database{
--config:MongoDBConfig
-+save(item: Any)
-+getItem(id: Int)
-}</p>
-<p>class Factory{
-+getDatabaseForConfig(config: DatabaseConfig): Database
-}</p>
-<p>class BadConfig extends MongoDBConfig</p>
-<p>Factory::getDatabaseForConfig-[bold]-&gt;Database
-Factory::getDatabaseForConfig&lt;-[bold]-DatabaseConfig
-DatabaseConfig-[hidden]-&gt;Database</p>
-<p>@enduml
-{% endplantuml %}</p>
+</span></span></code></pre></div><pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Database {
+        << interface >>
+        +save(Any item)
+        +getItem(Int id)
+    }
+
+    class DatabaseConfig {
+        << sealed class >>
+    }
+
+    class MySqlConfig {
+        -address
+        -port
+    }
+    class RealmConfig {
+        -dbName
+    }
+    class MongoDBConfig {
+        -fileUri
+        -tableName
+    }
+
+    class MySql {
+        -config: MySqlConfig
+        +save(Any item)
+        +getItem(Int id)
+    }
+    class Realm {
+        -RealmConfig config
+        +save(Any item)
+        +getItem(Int id)
+    }
+    class MongoDB {
+        -MongoDBConfig config
+        +save(Any item)
+        +getItem(Int id)
+    }
+
+    class Factory {
+        +Database getDatabaseForConfig(DatabaseConfig config)
+    }
+
+    class BadConfig
+
+    MySql ..|> Database
+    Realm ..|> Database
+    MongoDB ..|> Database
+
+    Factory --> Database
+    Factory <-- DatabaseConfig
+
+    MySqlConfig --|> DatabaseConfig
+    RealmConfig --|> DatabaseConfig
+    MongoDBConfig --|> DatabaseConfig
+    BadConfig --|> MongoDBConfig
+</pre>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// common interface available for clients
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Database</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">save</span>(item: Any)
@@ -1065,10 +1085,10 @@ DatabaseConfig-[hidden]-&gt;Database</p>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">is</span> MongoDbConfig <span style="color:#f92672">-&gt;</span> MongoDB(config)
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">is</span> MySqlConfig <span style="color:#f92672">-&gt;</span> MySql(config)
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">is</span> RealmConfig <span style="color:#f92672">-&gt;</span> Realm(config)
-</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// `BadConfig` extends `MongoDbConfig` but if this case is missing it won&#39;t cause an error
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// because `BadConfig` is `MongoDbConfig` this case will be handled in first line
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">is</span> BadConfig <span style="color:#f92672">-&gt;</span> MongoDB(config) 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">is</span> BadConfig <span style="color:#f92672">-&gt;</span> MongoDB(config)
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
@@ -1101,38 +1121,53 @@ DatabaseConfig-[hidden]-&gt;Database</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    println(<span style="color:#e6db74">&#34;is it an AirFilter? </span><span style="color:#e6db74">${randomPart is AirFilter}</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>On diagram it will look like that:</p>
-<p>{% plantuml %}
-@startuml
-scale 900 width</p>
-<p>interface Part</p>
-<p>interface PartFactory&lt;T: Part&gt;{
-+create():T
-}</p>
-<p>class AirFilter implements Part{
--constructor()
-+companion object
-}</p>
-<p>class AirFilterFactory<!-- raw HTML omitted -->&laquo; (O,#FF7700) CompanionObject &raquo; implements PartFactory{
-+create():AirFilter
-}</p>
-<p>class FuelFilter implements Part{
-+companion object
-}
-class FuelFilterFactory<!-- raw HTML omitted -->&laquo; (O,#FF7700) CompanionObject &raquo; implements PartFactory{
-+create():FuelFilter
-}</p>
-<p>class Engine implements Part</p>
-<p>class EngineFactory<!-- raw HTML omitted --> implements PartFactory</p>
-<p>class RandomPartCreator{
--partFactories: Set<!-- raw HTML omitted -->
-+registerFactory(factory: PartFactory)
-+createRandomPart(): Part
-}</p>
-<p>RandomPartCreator::createRandomPart-[bold]-&gt;Part
-RandomPartCreator::registerFactory&lt;-[bold]-PartFactory
-Part-[hidden]-&gt;PartFactory</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Part {
+        << interface >>
+    }
+
+    class PartFactory {
+        << interface >>
+        +T create()
+    }
+
+    class AirFilter {
+        -constructor()
+        +companion object
+    }
+    class AirFilterFactory {
+        +AirFilter create()
+    }
+
+    class FuelFilter {
+        +companion object
+    }
+    class FuelFilterFactory {
+        +FuelFilter create()
+    }
+
+    class Engine
+
+    class EngineFactory
+
+    class RandomPartCreator {
+        -Set partFactories
+        +registerFactory(PartFactory factory)
+        +Part createRandomPart()
+    }
+
+
+    Engine ..|> Part
+    AirFilter ..|> Part
+    FuelFilter ..|> Part
+
+    RandomPartCreator --> Part
+    RandomPartCreator <-- PartFactory
+
+    EngineFactory ..|> PartFactory
+    AirFilterFactory ..|> PartFactory
+    FuelFilterFactory ..|> PartFactory
+</pre>
 <p>And can be implemented like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// interface implemented by every Part constructed by the Factory
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Part</span> {
@@ -1177,7 +1212,7 @@ Part-[hidden]-&gt;PartFactory</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">registerFactory</span>(factory: PartFactory&lt;<span style="color:#66d9ef">out</span> Part&gt;) {
 </span></span><span style="display:flex;"><span>        partFactories.add(factory)
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// so called generator - creates instance without any parameters passed
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">createRandomPart</span>(): Part {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// random number from the registry size range
@@ -1269,3 +1304,20 @@ Part-[hidden]-&gt;PartFactory</p>
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

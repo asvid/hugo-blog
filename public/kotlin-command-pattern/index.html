@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -742,64 +742,53 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <li><strong>Client</strong> - creates the <code>ConcreteCommand</code> instance and binds it with the <code>Receiver</code> and sets it in the<code>Invoker</code></li>
 <li><strong>ConcreteCommand</strong> - specific command. It has all the other objects needed to complete the task.</li>
 </ul>
-<p>{% plantuml %}
-@startuml
-hide Client members
-skinparam linetype ortho</p>
-<p>interface Command{
-+ execute()
-}</p>
-<p>class ConcreteCommand implements Command{
-- receiver: Receiver
-- params</p>
-<ul>
-<li>execute()
-}</li>
-</ul>
-<p>class Receiver{
-+ action()
-}</p>
-<p>class Client
-class Invoker{</p>
-<ul>
-<li>command: Command</li>
-</ul>
-<ul>
-<li>setCommand(command)</li>
-<li>executeCommand()
-}</li>
-</ul>
-<p>Invoker *&ndash;&gt;Command
-Client &ndash;&gt; Receiver
-ConcreteCommand::execute &ndash;&gt; Receiver::action
-note &ldquo;creates command instance\npassing the Receiver\nand command parameters&rdquo; as N1
-Client .. N1
-N1 ..&gt; ConcreteCommand</p>
-<p>note &ldquo;sets command instance&rdquo; as N2
-Client .. N2
-N2 ..&gt; Invoker</p>
-<p>note right of Invoker::executeCommand
-calls command
-when its needed
-end note</p>
-<p>note right of ConcreteCommand::execute
-calls Receiver action
-end note
-@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Command {
+         << interface >>
+        +execute()
+    }
+
+    class ConcreteCommand {
+        -receiver: Receiver
+        -params
+        +execute()
+    }
+
+    class Receiver {
+        +action()
+    }
+
+    class Client
+    class Invoker {
+        -command: Command
+        +setCommand(command)
+        +executeCommand()
+    }
+
+    Invoker --> Command
+    Client --> Receiver
+    ConcreteCommand --> Receiver:action()
+
+    note for Invoker "calls command when it's needed"
+
+    Client .. ConcreteCommand: creates command instance\npassing the Receiver\nand command parameters
+    Client .. Invoker: sets command instance
+</pre>
 <p>The order of interactions looks like this:</p>
-<p>{% plantuml %}
-@startuml</p>
-<p>participant aReceiver
-aClient &ndash;&gt; aReceiver : has a
-aClient &ndash;&gt; aCommand: Command(aReceiver)
-activate aClient
-aClient -&gt; aInvoker : setCommand(aCommand)
-deactivate aClient
-aInvoker -&gt; aCommand : execute()
-aCommand -&gt; aReceiver : action()</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">sequenceDiagram
+    participant aClient
+    participant aReceiver
+    participant aCommand
+    participant aInvoker
+
+    aClient -->> aReceiver : has a
+    aClient -->> aCommand : Command(aReceiver)
+    activate aClient
+    aClient ->> aInvoker : setCommand(aCommand)
+    deactivate aClient
+    aInvoker ->> aCommand : execute()
+    aCommand ->> aReceiver : action()
+</pre>
 <ol>
 <li>The <code>Client</code> creates the instance of the specific <code>Command</code>, passing the receiver <code>Receiver</code>.</li>
 <li><code>Invoker</code> gets a specific instance of the command.</li>
@@ -855,7 +844,7 @@ aCommand -&gt; aReceiver : action()</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> invoker = Invoker()
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    Client(invoker)
 </span></span><span style="display:flex;"><span>    invoker.performAction()
 </span></span><span style="display:flex;"><span>}
@@ -865,8 +854,8 @@ aCommand -&gt; aReceiver : action()</p>
 It&rsquo;s better if the command returns simple <code>Success</code>, which will cause the view to download the current list of names from the repository or show errors message. Or better yet, if the view always keeps its list up-to-date with repository by some sort of <code>data-binding</code> or <code>Observer</code>. After executing the command, the list will update itself, and you don&rsquo;t even need to return any <code>Success/Failure</code> from the command, unless you need to handle the error.</p>
 <p>Another way may be to pass some callback in the <code>execute()</code>, but maybe let&rsquo;s not go that way :)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// command result nicely fits with `sealed class`
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CommandResult</span> { 
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returned values could be `object` if they don&#39;t contain any data 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CommandResult</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returned values could be `object` if they don&#39;t contain any data
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Success</span> : CommandResult()
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Fail</span> : CommandResult()
 </span></span><span style="display:flex;"><span>}
@@ -1112,7 +1101,7 @@ It&rsquo;s better if the command returns simple <code>Success</code>, which will
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    repeat(<span style="color:#ae81ff">10</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">CommandProcessor</span>.process(command)
-</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// lambda-commands don&#39;t need to be assigned to variables
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">CommandProcessor</span>.process { <span style="color:#66d9ef">receiver</span>: Receiver <span style="color:#f92672">-&gt;</span>
 </span></span><span style="display:flex;"><span>            println(<span style="color:#e6db74">&#34;this is a another command&#34;</span>)
@@ -1250,3 +1239,20 @@ If the <code>action()</code> method were <code>suspend</code>, it would need to 
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

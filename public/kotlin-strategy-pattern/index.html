@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -753,9 +753,9 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// method calculating final price from list of items and selected promotion
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculateFinalPrice</span>(promotion: Promotion): Double {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> initialSum = items.sumOf { <span style="color:#66d9ef">it</span>.price }
-</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// checking promotion and using right algorythm to calculate price
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (promotion) { 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">when</span> (promotion) {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Promotion</span>.NoPromotion <span style="color:#f92672">-&gt;</span> initialSum
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Promotion</span>.SpecialPromotion <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">when</span> {
 </span></span><span style="display:flex;"><span>                initialSum &gt; <span style="color:#ae81ff">20</span> <span style="color:#f92672">-&gt;</span> initialSum * <span style="color:#ae81ff">0.95</span>
@@ -785,7 +785,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// the client class, strategy is provided in the constructor
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Context</span>(<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> strategy: Strategy) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// using generic strategy interface
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">useStrategy</span>() = strategy.use() 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">useStrategy</span>() = strategy.use()
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Strategy</span> { <span style="color:#75715e">// using interface instead of class is very important
@@ -815,28 +815,28 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>We have here the <code>Context</code> class, so the client using the Strategy. It only knows the strategy interface, not the concrete classes. This allows you to easily expand the family of strategies with a new one, without updating the customers. Due to the use of the interface, and not the <code>Strategy</code> class, specific Strategies are loosely related to each other, while guaranteeing clients a common API.</p>
 <p>It can be represented symbolically like this:</p>
-<p>{% plantuml %}
-@startuml</p>
-<p>interface Strategy{</p>
-<ul>
-<li>use()
-}</li>
-</ul>
-<p>class StrategyA implements Strategy{</p>
-<ul>
-<li>use()
-}
-class StrategyB implements Strategy{</li>
-<li>use()
-}</li>
-</ul>
-<p>class Context{
-- strategy: Strategy
-+ useStrategy()
-}</p>
-<p>Context::strategy -&gt; Strategy</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Strategy {
+        << interface >>
+        +use()
+    }
+
+    class StrategyA {
+        +use()
+    }
+    class StrategyB {
+        +use()
+    }
+
+    class Context {
+        -Strategy strategy
+        +useStrategy()
+    }
+
+    Context --> Strategy
+    StrategyA ..|> Strategy
+    StrategyB ..|> Strategy
+</pre>
 <h2 id="the-solution">The solution</h2>
 <p>Promotions can be encapsulated in specific classes:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Promotion</span> {
@@ -853,7 +853,7 @@ class StrategyB implements Strategy{</li>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// this is a NullObject, a special case of Strategy not performing any actions
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">NoPromotion</span> : Promotion { 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">NoPromotion</span> : Promotion {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">val</span> name = <span style="color:#e6db74">&#34;No Promotion&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculate</span>(sum: Double): Double {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sum
@@ -900,8 +900,8 @@ Often the &lsquo;strategy&rsquo; does not need to store its state, but only perf
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">applyPolicy</span>(sum: Double): Double
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Strategies can be passed as a parameter in the method where they are to be used, but they can also be passed in the constructor of a client object. Below is an example with default values (probably the simplest kind of <a href="https://asvid.github.io/kotlin-builder-pattern" target="_blank">Builder</a> in Kotlin), which allows you to overwrite only those strategies that are actually to be different than the default ones.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bill</span>( 
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// all strategies here are `object`s, 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bill</span>(
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// all strategies here are `object`s,
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// their implementation is an irrelevant detail
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> tax: Tax = DefaultTax,
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> promotion: Promotion = NoPromotion,
@@ -946,7 +946,7 @@ Often the &lsquo;strategy&rsquo; does not need to store its state, but only perf
 <p>The calculation of the individual components of the final amount must be performed in a fixed order, you cannot charge tax from promotion, etc. Similar to the <a href="https://asvid.github.io/kotlin-template-method" target="_blank">Template Method</a> approach, the <code>Bill</code> class is responsible for the correct sequence of steps, but the Strategy pattern allows the implementation of these steps to be replaced.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">calculateFinalPrice</span>(): Double {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">val</span> initialSum = items.sumOf { <span style="color:#66d9ef">it</span>.price }
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> initialSum.run { 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> initialSum.run {
 </span></span><span style="display:flex;"><span>		promotion.applyPromotion(<span style="color:#66d9ef">this</span>) <span style="color:#75715e">// `this` is the initial sum
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}.run {
 </span></span><span style="display:flex;"><span>		clientPolicy.applyPolicy(<span style="color:#66d9ef">this</span>) <span style="color:#75715e">// now it&#39;s the amount after applying the promotion
@@ -1106,3 +1106,20 @@ However, don&rsquo;t overdo it. There will be places where creating the Strategy
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -740,34 +740,39 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <li><strong>Mediator</strong> - the main communication hub, known to all <code>components</code></li>
 <li><strong>Component</strong> - doesn&rsquo;t know other components, doesn&rsquo;t depend on them (though it may depend on other classes). It communicates only with the <code>Mediator</code> who is calling appropriate<code>components</code></li>
 </ul>
-<p>{% plantuml %}
-@startuml</p>
-<p>interface Mediator{
-+ notify(sender, event, context)
-}
-class ConcreteMediator implements Mediator{
-- componentA: ComponentA
-- componentB: ComponentB
-- componentC: ComponentC
-+ notify(sender, event, context)
-}</p>
-<p>class ComponentA{
-- mediator: Mediator
-}
-class ComponentB{
-- mediator: Mediator
-}
-class ComponentC{
-- mediator: Mediator
-}</p>
-<p>ComponentA &ndash;* ConcreteMediator::componentA
-ComponentB &ndash;* ConcreteMediator::componentB
-ComponentC &ndash;* ConcreteMediator::componentC</p>
-<p>ComponentA::mediator-left-&gt;ConcreteMediator::notify
-ComponentB::mediator-right-&gt;ConcreteMediator::notify
-ComponentC::mediator-up-&gt;ConcreteMediator::notify</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Mediator {
+         << interface >>
+        + notify(sender, event, context)
+    }
+
+    class ConcreteMediator {
+        - componentA: ComponentA
+        - componentB: ComponentB
+        - componentC: ComponentC
+        + notify(sender, event, context)
+    }
+
+    class ComponentA {
+        - mediator: Mediator
+    }
+    class ComponentB {
+        - mediator: Mediator
+    }
+    class ComponentC {
+        - mediator: Mediator
+    }
+
+    ConcreteMediator ..|> Mediator
+
+    ComponentA --* ConcreteMediator
+    ComponentB --* ConcreteMediator
+    ComponentC --* ConcreteMediator
+
+    ComponentA --> ConcreteMediator:notify
+    ComponentB --> ConcreteMediator:notify
+    ComponentC --> ConcreteMediator:notify
+</pre>
 <p>It is worth noting that the only interface needed is <code>Mediator</code>, which all the<code> components</code> know. Each <code>component</code> is a separate and independent object that probably already inherits from another class or implements the needed interfaces. You may be tempted to introduce an additional <code>Component</code> interface, but it would not do much, because the <code>Mediator</code> needs to know the specific interfaces of its <code>components</code> to be able to call specific methods after receiving the message.</p>
 <p>The <code>mediator</code> object can get components in the constructor, via DI, or even create the necessary instances and manage their lifecycle.</p>
 <h2 id="abstract-implementation">Abstract implementation</h2>
@@ -799,7 +804,7 @@ ComponentC::mediator-up-&gt;ConcreteMediator::notify</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Mediator encapsulates relationships between components
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// it has references to all components it manages
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// and sometimes it can even manage component lifecycle
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Concretemediator</span> : Mediator { 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Concretemediator</span> : Mediator {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// components may be injected or passed in constructor
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// but Mediator reference must be passed to each component
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> componentA = ComponentA(<span style="color:#66d9ef">this</span>)
@@ -908,7 +913,7 @@ ComponentC::mediator-up-&gt;ConcreteMediator::notify</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// `object` is here just to make it easier to use in `main()`
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">SuperChat</span> : Chatroom {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// chatroom modes
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Mode</span> { 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Mode</span> {
 </span></span><span style="display:flex;"><span>        PUBLIC, <span style="color:#75715e">// every message is delivered to every participant
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        PRIVATE, <span style="color:#75715e">// only messages with recipient will be delivered
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        MIXED <span style="color:#75715e">// both direct messages and public ones will be delivered
@@ -1023,3 +1028,20 @@ For this reason, I would definitely avoid using the name Mediator in class names
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

@@ -1,26 +1,28 @@
 ---
 categories:
-- Design Patterns
-- rss
+  - Design Patterns
+  - rss
 comments: true
 date: "2021-06-26T00:00:00Z"
-description: ' The Adapter or Wrapper Pattern allows you to `translate` one interface
+description:
+  " The Adapter or Wrapper Pattern allows you to `translate` one interface
   into another, expected by the client class. It is especially useful when the adapted
   object comes from 3rd party library, and you do not want to make your system depending
   on that interface, creating the so-called `anticorruption layer`. Adaptee interface
-  changes will only affect the `Adapter` and not the rest of the code. '
+  changes will only affect the `Adapter` and not the rest of the code. "
 image: /assets/posts/adapter.jpg
 tags:
-- design patterns
-- Kotlin
-- Adapter Pattern
-- structural design pattern
+  - design patterns
+  - Kotlin
+  - Adapter Pattern
+  - structural design pattern
 title: Adapter Pattern in Kotlin
 toc: true
 url: kotlin-adapter-pattern
 ---
 
 # Purpose
+
 As the name suggests, the `Adapter` pattern transforms the class interface to another one requested by the client. Using the `Adapter` allows incompatible classes to interact with each other. Another term for this pattern is `Wrapper`.
 
 The adapter allows you to "map" an adapted interface (`Adaptee`) to the expected interface (`Target`) by the client class without adding another level of inheritance. Such inheritance would not always be possible if `Target` was a class rather than an interface. The new class would have to be both `Target` and` Adaptee` at the same time.
@@ -28,31 +30,36 @@ The adapter allows you to "map" an adapted interface (`Adaptee`) to the expected
 Instead of creating a new `Adapter` class, you may also add a method in the client that takes an object with an `Adaptee` interface, but it will cause the class to expand with a lot of similar methods. The client class can also come from 3rd party dependency, and then it will not be possible to change it.
 
 # Implementation
+
 The `adapter` is essentially a single class, but it's important to understand its surroundings.
 
-{% plantuml %}
-@startuml
-skinparam groupComposition 1
-class Client{
-- useTarget()
-}
-interface Target{
-+ method()
-}
-class Adapter extends Target{
-+ method()
-- adaptee: Adaptee
-}
-interface Adaptee{
- + otherMethod() 
-}
+```mermaid
+classDiagram
+    class Client {
+        - useTarget()
+    }
 
-Adapter::adaptee -right-* Adaptee
-Client-right->Target
-Adapter::method..>Adaptee::otherMethod
+    class Target {
+         << interface >>
+        + method()
+    }
 
-@enduml
-{% endplantuml %}
+    class Adapter {
+        -Adaptee adaptee
+        + method()
+    }
+
+    class Adaptee {
+         << interface >>
+        + otherMethod()
+    }
+
+    Adapter ..|> Target
+    Adapter --* Adaptee
+    Client --> Target
+    Adapter --> Adaptee : calls otherMethod()
+
+```
 
 - **Client** - class that uses the `Target` object
 - **Target** - interface required by the `Client` class
@@ -60,7 +67,9 @@ Adapter::method..>Adaptee::otherMethod
 - **Adaptee** - an adapted class with an incompatible interface that we want to use with `Client`
 
 ## Abstract
+
 In the code, the diagram above might look like this:
+
 ```kotlin
 class Client(private val target: Target) {
     private val argument = BigDecimal(10.0)
@@ -97,9 +106,11 @@ fun main() {
     val client3: Client = Client(adapter) // using the Adapter with Adaptee instance
 }
 ```
+
 You can see here how the `Adapter` class uses the `Adaptee` object within the `Target` interface. The `Adapter` encapsulates the logic of mapping one interface to another. This avoids unnecessary extending or modifying the client or `Adaptee` only for a specific client.
 
 Different clients can use different adapters of the same `Adaptee` class. Thanks to this, there is no need to adapt `Adaptee` to a specific client or several clients. Just look at this monster:
+
 ```kotlin
 // Adaptee implements all interfaces expected by all clients
 class Adaptee: Target1, Target2, Target3{
@@ -111,7 +122,9 @@ class Adaptee: Target1, Target2, Target3{
     override fun target3Method()
 }
 ```
+
 And with Adapters:
+
 ```kotlin
 // unchanged Adaptee class
 class Adaptee{
@@ -130,7 +143,9 @@ class Adapter3(val adaptee: Adaptee) : Target3{
 ```
 
 ## List
+
 The adapter will work well for a list of elements on which we want to perform an operation for which they were not created.
+
 ```kotlin
 // lets assume that this class is comming from 3rd party library
 // `data class` cannot be extended
@@ -164,12 +179,15 @@ fun main() {
     }
 }
 ```
+
 Using the `Adapter` allows a clean link between classes that we have no control over (from external libraries) with our code with different interfaces. It is a good practice not to use the 3rd party interfaces in the whole system, if possible, but only at the point where the library meets our code. That provides the exchangeability of libraries, easy version update, and protects your code from the forced changes dictated by API alterations in independent software pieces.
 
 I realize that this is not always possible, and sometimes it is even not worth creating an intermediate interface. However, it would be stupid in a long-lived project that multiple teams are working on to have a problem because some silly utils library changed its API after update.
 
 ## Duck Typing
+
 If something quacks like a duck, swims like a duck and flies like a duck, it must be a duck. Contrary to `strong typing` where we know for 100% that the object is a duck because it inherits from the class `Duck`, here we are interested in the available behavior of the object. You can see that in Python or JavaScript. Kotlin is strongly typed language, and does not allow for multi-inheritance, but extension functions do allow you to "append" functionality to a class. So we can have a species-fluid dog:
+
 ```kotlin
 class York: Dog{
     fun bark(){}
@@ -181,17 +199,19 @@ York().bark()
 // and now it quacks
 York().quack()
 ```
+
 ![York duck](assets/posts/york_duck.jpg){: .center-image }
 
 This York doesn't look happy. And it's definitely not a duck. But if it can quack, and that's all we need, it should be good enough?
 
 Going back to the list example, instead of creating an `Adapter`, it would be enough to add an extension function for `Item`:
+
 ```kotlin
 fun Item.prettyPrint(): String {
     return "hello, my name is: ${this.name}"
 }
 
-// Item now is able to "pretty print" itself without additional Adapter	
+// Item now is able to "pretty print" itself without additional Adapter
 list.forEach {
 	println(it.prettyPrint())
 }
@@ -201,6 +221,7 @@ list.forEach {
     println(adapted.prettyPrint())
 }
 ```
+
 `Extension functions` are generally a great feature, and in such a simple example, they'll probably do a better job than the additional `Adapter` class. They can also be added to classes that we have no control over, such as those from libraries.
 
 The problem arises when we start adding more and more of these functions to a specific class, in various places in the code. The IDE is great at suggesting possible methods, you can easily jump to implementation, but during the code review, it can be hard to figure out where the class has a given method from - because it is not in the class implementation. It can also obscure the class interface or implicitly override methods.
@@ -230,11 +251,13 @@ fun main() {
     item3.betterPrint()
 }
 ```
+
 In this example, I have added 3 extension functions. The case of `prettyPrint` is especially interesting, where the implementation is different for the generic` Item` interface and for the specific `AnotherItem` class. The IDE and the compiler don't see any problem. The second method will be just used with `AnotherItem`. The `extension functions` can be written anywhere in your code, even in very distant places from where the class is declared.
 
 Imagine a situation where you created the `extension function` to a generic interface and used it for a long time without any issues with all the different types implementing this interface. At one point a completely different team needed an `extension function` for a concrete type, so someone wrote a method with the same name and signature at a convenient place in code (for them), overriding your method for the generic interface. Without any `override` keyword :) tests may catch it, but they don't have to. Code Review was probably done by someone on the other team, so until something starts behaving in an unexpected way, you probably won't find out about the entire operation. And then looking for the cause of the error may not be pleasant...
 
 We have a few problems here:
+
 - dependency on `extension functions` for an interface that can be easily overwritten
 - spreading `extension functions` all over the system
 - code review limited to members of 1 team (this is a topic for a separate post)
@@ -242,9 +265,11 @@ We have a few problems here:
 Closing all "extended" functionality in an Adapter, for example, `ItemPrinter` would avoid misunderstandings and aid code review. In Git, you can easily see who authored or recently modified this class and add them to a pull request as well. For `extension functions`, this option also exists, but methods can be scattered throughout the system, making it harder to find authors, and if something is more difficult than hassle-free, no one will do it.
 
 ## Shapes
+
 In post about [Factory Method](https://asvid.github.io/kotlin-factory-method) I used geometrical shapes example, that fits nicely here:
 
 For the record:
+
 ```kotlin
 interface Shape {
     fun draw()
@@ -266,8 +291,10 @@ internal class CircleManipulator<T>(private val shape: T) : ShapeManipulator<Cir
     override fun resize(scale: Float) = println("CircleManipulator is resizing circle $shape")
 }
 ```
+
 We have a `Shape` interface which is implemented by e.g.` Circle`. Additionally, each shape has its own 'ShapeManipulator', an object that knows how to modify the size, position, etc. of a specific shape.
 The `Window` class displays the figures on the screen
+
 ```kotlin
 class Window() {
     fun drawShape(shape: Shape) {
@@ -275,7 +302,9 @@ class Window() {
     }
 }
 ```
+
 And now we want to be able to display the text on the screen, next to the geometric shapes. However, the `TextView` class is not a shape, it has a different interface and comes from 3rd party library, for example. It is also such a complex class that there is no chance of rewriting it using the `Shape` interface, or changing the behavior of the `Window` class.
+
 ```kotlin
 class TextView {
     fun displayText() {}
@@ -283,13 +312,15 @@ class TextView {
     fun changePosition() {}
 }
 ```
+
 Let's use `Adapter`
+
 ```kotlin
 class TextViewAdapter(val textView: TextView) : Shape {
     override fun draw() {
         textView.displayText()
     }
-	
+
 	// anonymous object instead of separate class
     override fun createManipulator(): ShapeManipulator<out Shape> {
         return object : ShapeManipulator<Shape> {
@@ -305,7 +336,9 @@ class TextViewAdapter(val textView: TextView) : Shape {
     }
 }
 ```
+
 Which for `Window` behaves like any other figure
+
 ```kotlin
 fun main() {
     val window = Window()
@@ -317,19 +350,23 @@ fun main() {
     window.drawShape(TextViewAdapter(textView)) // using Adapter
 }
 ```
+
 I have intentionally omitted here return types or display logic of elements. Such an 'Adapter' in a real project would be much more complicated. But I hope the idea here is clear.
 
 # Naming
+
 Here I have mixed feelings about whether adding `Adapter` in the name is necessary. On the one hand, it's clear information that the object only maps one interface to another. On the other hand, this information may not be needed at all, clients are only interested in the interface. Does `ItemAdapter` or `ItemWrapper` say more than `ItemWithPrettyPrint`? Moreover, if we create more adapters for different clients for `Item`, naming them `ItemForClient1Adapter` doesn't look great.
 
 Therefore, I tend to name adapters from the object they adapt (`Adaptee`), and the interface they implement (`Target`).
 
 # Summary
+
 The Adapter or Wrapper Pattern allows you to "translate" one interface into another, expected by the client class. It is especially useful when the adapted object comes from 3rd party library, and you do not want to make your system depending on that interface, creating the so-called `anticorruption layer`. Adaptee interface changes will only affect the `Adapter` and not the rest of the code.
 
 Kotlin allows, through the `extension functions`, to provide` Adapter`-like functionality without having to create an entirely new class. This will make sense when you are not interested in the type of object but its capabilities, which is often referred to as `Duck Typing`. However, `extension functions` can obscure the actual class interface, override one another, and cause chaos in general. By limiting their scope, you can deal with it, but if their number starts growing for a specific class, it may be worth setting up a separate wrapper class to organize them.
 
 ## Consequences
+
 - **single responsibility principle** - you do not need to change the class adapted for a specific client, only add an `Adapter` with the required interface. The adapted class can change independently of the clients, and it is the job of the `Adapter` to reconcile these changes with the client interface.
 - **anticorruption layer** - separates the interface you have no control over and "translates" it into your own. Changes to the interface coming from a library, won't affect the system
 - **available for subclasses** - as in the abstract example, creating an adapter for a generic interface allows the use of any class that implements that interface.

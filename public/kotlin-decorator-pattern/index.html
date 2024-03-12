@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -737,28 +737,28 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
   
 </div>
 
-  <h1 id="purpose">Purpose</h1>
+  <h2 id="purpose">Purpose</h2>
 <p>The <code>Decorator</code> allows you to dynamically add or change the behavior of a specific object of a given class, without affecting other objects of the same class. In some cases, this allows you to significantly reduce the number of classes by moving the shared behavior to the <code>Decorator</code>, rather than extending the inheritance structure.</p>
 <p>The decorator&rsquo;s job is to &ldquo;wrap&rdquo; (hence another name: &ldquo;Wrapper&rdquo;) the original object and modify or overwrite its behavior. The decorator class has the same interface as the decorated object, so it doesn&rsquo;t matter to the client whether the object has been decorated or not. As a rule, <code>Decorator</code> is unlikely to add new public methods, as the client using the original object&rsquo;s interface would not have access to them anyway. Having the same interface as the original object allows decorators to nest and wrap each other freely.</p>
 <p>Decorating is done dynamically while the program is running, not at the compile time. The decorated object is usually passed in the Decorator constructor because the &lsquo;Decorator&rsquo; instance makes no sense by itself, without the object it wraps around.</p>
-<h1 id="implementation">Implementation</h1>
+<h2 id="implementation">Implementation</h2>
 <p>There are few key pieces in the <code>Decorator</code> pattern:</p>
-<p>{% plantuml %}
-@startuml
-skinparam linetype ortho
-hide members
-show Decorator members</p>
-<p>class Client
-interface Component
-class ConcreteComponent implements Component
-abstract class Decorator implements Component{</p>
-<h1 id="component-component">component: Component</h1>
-<p>}
-class ConcreteDecorator extends Decorator</p>
-<p>Client -right- Component : using</p>
-<p>Decorator o&ndash; Component</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Client
+    interface Component
+    class ConcreteComponent
+    class Decorator {
+         << abstract >>
+        #Component component
+    }
+    class ConcreteDecorator
+
+    Client -- Component: using
+    Decorator o-- Component
+    Decorator ..|> Component
+    ConcreteDecorator --|> Decorator
+    ConcreteComponent ..|> Component
+</pre>
 <p>Elements:</p>
 <ul>
 <li><strong>Client</strong> - a class that uses the <code>Component</code> object, knows only generic interface, not concrete classes, so it does not need to know about the existence of a decorator</li>
@@ -767,7 +767,7 @@ class ConcreteDecorator extends Decorator</p>
 <li><strong>Decorator</strong> - an abstract class that implements the <code>Component</code> interface and takes a <code>Component</code> object in the constructor. Using an abstract class, rather than an interface allows forcing the constructor on inheriting classes without the possibility of creating an instance. If <code>Decorator</code> accepts objects with a generic<code> Component</code> interface rather than a concrete class, it can decorate entire families of objects.</li>
 <li><strong>ConcreteDecorator</strong> - a specific decorator implementation</li>
 </ul>
-<h2 id="abstract">Abstract</h2>
+<h3 id="abstract">Abstract</h3>
 <p>The above diagram can look like this in code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Component</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// example methods of decorated interface
@@ -813,19 +813,14 @@ class ConcreteDecorator extends Decorator</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> dec2: Component = ConcreteDecorator2(dec1)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>You can see here how easy it is to nest Decorators. In this implementation, <code>ConcreteDecorator1</code> is basically<code> Proxy</code> because it simply calls the methods from the passed <code>Component</code> object. Note that the <code>ConcreteDecorator2.methodA()</code> throws an exception. The decorator can also return a constant and not use the passed <code>Component</code> object at all. The &lsquo;decorator&rsquo; decides for himself how to behave. Based on the properties of the wrapped object, it may decide to raise an exception instead of returning some value.</p>
-<p>{% plantuml %}
-@startuml
-title Nested Decorators
-node Decorator1{
-node Decorator2{
-node Component{</p>
-<pre><code>	}
-}
-</code></pre>
-<p>}
-@enduml
-{% endplantuml %}</p>
-<h2 id="delegates">Delegates</h2>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">graph TD;
+    subgraph Decorator1
+        subgraph Decorator2
+            Component
+        end
+    end
+</pre>
+<h3 id="delegates">Delegates</h3>
 <p>Kotlin has built-in support for <a href="https://kotlinlang.org/docs/delegation.html" target="_blank">the delegation pattern</a>, another pattern that sets composition above inheritance. The general idea is to <strong>delegate</strong> the task resulting from the class interface to some component object, passed in the constructor, or injected by DI. This way class can be composed of reusable delegates instead of duplicating the implementation or creating strange inheritance structures. A bit like the template method, only that for the class - a class template :)</p>
 <p>Delegates can be used to implement the <code>Decorator</code> pattern. In Kotlin, delegates are created using the &lsquo;by&rsquo; keyword:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// basic interface to be decorated
@@ -876,7 +871,7 @@ node Component{</p>
 </span></span><span style="display:flex;"><span>        Component <span style="color:#66d9ef">by</span> component,
 </span></span><span style="display:flex;"><span>        Component2 <span style="color:#66d9ef">by</span> component2
 </span></span></code></pre></div><p>By using delegates, a particular <code>Decorator</code> can only contain methods that it actually wants to change. The abstract base class <code>Decorator</code> could also contain proxy calls to all methods of the decorated object, in which case concrete decorators would overwrite only the methods they require. But if you can do the same thing with a single word, why overpay? :)</p>
-<h2 id="communication-interfaces">Communication Interfaces</h2>
+<h3 id="communication-interfaces">Communication Interfaces</h3>
 <p>Let&rsquo;s take a system that sends text messages. Messages can be sent via Bluetooth or TCP. We want to be able to send pure text, JSON and JSON with the Base64 encoded message. Any type of message should be transferable by any means. And from the client level, it shouldn&rsquo;t matter what type of message and medium has been selected.</p>
 <p>Ok lets start from communication means:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// generic communication interface
@@ -917,14 +912,14 @@ node Component{</p>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> btComm: Comm = BtComm(btModule)
 </span></span><span style="display:flex;"><span>btComm.sendMessage(message) <span style="color:#75715e">// sending message via BT: hello
 </span></span></span></code></pre></div><p>Which causes sending simple text message via Bluetooth. Same story with TCP.</p>
-<h3 id="jsondecorator">JsonDecorator</h3>
+<h4 id="jsondecorator">JsonDecorator</h4>
 <p>We&rsquo;d like to send JSON formatted messages with BT and TCP. A decorator like this can be used:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// `comm` passed in constructor is not a class field, so inheriting classes can&#39;t access it`
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CommDecorator</span>(comm: Comm) : Comm <span style="color:#66d9ef">by</span> comm
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JsonDecorator</span>(comm: Comm) : CommDecorator(comm) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sendMessage</span>(text: String): Result {
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// with `super` method from abstract `CommDecorator` is called, 
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// with `super` method from abstract `CommDecorator` is called,
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// that then delegates the call to the `comm` instance
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">super</span>.sendMessage(<span style="color:#e6db74">&#34;{</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">message</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">:</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$text</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">}&#34;</span>)
 </span></span><span style="display:flex;"><span>    }
@@ -941,7 +936,7 @@ node Component{</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> btJsonComm: Comm = JsonDecorator(BtComm(btModule))
 </span></span><span style="display:flex;"><span>btJsonComm.sendMessage(message) <span style="color:#75715e">// sending message via BT: {&#34;message&#34;:&#34;hello&#34;}
 </span></span></span></code></pre></div><p>If there was another way of communication now (Websockets, Firebase, carrier pigeon) and the messages should have the same format, no problem. You just decorate the new <code>Comm</code> implementation with an already made decorator. Likewise, if a new message format is created, familiar transfer methods can be used with the decorator.</p>
-<h3 id="base64decorator">Base64Decorator</h3>
+<h4 id="base64decorator">Base64Decorator</h4>
 <p>Last decorator will help creating Base64 encoded message:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base46Decorator</span>(comm: Comm) : CommDecorator(comm) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">sendMessage</span>(text: String): Result {
@@ -953,7 +948,7 @@ node Component{</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>It has a new private method to prepare messages. It does not extend the original interface, so it makes no difference whether the client knows about <code>Comm</code> or <code>Base46Decorator</code> - it has access to the same methods, so will rather choose to use <code>Comm</code> due to the easily interchangeable implementation. Such a subliminal encouragement of good behavior.</p>
-<h3 id="decorating-order">Decorating order</h3>
+<h4 id="decorating-order">Decorating order</h4>
 <p>All together is used like:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> tcpBase64JsonComm: Comm = JsonDecorator( <span style="color:#75715e">// put message in JSON structure
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Base46Decorator( <span style="color:#75715e">// encode everything in Base64
@@ -982,27 +977,19 @@ node Component{</p>
 <li>Send via TCP</li>
 </ol>
 </li>
-<li><strong>tcpJsonBase64Comm</strong>
-<ol>
-<li>encode just the message with Base64</li>
-<li>wrap everything in JSON structure</li>
-<li>Send via TCP
+<li><strong>tcpJsonBase64Comm</strong> 1. encode just the message with Base64 2. wrap everything in JSON structure 3. Send via TCP
 The deeper the decorator is, the later it will be called with the result of processing data from earlier decorators.</li>
-</ol>
-</li>
 </ul>
-<p>{% plantuml %}
-@startuml</p>
-<p>Client -&gt; JsonDecorator : sendMessage(&ldquo;hello&rdquo;)
-JsonDecorator -&gt; Base46Decorator : sendMessage({&ldquo;message&rdquo;: &ldquo;hello&rdquo;})
-Base46Decorator -&gt; TcpComm : sendMessage(&ldquo;eyJtZXNzYWdlIjoiaGVsbG8ifQ==&rdquo;)
-TcpComm -&gt; TcpModule : send(body: &ldquo;eyJtZXNzYW&hellip;)
-TcpModule -&gt; TcpComm : Success/Fail
-TcpComm -&gt; Base46Decorator : Success/Fail
-Base46Decorator -&gt; JsonDecorator : Success/Fail
-JsonDecorator -&gt; Client : Success/Fail</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">sequenceDiagram
+    Client ->> JsonDecorator: sendMessage("hello")
+    JsonDecorator ->> Base46Decorator: sendMessage({"message": "hello"})
+    Base46Decorator ->> TcpComm: sendMessage("eyJtZXNzYWdlIjoiaGVsbG8ifQ==")
+    TcpComm ->> TcpModule: send(body: "eyJtZXNzYW...")
+    TcpModule ->> TcpComm: Success/Fail
+    TcpComm ->> Base46Decorator: Success/Fail
+    Base46Decorator ->> JsonDecorator: Success/Fail
+    JsonDecorator ->> Client: Success/Fail
+</pre>
 <p>As I wrote earlier, one of the decorators could also throw an exception or not use the method from the decorated object at all and return a constant. This can be helpful, for example, when we want to obscure some data depending on where we send it. For example, application logs using the class</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LogEntry</span> (<span style="color:#66d9ef">val</span> timestamp: Timestamp, <span style="color:#66d9ef">val</span> tag: String, <span style="color:#66d9ef">val</span> message: String)
 </span></span></code></pre></div><ul>
@@ -1011,7 +998,7 @@ JsonDecorator -&gt; Client : Success/Fail</p>
 <li>if for some external monitoring, we send a minimum of the information, maybe even just the TAG and timestamp.</li>
 </ul>
 <p>There is no point in extending the implementation of logging or sending data with these functionalities. Decorators on <code>LogEntry</code> can be created which, using internal logic, would clean up the message before its sent. Changing the logging policy or adding new aggregators will not cause the necessity to change the interfaces of the classes responsible for collecting or sending logs, but only the replacement of decorators.</p>
-<h3 id="extension-methods">Extension Methods</h3>
+<h4 id="extension-methods">Extension Methods</h4>
 <p>It seems that instead of adding more classes and playing with delegates, you can add few <code>extension methods</code> to the interface and thus prepare the message to be sent as JSON and/or Base64.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">String</span>.toJsonMessage(): String = <span style="color:#e6db74">&#34;{</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">message</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">:</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$this</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">}&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">String</span>.toBase64(): String = Base64.getEncoder().encodeToString(<span style="color:#66d9ef">this</span>.toByteArray())
@@ -1019,14 +1006,14 @@ JsonDecorator -&gt; Client : Success/Fail</p>
 </span></span><span style="display:flex;"><span>btComm.sendMessage(message.toBase64().toJsonMessage()) <span style="color:#75715e">// sending message via BT: {&#34;message&#34;:&#34;aGVsbG8=&#34;}
 </span></span></span></code></pre></div><p>But now it is the clients who need to know what form of a message to use, rather than using a decorated object with a generic interface that can be injected into them. Additionally, the <code>extension method</code> can be implicitly overridden elsewhere in the project, so you can never be sure that calling <code>toJsonMessage()</code> will produce the same result. I have already written about this in the context of the <a href="https://asvid.github.io/kotlin-adapter-pattern#duck-typing" target="_blank">Adapter Pattern</a>. In this case, I&rsquo;m using the <code>String</code> class, but if <code>toJsonMessage()</code> would return some JSON object, the <code>toBase64()</code> method would have to take this into account - when using decorators, the interface is always the same and the decorators don&rsquo;t need to know about each other.</p>
 <p>Code using <code>extension methods</code> is much simpler than using a series of decorators. However, if extension methods become used in multiple places and with multiple interfaces, maintaining them can be cumbersome, as well as testing. And if they will not be used anywhere else, then maybe the usual methods in the class will suffice instead of <code>extension methods</code>. Although I will admit that I sometimes prefer the <code>instance.extMethod()</code> syntax over <code>extMethod(instance)</code>.</p>
-<h1 id="naming">Naming</h1>
+<h2 id="naming">Naming</h2>
 <p>I usually don&rsquo;t like suffixes derived from design patterns in class names, but in the case of <code>Decorator</code> it is good to have clear information about the purpose of the class. Although the class interface is the same as the object being decorated, an instance of &lsquo;Decorator&rsquo; itself does not make sense, unlike the decorated object.</p>
-<h1 id="summary">Summary</h1>
+<h2 id="summary">Summary</h2>
 <p>The <code>Decorator</code> pattern is used where creating separate classes which are a combination of all possibilities would result in their explosion. This pattern focuses on creating object layers to transparently and dynamically complement objects with new tasks. The decorator provides an object with the same interface as the decorated object.</p>
 <p>While it is possible to add new public methods in the decorator, it may encourage clients to cast up or use the interface of a concrete decorator instead of a general component. The main advantage of the Decorator is its transparency to the customer, which is achieved by using the generic interface of the wrapped component.</p>
 <p>In the example with communication interfaces, if not for the decorator, you would probably need to extend clients with new functionalities or introduce all variations of message processing and the way of sending it in separate classes.</p>
 <p>Kotlin allows you to elegantly create decorators with delegates. Extension methods also kind of decorate the original class with new features, but are not a replacement or alternative to this pattern. Instead, they are an alternative to using the simple Java <code>Wrappers</code>, which add new public methods to objects that we don&rsquo;t want or can&rsquo;t extend.</p>
-<h1 id="consequences">Consequences</h1>
+<h2 id="consequences">Consequences</h2>
 <ul>
 <li><strong>changing object behavior without inheritance</strong> - inheritance is appropriate only in cases where the derived class is a subtype of the base class (relation on the principle of generalization-&gt; specialization) - <a href="https://books.google.pl/books/about/Effective_Java.html?id=ka2VUBqHiWkC&amp;redir_esc=y" target="_blank">&ldquo;Effective Java&rdquo;</a>. You could probably find such a connection between the <code>String</code> and the <code>TCP</code> packet, but it would be a bit of a stretch and inflexible. Especially adding JSON formatting and Base64 encoding along the way. It would also be difficult to re-use the code for a message over Bluetooth. By arranging layers, the decorator allows you to flexibly change the behavior of an object, without changing what the object is.</li>
 <li><strong>dynamic changes in the behavior of the object</strong> - the object can be decorated while the program is running because the new behaviors do not change the interface, but only fit into it. The same object can be decorated with one class in one place and with another in different one.</li>
@@ -1059,16 +1046,17 @@ JsonDecorator -&gt; Client : Success/Fail</p>
       <h4 id="contents"></h4>
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#abstract">Abstract</a></li>
-    <li><a href="#delegates">Delegates</a></li>
-    <li><a href="#communication-interfaces">Communication Interfaces</a>
+    <li><a href="#purpose">Purpose</a></li>
+    <li><a href="#implementation">Implementation</a>
       <ul>
-        <li><a href="#jsondecorator">JsonDecorator</a></li>
-        <li><a href="#base64decorator">Base64Decorator</a></li>
-        <li><a href="#decorating-order">Decorating order</a></li>
-        <li><a href="#extension-methods">Extension Methods</a></li>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#delegates">Delegates</a></li>
+        <li><a href="#communication-interfaces">Communication Interfaces</a></li>
       </ul>
     </li>
+    <li><a href="#naming">Naming</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#consequences">Consequences</a></li>
   </ul>
 </nav>
     </div>
@@ -1079,3 +1067,20 @@ JsonDecorator -&gt; Client : Success/Fail</p>
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

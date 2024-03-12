@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -758,20 +758,22 @@ GWT). In the mid-2000s, GWT adopted MVP as a response to the challenges faced in
 applications.</p>
 <p>Let&rsquo;s have an interface for the <code>View</code> and the new <code>Controller</code> type, but let&rsquo;s call it <code>Presenter</code> since it&rsquo;s
 responsible for presenting model data to the <code>View</code>. A simple diagram may look like this:</p>
-<p>{% plantuml %}
-@startuml</p>
-<p>class Model {
-}</p>
-<p>interface View {
-}</p>
-<p>interface Presenter {
-}</p>
-<p>Model &ndash; Presenter: notifies
-View &ndash; Presenter: interacts
-Presenter &ndash; Model: manipulates
-Presenter &ndash; View: updates</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Model
+
+    class View {
+        << interface >>
+    }
+
+    class Presenter {
+         << interface >>
+    }
+
+    Model -- Presenter: notifies
+    View -- Presenter: interacts
+    Presenter -- Model: manipulates
+    Presenter -- View: updates
+</pre>
 <p>Please note that <code>View</code> and <code>Presenter</code> are interfaces, and while they still keep a reference to each other, it&rsquo;s only
 by the interface, not the concrete implementation. The interfaces are providing only methods relevant for particular UI
 interactions.</p>
@@ -779,31 +781,36 @@ interactions.</p>
 <p>Okay, so now there is a set of interfaces, implemented by a concrete <code>View</code> and <code>Presenter</code>, to serve for a particular
 UI screen. It would be nice to keep them close, so it&rsquo;s clear which <code>View</code> talks to which <code>Presenter</code>, there is always a
 1-to-1 relation.</p>
-<p>{% plantuml %}
-@startuml</p>
-<p>interface ItemListContract {
-}</p>
-<p>interface Presenter {
-+addItem(): void
-+removeItem(): void
-}</p>
-<p>interface View {
-+displayError(): void
-+hideError(): void
-+displayItems(): void
-+showLoading(): void
-+hideLoading(): void
-}</p>
-<p>View &ndash;* ItemListContract
-Presenter &ndash;* ItemListContract</p>
-<p>class ConcreteItemListFragment {
-}</p>
-<p>class ConcreteItemListPresenter {
-}</p>
-<p>ConcreteItemListFragment &ndash;|&gt; View
-ConcreteItemListPresenter &ndash;|&gt; Presenter</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class ItemListContract {
+         << interface >>
+    }
+
+    class Presenter {
+         << interface >>
+        +addItem()
+        +removeItem()
+    }
+
+    class View {
+         << interface >>
+        +displayError()
+        +hideError()
+        +displayItems()
+        +showLoading()
+        +hideLoading()
+    }
+
+    View --* ItemListContract
+    Presenter --* ItemListContract
+
+    class ConcreteItemListFragment
+
+    class ConcreteItemListPresenter
+
+    ConcreteItemListFragment --|> View
+    ConcreteItemListPresenter --|> Presenter
+</pre>
 <p>It looks nicer in Kotlin code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ItemListContract</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">View</span> {
@@ -855,46 +862,60 @@ a particular UI scenario.</p>
 the View is destroyed since the result it&rsquo;s not relevant anymore.</p>
 <p>This can be achieved by introducing an abstract <code>BasePresenter</code>, which is also a <code>CoroutineScope</code>. The diagram starts
 to be really complex, for a simple presentation layer architecture:</p>
-<p>{% plantuml %}
-@startuml</p>
-<p>interface Presenter&lt;VIEW: View&gt; {
-+attachView(view: VIEW): void
-+detachView(): void
-}</p>
-<p>interface View {
-}</p>
-<p>abstract class BasePresenter&lt;VIEW: View&gt; {
--view: VIEW
--job: Job
-+onViewAttached(): void
-+onViewDetached(): void
-}
-interface CoroutineScope
-BasePresenter &lt;|&ndash; Presenter
-BasePresenter &lt;|&ndash; CoroutineScope</p>
-<p>interface ItemListContract {
-}</p>
-<p>interface ItemListView {
-+displayError(): void
-+hideError(): void
-+showLoading(): void
-+hideLoading(): void
-}</p>
-<p>interface ItemListPresenter {
-+addItem(): void
-+removeItem(): void
-}</p>
-<p>class ConcreteItemListFragment{
-}</p>
-<p>ItemListContract &ndash;|&gt; ItemListView
-ItemListContract &ndash;|&gt; ItemListPresenter
-ItemListPresenter &ndash;|&gt; Presenter
-ItemListView &ndash;|&gt; View
-ConcreteItemListPresenter &ndash;|&gt; ItemListPresenter
-ConcreteItemListPresenter &ndash;|&gt; BasePresenter
-ConcreteItemListFragment &ndash;|&gt; ItemListView</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class Presenter~VIEW~ {
+        << interface >>
+        +attachView(VIEW view)
+        +detachView()
+    }
+
+    class View {
+        << interface >>
+    }
+
+    class BasePresenter~VIEW~ {
+         << abstract >>
+        -VIEW view
+        -Job job
+        +onViewAttached()
+        +onViewDetached()
+    }
+
+    class CoroutineScope {
+        << interface>>
+    }
+
+    Presenter <|.. BasePresenter
+    CoroutineScope <|.. BasePresenter
+
+    class ItemListContract {
+        << interface >>
+    }
+
+    class ItemListView {
+        << interface >>
+        +displayError()
+        +hideError()
+        +showLoading()
+        +hideLoading()
+    }
+
+    class ItemListPresenter {
+        << interface >>
+        +addItem()
+        +removeItem()
+    }
+
+    class ConcreteItemListFragment
+
+    ItemListContract ..* ItemListView
+    ItemListContract ..* ItemListPresenter
+    ItemListPresenter ..|> Presenter
+    ItemListView ..|> View
+    ConcreteItemListPresenter ..|> ItemListPresenter
+    ConcreteItemListPresenter --|> BasePresenter
+    ConcreteItemListFragment ..|> ItemListView
+</pre>
 <h3 id="basepresenter">BasePresenter</h3>
 <p>It looks more complex than it is. Each <code>ConcretePresenter</code> implements <code>Contract.Presenter</code> for its domain capabilities
 and
@@ -1122,3 +1143,20 @@ wait, there is <strong>MVVM</strong> :)</p>
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

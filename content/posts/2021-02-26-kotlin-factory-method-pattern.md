@@ -1,18 +1,19 @@
 ---
 categories:
-- Design Patterns
-- rss
+  - Design Patterns
+  - rss
 comments: true
 date: "2021-02-26T00:00:00Z"
-description: ' After the `Static Factory Method` it''s time for classic `Factory`.
+description:
+  " After the `Static Factory Method` it's time for classic `Factory`.
   Factory is very useful and often used construction design pattern. Kotlin has interesting
-  advantage thanks to `sealed` and `internal` classes, that are missing in Java. '
+  advantage thanks to `sealed` and `internal` classes, that are missing in Java. "
 image: /assets/posts/plyta.jpg
 tags:
-- design patterns
-- Kotlin
-- Factory Method
-- construction design pattern
+  - design patterns
+  - Kotlin
+  - Factory Method
+  - construction design pattern
 title: Kotlin Factory Method
 toc: true
 url: kotlin-factory-method
@@ -27,6 +28,7 @@ Factory can deliver objects of various types implementing the same interface jus
 When using Factory you rather tell it: "I know just `this` and `that` give me instance implementing the expected interface". Example: `Locale.forLanguageTag("pl-PL")` will give us `Locale` instance with full country or language name even if they were not provided. In the case of Builder, it would rather be telling: "give me instance with `this` and `that` set and leave everything else default". Factories often have injected dependencies that allow them to create complex objects with just minimum input data from the client.
 
 There are few variants of this pattern:
+
 - Static Factory Method (already described [here](https://asvid.github.io/kotlin-static-factory-methods))
 - "typical" Factory Method
 - Abstract Factory
@@ -51,26 +53,23 @@ concreteProduct.doStuff()
 val concreteProduct2 = ConcreteProduct()
 ```
 
-{% plantuml %}
-@startuml
-interface Product
-interface Creator{
-+factoryMethod():Product
-}
+```mermaid
+classDiagram
+    class Product
+    << interface >> Product
+    class Creator
+    << interface >> Creator
+    Creator :factoryMethod() Product
 
-class ConcreteCreator extends Creator{
-+factoryMethod():Product
-}
+    class ConcreteCreator
+    ConcreteCreator:factoryMethod() Product
 
-class ConcreteProduct extends Product
+    class ConcreteProduct
 
-note right of ConcreteCreator::factoryMethod
-return ConcreteProduct()
-end note
-
-ConcreteCreator .left. ConcreteProduct : > creates
-@enduml
-{% endplantuml %}
+    ConcreteCreator --|> Creator
+    ConcreteCreator ..> ConcreteProduct : creates
+    ConcreteProduct --|> Product
+```
 
 ### Elements
 
@@ -100,7 +99,7 @@ interface Creator {
 
 // "concrete" factory implementation, building `ConcreteProduct`
 class ConcreteCreator: Creator {
-    // returned type has to be generic interface, 
+    // returned type has to be generic interface,
     // returning internal `ConcreteProduct` will cause compile time error
     override fun factoryMethod() : Product {
         println("ConcreteCreator is using factory method")
@@ -108,6 +107,7 @@ class ConcreteCreator: Creator {
     }
 }
 ```
+
 There is nothing similar to `internal class` in Java, but it fits nicely into the above use. Using `internal` prevents leaking internal types. This is especially useful when building a library or SDK and you don't want to reveal implementation.
 
 ## More interesting example from the gang of four
@@ -127,44 +127,47 @@ val circle: Figure = figureFactory.createFigure(FigureFactory.Type.Circle)
 circle.createManipulator().drag()
 ```
 
-{% plantuml %}
-@startuml
-interface Figure{
-+createManipulator(): FigureManipulator
-}
-interface FigureManipulator {
-+drag()
-+resize(scale: Float)
-}
+```mermaid
+classDiagram
+    class Client
 
-class Client
+    class Figure {
+        << interface >>
+        +FigureManipulator createManipulator()
+    }
+    class FigureManipulator {
+        << interface >>
+        +drag()
+        +resize(Float scale)
+    }
 
-Client -left-> Figure
-Client -right-> FigureManipulator
+    class Circle {
+        +FigureManipulator createManipulator()
+    }
+    class Square {
+        +FigureManipulator createManipulator()
+    }
 
-class Circle extends Figure {
-+createManipulator(): FigureManipulator
-}
-class Square extends Figure {
-+createManipulator(): FigureManipulator
-}
+    class CircleManipulator {
+        -Circle figure
+        +drag()
+        +resize(Float scale)
+    }
+    class SquareManipulator {
+        -Square figure
+        +drag()
+        +resize(Float scale)
+    }
+    Circle --|> Figure
+    Square --|> Figure
+    Client .. Figure
+    Client .. FigureManipulator
+    CircleManipulator --|> FigureManipulator
+    SquareManipulator --|> FigureManipulator
+    Circle ..> CircleManipulator
+    Square ..> SquareManipulator
 
-class CircleManipulator extends FigureManipulator {
--figure:Circle
-+drag()
-+resize(scale: Float)
-}
-
-class SquareManipulator extends FigureManipulator {
--figure:Square
-+drag()
-+resize(scale: Float)
-}
-
-Circle::createManipulator .right.> CircleManipulator
-Square::createManipulator .right.> SquareManipulator
-@enduml
-{% endplantuml %}
+```
 
 ### Elements
 
@@ -175,9 +178,10 @@ Square::createManipulator .right.> SquareManipulator
 ### Implementation
 
 #### Figure
+
 ```kotlin
 interface Figure {
-    // Figure can create FigureManipulator for itself, 
+    // Figure can create FigureManipulator for itself,
     // but for client it will always be generic and not concrete
     fun createManipulator(): FigureManipulator<out Figure> // metoda wytwórcza
 }
@@ -198,11 +202,14 @@ internal class Line : Figure {
     override fun createManipulator() = LineManipulator(this)
 }
 ```
+
 #### Manipulator
+
 `Manipulator` interface allows for Figure dragging and resizing. The concrete implementation is tightly connected with the type of Figure it will manipulate.
+
 ```kotlin
-// generic here ensures that a concrete `FigureManipulator` 
-// will handle just the concrete type of Figure, 
+// generic here ensures that a concrete `FigureManipulator`
+// will handle just the concrete type of Figure,
 // ex. `CircleManipulator` can't handle `Square`
 interface FigureManipulator<T : Figure> {
     fun drag()
@@ -217,7 +224,9 @@ internal class CircleManipulator<T>(private val figure: T) : FigureManipulator<C
 internal class SquareManipulator<T>(private val figure: T) : FigureManipulator<Square> {...}
 internal class LineManipulator<T>(private val figure: T) : FigureManipulator<Line> {...}
 ```
+
 #### Factory
+
 ```kotlin
 interface FigureFactory {
     // enum types for provided by the factory Figures
@@ -238,14 +247,18 @@ class ByTypeFactory : FigureFactory {
         }
 }
 ```
+
 `FigureFactory` contains an enum reflecting `Figure` types created by it. Not using directly types of delivered instances have a few benefits:
+
 - It doesn't leak internal types of concrete implementations. Factory shares just the `enum` and clients see only the generic interface, not concrete types.
 - To use enum type, you need to call it by factory interface like `FigureFactory.Type.Circle`. It minimizes the risk of using the wrong `Type` enum from some other factory or another place. Of course, IDE will highlight this error, but it can be just avoided. Using a less generic name like `FigureType` for enum can also help.
 - `Figure` has no idea in what forms it can be created, but Factory knows what instances it can deliver. This is why figure type enum belongs to `FigureFactory` rather than `Figure`.
 - The enum `FigureFactory.Type` makes sense only used with the factory. Putting it outside this interface may suggest that it's worth using it in a completely different context... which may then cause issues with maintaining the code in the future.
 
 #### Other Factory implementations
+
 Anonymous objects (no concrete class but implementing an interface) can also be delivered by the Factory:
+
 ```kotlin
 // factory can create anonymous objects, for client it doesn't matter
 class UndefinedFigureFactory : FigureFactory {
@@ -265,6 +278,7 @@ UndefinedFigureFactory()
         .createManipulator() // but instance API is the same
         .drag()
 ```
+
 Frequently when writing tests you don't need a concrete object but just a stub or a mock, that will allow you to verify code correctness. This is easily achievable with the Factory interface and implementing its variant for tests, which is then injected wherever it's needed:
 
 ```kotlin
@@ -291,7 +305,9 @@ val figure = FakeFactory()
                 .createFigure(FigureFactory.Type.Circle) // this wont be Circle for sure...
 figure.createManipulator().drag() // but it will behave like one :)
 ```
+
 You may even be tempted to randomly select the factory implementation. It doesn't make much sense in the case of geometric figures, but the procedural generated map elements or enemies in the game seem to be a pretty neat example.
+
 ```kotlin
 // randomly picks `ByTypeFactory` or `FakeFactory`
 // client won't notice any difference, because it knows only the `FigureFactory` interface
@@ -307,6 +323,7 @@ RandomFigureFactory.getFigureFactory() // randomly picked `FigureFactory`, `Fake
 ```
 
 ## Sealed class
+
 Suppose we have 3 databases in the app: `MySQL`, `Realm` and `MongoDB`. Although they are completely different (SQL, object-oriented, No-SQL), we make them available for clients hidden behind a common interface `Database`. To facilitate the use of a specific database, we will use a factory that will provide us with an instance of the database only based on the configuration.
 
 ```kotlin
@@ -321,59 +338,64 @@ val db: Database = DatabaseFactory.getDatabaseForConfig(mySqlConfig)
 db.save("Save me!")
 ```
 
-{% plantuml %}
-@startuml
-scale 900 width
+```mermaid
+classDiagram
+    class Database {
+        << interface >>
+        +save(Any item)
+        +getItem(Int id)
+    }
 
-interface Database {
-+save(item: Any)
-+getItem(id: Int)
-}
+    class DatabaseConfig {
+        << sealed class >>
+    }
 
-class DatabaseConfig << (S,orchid) Sealed Class >>{
+    class MySqlConfig {
+        -address
+        -port
+    }
+    class RealmConfig {
+        -dbName
+    }
+    class MongoDBConfig {
+        -fileUri
+        -tableName
+    }
 
-}
+    class MySql {
+        -config: MySqlConfig
+        +save(Any item)
+        +getItem(Int id)
+    }
+    class Realm {
+        -RealmConfig config
+        +save(Any item)
+        +getItem(Int id)
+    }
+    class MongoDB {
+        -MongoDBConfig config
+        +save(Any item)
+        +getItem(Int id)
+    }
 
-class MySqlConfig extends DatabaseConfig{
--address
--port
-}
-class RealmConfig extends DatabaseConfig{
--dbName
-}
-class MongoDBConfig extends DatabaseConfig{
--fileUri
--tableName
-}
+    class Factory {
+        +Database getDatabaseForConfig(DatabaseConfig config)
+    }
 
-class MySql implements Database{
--config:MySqlConfig
-+save(item: Any)
-+getItem(id: Int)
-}
-class Realm implements Database{
--config:RealmConfig
-+save(item: Any)
-+getItem(id: Int)
-}
-class MongoDB implements Database{
--config:MongoDBConfig
-+save(item: Any)
-+getItem(id: Int)
-}
+    class BadConfig
 
-class Factory{
-+getDatabaseForConfig(config: DatabaseConfig): Database
-}
+    MySql ..|> Database
+    Realm ..|> Database
+    MongoDB ..|> Database
 
-class BadConfig extends MongoDBConfig
+    Factory --> Database
+    Factory <-- DatabaseConfig
 
-Factory::getDatabaseForConfig-[bold]->Database
-Factory::getDatabaseForConfig<-[bold]-DatabaseConfig
-DatabaseConfig-[hidden]->Database
-
-@enduml
-{% endplantuml %}
+    MySqlConfig --|> DatabaseConfig
+    RealmConfig --|> DatabaseConfig
+    MongoDBConfig --|> DatabaseConfig
+    BadConfig --|> MongoDBConfig
+```
 
 ```kotlin
 // common interface available for clients
@@ -416,10 +438,10 @@ object DatabaseFactory {
             is MongoDbConfig -> MongoDB(config)
             is MySqlConfig -> MySql(config)
             is RealmConfig -> Realm(config)
-            
+
             // `BadConfig` extends `MongoDbConfig` but if this case is missing it won't cause an error
             // because `BadConfig` is `MongoDbConfig` this case will be handled in first line
-            is BadConfig -> MongoDB(config) 
+            is BadConfig -> MongoDB(config)
         }
     }
 }
@@ -462,50 +484,58 @@ repeat(10) {
     println("is it an AirFilter? ${randomPart is AirFilter}")
 }
 ```
+
 On diagram it will look like that:
 
-{% plantuml %}
-@startuml
-scale 900 width
+```mermaid
+classDiagram
+    class Part {
+        << interface >>
+    }
 
-interface Part
+    class PartFactory {
+        << interface >>
+        +T create()
+    }
 
-interface PartFactory<T: Part>{
-+create():T
-}
+    class AirFilter {
+        -constructor()
+        +companion object
+    }
+    class AirFilterFactory {
+        +AirFilter create()
+    }
 
-class AirFilter implements Part{
--constructor()
-+companion object
-}
+    class FuelFilter {
+        +companion object
+    }
+    class FuelFilterFactory {
+        +FuelFilter create()
+    }
 
-class AirFilterFactory<AirFilter><< (O,#FF7700) CompanionObject >> implements PartFactory{
-+create():AirFilter
-}
+    class Engine
 
-class FuelFilter implements Part{
-+companion object
-}
-class FuelFilterFactory<FuelFilter><< (O,#FF7700) CompanionObject >> implements PartFactory{
-+create():FuelFilter
-}
+    class EngineFactory
 
-class Engine implements Part
+    class RandomPartCreator {
+        -Set partFactories
+        +registerFactory(PartFactory factory)
+        +Part createRandomPart()
+    }
 
-class EngineFactory<Engine> implements PartFactory
 
-class RandomPartCreator{
--partFactories: Set<PartFactory>
-+registerFactory(factory: PartFactory)
-+createRandomPart(): Part
-}
+    Engine ..|> Part
+    AirFilter ..|> Part
+    FuelFilter ..|> Part
 
-RandomPartCreator::createRandomPart-[bold]->Part
-RandomPartCreator::registerFactory<-[bold]-PartFactory
-Part-[hidden]->PartFactory
+    RandomPartCreator --> Part
+    RandomPartCreator <-- PartFactory
 
-@enduml
-{% endplantuml %}
+    EngineFactory ..|> PartFactory
+    AirFilterFactory ..|> PartFactory
+    FuelFilterFactory ..|> PartFactory
+
+```
 
 And can be implemented like this:
 
@@ -553,7 +583,7 @@ object RandomPartCreator {
     fun registerFactory(factory: PartFactory<out Part>) {
         partFactories.add(factory)
     }
-    
+
     // so called generator - creates instance without any parameters passed
     fun createRandomPart(): Part {
         // random number from the registry size range
@@ -565,22 +595,26 @@ object RandomPartCreator {
 }
 ```
 
-Nothing forbids using a more extensive registry, like a map with `enum` as key and Static Factory Method as value. 
+Nothing forbids using a more extensive registry, like a map with `enum` as key and Static Factory Method as value.
 
 # Summary
+
 Factory Method is a commonly used design pattern, especially in the variant with `enum` types. Although it can take multiple forms main rule is the same: isolating object creation from its implementation hidden behind the interface. When having a whole family of objects it makes the program much more elastic, allowing effortless switching objects and easy mocking in tests.
 
 Kotlin helps a lot with hiding implementation with `internal` classes, and with handling all the subclass cases thanks to the `sealed` class.
 
 ## Pros
+
 - **isolating implementation from the interface** - the factory client is aware only about the interface, which allows adding new implementations without updating client.
 - **limiting types visibility** - it's useful when you are developing a library and want to hide the internal implementation from the users.
 - **ease of testing** - just the fact of using interfaces rather than concrete types makes creating a mock or stub easy. Connect this with injecting a whole configured for testing factory, and you can focus on what you actually want to test rather than building pieces around it.
 - **reusing objects** - similar to Builder, returned object doesn't necessarily have to be a new instance. The constructor always returns a new instance, but Factory can have some sort of internal cache and if it makes sense return previously created instance. However, this may conflict with the intuitive understanding of what a "factory" does - building new products like a car factory will assemble new cars rather than renting them from a parking lot.
 
 ## Cons
+
 - **additional boilerplate** - the need for interfaces, factories, enum types etc. This is not necessarily a problem, especially when thinking about interfaces and testing the code later. But you have to be prudent here, when you want to build single class instance without clear perspective of having more classes in the family - maybe you don't need a whole factory.
 
 ---
+
 [^thinking_in_java]: [Thinking in Java](https://books.google.pl/books?id=bQVvAQAAQBAJ&dq=isbn:9780131872486&hl=pl&sa=X&ved=2ahUKEwjO6uawvojvAhVRtIsKHchPBwUQ6AEwAHoECAAQAg)
 [^design_patterns]: [Design Patterns: Elements of Reusable Object-Oriented Software](https://books.google.pl/books?id=Mkn6uAEACAAJ&dq=isbn:0201633612&hl=pl&sa=X&ved=2ahUKEwiQgZnevojvAhXeAxAIHerSDCsQ6AEwAHoECAAQAg)

@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -763,24 +763,7 @@ absolutely no knowledge about
 the <code>Model</code>. And the other way around, the <code>Model</code> don&rsquo;t care about the <code>View</code>. So all the heavy lifting is done by the
 Controller - and that is kinda the whole point why we have better presentation patterns now.</p>
 <p>The diagram with basic interactions may look like this:</p>
-
-
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-
-    const lsTheme = localStorage.getItem("theme")
-    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
-    const currTheme = lsTheme ? lsTheme : hugoTheme;
-    const mermaidTheme = currTheme == "light" ? "default" : "dark"
-
-    mermaid.initialize({theme: mermaidTheme});
-</script>
-
-
-
-<div class="mermaid">
-
-graph TD
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">graph TD
 M(Model)
 V(View)
 C(Controller)
@@ -789,20 +772,14 @@ C(Controller)
     C -->|change| M
     C -->|update UI| V
     V -->|UI event| C
-
-
-</div>
-
+</pre>
 <h2 id="problems-with-mvc">Problems with MVC</h2>
 <p>MVC provides nice separation of concerns, right? <code>View</code> is fairly unaware about anything, the <code>Model</code> does its own thing,
 and the <code>Controller</code> is merging those 2 worlds. And merging is easy, right? Right?</p>
 <p>Well it is, but it doesn&rsquo;t scale very good. Take a look on this simple example. There is a <code>View</code> with single button,
 and some place for displaying data. Also, a simple <code>Model</code>, that gets data from the backend. And the <code>Controller</code>
 handling UI events and getting the data from the <code>Model</code>.</p>
-
-
-<div class="mermaid">
-
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">
 sequenceDiagram
 
 participant View
@@ -844,9 +821,7 @@ Controller ->> View: Display error
 end
 
 deactivate Controller
-
-</div>
-
+</pre>
 <p>That&rsquo;s quite a lot of interactions on the <code>Controller</code> side, for such a simple case. And interactions are simplified.
 The <code>Display Data</code> hides complexity of things like:</p>
 <ul>
@@ -997,3 +972,20 @@ enhanced testability.</p>
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

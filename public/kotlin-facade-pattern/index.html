@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -740,36 +740,36 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <p>By <code>module</code> I will understand here some consistent and relatively independent parts of the system. Not necessarily a separate module in the project or a library - it can be, for example, a separate package.</p>
 <h1 id="implementation">Implementation</h1>
 <p>The facade is basically single class. In the diagram it looks like this:</p>
-<p>{% plantuml %}
-@startuml
-skinparam groupComposition 1
-hide members
-show Facade methods
-class ClientA
-class ClientB</p>
-<p>ClientA-down-Facade
-ClientB-down-Facade</p>
-<p>package module &laquo;Node&raquo; {</p>
-<p>class Facade{
-+ operation()
-}</p>
-<p>class A
-class B
-class C
-class D
-class E
-class F</p>
-<p>A-down-*B
-B-*C
-D-*A
-A-*F
-D-*B
-}</p>
-<p>F-up-&gt;Facade
-E-up-&gt;Facade
-C-up-&gt;Facade</p>
-<p>@enduml
-{% endplantuml %}</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class ClientA
+    class ClientB
+
+    ClientA -- Facade
+    ClientB -- Facade
+
+    class Facade {
+        +operation()
+    }
+
+    namespace Module {
+        class A
+        class B
+        class C
+        class D
+        class E
+        class F
+    }
+
+        A --* B
+        B --* C
+        D --* A
+        A --* F
+        D --* B
+
+    F --> Facade
+    E --> Facade
+    C --> Facade
+</pre>
 <p>The classes <code>A, B, C, D, E, F</code> together form a module and provide some functionality. The facade is the access point to this functionality. As a result, no customer need not know the details of the module, to know how to create class instances and how to use them. Customers only need to know the facade, which can build a tree of dependencies for all classes, hide their implementations and provide a simple API for customers.</p>
 <p>I was wondering if the <code>Facade</code> class shouldn&rsquo;t be inside a module. Such use of the facades is often found in libraries - they have a lot of internal logic, but provide only a simple API inside a single class and, if necessary, several configuration objects. However, Facade can be used to cover code that we have no control over, creating a so-called <code>Anticorruption Layer</code>. Then the code that changes behind it does not spoil the clients.</p>
 <h2 id="abstract">Abstract</h2>
@@ -815,7 +815,7 @@ C-up-&gt;Facade</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> d = D()
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> e = E()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">complexWork</span>(): Any { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">complexWork</span>(): Any {
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">// reminds a bit of Template Method
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// or a Strategy, if instances would be injected
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// nothing is stopping Facade to use other patterns internally
@@ -962,3 +962,20 @@ C-up-&gt;Facade</p>
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>

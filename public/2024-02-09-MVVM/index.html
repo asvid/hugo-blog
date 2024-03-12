@@ -117,7 +117,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.53d1001e1add06cd247b1c5240176dbed441d0b274b09f10758b706e8c305b9c.css">
 
 
     
@@ -745,42 +745,24 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <p>There is a clear trajectory in presentation pattern evolution - decreased coupling. In MVC, components were closely situated, with numerous direct interactions. MVP addressed this by introducing a standard interface structure. It&rsquo;s now possible to test some interactions without relying on UI (although it may sound somewhat peculiar when discussing presentation patterns, I admit). Nevertheless, there are still some challenges, such as maintaining view state or artificial awareness of view lifecycle in MVP. Does the <code>Model-View-ViewModel</code> pattern resolve these issues?</p>
 <h2 id="view-view-what">View-View-What?</h2>
 <p><code>Model-View-ViewModel</code> (MVVM) is a design pattern that originated from Microsoft&rsquo;s WPF (Windows Presentation Foundation) framework and gained popularity in Android development due to its effectiveness in handling UI-related concerns. MVVM emerged as an evolution of the traditional MVC (Model-View-Controller) pattern, tailored specifically for the needs of modern UI development. The roles of Model and View have remained unchanged since <code>MVP</code>, or even <code>MVC</code>. The most significant practical change in the <code>ViewModel</code> approach is actually not explicitly stated in the pattern&rsquo;s name. It&rsquo;s the <code>State</code>, and how it&rsquo;s utilized.</p>
+<pre class="mermaid" style="background-color: #FAF9F6 !important;">classDiagram
+    class View
 
+    class ViewModel {
+        -State
+        +getStateFlow()
+        +handleUiEvent()
+    }
 
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    class Model {
+        +data
+    }
 
-    const lsTheme = localStorage.getItem("theme")
-    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
-    const currTheme = lsTheme ? lsTheme : hugoTheme;
-    const mermaidTheme = currTheme == "light" ? "default" : "dark"
-
-    mermaid.initialize({theme: mermaidTheme});
-</script>
-
-
-
-<div class="mermaid">
-classDiagram
-class View {
-}
-class ViewModel {
--State
-+getStateFlow()
-+handleUiEvent()
-}
-class Model {
-+data
-}
-
-    View --> ViewModel: observes state
-    View --> ViewModel: passes UI Event
-    ViewModel --> Model: using
-    ViewModel ..> ViewModel: updates state
-
-
-</div>
-
+        View --> ViewModel: observes state
+        View --> ViewModel: passes UI Event
+        ViewModel --> Model: using
+        ViewModel ..> ViewModel: updates state
+</pre>
 <h3 id="state">State</h3>
 <p>That&rsquo;s a very serious name for a fairly simple concept. It&rsquo;s a container for data that a <code>View</code> needs to display. <code>State</code> will have fields for text input values, booleans controlling button display or not, lists of items to show in UI, etc.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">State</span>(
@@ -969,3 +951,20 @@ Therefore, the <code>ViewModel</code> can expose a method such as:</p>
         </div>
     </body>
 </html>
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';
+    
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({
+      theme: mermaidTheme, 
+      startLoaded: true,
+      logLevel: 1
+    });
+  </script>
