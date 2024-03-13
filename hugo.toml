@@ -1,11 +1,10 @@
-baseURL = "/"
+baseURL = "http://swiderski.tech"
 languageCode = "en-us"
 title = "Adam Coding Corner"
 theme = "poison"
 paginate = 10
 pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries
 enableEmoji = true
-
 # NOTE: If using Disqus as commenting engine, uncomment and configure this line
 # disqusShortname = "yourDisqusShortname"
 [markup]
@@ -18,8 +17,10 @@ enableEmoji = true
     brand_image = "/assets/profile_picture.png"    # path to the image shown in the sidebar
     description = "software engineer" # Used as default meta description if not specified in front matter
     dark_mode = true                      # optional - defaults to false
-    favicon = "/assets/favicon.ico"             # path to favicon (defaults to favicon.png)
+    favicon = "/assets/ico/favicon.ico"             # path to favicon (defaults to favicon.png)
 
+    author.name = "Adam Świderski"
+    author.email = "adam.swiderski89@gmail.com"
     front_page_content = ["posts"] # Equivalent to the default value, add page bundle names to include them on the front page.
 
     # MENU PLACEHOLDER
@@ -35,10 +36,10 @@ enableEmoji = true
     ]
 
     # Links to your socials.  Comment or delete any you don't need/use. 
-    email_url = "mailto://user@domain"
-    github_url = "https://github.com"
-    linkedin_url = "https://linkedin.com"
-    youtube_url = "https://youtube.com"
+    email_url = "mailto://adam.swiderski89@gmail.com"
+    github_url = "https://github.com/asvid"
+    linkedin_url = "https://www.linkedin.com/in/aswiderski/"
+    # youtube_url = "https://youtube.com"
 
     # NOTE: If you don't want to use RSS, comment or delete the following lines
     # Adds an RSS icon to the end of the socials which links to {{ .Site.BaseURL }}/index.xml
