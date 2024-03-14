@@ -35,10 +35,10 @@
       <description>{{ .Summary | html }}</description>
       <media:content medium="image" url={{ .Params.image }} />
       <image>
-        <url>{{ absURL $.Site.BaseURL .Params.image }}</url>
+        <url>{{ .Site.BaseURL }}{{ .Params.image }}</url>
         <title>{{ .Title }}</title>
-        <link>{{ absURL $.Site.BaseURL .Params.image }}</link>
-      </image>
+        <link>{{ .Site.BaseURL }}{{ .Params.image }}</link>
+    </image>
     </item>
     {{ end }}
   </channel>
