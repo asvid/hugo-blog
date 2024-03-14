@@ -46,6 +46,7 @@ enableEmoji = true
     rss_icon = true
     # Which section the RSS icon links to, defaults to all content. See https://gohugo.io/templates/rss/#section-rss
     rss_section = "posts"
+    ShowFullTextinRSS= true
 
     # Hex colors for your sidebar.
     moon_sun_background_color = "#515151"   # default is #515151

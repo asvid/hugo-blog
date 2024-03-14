@@ -145,6 +145,7 @@ body > .wrapper {
 .lead {
   text-align: center;
   color: var(--sidebar-p-color);
+  font-family: "Roboto", sans-serif;
 }
 .sidebar-about img {
   margin-left: auto;
@@ -166,26 +167,32 @@ body > .wrapper {
 .post-date {
   display: inline-block;
   color: var(--date-color);
+  margin-bottom: 0;
 }
 .info span {
   display: inline-block;
 }
 .info ul {
   display: inline-block;
-  float: right;
 }
 .info ul li {
   margin-left: 0.5em;
+}
+.postimage {
+  margin-bottom: 0;
+}
+.postimage img {
+  margin-bottom: 0;
 }
 .headline {
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
+  font-family: "Roboto", sans-serif;
 }
 .reading-time {
   color: gray;
-  font-style: italic;
 }
 .newsletters .help-block-for-success {
   display: none;

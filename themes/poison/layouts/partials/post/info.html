@@ -21,17 +21,8 @@
         <span>{{ .ReadingTime }} {{ .Scratch.Get "readingTime" }} read</span>
       </span>
     </div>
-
-    {{ if .Params.tags }}
-    <ul class="tags">
-      {{ range .Params.tags }}
-      <li class="tag-{{ . }}">
-        <a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">{{ . }}</a>
-      </li>
-      {{ end }}
-    </ul>
-    {{ end }}
   </div>
+
 
   {{ $Site := .Site }}
   {{ if .Params.series }}
@@ -40,9 +31,21 @@
   </p>
   {{ end }}
 
-  {{ if .Params.featuredImage }}
-  <p>
-    <img src="{{.Params.featuredImage}}"><br>
+
+
+  {{ if .Params.image }}
+  <p class="postimage">
+    <img src="{{.Params.image}}"><br>
   </p>
   {{ end }}
+  {{ if .Params.tags }}
+  <ul class="tags">
+    {{ range .Params.tags }}
+    <li class="tag-{{ . }}">
+      <a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">{{ . }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
 </div>

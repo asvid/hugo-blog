@@ -1,4 +1,4 @@
-baseURL: http://asvid.github.io/
+baseURL: https://swiderski.tech
 disablePathToLower: true
 languageCode: en-us
-title: My New Hugo Site
+title: Adam Coding Corner
