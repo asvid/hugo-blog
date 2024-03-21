@@ -39,7 +39,8 @@ enableEmoji = true
     email_url = "mailto://adam.swiderski89@gmail.com"
     github_url = "https://github.com/asvid"
     linkedin_url = "https://www.linkedin.com/in/aswiderski/"
-    # youtube_url = "https://youtube.com"
+    youtube_url = "https://www.youtube.com/channel/UC2Hb8pbCwRy3GB0G0A6Rv_w"
+    twitch = "https://www.twitch.tv/adamcodingcorner"
 
     # NOTE: If you don't want to use RSS, comment or delete the following lines
     # Adds an RSS icon to the end of the socials which links to {{ .Site.BaseURL }}/index.xml
@@ -96,6 +97,12 @@ enableEmoji = true
                                           # For this to work though og_image and brand_url must be a path inside the assets directory
                                           # e.g. /assets/images/site/og-image.png becomes images/site/og-image.png
     # publisher_icon = ""                 # path to publisher icon - defaults to favicon, used in schema
+    
+    plausible = true
+    plausible_script = "https://plausible.io/js/script.js"
+    plausible_domain = "swiderski.tech"
+
+    giscus = true
 
 [taxonomies]
     series = 'series'

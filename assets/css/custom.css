@@ -1,0 +1,59 @@
+html {
+  font-family: "Lora", sans-serif;
+  font-weight: 300;
+}
+@media (min-width: 48em) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (min-width: 58em) {
+  html {
+    font-size: 18px;
+  }
+}
+
+.sidebar-about h1 {
+  color: var(--sidebar-h1-color);
+  margin-top: 0;
+  font-weight: 100;
+  font-size: 1.5em;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Sidebar nav */
+.sidebar-nav {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 0;
+  list-style: none;
+  font-family: "Roboto", sans-serif;
+}
+
+.lead {
+  text-align: center;
+  color: var(--sidebar-p-color);
+  font-family: "Roboto", sans-serif;
+}
+
+.sharebuttons ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  align-items: center;
+  justify-content: center; /* Add this line to center the items horizontally */
+}
+
+.sharebuttons ul li {
+  list-style: none;
+  margin: 0;
+}
+
+.sharebuttons ul li:not(:last-child) {
+  margin-right: 0; /* Remove margin between list items */
+}
+
+.sharebuttons ul li a {
+  display: block;
+}

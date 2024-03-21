@@ -1,20 +1,27 @@
 <div class="comments">
-    {{ if .Site.Params.remark42 }}
-        <div id="remark42"></div>
-        <script>
-            themeFromLS = localStorage.getItem("theme")
-            themeFromHugo = document.body.classList.contains("dark-theme") ? "dark" : "light"
-            currentTheme = themeFromLS ? themeFromLS : themeFromHugo;
 
-            var remark_config = {
-                host: {{ site.Params.remark42_host }},
-                site_id: {{ site.Params.remark42_site_id }},
-                theme: currentTheme,
-                max_shown_comments: 100,
-            }
-        </script>
-        <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
-    {{ else if .Site.DisqusShortname }}
-        {{ template "_internal/disqus.html" . }}
-    {{ end }}
+{{ if .Site.Params.giscus }}
+
+<script
+  src="https://giscus.app/client.js"
+  data-repo="asvid/hugo-blog"
+  data-repo-id="R_kgDOLfdHoA"
+  data-category="General"
+  data-category-id="DIC_kwDOLfdHoM4CeJBf"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="dark_dimmed"
+  data-lang="en"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async
+></script>
+
+
+{{ end }}
+
+
 </div>
