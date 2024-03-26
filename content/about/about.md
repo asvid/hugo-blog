@@ -5,11 +5,9 @@ draft = false
 layout = "single"
 +++
 
-I’m a software engineer with diverse experience, having worked on educational apps, smart home technology, and large-scale financial tech projects. I prioritize writing clean and understandable code and ensuring its stability through robust testing. While applying SOLID, DRY, and other principles, I aim to avoid hasty abstractions, keeping things as simple as possible for as long as possible to prevent over-engineering.
+[I’m a software engineer with diverse experience](#technologies). I like to write about [Android](/tags/android/), [Design Patterns](/tags/design-patterns) and [everything else](/posts/) I learned on the way.
 
-I have extensive experience with legacy code, as well as launching fresh green-field projects, learning valuable lessons from mistakes made along the way.
-
-With a strong background in mentoring postgraduates, I've guided them through pair programming sessions and shared insights on software design. I also have a knack for recruiting other programmers and forming new teams, particularly within the fintech sector. In these leadership roles, I've steered technical decisions and shaped cohesive codes of conduct to foster effective team collaboration.
+I have extensive experience with legacy code, as well as launching fresh green-field projects.
 
 Furthermore, I enjoy task automatization with a CI/CD approach in mind and have previously designed and implemented release procedures for mobile apps.
 
@@ -21,6 +19,31 @@ Find me on [Linekdin](https://www.linkedin.com/in/aswiderski/) / [Github](https:
 [email](mailto:adam.swiderski89@gmail.com).
 
 You can also check my [resume](/assets/cv.pdf)
+
+### Projects
+
+Sometimes I build something just because I want to :)
+
+#### [Biedra](https://github.com/asvid/GdzieTaBiedra)
+
+This project started as recruitment task. Since then I rewrote it completly about 3 times, just to play with various libraries. I was changing HTTP stack, databases, presentation layer, I think I even used RxKotlin at some point. But I always had CI, some tests and clean domain layer there, so changing parts of the app was pretty easy.
+
+#### [Remote Logger](https://github.com/asvid/RemoteLogger)
+
+I was once tasked with spiking a vendor library/SDK integration. The problem was - the library was working only in Android `release` app mode, where generally you don't get debugger. And I couldn't make it work. So I wrote a little tool, that gathers logcat logs and sends them via websocket to a listening service. The logs are then printed in HTML with some colors etc.
+I was thinking lately to rewrite the server part in Go or Rust, and make it a CLI tool.
+
+#### [Notti](https://github.com/asvid/Notti)
+
+Every one knows how [Builder pattern](/kotlin-builder-pattern/) works. It produces a valid object with some default values that can be overwritten with setters, if something is required it goes to the constructor. Well Google engineers had bit different idea, and I wasted 2 days debugging why notification is not being displayed at all in my app. So I created a little library that would prevent me (and others) from making this mistake again.
+
+#### [Frida playground](https://github.com/asvid/FridaApp)
+
+Sample app and scripts used to hack it using [Frida](https://frida.re/docs/android/). I wanted to play with this tool after some conference, and I didn't find a nice all-in-one guide, [so I wrote one](https://medium.com/android-news/hacking-android-app-with-frida-a85516f4f8b7) and used this project for it.
+
+#### [AirRide]()
+
+Android app for controlling car suspension via Bluetooth. A pet project I did with my brother, he took the hardware part using Arduino and some valves, I did the Android app programming. The app allowed creating loops of commands that could be played from a playlist, using phone accelerometer to send suspension commands, or using more traditional on-screen buttons.
 
 ### Technologies
 
