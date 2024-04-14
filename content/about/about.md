@@ -91,5 +91,7 @@ Random ordered list of tech I like to use
 - Postman
 - Insomnia
 - Swagger
+- Vim
+- Mermaid
 
 {{% /chips %}}
