@@ -21,7 +21,7 @@ And even looked the same, meaning the Android app was imitating native iOS behav
 But since platforms are different, and Android had to mimic what iOS was getting for free, the development cycles were often out of sync.
 Which was not good when you made a media announcement about a new feature.
 Because of feature-driven-development, with a spice of "we need to show something for CES" and "users are pushing for some feature", we had little to no time to take a step back and refactor.
-The app was like 7 years old, with tons of legacy and burgen from questionable design decisions, justified with simple "CEO wanted it that way".
+The app was like 7 years old, with tons of legacy and burden from questionable design decisions, justified with simple "CEO wanted it that way".
 The release process was long and painful. Occupied with manual testing by the QA unit in the company. Oh, BTW the app was talking not only with the cloud backend but also with the local server, which could be one of few hardware versions and one of many software versions with changes in API.
 App was expected to handle all possible variants.
 
