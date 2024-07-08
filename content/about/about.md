@@ -16,7 +16,7 @@ In my spare time, you can find me strumming my guitar 🎸, buried in books 📚
 ### Contact me
 
 Find me on [Linekdin](https://www.linkedin.com/in/aswiderski/) / [Github](https://github.com/asvid) or just say `Hello` with an
-[email](mailto:adam.swiderski89@gmail.com).
+[email](mailto:aswiderski@pm.me).
 
 You can also check my [resume](/assets/cv.pdf)
 

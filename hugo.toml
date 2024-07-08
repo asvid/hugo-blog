@@ -20,7 +20,7 @@ enableEmoji = true
     favicon = "/assets/ico/favicon.ico"             # path to favicon (defaults to favicon.png)
 
     author.name = "Adam Świderski"
-    author.email = "adam.swiderski89@gmail.com"
+    author.email = "aswiderski@pm.me"
     front_page_content = ["posts"] # Equivalent to the default value, add page bundle names to include them on the front page.
 
     # MENU PLACEHOLDER
@@ -36,7 +36,7 @@ enableEmoji = true
     ]
 
     # Links to your socials.  Comment or delete any you don't need/use. 
-    email_url = "mailto://adam.swiderski89@gmail.com"
+    email_url = "mailto://aswiderski@pm.me"
     github_url = "https://github.com/asvid"
     linkedin_url = "https://www.linkedin.com/in/aswiderski/"
     youtube_url = "https://www.youtube.com/channel/UC2Hb8pbCwRy3GB0G0A6Rv_w"
