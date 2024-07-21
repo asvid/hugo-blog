@@ -1,22 +1,11 @@
-{{/*  Config  */}}
-{{ $switches := (dict
-    "facebook" true
-    "twitter" true
-    "linkedin" true
-    "whatsapp" true
-    "xing" true
-    "mail" true
-) }}
-{{ $color := "#d5d5d5" }}
-{{ $textcolor := "#bbb" }}
-{{ $hoverColor := "#444444" }}
-
-{{/*  Code  */}}
-{{ $url := printf "%s" .Permalink | absLangURL }}
-{{ $textBody := print .Title "\n\n" (.Summary | truncate 200) "\n\n" $url "\n" }}
-{{ $encodedSummary := strings.TrimPrefix "=" (querify "" (.Summary | truncate 200))  }}
-<hr>
-<p style="width: 100%; text-align: center;">share on:</p>
+{{/* Config */}} {{ $switches := (dict "facebook" true "twitter" true "linkedin"
+true "whatsapp" true "xing" true "mail" true ) }} {{ $color := "#d5d5d5" }} {{
+$textcolor := "#bbb" }} {{ $hoverColor := "#444444" }} {{/* Code */}} {{ $url :=
+printf "%s" .Permalink | absLangURL }} {{ $textBody := print .Title "\n\n"
+(.Description | truncate 200) "\n\n" $url "\n" }} {{ $encodedSummary :=
+strings.TrimPrefix "=" (querify "" (.Description | truncate 200)) }}
+<hr />
+<p style="width: 100%; text-align: center">share on:</p>
 <nav class="sharebuttons">
   <ul>
     {{ if $switches.facebook }}
@@ -41,10 +30,7 @@
           </g></svg
       ></a>
     </li>
-    {{
-      end
-    }}
-    {{ if $switches.twitter }}
+    {{ end }} {{ if $switches.twitter }}
     <li>
       <a
         href="https://twitter.com/share?text={{ .Title }}&url={{ $url }}"
@@ -66,10 +52,7 @@
           </g></svg
       ></a>
     </li>
-    {{
-      end
-    }}
-    {{ if $switches.linkedin }}
+    {{ end }} {{ if $switches.linkedin }}
     <li>
       <a
         href="https://www.linkedin.com/shareArticle?mini=true&url={{
@@ -93,10 +76,7 @@
           </g></svg
       ></a>
     </li>
-    {{
-      end
-    }}
-    {{ if $switches.whatsapp }}
+    {{ end }} {{ if $switches.whatsapp }}
     <li>
       <a href="whatsapp://send?text={{ $textBody }}" target="_blank"
         ><svg
@@ -116,10 +96,7 @@
           </g></svg
       ></a>
     </li>
-    {{
-      end
-    }}
-    {{ if $switches.xing }}
+    {{ end }} {{ if $switches.xing }}
     <li>
       <a
         href="https://www.xing.com/social_plugins/share/new?sc_p=xing-share&h=1&url={{
@@ -143,10 +120,7 @@
           </g></svg
       ></a>
     </li>
-    {{
-      end
-    }}
-    {{ if $switches.mail }}
+    {{ end }} {{ if $switches.mail }}
     <li>
       <a
         href="mailto:?subject={{ .Title }}&body={{ $textBody }}"
@@ -168,9 +142,7 @@
           </g></svg
       ></a>
     </li>
-    {{
-      end
-    }}
+    {{ end }}
   </ul>
 </nav>
 

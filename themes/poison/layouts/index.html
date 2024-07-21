@@ -1,21 +1,17 @@
 {{ define "main" -}}
 <div class="posts">
-    {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
-    {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
-    <article class="post">
-        {{ partial "post/info.html" . }}
-        {{ if or (.Site.Params.noSummary) (.Params.noSummary) }}
-        {{ .Content }}
-        {{ else }}
-        {{ .Summary }}
-        {{ if or (.Truncated) (.Summary) }}
-        <div class="read-more-link">
-            <a href="{{ .RelPermalink }}">Read More…</a>
-        </div>
-        {{ end }}
-        {{ end }}
-    </article>
-    {{- end }}
+  {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content
+  }} {{ range (.Paginate (where .Site.RegularPages "Type" "in"
+  $frontPageTypes)).Pages }}
+  <article class="post">
+    {{ partial "post/info.html" . }} {{ if or (.Site.Params.noSummary)
+    (.Params.noSummary) }} {{ .Content }} {{ else }} {{ .Description}} {{ if or
+    (.Truncated) (.Description) }}
+    <div class="read-more-link">
+      <a href="{{ .RelPermalink }}">Read More…</a>
+    </div>
+    {{ end }} {{ end }}
+  </article>
+  {{- end }}
 </div>
-{{ partial "pagination.html" . }}
-{{- end }}
+{{ partial "pagination.html" . }} {{- end }}
