@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-03-02T00:00:00Z"
-summary: " The factory of factories, 'Abstract Factory' makes creating objects
+description: " The factory of factories, 'Abstract Factory' makes creating objects
   that are part of some 'family' easy. It is another layer over concrete factories
   delivering client the factory instance for creating objects of a certain variant. "
 image: /assets/posts/abstract_factory.jpg

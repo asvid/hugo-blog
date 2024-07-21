@@ -3,7 +3,7 @@ categories:
   -
 comments: true
 date: "2024-05-14T00:00:00Z"
-summary: "Ever felt like your code is an engineering marvel, only to realize you overengineered and built the wrong thing? Or maybe you over-abstracted, blindly following instincts and so-called good practices? I surely did, and I want to share some thoughts on this topic. Let's explore a path toward more practical, sustainable software engineering."
+description: "Ever felt like your code is an engineering marvel, only to realize you overengineered and built the wrong thing? Or maybe you over-abstracted, blindly following instincts and so-called good practices? I surely did, and I want to share some thoughts on this topic. Let's explore a path toward more practical, sustainable software engineering."
 image: /assets/posts/archastro.png
 tags:
   - software architectire

@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-05-30T00:00:00Z"
-summary: " The `Strategy` pattern creates a family of algorithms, enclosing the
+description: " The `Strategy` pattern creates a family of algorithms, enclosing the
   differing logic in separate classes while hiding it from clients behind the interface.
   It enables the interchangeable use of implementations. The use of the strategy simplifies
   the customer code, avoids code duplication and conditional statements. Significantly

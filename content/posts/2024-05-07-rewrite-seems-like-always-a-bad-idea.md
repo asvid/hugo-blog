@@ -3,7 +3,7 @@ categories:
   -
 comments: true
 date: "2024-05-07T00:00:00Z"
-summary: "Have you ever thought that your project needs to be rewritten completely from scratch? I share a story of a mobile app rewrite, that didn't went well on few levels, and it got me thinking how other companies approach this topic. And why you shouldn't think about it, there are other ways to address the issues."
+description: "Have you ever thought that your project needs to be rewritten completely from scratch? I share a story of a mobile app rewrite, that didn't went well on few levels, and it got me thinking how other companies approach this topic. And why you shouldn't think about it, there are other ways to address the issues."
 image: /assets/posts/rewrite.png
 tags:
   - rewrite

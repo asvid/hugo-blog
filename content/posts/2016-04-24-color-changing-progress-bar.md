@@ -3,7 +3,7 @@ categories:
   - rss
 comments: true
 date: "2016-04-24T00:00:00Z"
-summary: Simple guide to color changing progress bar
+description: Simple guide to color changing progress bar
 tags:
   - UI
   - Kotlin

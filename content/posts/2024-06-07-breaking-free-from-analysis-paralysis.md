@@ -3,7 +3,7 @@ categories:
   - null
 comments: true
 date: '2024-06-07T00:00:00Z'
-summary: >-
+description: >-
   Ever felt overwhelmed by endless choices when starting a new project? Join me
   as I dive into the chaos of backend development, battling analysis paralysis
   and procrastination. Discover how I learned to focus on building rather than

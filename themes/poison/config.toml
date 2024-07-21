@@ -1,6 +1,6 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "Adam Coding Corner"
+title = "Adam Swiderski Coding Corner"
 theme = "poison"
 paginate = 10
 pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries

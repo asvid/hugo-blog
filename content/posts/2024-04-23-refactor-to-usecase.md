@@ -3,7 +3,7 @@ categories:
   -
 comments: true
 date: "2024-04-23T00:00:00Z"
-summary: "I was surprised how much utilizing the UseCase pattern in my last Android app helped with the development. It naturally created a clear structure, created boundaries, and accidentally extracted the app domain. Maybe it will work for you too."
+description: "I was surprised how much utilizing the UseCase pattern in my last Android app helped with the development. It naturally created a clear structure, created boundaries, and accidentally extracted the app domain. Maybe it will work for you too."
 image: /assets/posts/usecases.png
 tags:
   - Android

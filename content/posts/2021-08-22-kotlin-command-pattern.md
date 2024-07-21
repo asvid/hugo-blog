@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-08-22T00:00:00Z"
-summary: " The Command pattern wraps the request into a specific object that has
+description: " The Command pattern wraps the request into a specific object that has
   all the information necessary to perform its task. You can think of it as the next
   stage of refactoring, where at first we extract the code to a separate method, and
   then to a separate object, taking the arguments needed to execute the request in

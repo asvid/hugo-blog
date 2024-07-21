@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-09-03T00:00:00Z"
-summary: " Android 11 (API 30) changes the way of using external app services.
+description: " Android 11 (API 30) changes the way of using external app services.
   Using `compileSdk 30` and above, without additional Manifest entry the `bindService()`
   method will always return `False`, even if with `compileSdk 29` the app will work
   perfectly. I want to share solution of this problem after WAY TOO LONG time I spent

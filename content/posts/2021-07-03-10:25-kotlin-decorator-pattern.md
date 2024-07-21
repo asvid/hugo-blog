@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-07-03T00:00:00Z"
-summary: " The `Decorator` pattern is used where creating separate classes which
+description: " The `Decorator` pattern is used where creating separate classes which
   are a combination of all possibilities would result in their explosion. This pattern
   focuses on creating object layers to transparently and dynamically complement objects
   with new tasks. The decorator provides an object with the same interface as the

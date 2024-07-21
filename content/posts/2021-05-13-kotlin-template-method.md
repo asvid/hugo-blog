@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-05-13T00:00:00Z"
-summary:
+description:
   The template method is a very simple design pattern, that separates shared
   class parts from changing ones. The core idea is to have an abstract parent class
   containing the algorithm steps and allowing inheriting classes to overwrite individual

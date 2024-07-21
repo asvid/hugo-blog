@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-02-14T00:00:00Z"
-summary:
+description:
   " `Static Factory Methods` known from Java have their place also in Kotlin,
   although they look and behave a bit different because there is no `static` word
   in Kotlin. Here I'll try to show how to use `companion object` for `Static Factory

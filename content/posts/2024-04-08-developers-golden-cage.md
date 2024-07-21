@@ -1,7 +1,7 @@
 ---
 comments: true
 date: "2024-04-08T00:00:00Z"
-summary: "I recently made observations on my limitations due to my 'develper dependencies'. Anything outside my comfort zone feels bad, and I don't like that. My plan is to create a developers survival kit and stick to it. Reducing dependencies and distractions, focusing on craft."
+description: "I recently made observations on my limitations due to my 'develper dependencies'. Anything outside my comfort zone feels bad, and I don't like that. My plan is to create a developers survival kit and stick to it. Reducing dependencies and distractions, focusing on craft."
 image: /assets/posts/developers_cage.png
 tags:
   -

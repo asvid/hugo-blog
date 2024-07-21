@@ -1,7 +1,7 @@
 ---
 comments: false
 date: "2016-04-16T00:00:00Z"
-summary: This is first post, I'm just saying hello here :)
+description: This is first post, I'm just saying hello here :)
 title: First post
 url: first-post
 ---

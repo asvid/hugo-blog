@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-06-26T00:00:00Z"
-summary:
+description:
   " The Adapter or Wrapper Pattern allows you to `translate` one interface
   into another, expected by the client class. It is especially useful when the adapted
   object comes from 3rd party library, and you do not want to make your system depending

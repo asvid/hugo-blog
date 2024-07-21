@@ -1,7 +1,5 @@
-{{ define "main" -}}
-{{ if .Site.Params.light_dark }}
-{{ partial "light_dark.html" . }}
-{{ end }}
+{{ define "main" -}} {{ if .Site.Params.light_dark }} {{ partial
+"light_dark.html" . }} {{ end }}
 <h1 class="title">{{ .Title }}</h1>
 <div class="posts">
   {{ range.Paginator.Pages }}
@@ -10,8 +8,7 @@
     <p>
       {{ if .Params.image }}
       <img src="{{ .Params.image }}" /><br />
-      {{ end }}
-      {{ .Summary }}
+      {{ end }} {{ .Description }}
     </p>
   </div>
   {{ end }}

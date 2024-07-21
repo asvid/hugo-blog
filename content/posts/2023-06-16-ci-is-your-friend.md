@@ -3,7 +3,7 @@ categories:
   - rss
 comments: true
 date: "2023-06-16T00:00:00Z"
-summary: " Embrace the power of Continuous Integration and Deployment (CI/CD)
+description: " Embrace the power of Continuous Integration and Deployment (CI/CD)
   in software development. Automate tests, streamline workflows, and boost collaboration
   with user-friendly services like CircleCI, Bitrise, GitLab, and GitHub Actions.
   Level up your development process today! "

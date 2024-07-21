@@ -1,6 +1,6 @@
 baseURL = "https://swiderski.tech"
 languageCode = "en-us"
-title = "Adam Coding Corner"
+title = "Adam Swiderski"
 theme = "poison"
 paginate = 10
 pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries
@@ -16,7 +16,7 @@ enableRobotsTXT = true
     brand = "Adam Świderski"                      # name of your site - appears in the sidebar
     remote_brand_image = '/assets/profile_picture.png' # path to a remote file
     brand_image = "/assets/profile_picture.png"    # path to the image shown in the sidebar
-    description = "software engineer" # Used as default meta description if not specified in front matter
+    description = "pragmatic software engineer" # Used as default meta description if not specified in front matter
     dark_mode = true                      # optional - defaults to false
     favicon = "/assets/ico/favicon.ico"             # path to favicon (defaults to favicon.png)
 

@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-06-07T00:00:00Z"
-summary: " The facade allows you to hide the details of the module from clients.
+description: " The facade allows you to hide the details of the module from clients.
   It ensures compliance with `Law Demeter`. Using the generic interface and various
   implementations greatly simplifies testing. It blends well with other patterns like
   `Strategy`,` Template Method`, or construction patterns, allowing configuration

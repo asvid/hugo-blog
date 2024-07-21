@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-07-17T00:00:00Z"
-summary:
+description:
   " The Mediator's job is to organize communication between close classes.
   The `Mediator` pattern cuts out dependencies between components. It takes over the
   interaction between them, becoming the main communication hub for a group of classes.

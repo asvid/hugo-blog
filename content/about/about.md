@@ -5,7 +5,7 @@ draft = false
 layout = "single"
 +++
 
-[I’m a software engineer with diverse experience](#technologies). I like to write about [Android](/tags/android/), [Design Patterns](/tags/design-patterns) and [everything else](/posts/) I learned on the way.
+[I’m a pragmatic software engineer with diverse experience](#technologies). I like to write about [Android](/tags/android/), [Design Patterns](/tags/design-patterns) and [everything else](/posts/) I learned on the way.
 
 I have extensive experience with legacy code, as well as launching fresh green-field projects.
 
@@ -93,5 +93,8 @@ Random ordered list of tech I like to use
 - Swagger
 - Vim
 - Mermaid
+- NeoVim
+- GoLang
+- Domain Driven Design
 
 {{% /chips %}}

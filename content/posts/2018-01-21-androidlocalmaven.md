@@ -3,7 +3,7 @@ categories:
   - rss
 comments: true
 date: "2018-01-21T00:00:00Z"
-summary:
+description:
   Local Maven repository guide for working on private libraries along with
   projects that use them
 image: /assets/posts/local-maven-repo/lib.jpg

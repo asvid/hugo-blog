@@ -4,7 +4,7 @@ categories:
   - rss
 comments: true
 date: "2021-06-21T00:00:00Z"
-summary: " IntelliJ IDEA is pretty good at handling LaTeX. I dare say that it
+description: " IntelliJ IDEA is pretty good at handling LaTeX. I dare say that it
   is an even better experience than TexStudio or Texmaker, which are dedicated to
   this type of project. However, the strength of IntelliJ is not in its out-of-the-box
   capabilities, but plugins and manual configuration of the build process. "

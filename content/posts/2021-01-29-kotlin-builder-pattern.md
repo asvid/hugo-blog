@@ -4,7 +4,7 @@ categories:
   - Design Patterns
 comments: true
 date: "2021-01-29T00:00:00Z"
-summary:
+description:
   " The Builder Design Pattern is one of most popular and useful construction
   patterns in software engineering. In this post I will try to explain it and show
   how you can use it with Kotlin. Sadly I often see implementations that are simple
