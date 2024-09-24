@@ -20,6 +20,13 @@ Find me on [Linekdin](https://www.linkedin.com/in/aswiderski/) / [Github](https:
 
 You can also check my [resume](/assets/cv.pdf)
 
+### Mentoring
+
+Interested in mentoring session? Check below:
+
+<section style="height: 496px; box-shadow: rgba(142, 151, 158, 0.15) 0px 4px 19px 0px; border-radius: 16px; overflow: hidden; width: 100%; max-width: 650px;"><iframe src="https://adplist.org/widgets/single-session?src=adam-swiderski&amp;session=46885-intro-mentorship-session" title="Intro Mentorship Session" width="100%" height="100%" loading="lazy" style="border: 0px;"></iframe></section>
+
+
 ### Projects
 
 Sometimes I build something just because I want to :)
@@ -31,7 +38,7 @@ This project started as recruitment task. Since then I rewrote it completly abou
 #### [Remote Logger](https://github.com/asvid/RemoteLogger)
 
 I was once tasked with spiking a vendor library/SDK integration. The problem was - the library was working only in Android `release` app mode, where generally you don't get debugger. And I couldn't make it work. So I wrote a little tool, that gathers logcat logs and sends them via websocket to a listening service. The logs are then printed in HTML with some colors etc.
-I was thinking lately to rewrite the server part in Go or Rust, and make it a CLI tool.
+Recently I rewrote the server thing in GoLanghttps://www.linkedin.com/in/aswiderski/ as purely CLI tool.
 
 #### [Notti](https://github.com/asvid/Notti)
 
