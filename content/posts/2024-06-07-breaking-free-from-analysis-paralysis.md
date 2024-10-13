@@ -1,6 +1,6 @@
 ---
 categories:
-  - null
+  -
 comments: true
 date: '2024-06-07T00:00:00Z'
 description: >-
