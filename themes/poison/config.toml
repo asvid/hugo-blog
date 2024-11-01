@@ -13,7 +13,7 @@ pluralizelisttitles = false   # removes the automatically appended "s" on sideba
     remote_brand_image = '/assets/profile_picture.png' # path to a remote file
     brand_image = "/assets/profile_picture.png"    # path to the image shown in the sidebar
     description = "software engineer" # Used as default meta description if not specified in front matter
-    dark_mode = true                      # optional - defaults to false
+    dark_mode = false                      # optional - defaults to false
     favicon = "/assets/favicon.ico"             # path to favicon (defaults to favicon.png)
 
     front_page_content = ["posts"] # Equivalent to the default value, add page bundle names to include them on the front page.
