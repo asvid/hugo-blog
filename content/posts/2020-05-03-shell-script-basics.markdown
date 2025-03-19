@@ -36,7 +36,7 @@ If you are using the terminal you are already used to use this flag to get help 
 
 Here is one of ways to achieve this:
 
-{% gist ffb2105cbe60fe2364ccddd97a7a8291 %}
+[View gist](https://gist.github.com/asvid/ffb2105cbe60fe2364ccddd97a7a8291)
 
 There is a method ```Help()``` that prints info about your script. You can use ```echo``` for printing line by line, but using ```cat << "EOF"``` makes it way faster to edit and more readable.
 Then the switch-case is looking for arguments, for now, we are interested in ```-h``` which will run ```Help()``` and exit the script
@@ -44,7 +44,7 @@ Then the switch-case is looking for arguments, for now, we are interested in ```
 ### Handling arguments
 You can already see some of it in previous Gist, here some more cases:
 
-{% gist d2882cdd9cbc9860ef7f327a4e777b99 %}
+[View gist](https://gist.github.com/asvid/d2882cdd9cbc9860ef7f327a4e777b99)
 
 Note that we have a few types of arguments passed here:
 - simple flag like ```-a``` can be used to set the in-script variable that can be then used in ```IF``` statement
@@ -58,14 +58,14 @@ It's not necessary to have both short ```-p``` and long ```--path``` flag names 
 ### Adding some colors
 I love colors in terminal :) and your scripts can also make use of them
 
-{% gist d605e2451ec13e544a58296ffa831825 %}
+[View gist](https://gist.github.com/asvid/d605e2451ec13e544a58296ffa831825)
 
 It's important to add ```${NC}``` at the end, otherwise, next printed line will be in last used color
 
 ### Handle user input
 To handle simple **yes/no** from user you can do:
 
-{% gist 4975699f4f7694ebfb9d8fa612283b11 %}
+[View gist](https://gist.github.com/asvid/4975699f4f7694ebfb9d8fa612283b11)
 
 ### IF|ELSE
 
@@ -82,7 +82,7 @@ Indenting doesn't matter, but it's worth keeping it consistent - remember you ar
 
 A bit more comple example:
 
-{% gist 0eff5148b4c72710f49525e944c799c5 %}
+[View gist](https://gist.github.com/asvid/0eff5148b4c72710f49525e944c799c5)
 
 
 In this gist there are few examples of IF statement:

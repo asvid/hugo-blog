@@ -145,7 +145,7 @@ Factory.getFactory(1).createProductA()
 
 On diagram it looks like this:
 
-{% plantuml %}
+```plantuml
 @startuml
 
 interface Factory{
@@ -166,8 +166,8 @@ class Product2B<< (C,#FF0077) Variant2 >> implements ProductB
 class ConcreteFactory1<< (O,#FF0077) Variant1 >> implements Factory
 class ConcreteFactory2<< (O,#FF7700) Variant2 >> implements Factory
 
-Factory::createProductA-right[bold]-|>ProductA
-Factory::createProductB-right[bold]-|>ProductB
+Factory::createProductA-right[bold]->ProductA
+Factory::createProductB-right[bold]->ProductB
 
 class AbstractFactory{
 +getFactory(variant) : Factory
@@ -176,7 +176,7 @@ class AbstractFactory{
 AbstractFactory::getFactory-->Factory
 
 @enduml
-{% endplantuml %}
+```
 
 ## GUI elements family
 

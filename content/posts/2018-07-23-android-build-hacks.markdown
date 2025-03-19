@@ -16,8 +16,8 @@ url: android-build-hacks-1
 ---
 
 This is first part in series of articles about Android build configuration, all parts will be linked right below.
-> **[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})**  
-> **[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})**
+> **[#1 Build basics](/android-build-hacks-1)**  
+> **[#2 Build time optimization](/android-build-hacks-2)**
 
 
 ## Build configuration!
@@ -32,7 +32,7 @@ We can easily edit or add more `build types` and `product flavors`, creating way
 
 Above build types and product flavors your config should also have `defaultConfig` - just to avoid repeating yourself in build types or flavors.
 
-{% gist 7d82b6a888bde3c753f564c3a0d2c2e8 %}
+[View gist](https://gist.github.com/asvid/7d82b6a888bde3c753f564c3a0d2c2e8)
 
 But what are build types and product flavors even for?
 
@@ -43,7 +43,7 @@ If you want to build exactly the same app (same look, same features etc.) but so
 
 Build types can kinda *inherit* from each other, for example: you have `release` build type and want to have `alpha` build that is exactly the same BUT with different app name. No need to copy-paste whole config:
 
-{% gist 62aea4a659497c2e78e3824cbea70b15 %}
+[View gist](https://gist.github.com/asvid/62aea4a659497c2e78e3824cbea70b15)
 
 ### Product Flavors
 **The same build, different app** - like bubble gum, same process of creating product, but you can have many flavors (mint, fruit etc.)
@@ -52,7 +52,7 @@ If your business model requires *free, demo, premium* app variants, you need app
 
 Product flavors are scoped with `flavorDimensions`. Each flavor needs to be in one dimension, flavors from same dimension are excluding each other from build variant. For example:
 
-{% gist 8608ab5d6165a92c904eabc7c0ee4132 %}
+[View gist](https://gist.github.com/asvid/8608ab5d6165a92c904eabc7c0ee4132)
 
 Above configuration will give us variants: devOtherDebug, prodOtherDebug, devOther2Debug, prodOther2Debug - and the same for `release` build type, but you wont see **devProdDebug** or **devOtherOther2Debug**.
 
@@ -73,7 +73,7 @@ What you should do is ask yourself a question: do I really need ALL of those bui
 
 There are many cases that cause certain build variants to be pointless, so lets filter them out!
 
-{% gist 1b2ccce9f4eaaf752b95188581e49f1e %}
+[View gist](https://gist.github.com/asvid/1b2ccce9f4eaaf752b95188581e49f1e)
 
 Using simple `if` statement that checks variant build type and flavors we can set them to be ignored. Take a note that `variant.getFlavors()` returns list of flavors added by `dimension` order, that's why I've used `get(0)` to get first dimension flavor - `stage` in my case.
 
@@ -90,27 +90,27 @@ This one is pretty important. By `applicationId` your app is recognized in Googl
 Well we need to change `applicationId` of `debug` build type of course!
 If you've looked through documentation you may have noticed that there is no way to change `applicationId` in build type config, it's set only in `defaultConfig` (and product flavors). But there is property `applicationIdSuffix` - it will add text to our `applicationId`. You can set it like:
 
-{% gist 37f95a28d4b837baa608e6537e591d34 %}
+[View gist](https://gist.github.com/asvid/37f95a28d4b837baa608e6537e591d34)
 
 Keep official release of your app and install debug just next to it.
 
 ### buildConfigField
 During build process a static `BuildConfig` class is created. This class contains fields like `APPLICATION_ID`, `VERSION_CODE`, `VERSION_NAME` and others taken from - you've guest it - build config. Those fields are easily accessible in app, and are often used to modify it's behavior like turning off Google Analytics if app is in debug mode. We can add custom fields to this class in both build types and product flavors. Method takes 3 String arguments - type, name and value.
 
-{% gist b88e04711e62d335f429a344aaac993e %}
+[View gist](https://gist.github.com/asvid/b88e04711e62d335f429a344aaac993e)
 
 Those custom fields type can be `String`, `boolean`, `int`, `long`, `float` and `double`. If you set the same field in flavor and build type, it will be overridden with build type value.
 
 ### resValue
 Setting custom `BuildConfig` field is cool, but it is also possible to **add** resource value. If you try to set a value that already exists in resources, you will get `Error: Duplicate resources` during build. Method looks similar to `buildConfigField`
 
-{% gist 0b91b53cc2dc3d374d251ad2c7708089 %}
+[View gist](https://gist.github.com/asvid/0b91b53cc2dc3d374d251ad2c7708089)
 
 Types are diferent thant for `buildConfigField` and you can use: `array, attr, bool, color, declare-styleable, dimen, fraction, id, integer, plurals, string, style` but most common will be `string, bool, dimen, integer` I guess
 
 ### manifestPlaceholders
 There is one last place where we might want to set things according to our build variant - the manifest. Sometimes in manifest you need to add API key to some services used by libraries like Fabric, you may want to have a different keys for different build variants and this is a clean solution - no more checking `BuildConfig` and setting stuff in huge `switch` statement. I like to use `manifestPlaceholders` to set app name - for release builds (or by default) it is taken from resources because it may vary in different languages, but for debug build... I don't care so much about languages, I just want to know that it is debug build. It can be also achieved by creating `src/{buildTypeName | productFlavorName}` directory and adding `string.xml` with app name string there for each build type or flavor we want to switch app name... but if you don't change a lot of resources in build variants keeping changes in build config looks cleaner.
-{% gist 0c74f1af1a421f2483c8b24802e807ae %}
+[View gist](https://gist.github.com/asvid/0c74f1af1a421f2483c8b24802e807ae)
 and in `AndroidManifest.xml`
 ```
   android:label="${appName}"
@@ -120,12 +120,12 @@ There is also more complex usage of `manifestPlaceholders` and `buildConfigField
 ### versionNameSuffix
 Ever been an app beta tester? So you might seen version names like `1.2.3-build-1223123-RC` in system application settings. It can be added by using `versionNameSuffix` property in both product flavors and build types. Of course build number should be generated automatically, but this will be done in some future post.
 
-{% gist 4b30b3b0f32e444229de650394dd5b3b %}
+[View gist](https://gist.github.com/asvid/4b30b3b0f32e444229de650394dd5b3b)
 
 ### resConfigs
 Sometimes you add new language to your app and you need to test how bad your layouts will look with it. No need to change your device language - it's a pain if you don't know new language enough to go back to your native one... just force build variant to use specific resources:
 
-{% gist 0bdf3e0ffb2fe3f28eb8aaeff5fe7ea4 %}
+[View gist](https://gist.github.com/asvid/0bdf3e0ffb2fe3f28eb8aaeff5fe7ea4)
 
 You can specify list of all possible resource configurations including screen density - but it won't allow you do to it if you use APK density split.
 Also it shouldn't be used with build type `pseudoLocalesEnabled` property.
@@ -133,7 +133,7 @@ Also it shouldn't be used with build type `pseudoLocalesEnabled` property.
 ## Splits
 Let's say you have an app with lots of images (not SVG) in few screen densities so app looks good on every device. But you build single APK for all densities, so each user needs to download app with way more resources than will ever be used. Splits are here to save the day. It allows Gradle to generate multiple APK files of the same build variant but with single resources for density, language or ABI (Application Binary Interface). Google Play just sends fitting APK to user that want to download your app.
 
-{% gist ea7a74124edf1c3881e6475f0a683bb3 %}
+[View gist](https://gist.github.com/asvid/ea7a74124edf1c3881e6475f0a683bb3)
 
 Above code will cause generation of 16 (5 densities * 3 ABI + universal APK) APK files, fitting exactly users device specs. More bitmap graphics your app uses, bigger gains in APK size will you get.
 
@@ -143,7 +143,7 @@ I don't really see a point in using language split since `strings.xml` are light
 
 It's worth mentioning that for each APK you want to release you need to generate different `versionCode` or Google Play wont allow you to send it.
 
-{% gist a0120bc0cf1e02a1a8ac4aba67714a60 %}
+[View gist](https://gist.github.com/asvid/a0120bc0cf1e02a1a8ac4aba67714a60)
 
 In above code I check for which ABI and density variant is being build, multiply position of variant ABI in `abiList` by 10 and add this number and variant density position in `densityList` to version code for current build. Example: default version code is **1230000** (needs to be < 2 100 000 000) and current split variant is **x86 xxhdpi**, so we have 1230000 + 30 + 4 = **1230034**.
 

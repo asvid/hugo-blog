@@ -16,8 +16,8 @@ url: android-build-hacks-2
 ---
 
 This is second part in series of articles about Android build configuration, all parts will be linked right below.
-> **[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})**  
-> **[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})**
+> **[#1 Build basics](/android-build-hacks-1)**  
+> **[#2 Build time optimization](/android-build-hacks-2)**
 
 
 
@@ -33,7 +33,7 @@ A lot of things I will mention comes from this [Google I/O '17 talk](https://www
 ### Limiting your build
 Your app may be available in 100 languages and have images in all possible densities - and it's cool, users like that, but you don't really need **ALL** of it when you are developing new features or fixing bugs. You can live with 1 language and 1 density. I've mentioned previously about this feature, but it's worth repeating - limiting image density makes build faster.
 
-{% gist b31450b7c104197f98e9d446999f0b20 %}
+[View gist](https://gist.github.com/asvid/b31450b7c104197f98e9d446999f0b20)
 
 `resConfig()` is available only for `productFlavors`, so using info from previous post you can add something like `dev` and `prod` flavors and filter only reasonable use cases.  
 I remember having build crashes when using density `split` and `resConfig` with density, but I cannot reproduce it on current version of Gradle Plugin *(3.3.0-alpha10)* so just keep in mind that it might cause some issues.
@@ -50,7 +50,7 @@ The most interesting setting here is `Command-line Options` where we can add arg
 
 So how to use it in builds?
 
-{% gist 2897c9a0a04f4e5c27984f26e9bb8ef7 %}
+[View gist](https://gist.github.com/asvid/2897c9a0a04f4e5c27984f26e9bb8ef7)
 
 If we are building from Android Studio, splits can be disabled since we are running code only on our device and size of APK doesn't matter too much. Disabling splits makes builds faster - no need to divide resources into separate APK files. Also disabling crunching images makes build faster - again for development APK size doesn't matter so saving few KB on images won't compensate loosing few seconds of build if you are building app every few minutes.
 
@@ -70,7 +70,7 @@ I remember how excited I was when `Instant Run` was announced, and how I was the
 
 If your app `versionCode` is generated dynamically, for example from date, `Instant Run` will not speed up your build, because you are changing app manifest each time. But it can be easily fixed with our friend `devBuild` parameter:
 
-{% gist 34d4eb0a15266b75aaf550153e74b18a %}
+[View gist](https://gist.github.com/asvid/34d4eb0a15266b75aaf550153e74b18a)
 
 For development builds we are using the same `versionCode` - **100**, but for every other build `versionCode` is generated from date.
 
@@ -78,7 +78,7 @@ For development builds we are using the same `versionCode` - **100**, but for ev
 - use `jcenter` - it's faster, safer and bigger than `mavenCentral`
 - `preDexLibraries` - it makes clean build a bit longer but every incremental build faster
 
-{% gist 7704af7e1a131520091d6d2b45973104 %}
+[View gist](https://gist.github.com/asvid/7704af7e1a131520091d6d2b45973104)
 
 - update your Java - Android Studio uses it's own JDK by default, but if you are building also on CI server it's good to keep Java updated
 
@@ -87,11 +87,11 @@ For development builds we are using the same `versionCode` - **100**, but for ev
 
 Another great tool for your app is Fabric Crashlytics - it gathers all app crashes and it's very useful for finding and fixing bugs. But during development you'll rather use `Logcat`, no need for external tool. Also Crashlytics is generating build ID number for each build, it also slows build down because it's kept in string resource file, so `Instant Run` wont be able to run ***hot swap***.
 
-{% gist e8f8365d069ce3b4f9a7bb758c1d3e69 %}
+[View gist](https://gist.github.com/asvid/e8f8365d069ce3b4f9a7bb758c1d3e69)
 
 After disabling crashlytics in `build.gradle` it is necessary to disable it in runtime:
 
-{% gist 1a15fa17526f0380b543eb60dc1cdca3 %}
+[View gist](https://gist.github.com/asvid/1a15fa17526f0380b543eb60dc1cdca3)
 
 #### Don't use dynamic dependency versions
 Have you ever seen something like this in code:
@@ -103,7 +103,7 @@ Also forget about using `compile` for dependencies. Using `implementation` will 
 #### Gradle properties
 Following settings can seriously boost your builds:
 
-{% gist 1771826d173c54ecba9497ba59c27374 %}
+[View gist](https://gist.github.com/asvid/1771826d173c54ecba9497ba59c27374)
 
 - `org.gradle.jvmargs` value is something you should experiment with, general rule is that more is better but after certain value it doesn't make a change so save some memory for watching cat videos on Youtube until build process is done. [Documentation](https://docs.gradle.org/current/userguide/build_environment.html#sec:configuring_jvm_memory)
 - `org.gradle.parallel` allows Gradle to run the same tasks in different projects in parallel, so it's kinda the same feature that `Compile Settings` gave us, just for Gradle tasks and not compilation itself [Documentation](https://guides.gradle.org/performance/#parallel_execution)
@@ -123,13 +123,13 @@ Other tools to profile your build are:
 ### Gradle scripts
 Writing your own Gradle tasks is awesome, especially when you want to automate things with CI. But custom tasks can slow your build even when you think they are not executed. When you have simple task like:
 
-{% gist a736c21b97c8df9edb24256167ed5e6e %}
+[View gist](https://gist.github.com/asvid/a736c21b97c8df9edb24256167ed5e6e)
 
 The output will be always printed (because task gets executed) when you run **ANY** other task in project. This one was simple printing, but can you image generating some config files, HTTP requests, calculating `versionCode` etc? And all tasks needs to finish before your build is done.
 
 Solution is dead simple:
 
-{% gist 333e15745d74b47685ba80eba18d8cda %}
+[View gist](https://gist.github.com/asvid/333e15745d74b47685ba80eba18d8cda)
 
 Just move actual task work into `doLast` and leave configuration stuff like `group` outside.
 

@@ -26,9 +26,9 @@ So we need a progressbar that goes from green to red (with ugly mid-green mid-re
 
 Standard Android ProgressBar can be set to value 0-100, by using
 
-{{< highlight java >}}
+```java
 progressBar.setProgress(69);
-{{< / highlight >}}
+```
 
 Let's keep it, all we need is ProgressBar to set color according to this value, so we don't
 have to change our other code where ProgressBar is used.
@@ -39,37 +39,37 @@ Let's create new class extending Progres Bar
 
 And use it in Layout
 
-{{< highlight xml >}}
+```xml
 <com.example.app.customViews.ProductProgressBar
 android:id="@+id/progressBar"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"/>
-{{< / highlight >}}
+```
 
 For now, it acts exactly like standard ProgressBar, so how to make it do what we want?
 Let's override `setProgress` method :)
 
-{{< highlight java >}}
+```java
 override fun setProgress(progress: Int) {
 super.setProgress(progress)
 val progressDrawable: Drawable = getProgressDrawable()
 progressDrawable.colorFilter = translateValueToColor(progress)
 setProgressDrawable(progressDrawable)
 }
-{{< / highlight >}}
+```
 
 All I've done here is taking current ProgressDrawable, and set color to value I get from `translateValueToColor`
 
-{{< highlight java >}}
+```java
 fun translateValueToColor(value: Int): PorterDuffColorFilter {
-val R = (255 _ value) / 100
-val G = (255 _ (100 - value)) / 100
+val R = (255 * value) / 100
+val G = (255 * (100 - value)) / 100
 val B = 0
 val color = android.graphics.Color.argb(255, R, G, B)
 val colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.MULTIPLY)
 return colorFilter
 }
-{{< / highlight >}}
+```
 
 I'm setting RGB values (not variables :) ) accordingly to value so `value == 0` gets all green and `value == 100` gets all red.
 

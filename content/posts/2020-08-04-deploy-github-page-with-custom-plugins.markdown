@@ -62,6 +62,7 @@ This will add `yaml` file with config inside repository in directory `.github/wo
 To publish Jekyll blog with not whitelisted plugins I used [Jekyll-Actions](https://github.com/marketplace/actions/jekyll-actions) configured inside workflow like this:
 
 
+{% raw %}
 ```yaml
 name: GitHub Pages publication
 
@@ -91,6 +92,7 @@ jobs:
         env:
           JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
 ```
+{% endraw %}
 
 
 This action runs inside `ubuntu-16.04` container, and then:

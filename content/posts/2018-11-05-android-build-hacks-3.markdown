@@ -17,9 +17,9 @@ url: android-build-hacks-3-documentation
 ---
 
 This is third part in series of articles about Android build configuration, all parts will be linked right below.
-> **[#1 Build basics]({% post_url 2018-07-23-android-build-hacks %})**  
-> **[#2 Build time optimization]({% post_url 2018-09-16-android-build-hacks-2 %})**  
-> **[#3 Documentation with Dokka]({% post_url 2018-11-05-android-build-hacks-3 %})**
+> **[#1 Build basics](/android-build-hacks-1)**  
+> **[#2 Build time optimization](/android-build-hacks-2)**  
+> **[#3 Documentation with Dokka](/android-build-hacks-3-documentation)**
 
 
 
@@ -45,7 +45,7 @@ What if there's something *hacky* in your code that should be documented (for th
 Finaly some code! This post is targeting Android developers, so people who use, or should (or would love to) use `Kotlin` in their projects, so there will be no `JavaDoc` here, no no. Say hi to [Dokka](https://github.com/Kotlin/dokka) and [KDoc syntax](https://kotlinlang.org/docs/reference/kotlin-doc.html).  
 `Dokka` is documentation engine that uses `KDoc` syntaxed comments to generate documents in one of many formats, there is also `JavaDoc` but I see no reason to use it. What I like most about `KDoc` is that linking to other methods, classes or code samples is really easy and interactive. But besides that, it's just like `JavaDoc`.
 
-{% gist ce06150320153ea0747c6a974dad66f2 %}
+[View gist](https://gist.github.com/asvid/ce06150320153ea0747c6a974dad66f2)
 
 There are basically two things here: *block tags* like `@param` and *inline markup* like `[member]`.
 Available *block tags* are:
@@ -69,11 +69,11 @@ To be honest I use mostly `@param @return @sample @throws` and some basic info a
 After adding few comments like above one, it would be nice to finaly see the documentation. Just few steps to do so:
 In project `build.gradle` add:
 
-{% gist c2df0f0dc8dd6940e58a7c38582c6e3c %}
+[View gist](https://gist.github.com/asvid/c2df0f0dc8dd6940e58a7c38582c6e3c)
 
 And in application `build.gradle`:
 
-{% gist 6c2a12f66044cac9643ee67a1d703164 %}
+[View gist](https://gist.github.com/asvid/6c2a12f66044cac9643ee67a1d703164)
 
 This should add task `dokka` in group `documentation`  
 ![Dokka task](assets/posts/android-build-hacks-3/dokka_task.png){: .center-image }  
@@ -98,16 +98,16 @@ Providing sample code usage makes documentation even clearer than describing met
 
 To add samples you need to create separate directory for code that will not be compiled with rest of the project. I suggest directory structure as listed below:
 
-{% gist adcdf38d83e3a5f6576070dd7f7f5725 %}
+[View gist](https://gist.github.com/asvid/adcdf38d83e3a5f6576070dd7f7f5725)
 
 It's best to keep package structure in `sample` directory identical to source code, just like with unit tests. Sample code does not has to be logical or actually do anything, it's just to show how to use documented methods.  
 To inform `Dokka` where is sample code in module you need to add one line to configuration:
 
-{% gist 474914135109bba01805be57c7d5d19c %}
+[View gist](https://gist.github.com/asvid/474914135109bba01805be57c7d5d19c)
 
 But for some reason your sample code is going to be documented like any other code, to avoid it add
 
-{% gist 11b34b01928a89cfc1201d4ba0e3cdda %}
+[View gist](https://gist.github.com/asvid/11b34b01928a89cfc1201d4ba0e3cdda)
 
 over your sample class.
 
@@ -115,24 +115,24 @@ over your sample class.
 I've had few approaches to this and best solution I've found so far is to configure `Dokka` only in application module `build.gradle` and add dependency modules to `sourceDirs`. This way linking to modules documentation works perfectly, there are no problems with `<ERROR CLASS>` for 3rd party libraries classes, linking to source code works, and configuration for whole project is only in one file - easy to move to separate Gradle script.  
 To add modules used by `app` to `Dokka` use fallowing code:
 
-{% gist b499e52512e945ae7ae2e57ea0f9b561 %}
+[View gist](https://gist.github.com/asvid/b499e52512e945ae7ae2e57ea0f9b561)
 
 First part generates list of project dependencies that are local modules, and second part generates source code linking to each dependency and adds its path to `sourceDirs`.
 
 ### Libraries
 Linking 3rd party libraries easer than internal project modules, just by adding `externalDocumentationLink` with `url` pointing to `package-list` of library creates hyperlinks. Not every library documentation provides `package-list`, but most popular ones do. Sometimes it's necessary to provide separate link to documentation and `package-list` itself - see `Android` documentation below.
 
-{% gist d0964be797db32193a2b613e5205fb98 %}
+[View gist](https://gist.github.com/asvid/d0964be797db32193a2b613e5205fb98)
 
 ### Code
 With linked modules, samples and 3rd party libraries your documentation should look pretty professional. But you can make it even better, by linking to code on repository. If documentation is for some reason still unclear, user reading it can with single click be redirected to code of class or method and check how it works directly. It's kinda last resort because if your documentation is so bad that anyone who reads it has to dig into code each time - you did something very wrong.
 
-{% gist ccd2624ebe618c34a3b50c814a77b4bc %}
+[View gist](https://gist.github.com/asvid/ccd2624ebe618c34a3b50c814a77b4bc)
 
 ### Whole config
 I've described parts of `Dokka` configuration, but I think it's best to show the whole thing now:
 
-{% gist fe880bb2f1d2d41ce2a18cd1883df711 %}
+[View gist](https://gist.github.com/asvid/fe880bb2f1d2d41ce2a18cd1883df711)
 
 I've moved it to separate Gradle script `DokkaConfig.gradle` in project root directory, so in application `build.gradle` all I nedd to do is add `apply from: '../DokkaConfig.gradle'`
 

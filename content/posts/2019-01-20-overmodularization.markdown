@@ -44,7 +44,7 @@ But what to put into this login module? It needs to talk with cloud, so maybe HT
 ### More fun
 The second project is launched some time after development of `Login Library` was finished and it has been released with first project. New project is also developed by other team than first. There is the same requirement of logging to cloud service in new project, so developers decided to use `Login Library` from first project. But how to use it if there is no `README` or example in library repository? Just check the first project... Second project business requirement was to have all persisted data encoded but `Login Library` was using internaly simple key-value storage without any encoding possibilities. It can be easly fixed since it's internal project.
 
-Second project team updated `Login Library` so it can go along with various business requirements (for faster development they've used **[local Maven library]({% post_url 2018-01-21-androidlocalmaven %})**), and created pull request with changes, original authors of library were added as rewievers. But the reviewers were busy with their own project so it took them a week to check the PR, it got accepted, new version of library was released and used in second project.
+Second project team updated `Login Library` so it can go along with various business requirements (for faster development they've used **[local Maven library](/androidlocalmaven)**), and created pull request with changes, original authors of library were added as rewievers. But the reviewers were busy with their own project so it took them a week to check the PR, it got accepted, new version of library was released and used in second project.
 
 Then business has great idea to change look of login screens in second app to be more up to date. Developers added injecting styles to library, but they broke backwards compatibility during the process. Another change in `Login Library`, another pull request, another week.
 Meanwhile developers of first project have found a bug in `Login Library`, they created fix and wanted to release it fast... but now they need to change their application because of changes made by second team, or fork it and begin linux-distro-like hell.
@@ -69,7 +69,7 @@ Somehow this song fits to above story: great idea of sharing code, so much passi
     - shared code is to be used by application so don't force clients of your lib to change application architecture just to use it
     - SOLID, DRY bla bla bla...
 - Think few times do you really need to create shared library, talk with other teams what they think about it. Something that seems a great idea at first may be overkill or not be used at all on the end. Sometimes well designed module or even package in monolith app is good enough, and can be moved to library when the need comes.
-- Create README, and make it a good one. Examples, explanations, **[generated documentation]({% post_url 2018-11-05-android-build-hacks-3 %})**. You will thank me later.
+- Create README, and make it a good one. Examples, explanations, **[generated documentation](/android-build-hacks-3-documentation)**. You will thank me later.
 - Create example application that uses your shared code, so going through old projects won't be necessary to understand it.
 - Always add tests (unit, functional) in your library
 - CI/CD will make your life easer
