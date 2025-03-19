@@ -3,7 +3,7 @@ true "whatsapp" true "xing" true "mail" true ) }} {{ $color := "#d5d5d5" }} {{
 $textcolor := "#bbb" }} {{ $hoverColor := "#444444" }} {{/* Code */}} {{ $url :=
 printf "%s" .Permalink | absLangURL }} {{ $textBody := print .Title "\n\n"
 (.Description | truncate 200) "\n\n" $url "\n" }} {{ $encodedSummary :=
-strings.TrimPrefix "=" (querify "" (.Description | truncate 200)) }}
+strings.TrimPrefix "=" (querify "description" (.Description | truncate 200)) }}
 <hr />
 <p style="width: 100%; text-align: center">share on:</p>
 <nav class="sharebuttons">

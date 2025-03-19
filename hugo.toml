@@ -2,7 +2,6 @@ baseURL = "https://swiderski.tech"
 languageCode = "en-us"
 title = "Adam Swiderski"
 theme = "poison"
-paginate = 10
 pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries
 enableEmoji = true
 enableRobotsTXT = true
@@ -11,7 +10,8 @@ enableRobotsTXT = true
 [markup]
     [markup.goldmark.renderer]
         unsafe=true
-
+[pagination]
+    pagerSize = 10
 [params]
     brand = "Adam Świderski"                      # name of your site - appears in the sidebar
     remote_brand_image = '/assets/profile_picture.png' # path to a remote file
