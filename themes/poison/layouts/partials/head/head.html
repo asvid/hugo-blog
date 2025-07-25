@@ -12,6 +12,10 @@
     <!-- favicon -->
     <link rel="icon" href={{ .Site.Params.favicon | default "/favicon.png" }}>
 
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/Lora-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/Lora-Italic-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+
     <!-- META -->
     {{ partial "head/meta.html" . }}
 

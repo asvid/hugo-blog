@@ -1,3 +1,55 @@
+/* Lora Variable Font - Better cross-browser support */
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: fallback;
+}
+
+/* Fallback for browsers that don't support variable fonts */
+@supports not (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Lora";
+    src: url("/fonts/Lora-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+  }
+  
+  @font-face {
+    font-family: "Lora";
+    src: url("/fonts/Lora-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+    font-display: fallback;
+  }
+  
+  @font-face {
+    font-family: "Lora";
+    src: url("/fonts/Lora-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: fallback;
+  }
+  
+  @font-face {
+    font-family: "Lora";
+    src: url("/fonts/Lora-BoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+    font-display: fallback;
+  }
+}
+
 /* fira-sans-300 - latin */
 @font-face {
   font-family: "Fira Sans";
