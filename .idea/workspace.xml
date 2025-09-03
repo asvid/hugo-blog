@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="feat: enhance Mermaid diagram support with zoom functionality and improved styling">
-      <change afterPath="$PROJECT_DIR$/static/assets/posts/mcp/mcp_post_img.jpg" afterDir="false" />
+    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="fix: update MCP post image path and remove draft status">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2025-03-18-split-keyboard-build.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-03-18-split-keyboard-build.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2025-07-25-ai-genie.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-07-25-ai-genie.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hugo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/hugo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/terminal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/terminal/themes/terminal" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/themes/terminal" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -144,7 +148,7 @@
       <workItem from="1756914557275" duration="167000" />
       <workItem from="1756914968270" duration="555000" />
       <workItem from="1756915573143" duration="41000" />
-      <workItem from="1756915615960" duration="3725000" />
+      <workItem from="1756915615960" duration="5836000" />
     </task>
     <task id="LOCAL-00001" summary="new post about using design patterns as communication skill">
       <option name="closed" value="true" />
@@ -242,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756919864664</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix: update MCP post image path and remove draft status">
+      <option name="closed" value="true" />
+      <created>1756920883064</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1756920883064</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +271,8 @@
     <MESSAGE value="feat: add terminal theme submodule and update site configuration" />
     <MESSAGE value="feat: add RSS feed support and enhance cover image linking" />
     <MESSAGE value="feat: enhance Mermaid diagram support with zoom functionality and improved styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: enhance Mermaid diagram support with zoom functionality and improved styling" />
+    <MESSAGE value="fix: update MCP post image path and remove draft status" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: update MCP post image path and remove draft status" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

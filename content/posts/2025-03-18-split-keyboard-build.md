@@ -4,7 +4,7 @@ categories:
   - keyboards
 comments: true
 date: "2025-03-18T00:00:00Z"
-description: "I built my own split ergonomic keyboard from scratch and watched my typing speed plummet. Through 3D printing failures, soldering mishaps, and firmware battles, I discovered a new hobby. Despite struggling to type at 25% of my normal speed, I've created something that feels uniqu mine – and now I can't wait to build another one."
+description: "Building a split ergonomic keyboard from scratch: a journey through 3D printing, soldering, and firmware programming. Despite the learning curve and typing speed challenges, discover why creating your own mechanical keyboard becomes an addictive hobby."
 image: /assets/posts/split-keyboard/banner.jpeg
 tags:
   - hardware
