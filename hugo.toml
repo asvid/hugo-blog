@@ -45,6 +45,7 @@ enableRobotsTXT = true
     linkedin_url = "https://www.linkedin.com/in/aswiderski/"
     youtube_url = "https://www.youtube.com/channel/UC2Hb8pbCwRy3GB0G0A6Rv_w"
     twitch_url = "https://www.twitch.tv/adamcodingcorner"
+    rss = "/posts/index.xml"
 
     # NOTE: If you don't want to use RSS, comment or delete the following lines
     # Adds an RSS icon to the end of the socials which links to {{ .Site.BaseURL }}/index.xml
