@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="feat: add RSS feed support and enhance cover image linking">
+    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="feat: enhance Mermaid diagram support with zoom functionality and improved styling">
+      <change afterPath="$PROJECT_DIR$/static/assets/posts/mcp/mcp_post_img.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/_default/_markup/render-codeblock-mermaid.html" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/_default/_markup/render-codeblock-mermaid.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/_default/baseof.html" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/_default/baseof.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +54,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/asvid/repo/hugo-blog",
+    "last_opened_file_path": "/Users/asvid/repo/hugo-blog/static/assets/posts/mcp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -69,6 +68,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/assets/posts/mcp" />
       <recent name="$PROJECT_DIR$/content/posts" />
       <recent name="$PROJECT_DIR$/static/assets/posts" />
       <recent name="$PROJECT_DIR$/static/assets/posts/split-keyboard" />
@@ -144,7 +144,7 @@
       <workItem from="1756914557275" duration="167000" />
       <workItem from="1756914968270" duration="555000" />
       <workItem from="1756915573143" duration="41000" />
-      <workItem from="1756915615960" duration="2569000" />
+      <workItem from="1756915615960" duration="3725000" />
     </task>
     <task id="LOCAL-00001" summary="new post about using design patterns as communication skill">
       <option name="closed" value="true" />
@@ -234,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756915865395</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: enhance Mermaid diagram support with zoom functionality and improved styling">
+      <option name="closed" value="true" />
+      <created>1756919864664</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1756919864664</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +258,8 @@
     <MESSAGE value="new post: introduce MCP and its role in enhancing LLM capabilities" />
     <MESSAGE value="feat: add terminal theme submodule and update site configuration" />
     <MESSAGE value="feat: add RSS feed support and enhance cover image linking" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add RSS feed support and enhance cover image linking" />
+    <MESSAGE value="feat: enhance Mermaid diagram support with zoom functionality and improved styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: enhance Mermaid diagram support with zoom functionality and improved styling" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
