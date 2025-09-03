@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="feat: add terminal theme submodule and update site configuration">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hugo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/hugo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/_default/single.html" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/_default/single.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/partials/cover.html" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/partials/cover.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/partials/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/partials/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/terminal" beforeDir="false" afterPath="$PROJECT_DIR$/themes/terminal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/terminal/layouts/partials/cover.html" beforeDir="false" afterPath="$PROJECT_DIR$/themes/terminal/layouts/partials/cover.html" afterDir="false" />
+    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="feat: add RSS feed support and enhance cover image linking">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/_default/_markup/render-codeblock-mermaid.html" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/_default/_markup/render-codeblock-mermaid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/_default/baseof.html" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/_default/baseof.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +144,7 @@
       <workItem from="1756914557275" duration="167000" />
       <workItem from="1756914968270" duration="555000" />
       <workItem from="1756915573143" duration="41000" />
-      <workItem from="1756915615960" duration="222000" />
+      <workItem from="1756915615960" duration="2569000" />
     </task>
     <task id="LOCAL-00001" summary="new post about using design patterns as communication skill">
       <option name="closed" value="true" />
@@ -233,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756897391441</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat: add RSS feed support and enhance cover image linking">
+      <option name="closed" value="true" />
+      <created>1756915865395</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1756915865395</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +249,8 @@
     <MESSAGE value="refactor: enhance AI-genie post with improved formatting and additional content" />
     <MESSAGE value="new post: introduce MCP and its role in enhancing LLM capabilities" />
     <MESSAGE value="feat: add terminal theme submodule and update site configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add terminal theme submodule and update site configuration" />
+    <MESSAGE value="feat: add RSS feed support and enhance cover image linking" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add RSS feed support and enhance cover image linking" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

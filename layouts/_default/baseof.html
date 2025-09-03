@@ -24,9 +24,108 @@
 </div>
 
 {{ if .Store.Get "hasMermaid" }}
+  <style>
+    .mermaid {
+      background-color: #ffffff !important;
+      border-radius: 4px;
+      padding: 10px;
+    }
+    .mermaid svg {
+      background-color: #ffffff !important;
+    }
+  </style>
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
+    
+    mermaid.initialize({ 
+      startOnLoad: true,
+      theme: 'base',
+      maxEdges: 10000,
+      themeVariables: {
+        background: '#ffffff',
+        tertiaryColor: '#ffffff',
+        primaryColor: '#ffffff',
+        primaryTextColor: '#000000',
+        primaryBorderColor: '#000000',
+        lineColor: '#000000',
+        sectionBkColor: '#ffffff',
+        altSectionBkColor: '#f0f0f0',
+        gridColor: '#000000',
+        secondaryColor: '#ffffff'
+      }
+    });
+
+    // Enable zoom functionality for diagrams with zoom="true"
+    document.addEventListener('DOMContentLoaded', function() {
+      const mermaidElements = document.querySelectorAll('pre.mermaid[data-zoom="true"]');
+      
+      mermaidElements.forEach(function(element) {
+        // Add zoom styles
+        element.style.cursor = 'grab';
+        element.style.overflow = 'hidden';
+        element.style.position = 'relative';
+        
+        let scale = 1;
+        let isDragging = false;
+        let startX, startY, translateX = 0, translateY = 0;
+        
+        // Mouse wheel zoom
+        element.addEventListener('wheel', function(e) {
+          e.preventDefault();
+          const delta = e.deltaY > 0 ? 0.9 : 1.1;
+          scale *= delta;
+          scale = Math.max(0.5, Math.min(scale, 3)); // Limit zoom between 50% and 300%
+          
+          const svg = element.querySelector('svg');
+          if (svg) {
+            svg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            svg.style.transformOrigin = 'center center';
+          }
+        });
+        
+        // Pan functionality
+        element.addEventListener('mousedown', function(e) {
+          isDragging = true;
+          startX = e.clientX - translateX;
+          startY = e.clientY - translateY;
+          element.style.cursor = 'grabbing';
+        });
+        
+        element.addEventListener('mousemove', function(e) {
+          if (!isDragging) return;
+          e.preventDefault();
+          
+          translateX = e.clientX - startX;
+          translateY = e.clientY - startY;
+          
+          const svg = element.querySelector('svg');
+          if (svg) {
+            svg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+          }
+        });
+        
+        element.addEventListener('mouseup', function() {
+          isDragging = false;
+          element.style.cursor = 'grab';
+        });
+        
+        element.addEventListener('mouseleave', function() {
+          isDragging = false;
+          element.style.cursor = 'grab';
+        });
+        
+        // Double-click to reset zoom and position
+        element.addEventListener('dblclick', function() {
+          scale = 1;
+          translateX = 0;
+          translateY = 0;
+          const svg = element.querySelector('svg');
+          if (svg) {
+            svg.style.transform = 'translate(0px, 0px) scale(1)';
+          }
+        });
+      });
+    });
   </script>
 {{ end }}
 

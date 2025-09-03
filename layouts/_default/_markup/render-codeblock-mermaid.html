@@ -1,4 +1,8 @@
-<pre class="mermaid">
-  {{- .Inner | htmlEscape | safeHTML }}
+{{- $zoom := "false" -}}
+{{- if .Attributes.zoom -}}
+  {{- $zoom = .Attributes.zoom -}}
+{{- end -}}
+<pre class="mermaid" data-zoom="{{ $zoom }}">
+  {{- .Inner | safeHTML }}
 </pre>
 {{ .Page.Store.Set "hasMermaid" true }}
