@@ -56,50 +56,50 @@ Android app for controlling car suspension via Bluetooth. A pet project I did wi
 
 Random ordered list of tech I like to use
 
-
-- Android
-- Kotlin
-- Flutter
-- Spring
-- BLE
-- Dagger
-- Koin
-- Espresso
-- ExpressJS
-- Firebase
-- Genymotion
-- git
-- Gradle
-- JavaScript
-- Jira
-- JUnit
-- Linux
-- MongoDB
-- NodeJS
-- Realm Database
-- Room Persistence Library
-- RxJava
-- SonarQube
-- Detekt
-- Mockk
-- Spock
-- GraphQL
-- TypeScript
-- Jenkins
-- Docker
-- Figma
-- Confluence
-- Jira
-- Miro
-- Slack
-- IntelliJ Idea
-- VS Code
-- Postman
-- Insomnia
-- Swagger
-- Vim
-- Mermaid
-- NeoVim
-- GoLang
-- Domain Driven Design
+<div class="tech-chips">
+<span class="tech-chip">Android</span>
+<span class="tech-chip">Kotlin</span>
+<span class="tech-chip">Flutter</span>
+<span class="tech-chip">Spring</span>
+<span class="tech-chip">BLE</span>
+<span class="tech-chip">Dagger</span>
+<span class="tech-chip">Koin</span>
+<span class="tech-chip">Espresso</span>
+<span class="tech-chip">ExpressJS</span>
+<span class="tech-chip">Firebase</span>
+<span class="tech-chip">Genymotion</span>
+<span class="tech-chip">git</span>
+<span class="tech-chip">Gradle</span>
+<span class="tech-chip">JavaScript</span>
+<span class="tech-chip">Jira</span>
+<span class="tech-chip">JUnit</span>
+<span class="tech-chip">Linux</span>
+<span class="tech-chip">MongoDB</span>
+<span class="tech-chip">NodeJS</span>
+<span class="tech-chip">Realm Database</span>
+<span class="tech-chip">Room Persistence Library</span>
+<span class="tech-chip">RxJava</span>
+<span class="tech-chip">SonarQube</span>
+<span class="tech-chip">Detekt</span>
+<span class="tech-chip">Mockk</span>
+<span class="tech-chip">Spock</span>
+<span class="tech-chip">GraphQL</span>
+<span class="tech-chip">TypeScript</span>
+<span class="tech-chip">Jenkins</span>
+<span class="tech-chip">Docker</span>
+<span class="tech-chip">Figma</span>
+<span class="tech-chip">Confluence</span>
+<span class="tech-chip">Miro</span>
+<span class="tech-chip">Slack</span>
+<span class="tech-chip">IntelliJ Idea</span>
+<span class="tech-chip">VS Code</span>
+<span class="tech-chip">Postman</span>
+<span class="tech-chip">Insomnia</span>
+<span class="tech-chip">Swagger</span>
+<span class="tech-chip">Vim</span>
+<span class="tech-chip">Mermaid</span>
+<span class="tech-chip">NeoVim</span>
+<span class="tech-chip">GoLang</span>
+<span class="tech-chip">Domain Driven Design</span>
+</div>
 

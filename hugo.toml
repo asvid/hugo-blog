@@ -20,29 +20,31 @@ enableRobotsTXT = true
     dark_mode = false                      # optional - defaults to false
     favicon = "/assets/ico/favicon.ico"             # path to favicon (defaults to favicon.png)
     
-    # Logo configuration
-    [params.Logo]
-        logoText = "Adam Świderski"
-    
     # Reading time configuration
     readingTime = true                     # Enable reading time globally
     minuteReadingTime = "min read"         # Text to display after reading time
     words = "words"                        # Text to display after word count
     ReadMore = "Read more"                 # Text for read more button
-
-    author.name = "Adam Świderski"
-    author.email = "aswiderski@pm.me"
     front_page_content = ["posts"] # Equivalent to the default value, add page bundle names to include them on the front page.
+    
+    # Logo configuration
+    [params.Logo]
+        logoText = "Adam Świderski"
+
+    # Author configuration
+    [params.author]
+        name = "Adam Świderski"
+        email = "aswiderski@pm.me"
 
     # Menu configuration
     showMenuItems = 2  # Number of menu items to show before creating dropdown
 
     # Links to your socials.  Comment or delete any you don't need/use. 
-    email_url = "mailto://aswiderski@pm.me"
+    email_url = "mailto:aswiderski@pm.me"
     github_url = "https://github.com/asvid"
     linkedin_url = "https://www.linkedin.com/in/aswiderski/"
     youtube_url = "https://www.youtube.com/channel/UC2Hb8pbCwRy3GB0G0A6Rv_w"
-    twitch = "https://www.twitch.tv/adamcodingcorner"
+    twitch_url = "https://www.twitch.tv/adamcodingcorner"
 
     # NOTE: If you don't want to use RSS, comment or delete the following lines
     # Adds an RSS icon to the end of the socials which links to {{ .Site.BaseURL }}/index.xml

@@ -514,3 +514,222 @@ html {
 .sharebuttons ul li a {
   display: block;
 }
+
+/* Terminal-style technology chips */
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px 6px 10px;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 0.8em;
+  font-weight: 600;
+  border: 2px solid;
+  position: relative;
+  transition: all 0.2s ease;
+  margin-right: 8px;
+  clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 50%, calc(100% - 12px) 100%, 0% 100%, 12px 50%);
+}
+
+.tech-chip:first-child {
+  clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 50%, calc(100% - 12px) 100%, 0% 100%);
+  padding-left: 14px;
+}
+
+.tech-chip:last-child {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 12px 50%);
+  padding-right: 10px;
+  margin-right: 0;
+}
+
+.tech-chip:only-child {
+  clip-path: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin-right: 0;
+}
+
+/* Terminal color variations */
+.tech-chip:nth-child(8n+1) {
+  background-color: #1a1a1a;
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.tech-chip:nth-child(8n+2) {
+  background-color: #1a1a1a;
+  border-color: #4ecdc4;
+  color: #4ecdc4;
+}
+
+.tech-chip:nth-child(8n+3) {
+  background-color: #1a1a1a;
+  border-color: #45b7d1;
+  color: #45b7d1;
+}
+
+.tech-chip:nth-child(8n+4) {
+  background-color: #1a1a1a;
+  border-color: #f9ca24;
+  color: #f9ca24;
+}
+
+.tech-chip:nth-child(8n+5) {
+  background-color: #1a1a1a;
+  border-color: #6c5ce7;
+  color: #6c5ce7;
+}
+
+.tech-chip:nth-child(8n+6) {
+  background-color: #1a1a1a;
+  border-color: #a29bfe;
+  color: #a29bfe;
+}
+
+.tech-chip:nth-child(8n+7) {
+  background-color: #1a1a1a;
+  border-color: #fd79a8;
+  color: #fd79a8;
+}
+
+.tech-chip:nth-child(8n+8) {
+  background-color: #1a1a1a;
+  border-color: #00b894;
+  color: #00b894;
+}
+
+/* Hover effects */
+.tech-chip:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  z-index: 10;
+}
+
+/* Light mode variations */
+@media (prefers-color-scheme: light) {
+  .tech-chip:nth-child(8n+1) {
+    background-color: #fff;
+    border-color: #e74c3c;
+    color: #e74c3c;
+  }
+
+  .tech-chip:nth-child(8n+2) {
+    background-color: #fff;
+    border-color: #1abc9c;
+    color: #1abc9c;
+  }
+
+  .tech-chip:nth-child(8n+3) {
+    background-color: #fff;
+    border-color: #3498db;
+    color: #3498db;
+  }
+
+  .tech-chip:nth-child(8n+4) {
+    background-color: #fff;
+    border-color: #f39c12;
+    color: #f39c12;
+  }
+
+  .tech-chip:nth-child(8n+5) {
+    background-color: #fff;
+    border-color: #9b59b6;
+    color: #9b59b6;
+  }
+
+  .tech-chip:nth-child(8n+6) {
+    background-color: #fff;
+    border-color: #8e44ad;
+    color: #8e44ad;
+  }
+
+  .tech-chip:nth-child(8n+7) {
+    background-color: #fff;
+    border-color: #e91e63;
+    color: #e91e63;
+  }
+
+  .tech-chip:nth-child(8n+8) {
+    background-color: #fff;
+    border-color: #27ae60;
+    color: #27ae60;
+  }
+}
+
+/* Dark mode keeps the original terminal colors */
+@media (prefers-color-scheme: dark) {
+  .tech-chip {
+    /* Dark mode uses the default terminal colors already defined above */
+  }
+}
+
+/* Theme override styles */
+
+/* Social icons styling */
+.navigation-menu .navigation-menu__inner li:has(svg) {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-menu .navigation-menu__inner li svg {
+  transition: all 0.2s ease;
+}
+
+.navigation-menu .navigation-menu__inner li a:hover svg {
+  fill: var(--foreground);
+  transform: scale(1.1);
+}
+
+.navigation-menu .navigation-menu__inner li:has(svg) a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Clickable cover images in post lists */
+.post.on-list a:has(.post-cover) {
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.post.on-list a:has(.post-cover):hover {
+  opacity: 0.8;
+}
+
+.post.on-list .post-cover {
+  cursor: pointer;
+}
+
+/* Header logo blinking cursor */
+.header__logo {
+  border-right: 8px solid var(--accent);
+  padding-right: 8px;
+  animation: terminal-cursor-blink 1200ms linear infinite;
+}
+
+@keyframes terminal-cursor-blink {
+  0% {
+    border-right-color: var(--accent);
+  }
+  49% {
+    border-right-color: var(--accent);
+  }
+  60% {
+    border-right-color: transparent;
+  }
+  99% {
+    border-right-color: transparent;
+  }
+  100% {
+    border-right-color: var(--accent);
+  }
+}

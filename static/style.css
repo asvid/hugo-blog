@@ -1,0 +1,36 @@
+/* Custom styles to override theme properties */
+
+/* Social icons styling */
+.navigation-menu .navigation-menu__inner li:has(svg) {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-menu .navigation-menu__inner li svg {
+  transition: all 0.2s ease;
+}
+
+.navigation-menu .navigation-menu__inner li a:hover svg {
+  fill: var(--foreground);
+  transform: scale(1.1);
+}
+
+.navigation-menu .navigation-menu__inner li:has(svg) a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Clickable cover images in post lists */
+.post.on-list a:has(.post-cover) {
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.post.on-list a:has(.post-cover):hover {
+  opacity: 0.8;
+}
+
+.post.on-list .post-cover {
+  cursor: pointer;
+}

@@ -34,7 +34,9 @@
           </span>
         {{ end }}
 
-        {{ partial "cover.html" . }}
+        <a href="{{ .Permalink }}">
+          {{ partial "cover.html" . }}
+        </a>
 
         <div class="post-content">
           {{ if .Params.showFullContent }}
