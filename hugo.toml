@@ -1,7 +1,7 @@
 baseURL = "https://swiderski.tech"
 languageCode = "en-us"
 title = "Adam Swiderski"
-theme = "poison"
+theme = "terminal"
 pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries
 enableEmoji = true
 enableRobotsTXT = true
@@ -19,23 +19,23 @@ enableRobotsTXT = true
     description = "pragmatic software engineer" # Used as default meta description if not specified in front matter
     dark_mode = false                      # optional - defaults to false
     favicon = "/assets/ico/favicon.ico"             # path to favicon (defaults to favicon.png)
+    
+    # Logo configuration
+    [params.Logo]
+        logoText = "Adam Świderski"
+    
+    # Reading time configuration
+    readingTime = true                     # Enable reading time globally
+    minuteReadingTime = "min read"         # Text to display after reading time
+    words = "words"                        # Text to display after word count
+    ReadMore = "Read more"                 # Text for read more button
 
     author.name = "Adam Świderski"
     author.email = "aswiderski@pm.me"
     front_page_content = ["posts"] # Equivalent to the default value, add page bundle names to include them on the front page.
 
-    # MENU PLACEHOLDER
-    # Menu dict keys:
-        # Name:         The name to display on the menu.
-        # URL:          The directory relative to the content directory.
-        # HasChildren:  If the directory's files should be listed.  Default is true.
-        # Limit:        If the files should be listed, how many should be shown.
-    menu = [
-        {Name = "About", URL = "/about/", HasChildren = false},
-        {Name = "Mentoring", URL = "https://adplist.org/mentors/adam-swiderski", External = "https://adplist.org/mentors/adam-swiderski", HasChildren = false},
-        # {Name = "Projects", URL = "/projects/", HasChildren = true, Limit = 5},
-        {Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = true, Limit = 5},
-    ]
+    # Menu configuration
+    showMenuItems = 2  # Number of menu items to show before creating dropdown
 
     # Links to your socials.  Comment or delete any you don't need/use. 
     email_url = "mailto://aswiderski@pm.me"
@@ -111,3 +111,15 @@ enableRobotsTXT = true
 [taxonomies]
     series = 'series'
     tags = 'tags'
+
+[[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+
+[[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/posts/"
+    weight = 20

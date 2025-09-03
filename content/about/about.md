@@ -56,7 +56,6 @@ Android app for controlling car suspension via Bluetooth. A pet project I did wi
 
 Random ordered list of tech I like to use
 
-{{% chips %}}
 
 - Android
 - Kotlin
@@ -104,4 +103,3 @@ Random ordered list of tech I like to use
 - GoLang
 - Domain Driven Design
 
-{{% /chips %}}

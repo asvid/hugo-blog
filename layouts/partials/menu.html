@@ -1,0 +1,55 @@
+<nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    {{ if or $.Site.Params.showMenuItems ( eq .Site.Params.showMenuItems 0 ) }}
+      {{ range first $.Site.Params.showMenuItems $.Site.Menus.main }}
+        {{ if not .HasChildren }}
+          <li><a href="{{ .URL }}" {{ if .Params.NewTab -}} target="_blank" {{- end }}>{{ .Name }}</a></li>
+        {{ end }}
+      {{ end }}
+      {{ if gt (len $.Site.Menus.main) $.Site.Params.showMenuItems }}
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">{{ $.Site.Params.menuMore }}&nbsp;▾</li>
+            <li>
+              <ul class="menu__dropdown">
+                {{ range last (sub (len $.Site.Menus.main) $.Site.Params.showMenuItems) $.Site.Menus.main }}
+                  {{ if not .HasChildren }}
+                    <li><a href="{{ .URL }}" {{ if .Params.NewTab -}} target="_blank" {{- end }}>{{ .Name }}</a></li>
+                  {{ end }}
+                {{ end }}
+              </ul>
+            </li>
+          </ul>
+        </li>
+      {{ end }}
+    {{ else }}
+      {{ range $.Site.Menus.main }}
+        {{ if not .HasChildren }}
+          <li><a href="{{ .URL }}" {{ if .Params.NewTab -}} target="_blank" {{- end }}>{{ .Name }}</a></li>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    
+    <!-- Social Links -->
+    {{ if $.Site.Params.github_url }}
+      <li style="margin-left: auto;">
+        <a href="{{ $.Site.Params.github_url }}" target="_blank" title="GitHub">GH</a>
+      </li>
+    {{ end }}
+    {{ if $.Site.Params.linkedin_url }}
+      <li>
+        <a href="{{ $.Site.Params.linkedin_url }}" target="_blank" title="LinkedIn">LI</a>
+      </li>
+    {{ end }}
+    {{ if $.Site.Params.youtube_url }}
+      <li>
+        <a href="{{ $.Site.Params.youtube_url }}" target="_blank" title="YouTube">YT</a>
+      </li>
+    {{ end }}
+    {{ if $.Site.Params.email_url }}
+      <li>
+        <a href="{{ $.Site.Params.email_url }}" target="_blank" title="Email">@</a>
+      </li>
+    {{ end }}
+  </ul>
+</nav>

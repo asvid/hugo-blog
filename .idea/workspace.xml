@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="feat: add terminal theme submodule and update site configuration">
+      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/terminal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/about/about.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/about/about.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hugo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/hugo.toml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;asvid&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:asvid/hugo-blog.git&quot;,
+    &quot;accountId&quot;: &quot;86be415b-4b09-4e08-af66-efb74fcb294c&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2mb6mM3r9J2jHiajNs4kMh594w7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/asvid/repo/hugo-blog&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content/posts" />
+      <recent name="$PROJECT_DIR$/static/assets/posts" />
+      <recent name="$PROJECT_DIR$/static/assets/posts/split-keyboard" />
+      <recent name="$PROJECT_DIR$/static/assets/posts/design-patterns-communication" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/assets/posts/mcp" />
+      <recent name="$PROJECT_DIR$/static/assets/posts" />
+      <recent name="$PROJECT_DIR$/static/assets/iwasthere.png" />
+      <recent name="$PROJECT_DIR$/static/assets/posts/split-keyboard" />
+      <recent name="$PROJECT_DIR$/static/assets/posts/design-patterns-communication" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="hugo-blog" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="hugo-blog" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SwiftWorkspaceSettings">
+    <option name="detectedToolchain" value="true" />
+    <option name="toolchainPathValue" value="/Library/Developer/CommandLineTools" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="" />
+      <created>1727333086608</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727333086608</updated>
+      <workItem from="1727333087630" duration="351000" />
+      <workItem from="1727465304807" duration="1695000" />
+      <workItem from="1727534351196" duration="1231000" />
+      <workItem from="1728819098444" duration="13284000" />
+      <workItem from="1729006018407" duration="1706000" />
+      <workItem from="1729697887465" duration="787000" />
+      <workItem from="1730466763791" duration="4265000" />
+      <workItem from="1730708983533" duration="480000" />
+      <workItem from="1731435552187" duration="6268000" />
+      <workItem from="1733140075040" duration="152000" />
+      <workItem from="1733732736290" duration="3000" />
+      <workItem from="1742329401019" duration="17749000" />
+      <workItem from="1742396097051" duration="7098000" />
+      <workItem from="1753425922433" duration="6898000" />
+      <workItem from="1753453165581" duration="9760000" />
+      <workItem from="1756845947381" duration="6840000" />
+      <workItem from="1756885214950" duration="8884000" />
+    </task>
+    <task id="LOCAL-00001" summary="new post about using design patterns as communication skill">
+      <option name="closed" value="true" />
+      <created>1728834378572</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728834378572</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new post about trying multiplatform">
+      <option name="closed" value="true" />
+      <created>1730470070001</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730470070001</updated>
+    </task>
+    <task id="LOCAL-00003" summary="new post about tech debt">
+      <option name="closed" value="true" />
+      <created>1731439503418</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731439503418</updated>
+    </task>
+    <task id="LOCAL-00004" summary="new post about split keyboard build">
+      <option name="closed" value="true" />
+      <created>1742391498312</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742391498312</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix formatting in code snippets and update links in multiple markdown files">
+      <option name="closed" value="true" />
+      <created>1753432533700</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1753432533700</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactor: enhance AI-genie post with improved formatting and additional content">
+      <option name="closed" value="true" />
+      <created>1753459163254</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1753459163254</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refactor: enhance AI-genie post with improved formatting and additional content">
+      <option name="closed" value="true" />
+      <created>1753516956588</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1753516956588</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactor: enhance AI-genie post with improved formatting and additional content">
+      <option name="closed" value="true" />
+      <created>1753516990974</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1753516990974</updated>
+    </task>
+    <task id="LOCAL-00009" summary="new post: introduce MCP and its role in enhancing LLM capabilities">
+      <option name="closed" value="true" />
+      <created>1756850119578</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1756850119578</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new post about using design patterns as communication skill" />
+    <MESSAGE value="new post about trying multiplatform" />
+    <MESSAGE value="new post about tech debt" />
+    <MESSAGE value="new post about split keyboard build" />
+    <MESSAGE value="fix formatting in code snippets and update links in multiple markdown files" />
+    <MESSAGE value="refactor: enhance AI-genie post with improved formatting and additional content" />
+    <MESSAGE value="new post: introduce MCP and its role in enhancing LLM capabilities" />
+    <option name="LAST_COMMIT_MESSAGE" value="new post: introduce MCP and its role in enhancing LLM capabilities" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
