@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="fix: update MCP post image path and remove draft status">
+    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="feat: update recent Git root path and adjust task summaries in workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/2025-03-18-split-keyboard-build.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-03-18-split-keyboard-build.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/2025-07-25-ai-genie.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-07-25-ai-genie.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hugo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/hugo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/terminal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/terminal/themes/terminal" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/themes/terminal" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -48,28 +42,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/asvid/repo/hugo-blog/static/assets/posts/mcp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/asvid/repo/hugo-blog/static/assets/posts/mcp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static/assets/posts/mcp" />
@@ -148,7 +142,7 @@
       <workItem from="1756914557275" duration="167000" />
       <workItem from="1756914968270" duration="555000" />
       <workItem from="1756915573143" duration="41000" />
-      <workItem from="1756915615960" duration="5836000" />
+      <workItem from="1756915615960" duration="9448000" />
     </task>
     <task id="LOCAL-00001" summary="new post about using design patterns as communication skill">
       <option name="closed" value="true" />
@@ -254,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756920883064</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat: update post descriptions for clarity and add robots.txt for SEO">
+      <option name="closed" value="true" />
+      <created>1756923248628</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1756923248628</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +274,8 @@
     <MESSAGE value="feat: add RSS feed support and enhance cover image linking" />
     <MESSAGE value="feat: enhance Mermaid diagram support with zoom functionality and improved styling" />
     <MESSAGE value="fix: update MCP post image path and remove draft status" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: update MCP post image path and remove draft status" />
+    <MESSAGE value="feat: update post descriptions for clarity and add robots.txt for SEO" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update post descriptions for clarity and add robots.txt for SEO" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
