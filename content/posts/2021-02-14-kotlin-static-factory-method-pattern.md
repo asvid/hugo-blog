@@ -11,7 +11,7 @@ description:
   Methods` and more. PS: This whole post was supposed to be about `Factory Method`
   with just a short mention about static factory methods, but the topic becomes more
   interesting than I thought :) "
-image: /assets/posts/lodz.jpg
+image: posts/lodz.jpg
 tags:
   - design patterns
   - Kotlin

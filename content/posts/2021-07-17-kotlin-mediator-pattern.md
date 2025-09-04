@@ -12,7 +12,7 @@ description:
   happened' instead of telling others to 'do something'. It can be found e.g. in
   the form of `ViewModel` in Android, where it separates UI interactions from data
   model changes. "
-image: /assets/posts/mediator.jpg
+image: posts/mediator.jpg
 tags:
   - kotlin
   - Mediator Pattern

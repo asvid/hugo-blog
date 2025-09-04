@@ -9,7 +9,7 @@ description:
   class parts from changing ones. The core idea is to have an abstract parent class
   containing the algorithm steps and allowing inheriting classes to overwrite individual
   steps, but not the algorithm that uses those steps itself.
-image: /assets/posts/pizza.jpg
+image: posts/pizza.jpg
 tags:
   - design patterns
   - Kotlin

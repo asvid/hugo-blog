@@ -4,8 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="feat: update recent Git root path and adjust task summaries in workspace.xml">
+    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="fix: update MCP links to point to the correct server paths">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2018-01-21-androidlocalmaven.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2018-01-21-androidlocalmaven.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-01-29-kotlin-builder-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-01-29-kotlin-builder-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-02-14-kotlin-static-factory-method-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-02-14-kotlin-static-factory-method-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-02-26-kotlin-factory-method-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-02-26-kotlin-factory-method-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-03-02-kotlin-abstract-factory-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-03-02-kotlin-abstract-factory-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-05-13-kotlin-template-method.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-05-13-kotlin-template-method.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-05-30-kotlin-strategy-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-05-30-kotlin-strategy-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-06-07-kotlin-fascade-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-06-07-kotlin-fascade-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-06-21-IntelliJ-Latex-file-watchers.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-06-21-IntelliJ-Latex-file-watchers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-06-26-kotlin-adapter-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-06-26-kotlin-adapter-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-07-03-kotlin-decorator-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-07-03-kotlin-decorator-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-07-17-kotlin-mediator-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-07-17-kotlin-mediator-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-08-06-remote-logger.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-08-06-remote-logger.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-08-22-kotlin-command-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-08-22-kotlin-command-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2021-09-03-android-service-binding-on-api30.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2021-09-03-android-service-binding-on-api30.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2022-04-04-tech_proposals_and_decision_logs.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2022-04-04-tech_proposals_and_decision_logs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2023-01-29-would-i-do-mobile-again.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2023-01-29-would-i-do-mobile-again.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2023-06-16-ci-is-your-friend.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2023-06-16-ci-is-your-friend.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-01-27-MVC.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-01-27-MVC.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-02-04-MVP.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-02-04-MVP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-02-09-MVVM.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-02-09-MVVM.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-02-24-MVI.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-02-24-MVI.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-04-08-developers-golden-cage.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-04-08-developers-golden-cage.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-04-23-refactor-to-usecase.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-04-23-refactor-to-usecase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-05-07-rewrite-seems-like-always-a-bad-idea.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-05-07-rewrite-seems-like-always-a-bad-idea.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-05-14-architecture-astronautics.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-05-14-architecture-astronautics.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-06-07-breaking-free-from-analysis-paralysis.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-06-07-breaking-free-from-analysis-paralysis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-09-27-design-patterns-as-communication.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-09-27-design-patterns-as-communication.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-11-01-tired-of-trying-multiplatform.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-11-01-tired-of-trying-multiplatform.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2024-11-12-tech-debt-communication.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2024-11-12-tech-debt-communication.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2025-03-18-split-keyboard-build.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-03-18-split-keyboard-build.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2025-07-25-ai-genie.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-07-25-ai-genie.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/2025-09-02-mcp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/TEMPLATE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hugo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/hugo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/partials/cover.html" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/partials/cover.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +180,8 @@
       <workItem from="1756914968270" duration="555000" />
       <workItem from="1756915573143" duration="41000" />
       <workItem from="1756915615960" duration="9448000" />
+      <workItem from="1756969388232" duration="463000" />
+      <workItem from="1756988181164" duration="1361000" />
     </task>
     <task id="LOCAL-00001" summary="new post about using design patterns as communication skill">
       <option name="closed" value="true" />
@@ -256,7 +295,23 @@
       <option name="project" value="LOCAL" />
       <updated>1756923248628</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: update recent Git root path and adjust task summaries in workspace.xml">
+      <option name="closed" value="true" />
+      <created>1756969447705</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1756969447705</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fix: update MCP links to point to the correct server paths">
+      <option name="closed" value="true" />
+      <created>1756969848547</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1756969848547</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +330,9 @@
     <MESSAGE value="feat: enhance Mermaid diagram support with zoom functionality and improved styling" />
     <MESSAGE value="fix: update MCP post image path and remove draft status" />
     <MESSAGE value="feat: update post descriptions for clarity and add robots.txt for SEO" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: update post descriptions for clarity and add robots.txt for SEO" />
+    <MESSAGE value="feat: update recent Git root path and adjust task summaries in workspace.xml" />
+    <MESSAGE value="fix: update MCP links to point to the correct server paths" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: update MCP links to point to the correct server paths" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

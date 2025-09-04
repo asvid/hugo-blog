@@ -8,7 +8,7 @@ description: >-
   as I dive into the chaos of backend development, battling analysis paralysis
   and procrastination. Discover how I learned to focus on building rather than
   endlessly researching, and find tips to keep your own projects on track.
-image: /assets/posts/analysis-paralysis.png
+image: posts/analysis-paralysis.png
 tags:
   - procrastination
   - backend

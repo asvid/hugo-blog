@@ -9,7 +9,7 @@ description:
   patterns in software engineering. In this post I will try to explain it and show
   how you can use it with Kotlin. Sadly I often see implementations that are simple
   translation from Java rather that utilizing cool Kotlin syntactic sugar."
-image: /assets/posts/kotlin-builder-pattern/pkin.jpg
+image: posts/kotlin-builder-pattern/pkin.jpg
 tags:
   - design patterns
   - Kotlin

@@ -9,7 +9,7 @@ description: " The Command pattern wraps the request into a specific object that
   stage of refactoring, where at first we extract the code to a separate method, and
   then to a separate object, taking the arguments needed to execute the request in
   the constructor. "
-image: /assets/posts/command.jpg
+image: posts/command.jpg
 tags:
   - kotlin
   - Command Pattern

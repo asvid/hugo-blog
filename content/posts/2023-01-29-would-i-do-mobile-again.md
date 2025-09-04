@@ -6,7 +6,7 @@ date: "2023-01-29T00:00:00Z"
 description: " I went to a meetup in my city last week and a guy I just met there
   popped a question after a while of conversation: with my experience, would I go
   for mobile software development again or pick a different area? "
-image: /assets/posts/go_mobile.png
+image: posts/go_mobile.png
 tags:
   - career
   - mobile

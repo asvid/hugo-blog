@@ -9,7 +9,7 @@ description: " The `Decorator` pattern is used where creating separate classes w
   focuses on creating object layers to transparently and dynamically complement objects
   with new tasks. The decorator provides an object with the same interface as the
   decorated object. "
-image: /assets/posts/decorator.jpg
+image: posts/decorator.jpg
 tags:
   - kotlin
   - Decorator Pattern

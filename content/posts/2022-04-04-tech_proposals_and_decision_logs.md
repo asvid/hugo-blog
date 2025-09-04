@@ -6,7 +6,7 @@ date: "2022-04-04T00:00:00Z"
 description:
   " Tech Proposal are a less formal way for internal documentation created
   before actual implementation. They also facilitate making technical decisions. "
-image: /assets/posts/archive.jpg
+image: posts/archive.jpg
 tags:
   - documentation
   - tech proposal

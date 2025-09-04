@@ -7,7 +7,7 @@ description: " Embrace the power of Continuous Integration and Deployment (CI/CD
   in software development. Automate tests, streamline workflows, and boost collaboration
   with user-friendly services like CircleCI, Bitrise, GitLab, and GitHub Actions.
   Level up your development process today! "
-image: /assets/posts/friendly_ci.jpg
+image: posts/friendly_ci.jpg
 tags:
   - CI/CD
   - Continuous Integration

@@ -6,7 +6,7 @@ date: "2018-01-21T00:00:00Z"
 description:
   Local Maven repository guide for working on private libraries along with
   projects that use them
-image: /assets/posts/local-maven-repo/lib.jpg
+image: posts/local-maven-repo/lib.jpg
 tags:
   - Maven
   - Gradle

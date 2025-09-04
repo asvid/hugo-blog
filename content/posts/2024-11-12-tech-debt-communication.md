@@ -4,7 +4,7 @@ categories:
 comments: true
 date: "2024-11-12T00:00:00Z"
 description: "A chance encounter at the airport leads to insights into the real nature of technical debt in software development. Through the lens of Stoic philosophy and Lord of the Rings metaphors, this post explores how better communication between engineers and management can prevent our own Mines of Moria situations. Practical tips included for both technical leads and managers on how to discuss, document, and decide which technical dragons are worth slaying."
-image: /assets/posts/tech-debt-balrog.jpeg
+image: posts/tech-debt-balrog.jpeg
 tags:
   - tech-debt
   - software engineering

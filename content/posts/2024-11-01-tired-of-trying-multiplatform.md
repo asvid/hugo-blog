@@ -4,7 +4,7 @@ categories:
 comments: true
 date: "2024-11-01T00:00:00Z"
 description: "I had several chances to try a few ways of multiplatform software development. However, I was curious about the Kotlin Compose Multiplatform way. So I could use the technology I already know to build Android, desktop, and iOS apps, sharing internal logic, and UI elements. How hard can it be?"
-image: /assets/posts/multiplatform.jpeg
+image: posts/multiplatform.jpeg
 tags:
   - kotlin
   - multiplatform

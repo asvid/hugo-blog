@@ -8,7 +8,7 @@ description: " While working on a project, I couldn't use Android's 'Development
   Options' - I couldn't access the logs. If only you could send Logcat logs, e.g.
   via WebSocket, and then catch them on your computer... I did not find such a tool,
   so I wrote one and described the process in this post. "
-image: /assets/posts/remote_logger_top.jpg
+image: posts/remote_logger_top.jpg
 tags:
   - tools
   - Android

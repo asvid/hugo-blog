@@ -10,7 +10,7 @@ description:
   object comes from 3rd party library, and you do not want to make your system depending
   on that interface, creating the so-called `anticorruption layer`. Adaptee interface
   changes will only affect the `Adapter` and not the rest of the code. "
-image: /assets/posts/adapter.jpg
+image: posts/adapter.jpg
 tags:
   - design patterns
   - Kotlin

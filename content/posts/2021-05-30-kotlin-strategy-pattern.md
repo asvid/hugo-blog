@@ -9,7 +9,7 @@ description: " The `Strategy` pattern creates a family of algorithms, enclosing 
   It enables the interchangeable use of implementations. The use of the strategy simplifies
   the customer code, avoids code duplication and conditional statements. Significantly
   simplifies testing - by separating client testing from strategy algorithms. "
-image: /assets/posts/strategy.jpg
+image: posts/strategy.jpg
 tags:
   - design patterns
   - Kotlin

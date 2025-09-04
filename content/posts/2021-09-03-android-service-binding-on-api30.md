@@ -9,7 +9,7 @@ description: " Android 11 (API 30) changes the way of using external app service
   method will always return `False`, even if with `compileSdk 29` the app will work
   perfectly. I want to share solution of this problem after WAY TOO LONG time I spent
   on searching it... "
-image: /assets/posts/api30fix.jpg
+image: posts/api30fix.jpg
 tags:
   - Android
   - rant

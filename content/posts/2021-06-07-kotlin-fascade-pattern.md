@@ -11,7 +11,7 @@ description: " The facade allows you to hide the details of the module from clie
   of the object available for the clients. The facade is a good entry point for libraries,
   giving customers access to high-level functionality and hiding all internal logic
   and classes. "
-image: /assets/posts/facade.jpg
+image: posts/facade.jpg
 tags:
   - design patterns
   - Kotlin
