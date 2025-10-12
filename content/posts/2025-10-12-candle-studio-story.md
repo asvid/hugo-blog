@@ -28,7 +28,7 @@ url: 2022-10-12-candle-studio-story
 
 I'm the iOS developer now. I mean, kinda, I just released my first purely native iOS app to the App Store. It took just a week of filling out forms and being rejected because some rule, 9.5.1, was broken. It feels like dealing with insurance companies...
 
-I didn't write a single line of code, though. Even if Swift looks nice, like Kotlin with untreated ADHD.
+I didn't write a single line of code, though. **Even if Swift looks nice, like Kotlin with untreated ADHD**.
 
 It was all written by Claude Code :)
 
@@ -74,7 +74,7 @@ After releasing the app and being approved by the App Store gods, I decided that
 
 Five hours later, I can say with complete confidence that Apple can.
 
-It's not generating a cert. It's generating a cert, to create a profile, to generate a cert, to bundle it with a key, to get the base64 of it while adding a password, to then set 7 GitHub secrets, to then debug some more, because the first cert was for development, not distribution, and the profile is wrong. And I'm a single dev in a shed, hammering my cute little app. I can barely imagine this process in larger companies. IT has to love it. Or maybe the process is so complex because it's designed for larger companies with multiple teams, where not everyone should have access to everything? I choose to believe that.
+It's not generating a cert. It's generating a cert, to create a profile, to generate a cert, to bundle it with a key, to get the base64 of it while adding a password, to then set 7 GitHub secrets, to then debug some more, because the first cert was for development, not distribution, and the profile is wrong. **And I'm a single dev in a shed, hammering my cute little app**. I can barely imagine this process in larger companies. IT has to love it. Or maybe the process is so complex because it's designed for larger companies with multiple teams, where not everyone should have access to everything? I choose to believe that.
 
 I have 3 pages full of failed builds in the GitHub actions tab. Some errors surprised even Claude Code, and it responded with `this is a weird error, it shouldn't be there`. My list of errors:
 
@@ -93,7 +93,7 @@ I have 3 pages full of failed builds in the GitHub actions tab. Some errors surp
 
 After all that 5h grind, Claude said it's a good time anyway, because it's normal to spend days debugging Apple app signing issues.
 
-Writing code was not the central part of developing this app. The road from 'it works on my machine' to 'you can get it on your phone' was pretty long. I want to believe that each next project would be easier to set up, but I cannot remember all those steps, even if my life depended on it. They are also not written in stone; they are written in ever-changing policies, rules, and workflows in digital form. Adding and removing steps is part of the game.
+**Writing code was not the central part of developing this app**. The road from 'it works on my machine' to 'you can get it on your phone' was pretty long. I want to believe that each next project would be easier to set up, but I cannot remember all those steps, even if my life depended on it. They are also not written in stone; they are written in ever-changing policies, rules, and workflows in digital form. Adding and removing steps is part of the game.
 
 ---
 
