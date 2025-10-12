@@ -22,6 +22,8 @@ url: 2022-10-12-candle-studio-story
 - **Hours debugging CI/CD:** 5
 - **Result:** Live app with paid subscriptions
 
+**[Check the app!](https://apps.apple.com/pl/app/candle-studio/id6752621480)**
+
 ---
 
 I'm the iOS developer now. I mean, kinda, I just released my first purely native iOS app to the App Store. It took just a week of filling out forms and being rejected because some rule, 9.5.1, was broken. It feels like dealing with insurance companies...
@@ -58,7 +60,7 @@ Applying to the app store is from hell. Oh, you want to have an app available in
 
 The biggest challenge was adding subscriptions to the app. I wanted to check how it's done and have some premium features. Of course, it has to go through Apple; they take 15% for in-app purchases. The app must use product IDs set in the website form; there is no direct link between Xcode and App Store Connect. It's your job to put the products together and then use them in the app. The products, like subscriptions, are also reviewed. Separately from the app, unless it's the first release, then together - even Claude wasn't sure. The warnings about missing data are useless: "metadata missing" tells me nothing about what and where I should put. "ready to submission" status doesn't help me to submit it for review. There is no button to click to submit. I have no idea why Apple, a company that has always valued UX, is doing so much to make developer life harder. I couldn't condone such bad practices, even if I were paid to do so.
 
-The app is finally approved. Take it, enjoy your candles. Pay me for premium :)
+**[The app is finally approved](https://apps.apple.com/pl/app/candle-studio/id6752621480)**. Take it, enjoy your candles. Pay me for premium :)
 
 ## CI/CD and Certificate Hell
 
