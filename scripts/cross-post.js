@@ -36,7 +36,7 @@ async function publishToDevTo(article) {
         article: {
           title: article.title,
           published: false, // Start as draft for review
-          body_markdown: article.content,
+          body_markdown: processContentForPlatform(article.content, 'dev.to'),
           canonical_url: article.canonical,
           tags: article.tags.slice(0, 4), // Dev.to max 4 tags
           description: article.description
@@ -81,7 +81,7 @@ async function publishToHashnode(article) {
         variables: {
           input: {
             title: article.title,
-            contentMarkdown: article.content,
+            contentMarkdown: processContentForPlatform(article.content, 'hashnode'),
             tags: article.tags.map(tag => ({ name: tag })),
             canonicalUrl: article.canonical,
             publicationId: process.env.HASHNODE_PUBLICATION_ID,
@@ -135,7 +135,7 @@ async function publishToMedium(article) {
       body: JSON.stringify({
         title: article.title,
         contentFormat: 'markdown',
-        content: article.content,
+        content: processContentForPlatform(article.content, 'medium'),
         canonicalUrl: article.canonical,
         tags: article.tags.slice(0, 5), // Medium max 5 tags
         publishStatus: 'draft'
@@ -153,6 +153,81 @@ async function publishToMedium(article) {
   });
 }
 
+// Process content for different platforms
+function processContentForPlatform(content, platform) {
+  let processedContent = content;
+
+  // Handle image URLs - convert relative to absolute
+  processedContent = processedContent.replace(
+    /!\[([^\]]*)\]\(\/assets\/([^)]+)\)/g,
+    (match, alt, path) => `![${alt}](${CONFIG.BLOG_BASE_URL}/assets/${path})`
+  );
+
+  processedContent = processedContent.replace(
+    /!\[([^\]]*)\]\(assets\/([^)]+)\)/g,
+    (match, alt, path) => `![${alt}](${CONFIG.BLOG_BASE_URL}/assets/${path})`
+  );
+
+  // Handle Hugo-specific absolute_url filter
+  processedContent = processedContent.replace(
+    /\{\{.*["']([^"']+)["'].*\|\s*absolute_url.*\}\}/g,
+    (match, path) => `${CONFIG.BLOG_BASE_URL}${path}`
+  );
+
+  // Handle local file paths (convert to absolute URLs)
+  processedContent = processedContent.replace(
+    /!\[([^\]]*)\]\(\/Users\/[^)]+\)/g,
+    (match, alt) => `![${alt}](${CONFIG.BLOG_BASE_URL}/assets/${alt})`
+  );
+
+  // Platform-specific processing
+  switch (platform.toLowerCase()) {
+    case 'dev.to':
+      // Dev.to doesn't support Mermaid, convert to images or fallback
+      processedContent = processedContent.replace(
+        /```mermaid[^`]*```/gs,
+        (match) => {
+          const mermaidContent = match.replace(/```mermaid\s*/, '').replace(/```\s*$/, '');
+          return `**📊 Mermaid Diagram**\n\n*Note: Dev.to doesn't support interactive Mermaid diagrams. View the original post on [${CONFIG.BLOG_BASE_URL}](${CONFIG.BLOG_BASE_URL}) to see the interactive diagram.*\n\n\`\`\`mermaid\n${mermaidContent}\`\`\``;
+        }
+      );
+
+      // Remove Hugo-specific markup
+      processedContent = processedContent.replace(/\{:\s*\.center-image\s*}/g, '');
+      processedContent = processedContent.replace(/\{\{<[^>]*>\}\}/g, '');
+      break;
+
+    case 'medium':
+      // Medium has limited Mermaid support, provide fallback
+      processedContent = processedContent.replace(
+        /```mermaid[^`]*```/gs,
+        (match) => {
+          const mermaidContent = match.replace(/```mermaid[^{]*{[^}]*}?\s*/, '').replace(/```\s*$/, '');
+          return `**📊 Mermaid Diagram**\n\n*Interactive diagram available in the original post: [${CONFIG.BLOG_BASE_URL}](${CONFIG.BLOG_BASE_URL})*\n\n\`\`\`mermaid\n${mermaidContent}\`\`\``;
+        }
+      );
+
+      // Remove Hugo-specific markup
+      processedContent = processedContent.replace(/\{:\s*\.center-image\s*}/g, '');
+      processedContent = processedContent.replace(/\{\{<[^>]*>\}\}/g, '');
+      break;
+
+    case 'hashnode':
+      // Hashnode has good Mermaid support, keep it but ensure URLs are absolute
+      processedContent = processedContent.replace(
+        /```mermaid\s*\{[^}]*\}\s*/g,
+        '```mermaid\n'
+      );
+
+      // Remove Hugo-specific markup
+      processedContent = processedContent.replace(/\{:\s*\.center-image\s*}/g, '');
+      processedContent = processedContent.replace(/\{\{<[^>]*>\}\}/g, '');
+      break;
+  }
+
+  return processedContent;
+}
+
 // Extract frontmatter and content
 function parseArticle(filePath) {
   try {
@@ -167,6 +242,21 @@ function parseArticle(filePath) {
     // Generate URL if not present
     const url = data.url || filename.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace('.md', '');
 
+    // Extract cover image from frontmatter or content
+    let coverImage = data.image;
+    if (!coverImage) {
+      const imageMatch = content.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+      if (imageMatch) {
+        let imagePath = imageMatch[2];
+        // Convert relative paths to absolute
+        if (imagePath.startsWith('/assets/')) {
+          coverImage = CONFIG.BLOG_BASE_URL + imagePath;
+        } else if (imagePath.startsWith('assets/')) {
+          coverImage = `${CONFIG.BLOG_BASE_URL}/${imagePath}`;
+        }
+      }
+    }
+
     return {
       title: data.title || 'Untitled',
       content: content,
@@ -174,7 +264,7 @@ function parseArticle(filePath) {
       canonical: `${CONFIG.BLOG_BASE_URL}/${url}`,
       tags: data.tags || [],
       date: postDate,
-      image: data.image
+      image: coverImage
     };
   } catch (error) {
     console.error(`Error parsing article ${filePath}:`, error.message);
@@ -185,6 +275,7 @@ function parseArticle(filePath) {
 // Main execution function
 async function main() {
   const filePath = process.argv[2];
+  const dryRun = process.argv.includes('--dry-run');
 
   if (!filePath) {
     console.error('Please provide a file path');
@@ -207,11 +298,25 @@ async function main() {
 
     const results = [];
 
+    if (dryRun) {
+      console.log('🔍 DRY RUN MODE - No actual publishing will occur\n');
+    }
+
     // Publish to each platform if API key is available
-    if (process.env.DEVTO_API_KEY) {
+    if (process.env.DEVTO_API_KEY || dryRun) {
       try {
-        const devtoResult = await publishToDevTo(article);
-        results.push({ platform: 'Dev.to', success: true, result: devtoResult });
+        if (dryRun) {
+          console.log('✅ Dev.to: Would publish (dry run)');
+          console.log(`   Title: ${article.title}`);
+          console.log(`   Tags: ${article.tags.slice(0, 4).join(', ')}`);
+          console.log(`   Canonical: ${article.canonical}`);
+          console.log(`   Images: ${processContentForPlatform(article.content, 'dev.to').match(/!\[.*?\]\(.*?\)/g)?.length || 0} images found`);
+          console.log(`   Mermaid diagrams: ${article.content.match(/```mermaid/g)?.length || 0} found (converted to fallback)`);
+          results.push({ platform: 'Dev.to', success: true, result: { dryRun: true } });
+        } else {
+          const devtoResult = await publishToDevTo(article);
+          results.push({ platform: 'Dev.to', success: true, result: devtoResult });
+        }
       } catch (error) {
         console.error(`❌ Dev.to publishing failed:`, error.message);
         results.push({ platform: 'Dev.to', success: false, error: error.message });
@@ -220,10 +325,20 @@ async function main() {
       console.log('⚠️  Dev.to API key not found, skipping...');
     }
 
-    if (process.env.HASHNODE_TOKEN && process.env.HASHNODE_PUBLICATION_ID) {
+    if ((process.env.HASHNODE_TOKEN && process.env.HASHNODE_PUBLICATION_ID) || dryRun) {
       try {
-        const hashnodeResult = await publishToHashnode(article);
-        results.push({ platform: 'Hashnode', success: true, result: hashnodeResult });
+        if (dryRun) {
+          console.log('✅ Hashnode: Would publish (dry run)');
+          console.log(`   Title: ${article.title}`);
+          console.log(`   Tags: ${article.tags.map(tag => ({ name: tag }))}`);
+          console.log(`   Canonical: ${article.canonical}`);
+          console.log(`   Images: ${processContentForPlatform(article.content, 'hashnode').match(/!\[.*?\]\(.*?\)/g)?.length || 0} images found`);
+          console.log(`   Mermaid diagrams: ${article.content.match(/```mermaid/g)?.length || 0} found (supported)`);
+          results.push({ platform: 'Hashnode', success: true, result: { dryRun: true } });
+        } else {
+          const hashnodeResult = await publishToHashnode(article);
+          results.push({ platform: 'Hashnode', success: true, result: hashnodeResult });
+        }
       } catch (error) {
         console.error(`❌ Hashnode publishing failed:`, error.message);
         results.push({ platform: 'Hashnode', success: false, error: error.message });
@@ -232,10 +347,20 @@ async function main() {
       console.log('⚠️  Hashnode credentials not found, skipping...');
     }
 
-    if (process.env.MEDIUM_TOKEN) {
+    if (process.env.MEDIUM_TOKEN || dryRun) {
       try {
-        const mediumResult = await publishToMedium(article);
-        results.push({ platform: 'Medium', success: true, result: mediumResult });
+        if (dryRun) {
+          console.log('✅ Medium: Would publish (dry run)');
+          console.log(`   Title: ${article.title}`);
+          console.log(`   Tags: ${article.tags.slice(0, 5).join(', ')}`);
+          console.log(`   Canonical: ${article.canonical}`);
+          console.log(`   Images: ${processContentForPlatform(article.content, 'medium').match(/!\[.*?\]\(.*?\)/g)?.length || 0} images found`);
+          console.log(`   Mermaid diagrams: ${article.content.match(/```mermaid/g)?.length || 0} found (converted to fallback)`);
+          results.push({ platform: 'Medium', success: true, result: { dryRun: true } });
+        } else {
+          const mediumResult = await publishToMedium(article);
+          results.push({ platform: 'Medium', success: true, result: mediumResult });
+        }
       } catch (error) {
         console.error(`❌ Medium publishing failed:`, error.message);
         results.push({ platform: 'Medium', success: false, error: error.message });
