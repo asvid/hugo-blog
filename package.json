@@ -1,0 +1,13 @@
+{
+  "name": "hugo-blog-cross-post",
+  "version": "1.0.0",
+  "description": "Cross-post Hugo articles to Dev.to, Medium, and Hashnode",
+  "main": "scripts/cross-post.js",
+  "scripts": {
+    "cross-post": "node scripts/cross-post.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "gray-matter": "^4.0.3"
+  }
+}

@@ -2,7 +2,7 @@
 comments: true
 date: "2025-10-12T00:00:00Z"
 description: "My wife needed a candle calculator app. I only know Android. So I used Claude Code to build a native iOS app without writing Swift. 19 days, 3 Apple rejections, and 5 hours of certificate hell later—it's live, it works, and she's happy."
-image: posts/mvi.png
+image: posts/candle-story.jpg
 tags:
   - iOS
   - mobile
