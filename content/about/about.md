@@ -4,21 +4,28 @@ date = 2023-10-27T05:24:41-05:00
 draft = false
 layout = "single"
 +++
+Software engineer bouncing between mobile and backend for over a decade.
 
-[I’m a pragmatic software engineer with diverse experience](#technologies). I like to write about [Android](/tags/android/), [Design Patterns](/tags/design-patterns) and [everything else](/posts/) I learned on the way.
+Started in web, moved to native Android when hybrid frameworks didn't work. Currently, doing backend in TypeScript and relearning SQL. I hack anything that accepts custom firmware - wife's mirror camera, Kindle, ran nightly Android builds on my first smartphone (mistakes were made).
 
-I have extensive experience with legacy code, as well as launching fresh green-field projects.
+My office is split down the middle: clean desk for coding, dirty workbench for soldering and 3D printing. I hand-wired the split keyboard I'm typing on right now.
 
-Furthermore, I enjoy task automatization with a CI/CD approach in mind and have previously designed and implemented release procedures for mobile apps.
+Getting grey hair means I catch myself saying "back in my days" more often. Turns out nothing in computer science is actually new - just the same patterns wrapped differently every decade. But I'm trying to stay curious anyway, approaching problems like a kid who hasn't learned to be cynical yet. Still enjoy learning new languages and tech, even if they're just old ideas in fresh packaging.
 
-In my spare time, you can find me strumming my guitar 🎸, buried in books 📚, enjoying movies 🎥, or indulging in computer games 🎮. I also have a penchant for outdoor adventures like camping ⛺, hiking 🌄, and cruising on my motorcycle 🏍️.
+Lately playing with iOS dev using AI-assisted coding - turns out I can skip tutorial hell and just build what I need. Also automate everything. Repetitive tasks are my enemy. Even driving the same route twice bothers me.
 
-### Contact me
 
-Find me on [Linekdin](https://www.linkedin.com/in/aswiderski/) / [Github](https://github.com/asvid) or just say `Hello` with an
-[email](mailto:aswiderski@pm.me).
+Contact: [Linekdin](https://www.linkedin.com/in/aswiderski/) | [Github](https://github.com/asvid)| [email](mailto:aswiderski@pm.me)
 
-You can also check my [resume](/assets/cv.pdf)
+### Technologies & Tools
+
+<a href="https://go.dev/doc/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/go-colored.svg" width="36" height="36" alt="Go" /></a><a href="https://git-scm.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg" width="36" height="36" alt="Git" /></a><a href="https://www.oracle.com/java/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg" width="36" height="36" alt="Java" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript" /></a><a href="https://kotlinlang.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/kotlin-colored.svg" width="36" height="36" alt="Kotlin" /></a><a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg" width="36" height="36" alt="TypeScript" /></a><a href="https://dart.dev/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/dart-colored.svg" width="36" height="36" alt="Dart" /></a><a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/gnubash.svg" width="36" height="36" alt="GNU Bash" /></a><a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/visualstudiocode.svg" width="36" height="36" alt="VS Code" /></a><a href="https://neovim.io/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/neovim.svg" width="36" height="36" alt="Neovim" /></a><a href="https://nodejs.org/en/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="36" height="36" alt="NodeJS" /></a><a href="https://graphql.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/graphql-colored.svg" width="36" height="36" alt="GraphQL" /></a><a href="https://www.postgresql.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg" width="36" height="36" alt="PostgreSQL" /></a><a href="https://firebase.google.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg" width="36" height="36" alt="Firebase" /></a><a href="https://wordpress.com" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/wordpress-colored.svg" width="36" height="36" alt="Wordpress" /></a><a href="https://flutter.dev/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/flutter-colored.svg" width="36" height="36" alt="Flutter" /></a><a href="https://www.docker.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/docker-colored.svg" width="36" height="36" alt="Docker" /></a>
+</p>
+
+
+### Socials
+
+<p align="left"> <a href="https://www.dev.to/asvid" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/devdotto-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/devdotto.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/devdotto.svg" width="32" height="32" /> </picture> </a> <a href="https://www.github.com/asvid" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /> </picture> </a> <a href="http://www.instagram.com/adamcodingcorner" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/instagram-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/instagram.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/instagram.svg" width="32" height="32" /> </picture> </a> <a href="https://www.linkedin.com/in/aswiderski" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" /> </picture> </a> <a href="http://www.medium.com/@asvid" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/medium-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/medium.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/medium.svg" width="32" height="32" /> </picture> </a> <a href="https://swiderski.tech/posts/index.xml" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/rss-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/rss.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/rss.svg" width="32" height="32" /> </picture> </a> <a href="https://www.twitch.tv/adamcodingcorner" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitch-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitch.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitch.svg" width="32" height="32" /> </picture> </a></p>
 
 ### Mentoring
 
@@ -30,6 +37,10 @@ Interested in mentoring session? Check below:
 ### Projects
 
 Sometimes I build something just because I want to :)
+
+#### [Candle Studio](https://apps.apple.com/pl/app/candle-studio/id6752621480)
+
+iOS app I made for my wife when she got into candle making as a hobby. It helps her keep track of recipes, inventory, timers for various stages of candle making process, and has a calculator for mixing scents and colors. The app is made in SwiftUI, using CoreData for persistence, and has iCloud sync.
 
 #### [Biedra](https://github.com/asvid/GdzieTaBiedra)
 
@@ -52,54 +63,4 @@ Sample app and scripts used to hack it using [Frida](https://frida.re/docs/andro
 
 Android app for controlling car suspension via Bluetooth. A pet project I did with my brother, he took the hardware part using Arduino and some valves, I did the Android app programming. The app allowed creating loops of commands that could be played from a playlist, using phone accelerometer to send suspension commands, or using more traditional on-screen buttons.
 
-### Technologies
-
-Random ordered list of tech I like to use
-
-<div class="tech-chips">
-<span class="tech-chip">Android</span>
-<span class="tech-chip">Kotlin</span>
-<span class="tech-chip">Flutter</span>
-<span class="tech-chip">Spring</span>
-<span class="tech-chip">BLE</span>
-<span class="tech-chip">Dagger</span>
-<span class="tech-chip">Koin</span>
-<span class="tech-chip">Espresso</span>
-<span class="tech-chip">ExpressJS</span>
-<span class="tech-chip">Firebase</span>
-<span class="tech-chip">Genymotion</span>
-<span class="tech-chip">git</span>
-<span class="tech-chip">Gradle</span>
-<span class="tech-chip">JavaScript</span>
-<span class="tech-chip">Jira</span>
-<span class="tech-chip">JUnit</span>
-<span class="tech-chip">Linux</span>
-<span class="tech-chip">MongoDB</span>
-<span class="tech-chip">NodeJS</span>
-<span class="tech-chip">Realm Database</span>
-<span class="tech-chip">Room Persistence Library</span>
-<span class="tech-chip">RxJava</span>
-<span class="tech-chip">SonarQube</span>
-<span class="tech-chip">Detekt</span>
-<span class="tech-chip">Mockk</span>
-<span class="tech-chip">Spock</span>
-<span class="tech-chip">GraphQL</span>
-<span class="tech-chip">TypeScript</span>
-<span class="tech-chip">Jenkins</span>
-<span class="tech-chip">Docker</span>
-<span class="tech-chip">Figma</span>
-<span class="tech-chip">Confluence</span>
-<span class="tech-chip">Miro</span>
-<span class="tech-chip">Slack</span>
-<span class="tech-chip">IntelliJ Idea</span>
-<span class="tech-chip">VS Code</span>
-<span class="tech-chip">Postman</span>
-<span class="tech-chip">Insomnia</span>
-<span class="tech-chip">Swagger</span>
-<span class="tech-chip">Vim</span>
-<span class="tech-chip">Mermaid</span>
-<span class="tech-chip">NeoVim</span>
-<span class="tech-chip">GoLang</span>
-<span class="tech-chip">Domain Driven Design</span>
-</div>
 
