@@ -1,7 +1,4 @@
 ---
-categories:
-  - Design Patterns
-  - rss
 comments: true
 date: "2021-05-30T00:00:00Z"
 description: " The `Strategy` pattern creates a family of algorithms, enclosing the

@@ -1,6 +1,4 @@
 ---
-categories:
-  - rss
 comments: true
 date: "2018-01-21T00:00:00Z"
 description:

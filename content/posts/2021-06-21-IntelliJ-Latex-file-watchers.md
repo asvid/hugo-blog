@@ -1,7 +1,4 @@
 ---
-categories:
-  - Today I learned
-  - rss
 comments: true
 date: "2021-06-21T00:00:00Z"
 description: " IntelliJ IDEA is pretty good at handling LaTeX. I dare say that it

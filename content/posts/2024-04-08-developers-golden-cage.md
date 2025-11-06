@@ -4,7 +4,14 @@ date: "2024-04-08T00:00:00Z"
 description: "I recently made observations on my limitations due to my 'develper dependencies'. Anything outside my comfort zone feels bad, and I don't like that. My plan is to create a developers survival kit and stick to it. Reducing dependencies and distractions, focusing on craft."
 image: posts/developers_cage.png
 tags:
-  -
+  - career
+  - productivity
+  - tools
+  - software engineering
+  - personal development
+  - VS Code
+  - Vim
+  - AI
 title: "Developer's golden cage"
 toc: true
 url: 2024-04-08-developers-golden-cage

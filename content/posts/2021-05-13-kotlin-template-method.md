@@ -1,7 +1,4 @@
 ---
-categories:
-  - Design Patterns
-  - rss
 comments: true
 date: "2021-05-13T00:00:00Z"
 description:

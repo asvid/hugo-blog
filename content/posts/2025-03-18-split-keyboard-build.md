@@ -1,7 +1,4 @@
 ---
-categories:
-  - hardware
-  - keyboards
 comments: true
 date: "2025-03-18T00:00:00Z"
 description: "Building a split ergonomic keyboard from scratch: a journey through 3D printing, soldering, and firmware programming. Despite the learning curve and typing speed challenges, discover why creating your own mechanical keyboard becomes an addictive hobby."
@@ -156,7 +153,7 @@ The QMK fork for the Void keyboard linked in the repo works fine. There is a Via
 Well...
 
 ![Compilation error](/assets/posts/split-keyboard/compilation-error.jpeg)
-The board I used, a cheap basic ProMicro 32U4, **has VERY limited memory**, so the original QMK firmware barely fits there. No more space for fireworks like [tap dance](https://thomasbaart.nl/2018/12/13/qmk-basics-tap-dance/). It reminded me of the conversation I had with a colleague at the smart home system company, where he worked as embedded software engineer. He was jealous of us mobile engineers discussing best practises, code readability etc. while they had to write hacks on hacks to make compiled code fit on the energy efficient chips. Now I get your struggle a bit better man.
+The board I used, a cheap basic ProMicro 32U4, **has VERY limited memory**, so the original QMK firmware barely fits there. No more space for fireworks like [tap dance](https://thomasbaart.nl/2018/12/13/qmk-basics-tap-dance/). It reminded me of the conversation I had with a colleague at the smart home system company, where he worked as embedded software engineer. He was jealous of us mobile engineers discussing best practices, code readability etc. while they had to write hacks on hacks to make compiled code fit on the energy efficient chips. Now I get your struggle a bit better man.
 
 But I was able to add **home row mods** and change some timeouts to make them feel better. After fighting with config files written in C, installing QMK with homebrew, learning that **it's broken**, fixing some dependencies manually because I use **Apple Silicone**, and talking with Claude to guide me through compilation, I made it.
 

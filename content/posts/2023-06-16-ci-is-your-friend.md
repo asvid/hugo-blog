@@ -1,6 +1,4 @@
 ---
-categories:
-  - rss
 comments: true
 date: "2023-06-16T00:00:00Z"
 description: " Embrace the power of Continuous Integration and Deployment (CI/CD)

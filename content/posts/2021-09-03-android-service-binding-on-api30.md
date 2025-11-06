@@ -1,7 +1,4 @@
 ---
-categories:
-  - Android
-  - rss
 comments: true
 date: "2021-09-03T00:00:00Z"
 description: " Android 11 (API 30) changes the way of using external app services.

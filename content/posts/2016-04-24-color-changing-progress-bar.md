@@ -1,6 +1,4 @@
 ---
-categories:
-  - rss
 comments: true
 date: "2016-04-24T00:00:00Z"
 description: Simple guide to color changing progress bar

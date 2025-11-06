@@ -1,7 +1,4 @@
 ---
-categories:
-  - Design Patterns
-  - rss
 comments: true
 date: "2021-02-26T00:00:00Z"
 description: " After the `Static Factory Method` it's time for classic `Factory`.

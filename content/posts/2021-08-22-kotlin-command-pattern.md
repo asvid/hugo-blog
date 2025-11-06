@@ -1,7 +1,4 @@
 ---
-categories:
-  - Design Patterns
-  - rss
 comments: true
 date: "2021-08-22T00:00:00Z"
 description: " The Command pattern wraps the request into a specific object that has
@@ -11,7 +8,7 @@ description: " The Command pattern wraps the request into a specific object that
   the constructor. "
 image: posts/command.jpg
 tags:
-  - kotlin
+  - Kotlin
   - Command Pattern
   - design patterns
 title: Command Pattern in Kotlin

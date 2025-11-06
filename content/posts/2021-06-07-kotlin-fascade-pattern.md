@@ -1,7 +1,4 @@
 ---
-categories:
-  - Design Patterns
-  - rss
 comments: true
 date: "2021-06-07T00:00:00Z"
 description: " The facade allows you to hide the details of the module from clients.

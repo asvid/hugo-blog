@@ -1,7 +1,4 @@
 ---
-categories:
-  - Design Patterns
-  - rss
 comments: true
 date: "2021-07-03T00:00:00Z"
 description: " The `Decorator` pattern is used where creating separate classes which
@@ -11,7 +8,7 @@ description: " The `Decorator` pattern is used where creating separate classes w
   decorated object. "
 image: posts/decorator.jpg
 tags:
-  - kotlin
+  - Kotlin
   - Decorator Pattern
   - design patterns
   - extension methods

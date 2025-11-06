@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="fix: update image paths in markdown files to remove leading '/assets/'">
+    <list default="true" id="5d21808a-9f03-436b-8b76-64ded7a39bc6" name="Changes" comment="doc: Revise about.md to update technologies and add a new tech list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/about/about.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/about/about.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +146,7 @@
       <workItem from="1756969388232" duration="463000" />
       <workItem from="1756988181164" duration="2651000" />
       <workItem from="1760903792907" duration="1732000" />
-      <workItem from="1761233320030" duration="646000" />
+      <workItem from="1761233320030" duration="2697000" />
     </task>
     <task id="LOCAL-00001" summary="new post about using design patterns as communication skill">
       <option name="closed" value="true" />
@@ -285,7 +284,23 @@
       <option name="project" value="LOCAL" />
       <updated>1756989769349</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="doc: Update about.md with personal and project details; add new XML migration files">
+      <option name="closed" value="true" />
+      <created>1761234164430</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1761234164430</updated>
+    </task>
+    <task id="LOCAL-00019" summary="doc: Revise about.md to update technologies and add a new tech list">
+      <option name="closed" value="true" />
+      <created>1761235334978</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1761235334978</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +322,9 @@
     <MESSAGE value="feat: update recent Git root path and adjust task summaries in workspace.xml" />
     <MESSAGE value="fix: update MCP links to point to the correct server paths" />
     <MESSAGE value="fix: update image paths in markdown files to remove leading '/assets/'" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: update image paths in markdown files to remove leading '/assets/'" />
+    <MESSAGE value="doc: Update about.md with personal and project details; add new XML migration files" />
+    <MESSAGE value="doc: Revise about.md to update technologies and add a new tech list" />
+    <option name="LAST_COMMIT_MESSAGE" value="doc: Revise about.md to update technologies and add a new tech list" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

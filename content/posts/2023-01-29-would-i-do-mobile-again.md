@@ -1,6 +1,4 @@
 ---
-categories:
-  - rss
 comments: true
 date: "2023-01-29T00:00:00Z"
 description: " I went to a meetup in my city last week and a guy I just met there
@@ -10,7 +8,7 @@ image: posts/go_mobile.png
 tags:
   - career
   - mobile
-  - android
+  - Android
   - ios
   - flutter
 title: Would you go for mobile development again, after 10 years of doing it?

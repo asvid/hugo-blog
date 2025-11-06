@@ -10,6 +10,34 @@ enableRobotsTXT = true
 [markup]
     [markup.goldmark.renderer]
         unsafe=true
+
+# Image processing configuration
+[imaging]
+  # Default resizer filter settings
+  resizerFilter = "Lanczos"
+  # Default JPEG quality
+  quality = 82
+  # Anchor in smart cropping
+  anchor = "smart"
+
+  [imaging.resizing]
+    # Default resizing settings
+    [imaging.resizing.default]
+      width = 800
+      height = 600
+      quality = 82
+
+    # Settings for thumbnails
+    [imaging.resizing.thumbnail]
+      width = 150
+      height = 150
+      quality = 75
+
+    # Settings for OG images
+    [imaging.resizing.og]
+      width = 1200
+      height = 630
+      quality = 85
 [pagination]
     pagerSize = 10
 [params]

@@ -1,6 +1,4 @@
 ---
-categories:
-  - rss
 comments: true
 date: "2022-04-04T00:00:00Z"
 description:

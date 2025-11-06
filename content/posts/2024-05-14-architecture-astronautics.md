@@ -1,14 +1,12 @@
 ---
-categories:
-  -
 comments: true
 date: "2024-05-14T00:00:00Z"
 description: "Ever felt like your code is an engineering marvel, only to realize you overengineered and built the wrong thing? Or maybe you over-abstracted, blindly following instincts and so-called good practices? I surely did, and I want to share some thoughts on this topic. Let's explore a path toward more practical, sustainable software engineering."
 image: posts/archastro.png
 tags:
-  - software architectire
+  - software architecture
   - overengineering
-  - best practises
+  - best practices
   - pragmatic programming
 title: "Avoiding the pitfalls of Architecture Astronautics"
 toc: true

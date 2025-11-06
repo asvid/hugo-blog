@@ -1,7 +1,4 @@
 ---
-categories:
-  - Design Patterns
-  - rss
 comments: true
 date: "2021-07-17T00:00:00Z"
 description:
@@ -14,7 +11,7 @@ description:
   model changes. "
 image: posts/mediator.jpg
 tags:
-  - kotlin
+  - Kotlin
   - Mediator Pattern
   - design patterns
 title: Mediator in Kotlin

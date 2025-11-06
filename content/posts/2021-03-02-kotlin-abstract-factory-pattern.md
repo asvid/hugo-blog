@@ -1,7 +1,4 @@
 ---
-categories:
-  - Design Patterns
-  - rss
 comments: true
 date: "2021-03-02T00:00:00Z"
 description: " The factory of factories, 'Abstract Factory' makes creating objects

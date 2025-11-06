@@ -1,6 +1,4 @@
 ---
-categories:
-  -
 comments: true
 date: "2024-10-13T00:00:00Z"
 description: "'I did not study computer science to work with people’—sounds familiar? Well, I’ve got news for you: you’re still working with people, you just communicate not in the way you might think. Your code speaks volumes about your intentions and ideas. Design Patterns can amplify your coding ‘voice’ when used wisely."

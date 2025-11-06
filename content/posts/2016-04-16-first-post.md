@@ -4,6 +4,12 @@ date: "2016-04-16T00:00:00Z"
 description: This is first post, I'm just saying hello here :)
 title: First post
 url: first-post
+tags:
+  - introduction
+  - blog
+  - Android
+  - Kotlin
+  - personal
 ---
 
 This is first post, so I just want to say HI!
