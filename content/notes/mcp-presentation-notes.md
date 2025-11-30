@@ -21,7 +21,7 @@ Presented at Poznań Java User Group, December 10, 2024.
 ## Slides & Demo
 
 - **Slides PDF** - *(coming soon - upload after presentation)*
-- **[My Demo Repository](https://github.com/swiderski-ai/your-mcp-demo)** - *(add your actual repo link)*
+- **[My Demo Repository](https://github.com/asvid/mcp-test-currency-converter)** 
 
 ---
 
