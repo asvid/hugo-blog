@@ -20,7 +20,7 @@ Presented at Poznań Java User Group, December 10, 2024.
 
 ## Slides & Demo
 
-- **Slides PDF** - *(coming soon - upload after presentation)*
+- **[Slides PDF](/assets/jug_mcp_talk.pdf)**
 - **[My Demo Repository](https://github.com/asvid/mcp-test-currency-converter)** 
 
 ---
@@ -39,27 +39,22 @@ Presented at Poznań Java User Group, December 10, 2024.
 - **[Context7](https://context7.com/)** - MCP context management
 - **[Firecrawl](https://www.firecrawl.dev/)** - Web scraping MCP server
 - **[Superhuman AI](https://www.superhuman.ai/)** - AI productivity tools
-
----
-
-## Example MCP Servers
-
 - **[Calculator MCP (Python)](https://github.com/githejie/mcp-server-calculator)** - Simple Python implementation
 - **[Paper Search MCP](https://github.com/openags/paper-search-mcp)** - Academic paper search
-- **[Beyond MCP Comparison](https://github.com/disler/beyond-mcp)** - MCP vs CLI vs Scripts vs Skills
 
 ---
 
 ## Learning Resources
-
+- **[The State of MCP Security](https://www.pynt.io/blog/llm-security-blogs/state-of-mcp-security)** - MCP security research
 - **[IndyDevDan YouTube](https://www.youtube.com/@indydevdan)** - AI agent development tutorials
 - **[Awesome Claude Skills](https://github.com/ComposioHQ/awesome-claude-skills)** - Curated Claude skills collection
 - **[Awesome AI Agents](https://github.com/e2b-dev/awesome-ai-agents)** - Comprehensive AI agents list
 - **[Claude Code Cheat Sheet](https://github.com/Njengah/claude-code-cheat-sheet)** - Quick reference guide
 - **[GitHub Spec Kit](https://github.com/github/spec-kit)** - Specification templates
+- **[Beyond MCP Comparison](https://github.com/disler/beyond-mcp)** - MCP vs CLI vs Scripts vs Skills
 
 ---
 
 ## Related Blog Posts
 
-- **[Building MCP Servers - Technical Deep Dive](https://swiderski.tech/your-original-mcp-post)** - My original blog post from 2 months ago
+- **[Building MCP Servers - Technical Deep Dive](https://swiderski.tech/2025-09-02-mcp-tools-llm-meets-unix/)** - My original blog post from 2025-09-02
