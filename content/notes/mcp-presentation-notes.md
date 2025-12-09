@@ -52,6 +52,9 @@ Presented at Poznań Java User Group, December 10, 2024.
 - **[Claude Code Cheat Sheet](https://github.com/Njengah/claude-code-cheat-sheet)** - Quick reference guide
 - **[GitHub Spec Kit](https://github.com/github/spec-kit)** - Specification templates
 - **[Beyond MCP Comparison](https://github.com/disler/beyond-mcp)** - MCP vs CLI vs Scripts vs Skills
+- **[Awesome Claude Code](https://github.com/hesreallyhim/awesome-claude-code)** - Claude code resources
+- **[Awesome AI Apps](https://github.com/Arindam200/awesome-ai-apps)** - AI applications collection
+- **[Claude Cookbooks](https://github.com/anthropics/claude-cookbooks)** - Official Claude recipes and examples
 
 ---
 
