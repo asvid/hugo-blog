@@ -28,7 +28,7 @@ Presented at Poznań Java User Group, December 10, ~~2024~~ 2025 (this text was 
 ## Official MCP Resources
 
 - **[MCP Documentation](https://modelcontextprotocol.io/docs/getting-started/intro)** - Getting started guide
-- **[MCP Servers Repository](https://github.com/modelcontextprotocol/servers)** - Official server implementations
+- **[MCP Servers Repository](https://github.com/modelcontextprotocol/servers)** - MCP servers repository
 - **[MCP Inspector](https://github.com/modelcontextprotocol/inspector)** - Debug and test MCP servers
 
 ---
@@ -36,9 +36,9 @@ Presented at Poznań Java User Group, December 10, ~~2024~~ 2025 (this text was 
 ## MCP Tools & Platforms
 
 - **[Smithery](https://smithery.ai/)** - MCP hub with 3000+ integrations
-- **[Context7](https://context7.com/)** - MCP context management
+- **[Context7](https://context7.com/)** - MCP for language and lib docs
 - **[Firecrawl](https://www.firecrawl.dev/)** - Web scraping MCP server
-- **[Superhuman AI](https://www.superhuman.ai/)** - AI productivity tools
+- **[Superhuman AI](https://www.superhuman.ai/)** - AI related stuff newsletter
 - **[Calculator MCP (Python)](https://github.com/githejie/mcp-server-calculator)** - Simple Python implementation
 - **[Paper Search MCP](https://github.com/openags/paper-search-mcp)** - Academic paper search
 
