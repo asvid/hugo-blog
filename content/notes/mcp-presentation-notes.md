@@ -22,6 +22,7 @@ Presented at Poznań Java User Group, December 10, ~~2024~~ 2025 (this text was 
 
 - **[Slides PDF](/assets/jug_mcp_talk.pdf)**
 - **[My Demo Repository](https://github.com/asvid/mcp-test-currency-converter)** 
+- **[Youtube pre-talk recording](https://www.youtube.com/watch?v=ZIfC1bbG5X8)**
 
 ---
 
