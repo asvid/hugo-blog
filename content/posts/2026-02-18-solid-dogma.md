@@ -17,7 +17,7 @@ tags:
 title: "Do You Want to Learn About Our Lord and Savior SOLID"
 toc: true
 url: 2026-02-18-solid-dogma
-draft: true
+draft: false
 ---
 
 I woke up with the flu, felt adventurous, and, for a while, wanted to disrupt things. So this one is going to be about not praising the SOLID principles.
