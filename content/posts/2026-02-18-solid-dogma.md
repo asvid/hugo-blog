@@ -1,7 +1,5 @@
 ---
 categories:
-  - software engineering
-  - programming practices
 comments: true
 date: "2026-02-18T00:00:00Z"
 description: "I find myself with a fresh golden hammer in hand every now and then, only to realize a screw would've been better. Following principles blindly doesn't automatically render 'better code'—there are always tradeoffs, and managing them is a sign of seniority and actual craftsmanship."
@@ -244,8 +242,6 @@ This is the way.
 [^5]: Dodds, K. C. *AHA Programming*. Personal blog. Retrieved from: [https://kentcdodds.com/blog/aha-programming](https://kentcdodds.com/blog/aha-programming) - Coined "Avoid Hasty Abstractions" as a counter to premature DRY.
 
 [^6]: Henney, K., & Terhorst-North, D. (2026). *Is Clean Code a Myth or Timeless Truth?* YOW! Conference. Retrieved from: [https://www.youtube.com/watch?v=OjW_0ZRdN5E](https://www.youtube.com/watch?v=OjW_0ZRdN5E) - A discussion exploring the evolution and interpretations of clean code concepts, challenging whether rigid rules help developers write better code.
-
-### Additional Resources
 
 - Beck, K. (2022). *Tidy First?: A Personal Exercise in Empirical Software Design*. O'Reilly Media. Promotes continuous, small, incremental improvements rather than major refactoring.
 - Martin, R. C. *The SOLID Principles*. Various publications and talks throughout the 2000s.
