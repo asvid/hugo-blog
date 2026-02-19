@@ -38,7 +38,7 @@ async function publishToDevTo(article) {
           published: false, // Start as draft for review
           body_markdown: processContentForPlatform(article.content, 'dev.to'),
           canonical_url: article.canonical,
-          tags: article.tags.slice(0, 4), // Dev.to max 4 tags
+          tags: processTagsForPlatform(article.tags, 'dev.to'),
           description: article.description
         }
       })
@@ -82,10 +82,8 @@ async function publishToHashnode(article) {
           input: {
             title: article.title,
             contentMarkdown: processContentForPlatform(article.content, 'hashnode'),
-            tags: article.tags.map(tag => ({ name: tag })),
-            canonicalUrl: article.canonical,
-            publicationId: process.env.HASHNODE_PUBLICATION_ID,
-            hideFromHashnodeFeed: false
+            tags: processTagsForPlatform(article.tags, 'hashnode'),
+            publicationId: process.env.HASHNODE_PUBLICATION_ID
           }
         }
       })
@@ -137,7 +135,7 @@ async function publishToMedium(article) {
         contentFormat: 'markdown',
         content: processContentForPlatform(article.content, 'medium'),
         canonicalUrl: article.canonical,
-        tags: article.tags.slice(0, 5), // Medium max 5 tags
+        tags: processTagsForPlatform(article.tags, 'medium'),
         publishStatus: 'draft'
       })
     });
@@ -151,6 +149,20 @@ async function publishToMedium(article) {
     console.log(`✅ Medium draft created: ${result.data.url}`);
     return result.data;
   });
+}
+
+// Process tags for different platforms
+function processTagsForPlatform(tags, platform) {
+  switch (platform.toLowerCase()) {
+    case 'dev.to':
+      return tags.slice(0, 4).map(tag => tag.replace(/\s+/g, ''));
+    case 'medium':
+      return tags.slice(0, 5).map(tag => tag.replace(/\s+/g, '-'));
+    case 'hashnode':
+      return tags.map(tag => ({ name: tag }));
+    default:
+      return tags;
+  }
 }
 
 // Process content for different platforms
@@ -308,7 +320,7 @@ async function main() {
         if (dryRun) {
           console.log('✅ Dev.to: Would publish (dry run)');
           console.log(`   Title: ${article.title}`);
-          console.log(`   Tags: ${article.tags.slice(0, 4).join(', ')}`);
+          console.log(`   Tags: ${processTagsForPlatform(article.tags, 'dev.to').join(', ')}`);
           console.log(`   Canonical: ${article.canonical}`);
           console.log(`   Images: ${processContentForPlatform(article.content, 'dev.to').match(/!\[.*?\]\(.*?\)/g)?.length || 0} images found`);
           console.log(`   Mermaid diagrams: ${article.content.match(/```mermaid/g)?.length || 0} found (converted to fallback)`);
@@ -330,7 +342,7 @@ async function main() {
         if (dryRun) {
           console.log('✅ Hashnode: Would publish (dry run)');
           console.log(`   Title: ${article.title}`);
-          console.log(`   Tags: ${article.tags.map(tag => ({ name: tag }))}`);
+          console.log(`   Tags: ${processTagsForPlatform(article.tags, 'hashnode').map(tag => tag.name).join(', ')}`);
           console.log(`   Canonical: ${article.canonical}`);
           console.log(`   Images: ${processContentForPlatform(article.content, 'hashnode').match(/!\[.*?\]\(.*?\)/g)?.length || 0} images found`);
           console.log(`   Mermaid diagrams: ${article.content.match(/```mermaid/g)?.length || 0} found (supported)`);
@@ -352,7 +364,7 @@ async function main() {
         if (dryRun) {
           console.log('✅ Medium: Would publish (dry run)');
           console.log(`   Title: ${article.title}`);
-          console.log(`   Tags: ${article.tags.slice(0, 5).join(', ')}`);
+          console.log(`   Tags: ${processTagsForPlatform(article.tags, 'medium').join(', ')}`);
           console.log(`   Canonical: ${article.canonical}`);
           console.log(`   Images: ${processContentForPlatform(article.content, 'medium').match(/!\[.*?\]\(.*?\)/g)?.length || 0} images found`);
           console.log(`   Mermaid diagrams: ${article.content.match(/```mermaid/g)?.length || 0} found (converted to fallback)`);
