@@ -170,7 +170,7 @@ Write duplicates and live with them. Often, code has accidental similarities and
 
 Another acronym here 'AHA' - avoid hasty abstractions[^5].
 
-## Die Dogma
+## Die Dogmats
 
 What you may notice already from all those acronyms and rules is that they are intentionally vague. But we like precision. Numbers, metrics, graphs, hell, I dare to say Scrum was invented to gamify work.
 
