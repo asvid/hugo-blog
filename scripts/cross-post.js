@@ -159,7 +159,10 @@ function processTagsForPlatform(tags, platform) {
     case 'medium':
       return tags.slice(0, 5).map(tag => tag.replace(/\s+/g, '-'));
     case 'hashnode':
-      return tags.map(tag => ({ name: tag }));
+      return tags.map(tag => ({ 
+        name: tag,
+        slug: tag.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '')
+      }));
     default:
       return tags;
   }

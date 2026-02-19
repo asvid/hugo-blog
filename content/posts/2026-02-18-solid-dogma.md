@@ -243,6 +243,8 @@ This is the way.
 
 [^6]: Henney, K., & Terhorst-North, D. (2026). *Is Clean Code a Myth or Timeless Truth?* YOW! Conference. Retrieved from: [https://www.youtube.com/watch?v=OjW_0ZRdN5E](https://www.youtube.com/watch?v=OjW_0ZRdN5E) - A discussion exploring the evolution and interpretations of clean code concepts, challenging whether rigid rules help developers write better code.
 
+Other:
+
 - Beck, K. (2022). *Tidy First?: A Personal Exercise in Empirical Software Design*. O'Reilly Media. Promotes continuous, small, incremental improvements rather than major refactoring.
 - Martin, R. C. *The SOLID Principles*. Various publications and talks throughout the 2000s.
 - Unix Philosophy: The principle that programs should "do one thing and do it well," originating from the Unix operating system design in the 1970s.
