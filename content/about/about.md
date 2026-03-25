@@ -22,6 +22,9 @@ Contact: [Linekdin](https://www.linkedin.com/in/aswiderski/) | [Github](https://
 
 Sometimes I build something just because I want to :)
 
+#### Kombine [WIP]
+Just another boring pomodoro app. With even more pedestrian tasks manager.
+
 #### [Candle Studio](https://apps.apple.com/pl/app/candle-studio/id6752621480)
 
 iOS app I made for my wife when she got into candle making as a hobby. It helps her keep track of recipes, inventory, timers for various stages of candle making process, and has a calculator for mixing scents and colors. The app is made in SwiftUI, using CoreData for persistence, and has iCloud sync.
