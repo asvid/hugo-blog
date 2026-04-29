@@ -20,14 +20,14 @@ enableRobotsTXT = true
     Subtitle = "Pragmatic software engineer sharing insights on Android development, Kotlin programming, and software architecture patterns"
     dark_mode = false                      # optional - defaults to false
     favicon = "/assets/ico/favicon.ico"             # path to favicon (defaults to favicon.png)
-    
+
     # Reading time configuration
     readingTime = true                     # Enable reading time globally
     minuteReadingTime = "min read"         # Text to display after reading time
     words = "words"                        # Text to display after word count
     ReadMore = "Read more"                 # Text for read more button
     front_page_content = ["posts"] # Equivalent to the default value, add page bundle names to include them on the front page.
-    
+
     # Logo configuration
     [params.Logo]
         logoText = "Adam Świderski"
@@ -40,7 +40,7 @@ enableRobotsTXT = true
     # Menu configuration
     showMenuItems = 2  # Number of menu items to show before creating dropdown
 
-    # Links to your socials.  Comment or delete any you don't need/use. 
+    # Links to your socials.  Comment or delete any you don't need/use.
     email_url = "mailto:aswiderski@pm.me"
     github_url = "https://github.com/asvid"
     linkedin_url = "https://www.linkedin.com/in/aswiderski/"
@@ -103,7 +103,7 @@ enableRobotsTXT = true
                                           # For this to work though og_image and brand_url must be a path inside the assets directory
                                           # e.g. /assets/images/site/og-image.png becomes images/site/og-image.png
     publisher_icon = "/assets/ico/favicon.ico" # path to publisher icon - defaults to favicon, used in schema
-    
+
     plausible = false
     plausible_script = "https://plausible.io/js/script.js"
     plausible_domain = "swiderski.tech"
@@ -115,6 +115,7 @@ enableRobotsTXT = true
 [taxonomies]
     series = 'series'
     tags = 'tags'
+    categories = 'categories'
 
 [[menu.main]]
     identifier = "about"
