@@ -22,8 +22,12 @@ Contact: [Linekdin](https://www.linkedin.com/in/aswiderski/) | [Github](https://
 
 Sometimes I build something just because I want to :)
 
-#### Kombine [WIP]
-Just another boring pomodoro app. With even more pedestrian tasks manager.
+#### [Kombine](https://kombine.dev/)
+Android app is live — Pomodoro, Flow, and energy-adaptive timer modes, tasks ranked by how much brain you have left, Todoist import, watch support. Web app in active development. Go backend, Kotlin Android, HTMX web.
+
+"Just a timer" somehow became: offline-first sync with version-based conflict resolution (two devices editing the same task while offline shouldn't silently pick a winner), drift-corrected real-time timer state across clients, and a statistical model in progress that learns your productivity patterns from session history — no AI, just your own data as math. Passive focus monitoring is on the list too, because YouTube open during a "focus session" should probably count against you.
+
+Next: ship the sync without embarrassing myself, then iOS, eventually desktop. The task manager stays simple. On purpose.
 
 #### [Candle Studio](https://apps.apple.com/pl/app/candle-studio/id6752621480)
 
