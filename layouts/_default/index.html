@@ -7,7 +7,10 @@
     {{ if .IsHome }}
       {{ $PageContext = .Site }}
     {{ end }}
-    {{ $paginator := .Paginate (where $PageContext.RegularPages "Type" $contentTypeName) }}
+    {{ $pages := where $PageContext.RegularPages "Type" $contentTypeName }}
+    {{ $devlogs := where $pages "Params.categories" "intersect" (slice "devlog") }}
+    {{ $pages = complement $devlogs $pages }}
+    {{ $paginator := .Paginate $pages }}
 
     {{ range $paginator.Pages }}
       <article class="post on-list">

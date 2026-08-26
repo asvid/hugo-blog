@@ -38,7 +38,7 @@ enableRobotsTXT = true
         email = "aswiderski@pm.me"
 
     # Menu configuration
-    showMenuItems = 2  # Number of menu items to show before creating dropdown
+    showMenuItems = 3  # Number of menu items to show before creating dropdown
 
     # Links to your socials.  Comment or delete any you don't need/use.
     email_url = "mailto:aswiderski@pm.me"
@@ -128,3 +128,9 @@ enableRobotsTXT = true
     name = "Blog"
     url = "/posts/"
     weight = 20
+
+[[menu.main]]
+    identifier = "devlog"
+    name = "Devlog"
+    url = "/categories/devlog/"
+    weight = 30

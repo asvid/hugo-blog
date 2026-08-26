@@ -5,7 +5,14 @@
     </div>
   {{ end }}
   <div class="posts">
-    {{ range .Paginator.Pages }}
+    {{ $pages := .RegularPagesRecursive }}
+    {{ if not $pages }}{{ $pages = .Pages }}{{ end }}
+    {{ if not (eq .Type "categories") }}
+      {{ $devlogs := where $pages "Params.categories" "intersect" (slice "devlog") }}
+      {{ $pages = complement $devlogs $pages }}
+    {{ end }}
+    {{ $paginator := .Paginate $pages }}
+    {{ range $paginator.Pages }}
       <article class="post on-list">
         <h2 class="post-title">
           <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>

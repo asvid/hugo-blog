@@ -1,6 +1,6 @@
 ---
 categories:
-  -
+  - devlog
 comments: true
 date: "2026-05-11T00:00:00Z"
 description: " "
