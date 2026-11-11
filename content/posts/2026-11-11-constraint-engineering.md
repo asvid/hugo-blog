@@ -52,6 +52,8 @@ Then it created concrete tickets for mobile, web app, and API repos. The tickets
 
 1 coffee later, I was testing it on the web app, and the mobile part was being built. It worked as expected, looked good, and even surprised me with a few nice UI touches I didn't explicitly plan during grooming.
 
+![Decision log entry in the Kombine web app](/assets/posts/constraint-engineering/kombine-decision-log.png)
+
 ## The boring stuff makes it possible
 
 Why was it possible so fast?
