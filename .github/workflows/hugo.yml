@@ -97,8 +97,6 @@ jobs:
         if: steps.changes.outputs.files != ''
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
-          HASHNODE_TOKEN: ${{ secrets.HASHNODE_TOKEN }}
-          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
           MEDIUM_TOKEN: ${{ secrets.MEDIUM_TOKEN }}
         run: |
           echo "Starting cross-posting process..."

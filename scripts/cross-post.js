@@ -55,55 +55,6 @@ async function publishToDevTo(article) {
   });
 }
 
-// Hashnode publisher
-async function publishToHashnode(article) {
-  console.log('Publishing to Hashnode...');
-
-  return retry(async () => {
-    const response = await fetch('https://gql.hashnode.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': process.env.HASHNODE_TOKEN
-      },
-      body: JSON.stringify({
-        query: `
-          mutation PublishPost($input: PublishPostInput!) {
-            publishPost(input: $input) {
-              post {
-                id
-                url
-                title
-              }
-            }
-          }
-        `,
-        variables: {
-          input: {
-            title: article.title,
-            contentMarkdown: processContentForPlatform(article.content, 'hashnode'),
-            tags: processTagsForPlatform(article.tags, 'hashnode'),
-            publicationId: process.env.HASHNODE_PUBLICATION_ID
-          }
-        }
-      })
-    });
-
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`Hashnode API error: ${response.status} - ${error}`);
-    }
-
-    const result = await response.json();
-    if (result.errors) {
-      throw new Error(`Hashnode GraphQL error: ${result.errors.map(e => e.message).join(', ')}`);
-    }
-
-    console.log(`✅ Hashnode post published: ${result.data.publishPost.post.url}`);
-    return result.data.publishPost.post;
-  });
-}
-
 // Medium publisher
 async function publishToMedium(article) {
   console.log('Publishing to Medium...');
@@ -158,11 +109,6 @@ function processTagsForPlatform(tags, platform) {
       return tags.slice(0, 4).map(tag => tag.replace(/\s+/g, ''));
     case 'medium':
       return tags.slice(0, 5).map(tag => tag.replace(/\s+/g, '-'));
-    case 'hashnode':
-      return tags.map(tag => ({ 
-        name: tag,
-        slug: tag.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '')
-      }));
     default:
       return tags;
   }
@@ -227,17 +173,6 @@ function processContentForPlatform(content, platform) {
       processedContent = processedContent.replace(/\{\{<[^>]*>\}\}/g, '');
       break;
 
-    case 'hashnode':
-      // Hashnode has good Mermaid support, keep it but ensure URLs are absolute
-      processedContent = processedContent.replace(
-        /```mermaid\s*\{[^}]*\}\s*/g,
-        '```mermaid\n'
-      );
-
-      // Remove Hugo-specific markup
-      processedContent = processedContent.replace(/\{:\s*\.center-image\s*}/g, '');
-      processedContent = processedContent.replace(/\{\{<[^>]*>\}\}/g, '');
-      break;
   }
 
   return processedContent;
@@ -340,28 +275,6 @@ async function main() {
       console.log('⚠️  Dev.to API key not found, skipping...');
     }
 
-    if ((process.env.HASHNODE_TOKEN && process.env.HASHNODE_PUBLICATION_ID) || dryRun) {
-      try {
-        if (dryRun) {
-          console.log('✅ Hashnode: Would publish (dry run)');
-          console.log(`   Title: ${article.title}`);
-          console.log(`   Tags: ${processTagsForPlatform(article.tags, 'hashnode').map(tag => tag.name).join(', ')}`);
-          console.log(`   Canonical: ${article.canonical}`);
-          console.log(`   Images: ${processContentForPlatform(article.content, 'hashnode').match(/!\[.*?\]\(.*?\)/g)?.length || 0} images found`);
-          console.log(`   Mermaid diagrams: ${article.content.match(/```mermaid/g)?.length || 0} found (supported)`);
-          results.push({ platform: 'Hashnode', success: true, result: { dryRun: true } });
-        } else {
-          const hashnodeResult = await publishToHashnode(article);
-          results.push({ platform: 'Hashnode', success: true, result: hashnodeResult });
-        }
-      } catch (error) {
-        console.error(`❌ Hashnode publishing failed:`, error.message);
-        results.push({ platform: 'Hashnode', success: false, error: error.message });
-      }
-    } else {
-      console.log('⚠️  Hashnode credentials not found, skipping...');
-    }
-
     if (process.env.MEDIUM_TOKEN || dryRun) {
       try {
         if (dryRun) {
@@ -408,4 +321,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { main, parseArticle, publishToDevTo, publishToHashnode, publishToMedium };
+module.exports = { main, parseArticle, publishToDevTo, publishToMedium };
